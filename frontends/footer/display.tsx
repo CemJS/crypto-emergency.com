@@ -1,5 +1,5 @@
 import { Cemjsx } from "cemjs-all"
-import platform from '@svg/platform.svg'
+// import platform from '@svg/platform.svg'
 import telegram from '@svg/social/telegram.svg'
 import youtube from '@svg/social/youtube.svg'
 import github from '@svg/social/github.svg'
@@ -24,7 +24,7 @@ export const display = function () {
                         <img src={email}></img>
                     </a>
                     <a class="footer_socials_item" target="_blank" href="https://crypto-emergency.com/" >
-                        <img src={platform}></img>
+                        {/* <img src={platform}></img> */}
                     </a>
                 </div>
                 <span>© 2023</span>
