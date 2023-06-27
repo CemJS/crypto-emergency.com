@@ -17,13 +17,12 @@
         margin: 0 auto;
 
         @media (min-width: 1240px) {
-            // max-width: 1240px;
-            width: calc(100% - 60px) !important;
+            max-width: 1240px;
+            width: 100% !important;
         }
 
         @media (min-width: 767px) {
-            width: 100%;
-            // width: calc(100% - 60px);
+            width: calc(100% - 60px);
         }
     }
 

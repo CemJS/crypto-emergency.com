@@ -25,7 +25,6 @@ export const display = function () {
                     </div>
                 </div>
             </div>
-
         </header>
     )
 
