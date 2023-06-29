@@ -18,8 +18,8 @@ export const display = function () {
 						<div class="header__language">
 							<span>Русский</span>
 						</div>
-						<button type="button" class="header__auth_log">Вход</button>
-						<button type="button" class="header__auth_sign">
+						<button class="header__auth_log" type="button">Вход</button>
+						<button class="header__auth_sign" type="button">
 							<span>Регистрация</span>
 						</button>
 					</div>
