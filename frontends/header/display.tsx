@@ -7,7 +7,9 @@ export const display = function () {
 			<div class="header__container">
 				<div class="header__inner">
 					<nav class="header__menu">
-						<a class="header__logo" href="">
+						<a class="header__logo" href="/"
+							onclick={this.Fn.link}
+						>
 							<img src={logo} alt="Логотип." />
 						</a>
 						<a class="header__menu_link">Контакты</a>
