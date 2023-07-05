@@ -1,12 +1,46 @@
 @import 'utils/variables.scss';
 
 .line {
+  margin-top: 70px;
   
   &-wrap {
     position: relative;
-    // overflow: hidden;
+    overflow: hidden;
     display: flex;
     height: 50px;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      
+      .line__track {
+        animation-play-state: paused;
+      }
+    }
+
+    &::after,
+    &::before {
+      position: absolute;
+      top: 0;
+      width: 150px;
+      height: 100%;
+      content: "";
+      z-index: 2;
+
+      @media(max-width: 767px) {
+        width: 50px;
+      }
+    }
+
+    &::after {
+      right: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), #191E21);
+    }
+
+    &::before {
+      left: 0;
+      background: linear-gradient(to left, rgba(255, 255, 255, 0), #191E21);
+    }
   }
 
   &__track {
@@ -28,6 +62,10 @@
     align-items: center;
     transition: all ease 1s;
 
+    @media(max-width: 767px) {
+      padding: 10px;
+    }
+
     &_img {
       width: 15px;
       height: 15px;
@@ -36,38 +74,39 @@
       align-items: center;
       margin-right: 10px;
 
+      @media(max-width: 767px) {
+        margin-right: 5px;
+      }
+
       img {
         width: 100%;
         height: auto;
       }
     }
+
+    &_text {
+      margin-right: 10px;
+
+      @media(max-width: 767px) {
+        font-size: 14px;
+      }
+    }
+
+    &_price {
+      color: $text_fiolet;
+    }
+
+    &_change {
+      position: relative;
+      font-size: 14px;
+
+      img {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+      }
+    }
   }
-}
-
-.line-wrap:hover .line-track {
-  animation-play-state: paused;
-  cursor: pointer;
-}
-
-.line-wrap::before,
-.line-wrap::after {
-  position: absolute;
-  top: 0;
-  // left: 0;
-  width: 150px;
-  height: 100%;
-  content: "";
-  z-index: 2;
-}
-
-.line-wrap::before {
-  left: 0;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0), #191E21);
-}
-
-.line-wrap::after {
-  right: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), #191E21);
 }
 
 @keyframes slide {

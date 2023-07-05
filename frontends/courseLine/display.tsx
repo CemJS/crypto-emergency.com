@@ -1,105 +1,56 @@
 import { Cemjsx } from "cemjs-all"
 
-const courses = [
-  {
-    name: "btc",
-    price: "7.85"
-  },
-  {
-    name: "eth",
-    price: "67"
-  },
-  {
-    name: "bnb",
-    price: "9.9"
-  },
-  {
-    name: "cem",
-    price: "2.2"
-  },
-];
-
 export const display = function () {
+  // console.log('=d29158=',this.Fn.link)
+  if (this.Static.records) {
+    return (
+      <div class="line line-wrap">
+        <a
+          class="line-wrap"
+          href="/exchange-rates"
+          onclick={this.Fn.link}
+        >
+          {
+          ([1, 2, 3, 4]).map(() => {
+            return (
+              <div class="line__track">
+                {
+                  this.Static.records?.map((course) => {
+                    if (course?.courseLine == true) {
+                      return (
+                        <div class="line__item">
+                          <div class="line__item_img">
+                            <img src={`/assets/svg/coins/${course.nameCoin}2.svg`}></img>
+                          </div>
+                          <span class="line__item_text">{course.nameCoin + "/USDT"}</span>
+                          <span class="line__item_text line__item_price">
+                            ${course.currentCourse.toFixed(
+                              course.nameCoin === "cem" ? 4 : 2
+                            )}
+                          </span>
+                          <div class="line__item_change">
+                            {course.change.toFixed(2)}
+                            <div class="line-img_change">
+                              <img src={`/assets/svg/${course.change >= 0 ? "up_arrow" : "down_arrow"}.svg`}></img>
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    }
+                  })
+                }
+              </div>
+            )
+          })
+        }
+        </a>
+        
+      </div>
+    )
+  }
+
   return (
-    <div class="line line-wrap" style="padding-top: 100px">
-      <div class="line__track">
-        {
-          courses && Object.keys(courses).length
-            ?
-            Object.keys(courses)
-              .filter(
-                (item) =>
-                  typeof courses[item] == "object"
-              )
-              .map(function (key) {
-                let course = courses[key];
-                console.log('=8a7f75=', course)
-                return (
-                  <div class="line__item">
-                    <div class="line__item_img">
-                      <img src={`/assets/svg/coins/${course.name}2.svg`}></img>
-                      {/* <img src={import(`@svg/coins/${course.name}2.svg`)} ></img> */}
-                    </div>
-                    <span class="line-text mr--10">{course.price + "/USDT"}</span>
-                  </div>
-                )
-              })
-            :
-            null
-        }
-      </div>
-      <div class="line__track">
-        {
-          courses && Object.keys(courses).length
-            ?
-            Object.keys(courses)
-              .filter(
-                (item) =>
-                  typeof courses[item] == "object"
-              )
-              .map(function (key) {
-                let course = courses[key];
-                console.log('=8a7f75=', course)
-                return (
-                  <div class="line__item">
-                    <div class="line-item_img">
-                      <img src={`/assets/svg/coins/${course.name}2.svg`}></img>
-                      {/* <img src={import(`@svg/coins/${course.name}2.svg`)} ></img> */}
-                    </div>
-                    <span class="line-text mr--10">{course.price + "/USDT"}</span>
-                  </div>
-                )
-              })
-            :
-            null
-        }
-      </div>
-      <div class="line__track">
-        {
-          courses && Object.keys(courses).length
-            ?
-            Object.keys(courses)
-              .filter(
-                (item) =>
-                  typeof courses[item] == "object"
-              )
-              .map(function (key) {
-                let course = courses[key];
-                console.log('=8a7f75=', course)
-                return (
-                  <div class="line__item">
-                    <div class="line-item_img">
-                      <img src={`/assets/svg/coins/${course.name}2.svg`}></img>
-                      {/* <img src={import(`@svg/coins/${course.name}2.svg`)} ></img> */}
-                    </div>
-                    <span class="line-text mr--10">{course.price + "/USDT"}</span>
-                  </div>
-                )
-              })
-            :
-            null
-        }
-      </div>
+    <div class="line line-wrap">
     </div>
   )
 
