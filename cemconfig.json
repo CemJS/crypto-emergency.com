@@ -1,1 +1,43 @@
-{"ver":"1.0.0","port":3000,"pages":[{"url":"/","front":["header","courseLine","footer"]},{"url":"/about/","front":["header","footer"]}],"microFrontends":{"courseLine":{"front":true,"name":"courseLine","path":{"js":"/assets/js/courseLine.js","css":"/assets/css/courseLine.css"},"ver":"1.0.0","visable":true},"footer":{"front":true,"name":"footer","path":{"js":"/assets/js/footer.js","css":"/assets/css/footer.css"},"ver":"1.0.0","visable":true},"header":{"front":true,"name":"header","path":{"js":"/assets/js/header.js","css":"/assets/css/header.css"},"ver":"1.0.0","visable":true}}}
+{
+  "ver": "1.0.0",
+  "port": 3000,
+  "pages": [
+    {
+      "url": "/",
+      "front": [
+        "header",
+        "courseLine",
+        "banners",
+        "footer"
+      ]
+    },
+    {
+      "url": "/exchange-rates",
+      "front": [
+        "header",
+        "exchangeRates",
+        "footer"
+      ]
+    }
+  ],
+  "hook": {
+    "proxyWeb": [
+      {
+        "url": "/api/events",
+        "host": "127.0.0.1",
+        "port": "6445"
+      },
+      {
+        "url": "/api/",
+        "host": "127.0.0.1",
+        "port": "6445"
+      },
+      {
+        "url": "/assets/upload",
+        "host": "crypto-emergency.com",
+        "port": "80"
+      }
+    ]
+  },
+  "microFrontends": {}
+}

@@ -86,8 +86,6 @@ const checkFrontend = async function (dir, name) {
     return frontends
 }
 
-
-
 const start = async function () {
     if (runFront) {
         if (!process.argv[4] || !fs.existsSync(path.resolve("frontends", process.argv[4]))) {
@@ -99,20 +97,15 @@ const start = async function () {
     }
 
     const microFrontends = await checkFrontend(dirFrontends, nameFront);
-    cemconfig.microFrontends = microFrontends
-    fs.writeFileSync('cemconfig.json', JSON.stringify(cemconfig));
+    fs.writeFileSync('microFrontends.json', JSON.stringify(microFrontends));
 
     const ctx = await esbuild.context(options).catch(() => process.exit(1))
     console.log("⚡ Build complete! ⚡")
     if (runServe) {
         const serve = await ctx.serve({ servedir: "public" })
-        // console.log(`\nWeb: http://127.0.0.1:${serve.port}`)
-        console.log(`\nWeb: http://127.0.0.1:3000`)
-        http.createServer((req, res) => {
+        console.log(`\nWeb: http://127.0.0.1:${cemconfig.port}`)
 
-            if (req.url !== "/esbuild" && !req.url.startsWith("/assets/")) {
-                req.url = "/"
-            }
+        http.createServer((req, res) => {
 
             const options = {
                 hostname: serve.host,
@@ -120,6 +113,21 @@ const start = async function () {
                 path: req.url,
                 method: req.method,
                 headers: req.headers,
+            }
+
+            let haveChange = false
+
+            cemconfig.hook?.proxyWeb.map((item) => {
+                if (req.url.startsWith(item.url)) {
+                    options.port = item.port
+                    options.hostname = item.host
+                    options.headers.host = options.hostname
+                    haveChange = true
+                }
+            })
+
+            if (!haveChange && req.url !== "/esbuild" && !req.url.startsWith("/assets")) {
+                options.path = "/"
             }
 
             const proxyReq = http.request(options, proxyRes => {
