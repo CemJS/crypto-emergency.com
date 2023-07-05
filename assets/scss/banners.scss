@@ -1,0 +1,92 @@
+.slider{
+
+  &__wrap {
+    max-width: 1240px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  &__carousel {
+    font-size: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+    transition: all 0.4s linear;
+
+    &.no-transition {
+      scroll-behavior: auto;
+    }
+
+    &.dragging {
+      cursor: grab;
+      user-select: none;
+      scroll-behavior: auto;
+      // scroll-behavior: smooth;
+      scroll-snap-type: none;
+    }
+  }
+
+  &__slide {
+    scroll-snap-align: start;
+    overflow: hidden;
+    object-fit: contain;
+    margin-left: 15px;
+    width: calc((100% - 45px) / 4);
+    transition: all 0.4s linear;
+
+    &_first {
+      margin-left: 0;
+    }
+
+    @media screen and (max-width: 900px) {
+      width: calc(100% / 2);
+    }
+
+    @media screen and (max-width: 550px) {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    opacity: 0.7;
+    transition: 0.4s;
+    transform: translate(0, 50%);
+    -webkit-transform: translate(0, 50%);
+    -moz-transform: translate(0, 50%);
+    -ms-transform: translate(0, 50%);
+    -o-transform: translate(0, 50%);
+
+    &_prev {
+        right: -35px;
+    }
+
+    &_next {
+        left: -35px;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.slider__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-slide:first-child {
+  margin-left: 0;
+}
+
+
