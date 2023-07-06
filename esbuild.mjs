@@ -27,6 +27,7 @@ const options = {
         '.jpg': 'file',
         '.jpeg': 'file',
         '.png': 'file',
+        '.gif': 'file',
         '.svg': 'dataurl',
     },
     plugins: [
@@ -47,7 +48,7 @@ const options = {
         {
             name: "assets-images",
             setup(build) {
-                build.onResolve({ filter: /.(jpg|jpeg|png|svg)$/ }, (args) => {
+                build.onResolve({ filter: /.(jpg|jpeg|png|svg|gif)$/ }, (args) => {
                     args.path = args.path.replace("@", "")
                     return { path: path.resolve("assets", args.path) }
                 })
@@ -67,7 +68,7 @@ const checkFrontend = async function (dir, name) {
                 front: true,
                 name: file,
                 path: {},
-
+                one: name
             }
             if (fs.existsSync(path.join(dir, file, "index.ts"))) {
                 frontends[file].path.js = `/assets/js/${file}.js`
@@ -139,6 +140,14 @@ const start = async function () {
                 res.writeHead(proxyRes.statusCode, proxyRes.headers)
                 proxyRes.pipe(res, { end: true })
             })
+
+            proxyReq.on('error', function (err) {
+                console.log('=1e96c7=', err)
+                res.writeHead(500, { 'Content-Type': 'text/html' })
+                res.end('<h1>Internal Error</h1>')
+                return
+            });
+
             req.pipe(proxyReq, { end: true })
         }).listen(cemconfig.port)
         await ctx.watch()
