@@ -51,7 +51,6 @@ export const display = function () {
                             item.change >= 0
                               ? "exchangerates__percent--rise"
                               : "exchangerates__percent--recession"
-
                           ]}
                         >
                           {item.change >= 0 ? '+' : null}

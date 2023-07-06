@@ -6,6 +6,7 @@
       "url": "/",
       "front": [
         "header",
+        "mainSettings",
         "courseLine",
         "banners",
         "footer"
