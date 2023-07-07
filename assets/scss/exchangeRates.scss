@@ -1,0 +1,103 @@
+.exchangerates {
+  &__container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 70px 0 90px;
+  }
+
+  &__title {
+    font-size: 44px;
+    line-height: 115%;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 700;
+    margin: 25px 0;
+
+    @media (max-width: 767px) {
+      font-size: 40px;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 30px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    background: #313541;
+    box-shadow: 15px 15px 25px #212531;
+    border-radius: 4px;
+
+    tr {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: '';
+        left: 10px;
+        right: 10px;
+        bottom: 0;
+        height: 1px;
+        background: #474E61;
+      }
+    }
+
+    th {
+      padding: 25px 0;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 16px;
+      color: #8991A8;
+    }
+
+    tbody {
+
+      tr {
+        &:last-child::after {
+          background: transparent;
+        }
+      }
+      
+    }
+  }
+
+  &__cellwrap {
+    display: flex;
+    padding: 15px 0;
+
+    &>* {
+        margin: auto;
+    }
+  }
+
+  &__currency {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 0;
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    span {
+      text-transform: uppercase;
+    }
+  }
+
+
+  &__percent {
+    font-weight: 600;
+
+    &--rise {
+      color: #2DCA73;
+    }
+
+    &--recession {
+      color: #E84142;
+    }
+  }
+}
