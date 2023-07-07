@@ -160,7 +160,14 @@ const start = async function () {
                 options.path = "/"
             }
 
+            let Pres
             const proxyReq = http.request(options, (proxyRes) => {
+                if (proxyReq.closeFromClient) {
+                    console.log('=8d8b46 proxyReq proxyReq=', proxyReq.closeFromClient)
+
+                    proxyReq.destroy()
+                    return
+                }
                 if (proxyRes.statusCode === 404) {
                     res.writeHead(404, { 'Content-Type': 'text/html' })
                     res.end('<h1>A custom 404 page</h1>')
@@ -178,11 +185,13 @@ const start = async function () {
             });
 
             res.on('close', () => {
+                proxyReq.closeFromClient = true
                 if (req.url.startsWith("/esbuild") || req.url.startsWith("/api/events")) {
-                    proxyReq.destroy()
+                    if (proxyReq.res) {
+                        proxyReq.destroy()
+                    }
                 }
             })
-
             req.pipe(proxyReq, { end: true })
         }).listen(cemconfig.port)
         await ctx.watch()
