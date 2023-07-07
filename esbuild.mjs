@@ -57,9 +57,35 @@ const options = {
     ],
 }
 
+const checkServices = async function (dir) {
+    if (!fs.existsSync(dir)) {
+        return {}
+    }
+
+    const services = {}
+    fs.readdirSync(dir).map(file => {
+        if (file[0] != ".") {
+            services[file] = {
+                service: true,
+                name: file,
+                path: {}
+            }
+            if (fs.existsSync(path.join(dir, file, "index.ts"))) {
+                services[file].path.js = `/assets/js/_${file}.js`
+                options.entryPoints.push({ in: path.join(dir, file, "index.ts"), out: path.resolve(options.outdir, "js", `_${file}`) })
+            }
+            if (fs.existsSync(path.join(dir, file, "cemconfig.json"))) {
+                let cemconfig = JSON.parse(fs.readFileSync(path.join(dir, file, "cemconfig.json")))
+                Object.assign(services[file], cemconfig)
+            }
+        }
+    });
+    return services
+}
+
 const checkFrontend = async function (dir, name) {
     if (!fs.existsSync(dir)) {
-        return []
+        return {}
     }
     const frontends = {}
     fs.readdirSync(dir).map(file => {
@@ -99,6 +125,9 @@ const start = async function () {
 
     const microFrontends = await checkFrontend(dirFrontends, nameFront);
     fs.writeFileSync('microFrontends.json', JSON.stringify(microFrontends));
+
+    const services = await checkServices(dirServices);
+    fs.writeFileSync('services.json', JSON.stringify(services));
 
     const ctx = await esbuild.context(options).catch(() => process.exit(1))
     console.log("⚡ Build complete! ⚡")
