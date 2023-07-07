@@ -160,7 +160,7 @@ const start = async function () {
                 options.path = "/"
             }
 
-            const proxyReq = http.request(options, proxyRes => {
+            const proxyReq = http.request(options, (proxyRes) => {
                 if (proxyRes.statusCode === 404) {
                     res.writeHead(404, { 'Content-Type': 'text/html' })
                     res.end('<h1>A custom 404 page</h1>')
@@ -176,6 +176,12 @@ const start = async function () {
                 res.end('<h1>Internal Error</h1>')
                 return
             });
+
+            res.on('close', () => {
+                if (req.url.startsWith("/esbuild") || req.url.startsWith("/api/events")) {
+                    proxyReq.destroy()
+                }
+            })
 
             req.pipe(proxyReq, { end: true })
         }).listen(cemconfig.port)
