@@ -1,5 +1,6 @@
 @import 'utils/variables.scss';
 @import 'utils/fonts.scss';
+@import 'utils/globalClass.scss';
 
 *,
 ::after,
@@ -65,4 +66,9 @@ p {
 a {
     
     color: $white;
+}
+
+li {
+    padding-left: 0;
+    list-style-type: none;
 }

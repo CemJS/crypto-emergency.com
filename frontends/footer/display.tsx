@@ -11,7 +11,19 @@ export const display = function () {
 					<a class="footer__nav_icon footer__nav_posts" href="#"></a>
 					<a class="footer__nav_icon footer__nav_questions" href="#"></a>
 					<a class="footer__nav_icon footer__nav_news" href="#"></a>
-					<a class="footer__nav_icon footer__nav_burger" href="#"></a>
+					<a class="footer__nav_icon footer__nav_burger"
+						onclick={() => {
+							this.Fn.initOne({
+								name: "mainSettings", ifOpen: (front) => {
+									console.log('=9e3bb6=', front)
+									front.$el.childNodes[1].classList.remove("main-menu_active")
+									setTimeout(() => {
+										front.clearData()
+									}, 500);
+								}
+							})
+						}}
+					></a>
 				</div>
 			</div>
 		</div>
