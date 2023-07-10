@@ -16,17 +16,19 @@ const showCollapseBody = function (e) {
 };
 
 export const display = function () {
+  // console.log('=7721a8=', this.$el.childNodes[1].classList)
+
   return (
     <div class="modal modal_open modal_fullscreen">
+      <div class="modal__black"></div>
       <section class="main-menu main-menu_active">
         <header class="main-menu__header">
           <div class="main-menu__btn">
             <div
               class="main-menu__btn_wrap"
-              onclick={(e) => {
-                // fn.modals.close(ID)
-                // fn.modals.ModalMainPageIconsMenu()
-                // fn.modals.ModalMainServices()
+              onclick={() => {
+                this.Static.test = 5555
+                this.init()
               }}
             >
               <span>Сервисы</span>
@@ -45,10 +47,14 @@ export const display = function () {
             </div>
           </div>
           <button
-            style="position: relative; top:auto; right: auto;"
             type="button"
             class="main-menu__close"
-          // onclick={() => { fn.modals.close(ID) }}
+            onclick={() => {
+              this.$el.childNodes[1].classList.remove("main-menu_active")
+              setTimeout(() => {
+                this.clearData()
+              }, 500);
+            }}
           ></button>
         </header>
         <div class="main-menu__body">
@@ -225,11 +231,11 @@ export const display = function () {
                 <a
                   href="https://apps.apple.com/ru/app/crypto-emergency/id1635628021"
                   target="_blank"
-                  class="c-button__app"
+                  class="accordion__app"
                 >
                   <img src={`/assets/svg/appstore.svg`} />
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.cryptoemergency" target="_blank" class="c-button__app">
+                <a href="https://play.google.com/store/apps/details?id=com.cryptoemergency" target="_blank" class="accordion__app" style="margin-right: 0;">
                   <img src={`/assets/svg/googleplay.svg`} />
                 </a>
               </div>
@@ -244,7 +250,7 @@ export const display = function () {
                     <img src={`/assets/svg/telegram_icon.svg`} />
                   </a>
                 </div>
-                
+
                 <div class="footer__socials_link">
                   <a
                     target="_blank"
@@ -293,6 +299,9 @@ export const display = function () {
                     <img src={`/assets/svg/linkedin_icon.svg`} />
                   </a>
                 </div>
+              </div>
+              <div class="footer__copyright">
+                ©2020-2023 Crypto Emergency
               </div>
             </div>
           </div>
