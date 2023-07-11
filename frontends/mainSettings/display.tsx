@@ -31,8 +31,14 @@ export const display = function () {
             <div
               class="main-menu__btn_wrap"
               onclick={() => {
-                this.Static.test = 5555
-                this.init()
+                this.Fn.initOne({
+                  name: "mainServices", ifOpen: (front) => {
+                    console.log('=094142=',front)
+                    setTimeout(() => {
+                      front.clearData()
+                    }, 500);
+                  }
+                })
               }}
             >
               <span>Сервисы</span>

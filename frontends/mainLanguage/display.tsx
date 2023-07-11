@@ -90,8 +90,7 @@ export const display = function () {
                 this.clearData()
               }, 5);
             }}
-          >
-          </button>
+          />
         </header>
         <div class="modal__body language__container">
           <ul class="language__list">
