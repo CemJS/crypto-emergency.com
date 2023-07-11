@@ -329,7 +329,10 @@
         flex-wrap: wrap;
         color: #F4F5F7;
         font-weight: 600;
-        margin-top: 20px;
+
+        @media (max-width: 1199px) {
+          margin-top: 20px;
+        }
 
         @media (max-width: 599px) {
           margin-top: 0;
@@ -406,7 +409,7 @@
         }
 
         &__body {
-          padding: 0;
+          margin-bottom: 20px;
         }
 
         &__link {

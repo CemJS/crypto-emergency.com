@@ -16,11 +16,15 @@ const showCollapseBody = function (e) {
 };
 
 export const display = function () {
-  // console.log('=7721a8=', this.$el.childNodes[1].classList)
-
   return (
     <div class="modal modal_open modal_fullscreen">
-      <div class="modal__black"></div>
+      <div class="modal__black"
+        onclick={() => {
+          setTimeout(() => {
+            this.clearData()
+          }, 5);
+        }}
+      />
       <section class="main-menu main-menu_active">
         <header class="main-menu__header">
           <div class="main-menu__btn">
@@ -37,8 +41,15 @@ export const display = function () {
           <div
             class="main-menu__language"
             onclick={() => {
-              // fn.modals.ModalLanguageSite({}, true)
-            }}
+							this.Fn.initOne({
+								name: "mainLanguage", ifOpen: (front) => {
+									console.log('=9e3bb6=', front)
+									setTimeout(() => {
+										front.clearData()
+									}, 500);
+								}
+							})
+						}}
           >
             <div class="main-menu__language_wrap">
               <div class="main-menu__language_control">
