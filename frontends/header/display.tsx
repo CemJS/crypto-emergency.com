@@ -17,7 +17,18 @@ export const display = function () {
 						<a class="header__menu_link">Новости</a>
 					</nav>
 					<div class="header__auth">
-						<div class="header__language">
+						<div class="header__language"
+							onclick={() => {
+								this.Fn.initOne({
+									name: "mainLanguage", ifOpen: (front) => {
+										console.log('=9e3bb6=', front)
+										setTimeout(() => {
+											front.clearData()
+										}, 500);
+									}
+								})
+							}}
+						>
 							<span>Русский</span>
 						</div>
 						<button class="header__auth_log" type="button">Вход</button>

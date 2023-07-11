@@ -89,6 +89,10 @@
       display: none;
     }
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &::after {
       content: "";
       position: absolute;
