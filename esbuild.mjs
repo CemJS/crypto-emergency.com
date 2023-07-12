@@ -1,10 +1,13 @@
 import esbuild from "esbuild";
 import http from 'http'
+import httpProxy from 'http-proxy'
 import { sassPlugin } from "esbuild-sass-plugin";
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import path from 'path'
 import fs from 'fs'
+
+const proxy = httpProxy.createProxyServer({});
 
 let nameFront
 const runServe = process.argv.includes("--runServe")
@@ -138,7 +141,7 @@ const start = async function () {
         http.createServer((req, res) => {
 
             const options = {
-                hostname: serve.host,
+                hostname: "127.0.0.1",
                 port: serve.port,
                 path: req.url,
                 method: req.method,
@@ -160,39 +163,15 @@ const start = async function () {
                 options.path = "/"
             }
 
-            let Pres
-            const proxyReq = http.request(options, (proxyRes) => {
-                if (proxyReq.closeFromClient) {
-                    console.log('=8d8b46 proxyReq proxyReq=', proxyReq.closeFromClient)
+            proxy.web(req, res, { target: `http://${options.hostname}:${options.port}`, changeOrigin: true });
 
-                    proxyReq.destroy()
-                    return
-                }
-                if (proxyRes.statusCode === 404) {
-                    res.writeHead(404, { 'Content-Type': 'text/html' })
-                    res.end('<h1>A custom 404 page</h1>')
-                    return
-                }
-                res.writeHead(proxyRes.statusCode, proxyRes.headers)
-                proxyRes.pipe(res, { end: true })
-            })
-
-            proxyReq.on('error', function (err) {
-                console.log('=1e96c7=', err)
-                res.writeHead(500, { 'Content-Type': 'text/html' })
-                res.end('<h1>Internal Error</h1>')
-                return
+            proxy.on('error', function (err, req, res) {
+                res.writeHead(500, {
+                    'Content-Type': 'text/plain'
+                });
+                res.end('Something went wrong. And we are reporting a custom error message.');
             });
 
-            res.on('close', () => {
-                proxyReq.closeFromClient = true
-                if (req.url.startsWith("/esbuild") || req.url.startsWith("/api/events")) {
-                    if (proxyReq.res) {
-                        proxyReq.destroy()
-                    }
-                }
-            })
-            req.pipe(proxyReq, { end: true })
         }).listen(cemconfig.port)
         await ctx.watch()
     }

@@ -1,13 +1,13 @@
 {
   "ver": "1.0.0",
   "port": 3000,
+  "api": "http://127.0.0.1:3333/api/events/",
   "pages": [
     {
       "url": "/",
       "front": [
         "header",
         "courseLine",
-        "banners",
         "footer"
       ]
     },
@@ -30,16 +30,6 @@
   ],
   "hook": {
     "proxyWeb": [
-      {
-        "url": "/api/events",
-        "host": "127.0.0.1",
-        "port": "6445"
-      },
-      {
-        "url": "/api/events/CoinsCourse",
-        "host": "127.0.0.1",
-        "port": "3333"
-      },
       {
         "url": "/assets/upload",
         "host": "crypto-emergency.com",
