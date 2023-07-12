@@ -36,9 +36,9 @@
         "port": "6445"
       },
       {
-        "url": "/api/",
+        "url": "/api/events/CoinsCourse",
         "host": "127.0.0.1",
-        "port": "6445"
+        "port": "3333"
       },
       {
         "url": "/assets/upload",

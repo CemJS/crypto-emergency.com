@@ -1,6 +1,8 @@
 export const loader = function () {
 
-  new EventSource('/api/events/CoinsCourse').addEventListener('message', ({ data }) => {
+  // console.log('=49e798=',this)
+
+  this.eventSource(`/api/events/CoinsCourse?uuid=${this.Variable.myInfo.uuid}`, ({ data }) => {
     let records = JSON.parse(data)
 
     this.Static.records = records
