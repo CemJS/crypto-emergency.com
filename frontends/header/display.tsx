@@ -12,7 +12,10 @@ export const display = function () {
 						>
 							<img src={logo} alt="Логотип." />
 						</a>
-						<a class="header__menu_link">Контакты</a>
+						<a class="header__menu_link"
+							href="/contacts"
+							onclick={this.Fn.link}
+						>Контакты</a>
 						<a class="header__menu_link">О нас</a>
 						<a class="header__menu_link">Новости</a>
 					</nav>

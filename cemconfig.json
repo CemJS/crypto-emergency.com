@@ -6,6 +6,8 @@
       "url": "/",
       "front": [
         "header",
+        "courseLine",
+        "banners",
         "footer"
       ]
     },
@@ -14,6 +16,14 @@
       "front": [
         "header",
         "exchangeRates",
+        "footer"
+      ]
+    },
+    {
+      "url": "/contacts",
+      "front": [
+        "header",
+        "contacts",
         "footer"
       ]
     }
