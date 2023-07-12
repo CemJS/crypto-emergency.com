@@ -160,9 +160,9 @@ const start = async function () {
             })
 
             if (!haveChange && req.url !== "/esbuild" && !req.url.startsWith("/assets")) {
-                options.path = "/"
+                req.url = "/"
             }
-
+            console.log('=cddf8b=', req.url)
             proxy.web(req, res, { target: `http://${options.hostname}:${options.port}`, changeOrigin: true });
 
             proxy.on('error', function (err, req, res) {
