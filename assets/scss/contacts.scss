@@ -38,20 +38,21 @@
   &__content {
     width: 100%;
     margin: 0 auto 30px;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
-
-    @media (min-width: 993px) {
-      flex-direction: row;
-      justify-content: space-between;
-      margin-bottom: 50px;
-    }
 
     @media (max-width: 1024px) {
       margin: 0 auto 30px;
       display: flex;
       flex-direction: column-reverse;
       padding: 0 30px;
+    }
+
+    @media (min-width: 993px) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 50px;
     }
   }
 
