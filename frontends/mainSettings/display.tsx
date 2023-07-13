@@ -10,7 +10,7 @@ collapseBodyShow = {
 };
 
 const showCollapseBody = function (e) {
-  console.log('=107f5a=', e.target.dataset.number)
+  // console.log('=107f5a=', e.target.dataset.number)
   collapseBodyShow[e.target.dataset.number] = !collapseBodyShow[e.target.dataset.number];
   e.stopPropagation();
 };
@@ -33,7 +33,7 @@ export const display = function () {
               onclick={() => {
                 this.Fn.initOne({
                   name: "mainServices", ifOpen: (front) => {
-                    console.log('=094142=',front)
+                    // console.log('=094142=',front)
                     setTimeout(() => {
                       front.clearData()
                     }, 500);
@@ -49,7 +49,7 @@ export const display = function () {
             onclick={() => {
 							this.Fn.initOne({
 								name: "mainLanguage", ifOpen: (front) => {
-									console.log('=9e3bb6=', front)
+									// console.log('=9e3bb6=', front)
 									setTimeout(() => {
 										front.clearData()
 									}, 500);

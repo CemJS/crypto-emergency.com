@@ -16,7 +16,10 @@ export const display = function () {
 							href="/contacts"
 							onclick={this.Fn.link}
 						>Контакты</a>
-						<a class="header__menu_link">О нас</a>
+						<a class="header__menu_link"
+							href="/about"
+							onclick={this.Fn.link}
+						>О нас</a>
 						<a class="header__menu_link">Новости</a>
 					</nav>
 					<div class="header__auth">
@@ -24,7 +27,7 @@ export const display = function () {
 							onclick={() => {
 								this.Fn.initOne({
 									name: "mainLanguage", ifOpen: (front) => {
-										console.log('=9e3bb6=', front)
+										// console.log('=9e3bb6=', front)
 										setTimeout(() => {
 											front.clearData()
 										}, 500);

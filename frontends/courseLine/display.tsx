@@ -1,7 +1,7 @@
 import { Cemjsx } from "cemjs-all"
 
 export const display = function () {
-  // console.log('=d29158=',this.Fn.link)
+  // console.log('=d29158=',this.Static.records)
   if (this.Static.records) {
     return (
       <div class="line line-wrap">
