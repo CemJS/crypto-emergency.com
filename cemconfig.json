@@ -26,6 +26,14 @@
         "contacts",
         "footer"
       ]
+    },
+    {
+      "url": "/about",
+      "front": [
+        "header",
+        "about",
+        "footer"
+      ]
     }
   ],
   "hook": {
