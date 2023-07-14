@@ -38,7 +38,18 @@ export const display = function () {
 							<span>Русский</span>
 						</div>
 						<button class="header__auth_log" type="button">Вход</button>
-						<button class="header__auth_sign" type="button">
+						<button class="header__auth_sign" type="button"
+							onclick={() => {
+								this.Fn.initOne({
+									name: "modalRegistration", ifOpen: (front) => {
+										// console.log('=9e3bb6=', front)
+										setTimeout(() => {
+											front.clearData()
+										}, 500);
+									}
+								})
+							}}
+						>
 							<span>Регистрация</span>
 						</button>
 					</div>

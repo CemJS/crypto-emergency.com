@@ -33,11 +33,9 @@ body {
     overflow: overlay;
     color: $white;
     background-color: #1D2029;
-    // background-image: url('images/background/back.jpg');
-    // background-position: center center;
-    // background-size: cover;
     width: 100%;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
 
     &::-webkit-scrollbar {
         width: 6px;
@@ -66,6 +64,19 @@ p {
 a {
     
     color: $white;
+}
+
+h2 {
+    font-size: 44px;
+    line-height: 115%;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 700;
+    margin: 25px 0;
+
+    @media (min-width: 1200px) {
+        font-size: 2rem;
+    }
 }
 
 li {
