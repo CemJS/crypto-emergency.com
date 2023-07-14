@@ -2,28 +2,28 @@ import { Cemjsx } from "cemjs-all"
 
 const arrBlockCard = [
   {
-    img: "about_goal_1",
+    img: "goal_1",
     // altImg: Variable.lang.p.goalOne,
     title: "Поднять крипто грамотность населения",
     description: "Мы создали платформу, где любой желающий может найти ответ на свой вопрос, и обрести навыки инвестирования в криптовалюту.",
     classItem: "crypto",
   },
   {
-    img: "about_goal_2",
+    img: "goal_2",
     // altImg: Variable.lang.p.goalTwo,
     title: "Объединить людей",
     description: "Создать мульти интернациональное комьюнити по всему миру.",
     classItem: "unite",
   },
   {
-    img: "about_goal_3",
+    img: "goal_3",
     // altImg: Variable.lang.p.goalThree,
     title: "Бесплатный доступ",
     description: "Весь функционал на сайте не потребует от вас никаких вложений!",
     classItem: "access",
   },
   {
-    img: "about_goal_4",
+    img: "goal_4",
     // altImg: Variable.lang.p.goalFour,
     title: "Создание метавселенной",
     description: "Объединение всех продуктов компании в одной метавселенной.",
@@ -86,37 +86,37 @@ const roadmap = [
   {
     date: "15 Июня 2021г.",
     description: "Старт проекта",
-    src: "roadmap/turn-left1",
+    src: "turn-left_1",
   },
   {
     date: "19 Мая 2022г.",
     description: "Собственный Блокчейн CEM",
-    src: "roadmap/turn-right2",
+    src: "turn-right_2",
   },
   {
     date: "Сентябрь 2022г.",
     description: "Кошелек Cem Wallet",
-    src: "roadmap/turn-left3",
+    src: "turn-left_3",
   },
   {
     date: "Лето 2023г.",
     description: "Сообщества DAO",
-    src: "roadmap/turn-right4",
+    src: "turn-right_4",
   },
   {
     date: "Осень 2023г.",
     description: "Крипто Университет",
-    src: "roadmap/turn-left5",
+    src: "turn-left_5",
   },
   {
     date: "Начало 2024г.",
     description: "Собственная биржа",
-    src: "roadmap/turn-right6",
+    src: "turn-right_6",
   },
   {
     date: "Конец 2024г.",
     description: "Новостная нейросеть",
-    src: "roadmap/turn-left7",
+    src: "turn-left_7",
   },
 ];
 
@@ -126,7 +126,7 @@ export const display = function () {
       <div class="about">
         <div class="about__whome whome">
           <div class="whome__inner">
-            <img class="whome__img" src={`/assets/svg/about_us_vector-1.svg`} />
+            <img class="whome__img" src={`/assets/svg/about/vector_1.svg`} />
             <h2 class="about__subtitle">Crypto Emergency</h2>
             <p>Объединяем криптоэнтузиастов всего мира на единой многофункциональной платформе Crypto Emergency, которая даст им все необходимые инструменты для общения, обучения, заработка и создания собственного контента. </p>
           </div>
@@ -142,7 +142,7 @@ export const display = function () {
                     return (
                       <div class={["goal__item", item.classItem]}>
                         <div class="goal__img">
-                          <img src={`/assets/svg/${item.img}.svg`} alt="" />
+                          <img src={`/assets/svg/about/${item.img}.svg`} alt="" />
                         </div>
                         <div class="goal__content">
                           <h4>{item.title}</h4>
@@ -171,7 +171,7 @@ export const display = function () {
                           }}
                         >
                           <h5 class="accordeon__header_title">{item.title}</h5>
-                          <img src={`/assets/svg/select_arrow.svg`}
+                          <img src={`/assets/svg/about/select_arrow.svg`}
                             class={["arrow", item.hidden ? null : "arrow__toggle"]}
                           />
                         </div>
@@ -183,7 +183,7 @@ export const display = function () {
                   })
                 }
               </div>
-              <img class="whome__img whome__img_right" src={`/assets/svg/about_us_vector-2.svg`} />
+              <img class="whome__img whome__img_right" src={`/assets/svg/about/vector_2.svg`} />
               <div class="team">
                 <h2 class="about__subtitle team__title">Наша команда</h2>
                 <div class="team__list">
@@ -192,7 +192,7 @@ export const display = function () {
                       return (
                         <div class="team__item">
                           <div class="team__img">
-                            <img src={`/assets/images/team/${item.foto}.png`} />
+                            <img src={`/assets/images/about/${item.foto}.png`} />
                           </div>
                           <h5>{item.name}</h5>
                           <span>{item.position}</span>
@@ -217,7 +217,7 @@ export const display = function () {
                           </div>
 
                           <div class={["roadmap__item_turn", `roadmap__item_turn_${index}`]}>
-                            <img src={`/assets/svg/${item.src}.svg`}></img>
+                            <img src={`/assets/svg/about/${item.src}.svg`}></img>
                           </div>
                         </div>
                       )

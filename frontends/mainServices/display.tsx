@@ -2,47 +2,47 @@ import { Cemjsx } from "cemjs-all"
 
 const services = [
   {
-    image: "lenta_white",
+    image: "lenta",
     title: "Лента пользователей"
   },
   {
-    image: "question_white",
+    image: "question",
     title: "Вопросы и ответы"
   },
   {
-    image: "main_menu_contentmaker",
+    image: "contentmaker",
     title: "Создатели контента"
   },
   {
-    image: "main_menu_expert",
+    image: "expert",
     title: "Эксперты"
   },
   {
-    image: "main_menu_users",
+    image: "users",
     title: "Пользователи"
   },
   {
-    image: "exchange_white",
+    image: "exchange",
     title: "Биржи"
   },
   {
-    image: "main_menu_exchanges",
+    image: "exchanges",
     title: "Обменники"
   },
   {
-    image: "rates_white",
+    image: "rates",
     title: "Курсы валют"
   },
   {
-    image: "main_menu_ico",
+    image: "ico",
     title: "ICO рейтинг"
   },
   {
-    image: "main_menu_startaps",
+    image: "startaps",
     title: "Стартапы"
   },
   {
-    image: "main_menu_news",
+    image: "news",
     title: "Новости"
   },
   {
@@ -50,7 +50,7 @@ const services = [
     title: "Карьера с нами"
   },
   {
-    image: "main_menu_univercsity",
+    image: "university",
     title: "Крипто университет"
   },
 ]
@@ -80,8 +80,9 @@ export const display = function () {
                   return (
                     <a href="" class="services__link">
                       <div class="services__image">
-                        <img src={`/assets/svg/${item.image}.svg`} />
+                        <img src={`/assets/svg/mainServices/${item.image}.svg`} />
                       </div>
+                      
                       <p>{item.title}</p>
                     </a>
                   )

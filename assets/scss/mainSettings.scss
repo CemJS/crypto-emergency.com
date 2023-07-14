@@ -227,7 +227,7 @@
         margin-top: -3px;
         height: 9px;
         width: 9px;
-        background-image: url("./svg/arrow_bottom.svg");
+        background-image: url("./svg/mainSettings/arrow_bottom.svg");
       }
 
       img {
@@ -246,7 +246,7 @@
 		top: auto;
 		color: #4f5362;
 		border: none;
-		background: transparent url("./svg/main_menu_close.svg") center/1em auto no-repeat;
+		background: transparent url("./svg/mainSettings/close.svg") center/1em auto no-repeat;
 		z-index: 100;
 		cursor: pointer;
     opacity: 0.5;
@@ -361,7 +361,7 @@
           font-family: 'Montserrat';
 
           &::after {
-            background: url("./svg/arrow_bottom.svg") no-repeat;
+            background: url("./svg/mainSettings/arrow_bottom.svg") no-repeat;
 
             @media (min-width: 1200px) {
               content: "";

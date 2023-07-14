@@ -77,7 +77,7 @@ export const display = function () {
           }, 5);
         }}
       />
-      <div class="modal__container">
+      <div class="modal__container language">
         <header class="modal__header">
           <h4 class="language__title">
             Выбрать язык

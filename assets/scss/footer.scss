@@ -62,33 +62,33 @@
       height: 48px;
       margin-bottom: 0;
       padding: 0;
-      background: url("./svg/mini_logo.svg") no-repeat center/70%;
+      background: url("./svg/footer/crypto_emergency.svg") no-repeat center/70%;
     }
 
     &_lenta {
-      background: url("./svg/lenta_white.svg") no-repeat center/78%;
+      background: url("./svg/footer/lenta.svg") no-repeat center/78%;
     }
 
     &_users {
-      background: url("./svg/preview_line_users.svg") no-repeat center/70%;
+      background: url("./svg/footer/users.svg") no-repeat center/70%;
     }
 
     &_posts {
       width: 40px;
       height: 40px;
-      background: url("./svg/plus_white.svg") no-repeat center/71%;
+      background: url("./svg/footer/plus_white.svg") no-repeat center/71%;
     }
 
     &_questions {
-      background: url("./svg/question_white.svg") no-repeat center/75%;
+      background: url("./svg/footer/question.svg") no-repeat center/75%;
     }
 
     &_news {
-      background: url("./svg/news_menu_white.svg") no-repeat center/70%;
+      background: url("./svg/footer/news.svg") no-repeat center/70%;
     }
 
     &_burger {
-      background: url("./svg/burger_white.svg") no-repeat center/68%;
+      background: url("./svg/footer/burger.svg") no-repeat center/68%;
     }
   }
 }

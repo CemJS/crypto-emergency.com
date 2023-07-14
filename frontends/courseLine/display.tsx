@@ -20,7 +20,7 @@ export const display = function () {
                       return (
                         <div class="line__item">
                           <div class="line__item_img">
-                            <img src={`/assets/svg/coins/${course.nameCoin}.svg`}></img>
+                            <img src={`/assets/svg/courseLine/${course.nameCoin}.svg`}></img>
                           </div>
                           <span class="line__item_text">{course.nameCoin + "/USDT"}</span>
                           <span class="line__item_text line__item_price">
@@ -31,7 +31,7 @@ export const display = function () {
                           <div class="line__item_change">
                             {course.change.toFixed(2)}
                             <div class="line-img_change">
-                              <img src={`/assets/svg/${course.change >= 0 ? "up_arrow" : "down_arrow"}.svg`}></img>
+                              <img src={`/assets/svg/courseLine/${course.change >= 0 ? "up_arrow" : "down_arrow"}.svg`}></img>
                             </div>
                           </div>
                         </div>

@@ -93,7 +93,7 @@ export const display = function () {
           }}
 
         >
-          <img src={`/assets/svg/swiper_arrow_right.svg`}></img>
+          <img src={`/assets/svg/banners/arrow_right.svg`}></img>
         </div> */}
         <div
           onmousedown={(e) => {
@@ -155,7 +155,7 @@ export const display = function () {
             this.Ref.sliderCarousel.scrollLeft += Number(-this.Ref?.slide?.offsetWidth);
           }}
         >
-          <img src={`/assets/svg/swiper_arrow_left.svg`}></img>
+          <img src={`/assets/svg/banners/arrow_left.svg`}></img>
         </div> */}
       </div>
     </div>

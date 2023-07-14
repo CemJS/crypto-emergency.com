@@ -1,8 +1,8 @@
 export const loader = function () {
-    new EventSource('/api/events/Banners').addEventListener('message', ({ data }) => {
-        let records = JSON.parse(data)
+  this.eventSource(`Banners?uuid=${this.Variable.myInfo.uuid}&lang=en`, ({ data }) => {
+    let records = JSON.parse(data)
 
-        this.Static.records = records
-        this.init()
-    })
+    this.Static.records = records
+    this.init()
+  })
 }
