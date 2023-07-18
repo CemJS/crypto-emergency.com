@@ -96,37 +96,30 @@ const roadmap = [
   {
     date: "15 Июня 2021г.",
     description: "Старт проекта",
-    src: "turn-left_1",
   },
   {
     date: "19 Мая 2022г.",
     description: "Собственный Блокчейн CEM",
-    src: "turn-right_2",
   },
   {
     date: "Сентябрь 2022г.",
     description: "Кошелек Cem Wallet",
-    src: "turn-left_3",
   },
   {
     date: "Лето 2023г.",
     description: "Сообщества DAO",
-    src: "turn-right_4",
   },
   {
     date: "Осень 2023г.",
     description: "Крипто Университет",
-    src: "turn-left_5",
   },
   {
     date: "Начало 2024г.",
     description: "Собственная биржа",
-    src: "turn-right_6",
   },
   {
     date: "Конец 2024г.",
     description: "Новостная нейросеть",
-    src: "turn-left_7",
   },
 ];
 
@@ -202,7 +195,6 @@ export const display = function () {
                       return (
                         <div class="team__item">
                           <div class="team__img">
-                            {/* <img src={`/assets/images/about/${item.foto}.png`} /> */}
                             <img src={item.foto}></img>
                           </div>
                           <h5>{item.name}</h5>
@@ -228,7 +220,6 @@ export const display = function () {
                       </div>
 
                       <div class={["roadmap__item_turn", `roadmap__item_turn_${index}`]}>
-                        <img src={`/assets/svg/about/${item.src}.svg`}></img>
                       </div>
                     </div>
                   )

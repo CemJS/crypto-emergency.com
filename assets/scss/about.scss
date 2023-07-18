@@ -8,7 +8,15 @@ $roadmapColors: (
   6: #D82B56,
 );
 
-// .about_page {
+$roadmapBack: (
+  0: url('svg/about/turn-left_1.svg'),
+  1: url('svg/about/turn-right_2.svg'),
+  2: url('svg/about/turn-left_3.svg'),
+  3: url('svg/about/turn-right_4.svg'),
+  4: url('svg/about/turn-left_5.svg'),
+  5: url('svg/about/turn-right_6.svg'),
+  6: url('svg/about/turn-left_7.svg'),
+); // .about_page {
 //   position: relative;
 
 
@@ -35,7 +43,8 @@ $roadmapColors: (
     left: 0;
     top: 10%;
     content: '';
-    background: url('svg/about/vector_1.svg');
+    background: url('svg/about/vector_1.svg'
+      );
     background-repeat: no-repeat;
     height: 90%;
     width: 100%;
@@ -476,6 +485,8 @@ $roadmapColors: (
   }
 
   & .team {
+    position: relative;
+    z-index: 5;
 
     &__title {
       margin-top: 80px;
@@ -661,9 +672,9 @@ $roadmapColors: (
           grid-column: 1;
         }
 
-        &.roadmap__item_turn_1 img,
-        &.roadmap__item_turn_3 img,
-        &.roadmap__item_turn_5 img {
+        &.roadmap__item_turn_1::before,
+        &.roadmap__item_turn_3::before,
+        &.roadmap__item_turn_5::before {
           left: 40%;
         }
       }
@@ -692,5 +703,21 @@ $color in $roadmapColors {
 
   .roadmap__item_turn_#{$index} {
     grid-area: turn-#{$index};
+  }
+}
+
+@each $index,
+$back in $roadmapBack {
+  .roadmap__item_turn_#{$index}::before {
+    content: '';
+    background: $back;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 150px;
+    width: 50px;
+    position: absolute;
+    left: 42%;
+    bottom: -30%;
+    transform: translate(-65%, -10%);
   }
 }
