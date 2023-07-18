@@ -1,5 +1,7 @@
 import { Cemjsx } from "cemjs-all"
 
+
+
 let isDragging = false;
 let startX, startScrollLeft, timeoutId, slides;
 
@@ -126,7 +128,7 @@ export const display = function () {
           {
             slides?.map((item, index) => {
               return (
-                <a 
+                <a
                   href={item.link}
                   target="_blank"
                 >
@@ -135,13 +137,13 @@ export const display = function () {
                     class={["slider__slide", index === 0 ? "slider__slide_first" : null]}
                     src={`/assets/upload/worldPress/${item.name}`}
                     draggable="false"
-                // After={($el)=>{
-                //     Data.widthSlide = $el.offsetWidth;
-                // }}
-                >
-                </img>
+                  // After={($el)=>{
+                  //     Data.widthSlide = $el.offsetWidth;
+                  // }}
+                  >
+                  </img>
                 </a>
-                
+
               )
             })
           }
