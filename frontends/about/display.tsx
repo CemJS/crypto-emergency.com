@@ -1,29 +1,39 @@
 import { Cemjsx } from "cemjs-all"
+import folder from "@svg/about/goal_1.svg"
+import safe from "@svg/about/goal_2.svg"
+import access from "@svg/about/goal_3.svg"
+import pin from "@svg/about/goal_4.svg"
+import ceo from "@images/about/team1.png"
+import it from "@images/about/team4.png"
+import designer from "@images/about/team2.png"
+import director from "@images/about/team3.png"
+import lines from "@svg/about/vector_3.svg"
+
 
 const arrBlockCard = [
   {
-    img: "goal_1",
+    img: folder,
     // altImg: Variable.lang.p.goalOne,
     title: "Поднять крипто грамотность населения",
     description: "Мы создали платформу, где любой желающий может найти ответ на свой вопрос, и обрести навыки инвестирования в криптовалюту.",
     classItem: "crypto",
   },
   {
-    img: "goal_2",
+    img: safe,
     // altImg: Variable.lang.p.goalTwo,
     title: "Объединить людей",
     description: "Создать мульти интернациональное комьюнити по всему миру.",
     classItem: "unite",
   },
   {
-    img: "goal_3",
+    img: access,
     // altImg: Variable.lang.p.goalThree,
     title: "Бесплатный доступ",
     description: "Весь функционал на сайте не потребует от вас никаких вложений!",
     classItem: "access",
   },
   {
-    img: "goal_4",
+    img: pin,
     // altImg: Variable.lang.p.goalFour,
     title: "Создание метавселенной",
     description: "Объединение всех продуктов компании в одной метавселенной.",
@@ -62,22 +72,22 @@ const arrAccordeon = [
 const arrTeam = [
   {
     name: "Ян Кривоносов",
-    foto: "team1",
+    foto: ceo,
     position: "CEO проекта Crypto Emergency",
   },
   {
     name: "Игорь Еньшин",
-    foto: "team4",
+    foto: it,
     position: "Руководитель IT направления",
   },
   {
     name: "Анна Рыжкова",
-    foto: "team2",
+    foto: designer,
     position: "Руководитель отдела по работе с дизайнерами",
   },
   {
     name: "Дмитрий Белов",
-    foto: "team3",
+    foto: director,
     position: "Управляющий директор проекта",
   },
 ];
@@ -122,11 +132,11 @@ const roadmap = [
 
 export const display = function () {
   return (
-    <div class="page page__container">
+    <div class="page page__container about_page">
       <div class="about">
         <div class="about__whome whome">
           <div class="whome__inner">
-            <img class="whome__img" src={`/assets/svg/about/vector_1.svg`} />
+            {/* <img class="whome__img" src={`/assets/svg/about/vector_1.svg`} /> */}
             <h2 class="about__subtitle">Crypto Emergency</h2>
             <p>Объединяем криптоэнтузиастов всего мира на единой многофункциональной платформе Crypto Emergency, которая даст им все необходимые инструменты для общения, обучения, заработка и создания собственного контента. </p>
           </div>
@@ -142,7 +152,7 @@ export const display = function () {
                     return (
                       <div class={["goal__item", item.classItem]}>
                         <div class="goal__img">
-                          <img src={`/assets/svg/about/${item.img}.svg`} alt="" />
+                          <img src={item.img} ></img>
                         </div>
                         <div class="goal__content">
                           <h4>{item.title}</h4>
@@ -183,7 +193,7 @@ export const display = function () {
                   })
                 }
               </div>
-              <img class="whome__img whome__img_right" src={`/assets/svg/about/vector_2.svg`} />
+              <img class="whome__img whome__img_right" src={lines} />
               <div class="team">
                 <h2 class="about__subtitle team__title">Наша команда</h2>
                 <div class="team__list">
@@ -192,7 +202,8 @@ export const display = function () {
                       return (
                         <div class="team__item">
                           <div class="team__img">
-                            <img src={`/assets/images/about/${item.foto}.png`} />
+                            {/* <img src={`/assets/images/about/${item.foto}.png`} /> */}
+                            <img src={item.foto}></img>
                           </div>
                           <h5>{item.name}</h5>
                           <span>{item.position}</span>
@@ -205,26 +216,26 @@ export const display = function () {
             </div>
           </div>
           <div class="roadmap">
-                <h2 class="about__subtitle roadmap__title">Дорожная карта</h2>
-                <div class="roadmap__wrap">
-                  {
-                    roadmap.map((item, index) => {
-                      return (
-                        <div class={["roadmap__item", `roadmap__item_${index}`]}>
-                          <div class={["item__card", `item__card_${index}`]}>
-                            <span class={["year", `year_${index}`]}>{item.description}</span>
-                            <p class="description">{item.date}</p>
-                          </div>
+            <h2 class="about__subtitle roadmap__title">Дорожная карта</h2>
+            <div class="roadmap__wrap">
+              {
+                roadmap.map((item, index) => {
+                  return (
+                    <div class={["roadmap__item", `roadmap__item_${index}`]}>
+                      <div class={["item__card", `item__card_${index}`]}>
+                        <span class={["year", `year_${index}`]}>{item.description}</span>
+                        <p class="description">{item.date}</p>
+                      </div>
 
-                          <div class={["roadmap__item_turn", `roadmap__item_turn_${index}`]}>
-                            <img src={`/assets/svg/about/${item.src}.svg`}></img>
-                          </div>
-                        </div>
-                      )
-                    })
-                  }
-                </div>
-              </div>
+                      <div class={["roadmap__item_turn", `roadmap__item_turn_${index}`]}>
+                        <img src={`/assets/svg/about/${item.src}.svg`}></img>
+                      </div>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>

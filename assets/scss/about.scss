@@ -8,13 +8,64 @@ $roadmapColors: (
   6: #D82B56,
 );
 
+// .about_page {
+//   position: relative;
+
+
+//   &::before {
+//     position: absolute;
+//     bottom: 0;
+//     right: 0;
+//     left: auto;
+//     content: '';
+//     background: url('svg/about/vector_3.svg');
+//     background-repeat: no-repeat;
+//     height: 100%;
+//     width: 100%;
+//   }
+// }
+
 .about {
   background: #232733;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    content: '';
+    background: url('svg/about/vector_1.svg');
+    background-repeat: no-repeat;
+    height: 90%;
+    width: 100%;
+  }
+
+  // &::after {
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: 0;
+  //   left: auto;
+  //   content: '';
+  //   background: url('svg/about/vector_3.svg');
+  //   background-repeat: no-repeat;
+  //   height: 100%;
+  //   width: 100%;
+  // }
+
 
   &__container {
     max-width: 1240px;
     margin: 0px auto;
     padding-bottom: 100px;
+    // position: relative;
+
+    // &::after {
+    //   position: absolute;
+    //   content: '';
+    //   background: url('svg/about/vector_1.svg');
+    // }
+
   }
 
   &__subtitle {
@@ -33,7 +84,7 @@ $roadmapColors: (
       font-size: 30px;
     }
   }
-  
+
   & .whome {
     position: relative;
     padding-top: 150px;
@@ -181,7 +232,7 @@ $roadmapColors: (
 
       &:hover .goal__content {
         height: 210px;
-    
+
         @media(max-width: 464px) {
           height: auto;
         }
@@ -210,12 +261,12 @@ $roadmapColors: (
           -webkit-clip-path: circle(170px at 94% -35%);
           clip-path: circle(170px at 94% -35%);
         }
-  
+
         @media (max-width: 767px) {
           -webkit-clip-path: circle(300px at 80% -65%);
           clip-path: circle(300px at 80% -65%);
         }
-  
+
         @media (max-width: 464px) {
           -webkit-clip-path: circle(300px at 80% -70%);
           clip-path: circle(300px at 80% -70%);
@@ -251,7 +302,7 @@ $roadmapColors: (
         left: -3%;
       }
     }
-    
+
     &__img {
       position: absolute;
       top: 50%;
@@ -517,52 +568,52 @@ $roadmapColors: (
       flex-direction: column;
       align-items: center;
       justify-content: center;
-  
+
       &.item__card_1,
       &.item__card_3,
       &.item__card_5 {
         grid-column: 2;
       }
-  
+
       .year {
         font-weight: 700;
         font-size: 22px;
         line-height: 115%;
         margin-bottom: 15px;
       }
-  
+
       @media (max-width: 767px) {
         width: 100%;
         height: 120px;
-  
+
         .year {
           margin-bottom: 10px;
           font-size: 18px;
         }
       }
-  
+
       @media (max-width: 529px) {
         padding: 5px;
         display: flex;
         flex-direction: column;
         justify-content: end;
-  
+
         .year {
           margin-bottom: 10px;
           font-size: 20px;
         }
-  
+
         .description {
           font-size: 14px;
         }
       }
-  
+
       @media (max-width: 450px) {
         .year {
           font-size: 16px;
         }
       }
-    
+
     }
 
     &__item {
