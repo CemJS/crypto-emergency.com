@@ -4,7 +4,7 @@ import { display } from "./display"
 import { listener } from "./listener"
 
 export const micro: Micro = {
-    name: "MicroTest",
+    name: "header",
     loader,
     display,
     listener

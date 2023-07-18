@@ -8,8 +8,6 @@
       "front": [
         "header",
         "courseLine",
-        "banners",
-        "modalAuthorization",
         "footer"
       ]
     },
