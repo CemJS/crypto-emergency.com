@@ -8,7 +8,10 @@ export const display = function () {
         <ul class="categoryLine-carousel">
           {this.Static.records.map((item) => {
             return (
-              <li class={"categoryLine-item"}>
+              <li class={"categoryLine-item"}
+                onclick={() => {
+                  this.cross({ event: "press", name: item.name })
+                }}>
                 <span>{item.name}</span>
               </li>
             )
