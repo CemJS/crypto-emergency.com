@@ -123,6 +123,9 @@ const roadmap = [
   },
 ];
 
+let x1 = null;
+let y1 = null;
+
 export const display = function () {
   return (
     <div class="page page__container about_page">
@@ -189,11 +192,37 @@ export const display = function () {
               <img class="whome__img whome__img_right" src={lines} />
               <div class="team">
                 <h2 class="about__subtitle team__title">Наша команда</h2>
-                <div class="team__list">
+                <div
+                  class="team__list"
+                  ref="sliderTeam"
+                  ontouchstart={(e) => {
+                    const firstTouch = e.touches[0];
+                    x1 = firstTouch.clientX;
+                    y1 = firstTouch.clientY;
+                  }}
+                  ontouchmove={(e) => {
+                    if (!x1 || !y1) return false;
+                    let x2 = e.touches[0].clientX;
+                    let y2 = e.touches[0].clientY;
+                    let xDiff = x2 - x1;
+                    let yDiff = y2 - y1;
+
+                    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                      if (xDiff > 0) {
+                        this.Ref.sliderTeam.scrollLeft -= this.Ref.teamItem.offsetWidth + 40;
+                      }
+                      else {
+                        this.Ref.sliderTeam.scrollLeft += this.Ref.teamItem.offsetWidth + 40;
+                      }
+                    }
+                    x1 = null;
+                    y1 = null;
+                  }}
+                >
                   {
                     arrTeam.map((item) => {
                       return (
-                        <div class="team__item">
+                        <div class="team__item" ref="teamItem">
                           <div class="team__img">
                             <img src={item.foto}></img>
                           </div>
