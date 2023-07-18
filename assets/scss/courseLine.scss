@@ -1,8 +1,8 @@
 @import 'utils/variables.scss';
 
 .line {
-  margin-top: 70px;
-  
+  margin-top: 50px;
+
   &-wrap {
     position: relative;
     overflow: hidden;
@@ -12,7 +12,7 @@
 
     &:hover {
       cursor: pointer;
-      
+
       .line__track {
         animation-play-state: paused;
       }
@@ -111,18 +111,18 @@
 
 @keyframes slide {
   from {
-      transform: translateX(0);
-      -webkit-transform: translateX(0);
-      -moz-transform: translateX(0);
-      -ms-transform: translateX(0);
-      -o-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
   }
 
   to {
-      transform: translateX(-100%);
-      -webkit-transform: translateX(-100%);
-      -moz-transform: translateX(-100%);
-      -ms-transform: translateX(-100%);
-      -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
   }
 }

@@ -4,8 +4,8 @@ import { display } from "./display"
 import { listener } from "./listener"
 
 export const micro: Micro = {
-    name: "banners",
-    loader,
-    display,
-    listener
+  name: "categoryLine",
+  loader,
+  display,
+  listener
 }

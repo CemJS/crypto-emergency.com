@@ -35,6 +35,14 @@
         "about",
         "footer"
       ]
+    },
+    {
+      "url": "/list-startaps",
+      "front": [
+        "header",
+        "categoryLine",
+        "footer"
+      ]
     }
   ],
   "hook": {
