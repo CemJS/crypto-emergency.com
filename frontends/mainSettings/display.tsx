@@ -47,15 +47,15 @@ export const display = function () {
           <div
             class="main-menu__language"
             onclick={() => {
-							this.Fn.initOne({
-								name: "mainLanguage", ifOpen: (front) => {
-									// console.log('=9e3bb6=', front)
-									setTimeout(() => {
-										front.clearData()
-									}, 500);
-								}
-							})
-						}}
+              this.Fn.initOne({
+                name: "mainLanguage", ifOpen: (front) => {
+                  // console.log('=9e3bb6=', front)
+                  setTimeout(() => {
+                    front.clearData()
+                  }, 500);
+                }
+              })
+            }}
           >
             <div class="main-menu__language_wrap">
               <div class="main-menu__language_control">
@@ -148,10 +148,10 @@ export const display = function () {
                   style={!collapseBodyShow.one ? null : "max-height: 200px"}
                 >
                   <div class="accordion__body">
-                    <a class="accordion__link">
+                    <a class="accordion__link" href="/about" onclick={this.Fn.Link}>
                       О нас
                     </a>
-                    <a class="accordion__link">
+                    <a class="accordion__link" href="/career" onclick={this.Fn.Link}>
                       Карьера
                     </a>
                     <a class="accordion__link">

@@ -1,8 +1,104 @@
+$indents: (
+  0: 0px,
+  4: 4px,
+  5: 5px,
+  6: 6px,
+  8: 8px,
+  10: 10px,
+  12: 12px,
+  14: 14px,
+  15: 15px,
+  16: 16px,
+  18: 18px,
+  20: 20px,
+  22: 22px,
+  24: 24px,
+  25: 25px,
+  26: 26px,
+  28: 28px,
+  30: 30px,
+  32: 32px,
+  34: 34px,
+  35: 35px,
+  36: 36px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  70: 70px,
+);
+
+// padding, margin
+@each $index,
+$indent in $indents {
+  .pt_#{$index} {
+    padding-top: $indent;
+  }
+
+  .pb_#{$index} {
+    padding-bottom: $indent;
+  }
+
+  .pl_#{$index} {
+    padding-left: $indent;
+  }
+
+  .pr_#{$index} {
+    padding-right: $indent;
+  }
+
+  .pX_#{$index} {
+    padding: 0 $indent;
+  }
+
+  .pY_#{$index} {
+    padding: $indent 0;
+  }
+
+  .mt_#{$index} {
+    margin-top: $indent;
+  }
+
+  .mb_#{$index} {
+    margin-bottom: $indent;
+  }
+
+  .ml_#{$index} {
+    margin-left: $indent;
+  }
+
+  .mr_#{$index} {
+    margin-right: $indent;
+  }
+
+  .mX_#{$index} {
+    margin: 0 $indent;
+  }
+
+  .mY_#{$index} {
+    margin: $indent 0;
+  }
+}
+
+// padding, margin
+
 .page {
 
   &__container {
     padding-top: 70px;
   }
+}
+
+.wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.secondary_text {
+  color: #CACACA;
+}
+
+.ttu {
+  text-transform: uppercase;
 }
 
 .modal {
@@ -22,14 +118,14 @@
   }
 
   &__black {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      width: 100%;
-      height: 100vh;
-      background-color: #000000;
-      opacity: 0.7;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    opacity: 0.7;
   }
 
   &__container {
@@ -46,7 +142,7 @@
     @media (min-width: 576px) {
       max-width: 500px;
       margin: 1.75rem auto;
-    } 
+    }
   }
 
   &__close {

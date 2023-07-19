@@ -1,4 +1,5 @@
 import { Cemjsx } from "cemjs-all"
+import donat from '@svg/contacts/donation.svg'
 
 export const display = function () {
   return (
@@ -49,7 +50,7 @@ export const display = function () {
           </div>
           <div class="contacts__donats">
             <a href="https://www.donationalerts.com/r/crypto_emergency" target="_blank">
-              <img src={`/assets/svg/contacts/donation.svg`} alt="" idth="37" height="43" />
+              <img src={donat} alt="" width="37" height="43"></img>
               <span>Поддержать проект</span>
             </a>
           </div>

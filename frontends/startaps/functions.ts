@@ -15,6 +15,7 @@ const fn = {
         }
         eventSource.addEventListener('message', ({ data }) => {
             let records = JSON.parse(data)
+            // console.log('=57054c=', records)
             this.Static.records = records
             this.init()
         });
