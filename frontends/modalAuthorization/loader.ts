@@ -17,6 +17,7 @@ export const loader = function () {
     placeholder: "9990000000",
     valid: false,
     error: false,
+    label: "Телефон",
   }
 
   this.Static.pass = {
@@ -26,7 +27,9 @@ export const loader = function () {
     label: "Пароль",
     placeholder: "Введите ваш пароль",
     type: `${this.Static.viewPassword ? 'text' : 'password'}`,
-
   }
+
+  this.Static.isValid = false
+
   this.initAuto("buttonActive");
 }
