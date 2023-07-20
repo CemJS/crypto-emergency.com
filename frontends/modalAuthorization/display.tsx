@@ -61,6 +61,8 @@ export const display = function () {
               E-mail
             </button>
             <button class={["button", "button_toggler", this.Static.buttonActive == "phone" ? "button_active" : null]}
+
+            style="margin-right: 0"
               onclick={() => {
                 this.Static.buttonActive = "phone"
               }}
@@ -159,8 +161,13 @@ export const display = function () {
                 </span>
               </div>
               <a
-                class="button button_gradient authorization-form__registration"
+                class="button authorization-form__registration"
                 href=""
+                onclick={() => {
+                  this.Fn.initOne({
+                    name: "modalRegistration"
+                  })
+                }}
               >
                 <span>
                   Регистрация
