@@ -2,6 +2,7 @@ import { Cemjsx } from "cemjs-all"
 import logo from '@svg/logo.svg'
 
 export const display = function () {
+	console.log('=421d0e=', this)
 	return (
 		<header class="header">
 			<div class="header__container">
@@ -14,7 +15,9 @@ export const display = function () {
 						</a>
 						<a class="header__menu_link"
 							href="/contacts"
-							onclick={this.Fn.link}
+							onclick={(e) => {
+								this.Fn.link(e)
+							}}
 						>Контакты</a>
 						<a class="header__menu_link"
 							href="/about"
