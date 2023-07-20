@@ -44,6 +44,15 @@
         "startaps",
         "footer"
       ]
+    },
+    {
+      "url": "/news",
+      "front": [
+        "header",
+        "categoryLine",
+        "news",
+        "footer"
+      ]
     }
   ],
   "hook": {
