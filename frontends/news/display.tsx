@@ -9,14 +9,9 @@ export const display = function () {
       <div class="wrapper">
         <div class="news__inner">
           {
-            this.Static.records.map((item) => {
+            this.Static.records?.map((item) => {
               return (
-                <div class="news__item"
-                  onclick={() => {
-                    console.log('=e8e44f=',this.Services.moment())
-                    this.Services.moment()
-                  }}
-                >
+                <div class="news__item">
                   <div class="news__item_image">
                     <img src={`/assets/upload/news/${item.image}`} />
                   </div>
@@ -31,7 +26,7 @@ export const display = function () {
                       <img src={comments} alt="Комментарии." />
                       {item.statistic.comments}
                     </span>
-                    <span>{item.showDate}</span>
+                    <span>{this.Services.functions.moment(item.showDate).format("YYYY-MM-DD")}</span>
                   </div>
                 </div>
               )

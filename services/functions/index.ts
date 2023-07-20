@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { openDB } from 'idb';
+import moment from 'moment';
 
 let idb: any = {}
 
@@ -11,7 +12,7 @@ const idbGet = async function (table, key) {
     return await idb[table].get(key)
 }
 
-export { uuidv4 }
+export { uuidv4, moment }
 
 export const loader = async function (Variable) {
     if (this.Variable) {
