@@ -1,3 +1,79 @@
 @import 'utils/variables.scss';
 @import 'utils/grid.scss';
 @import 'utils/flex.scss';
+
+.ico {
+  padding-bottom: 80px;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $main_gradient;
+    height: 400px;
+    width: 400px;
+    filter: blur(250px);
+  }
+
+  // &_inner {}
+
+  &_tabs {
+    display: flex;
+
+    // &_item {
+    // }
+  }
+
+  &_list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: $borderR;
+
+    &_item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 20% 80%;
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
+      border-radius: $borderR;
+      padding: $borderR;
+      gap: $borderR;
+      overflow: hidden;
+      transition: 0.5s;
+      border: 1px solid transparent;
+      cursor: pointer;
+      grid-template-areas:
+        'img info'
+        'date date';
+
+      &_image {
+        grid-area: img;
+
+        img {
+          width: 100%;
+          border-radius: $borderR;
+        }
+      }
+
+      &_info {
+        grid-area: info;
+      }
+
+      &_date {
+        display: flex;
+        justify-content: space-between;
+        grid-area: date;
+      }
+
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $border;
+        transform: scale(0.98);
+      }
+    }
+  }
+}

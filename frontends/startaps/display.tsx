@@ -11,6 +11,7 @@ export const display = function () {
             this.Static.records.map((item, index) => {
               return (
                 <div class="startaps_item">
+                  <span class="category">{item.category}</span>
                   <div class="startaps_item_image">
                     <img src={`/assets/upload/worldPress/${item.icon}`}></img>
                   </div>
