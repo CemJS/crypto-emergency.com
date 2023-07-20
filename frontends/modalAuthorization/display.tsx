@@ -160,10 +160,10 @@ export const display = function () {
                   Вход
                 </span>
               </div>
-              <a
+              <button
                 class="button authorization-form__registration"
-                href=""
                 onclick={() => {
+                  this.clearData()
                   this.Fn.initOne({
                     name: "modalRegistration"
                   })
@@ -172,7 +172,7 @@ export const display = function () {
                 <span>
                   Регистрация
                 </span>
-              </a>
+              </button>
             </div>
           </form>
         </div>

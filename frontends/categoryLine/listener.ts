@@ -61,6 +61,67 @@ const listener = {
                 }
             ]
         }
+        if (window.location.pathname.includes("news")) {
+            this.Static.records = [
+                {
+                    name: 'Все',
+                },
+                {
+                    name: 'NFT',
+                },
+                {
+                    name: 'Crypto universe',
+                },
+                {
+                    name: 'ICO',
+                },
+                {
+                    name: 'DeFi',
+                },
+                {
+                    name: 'Mining'
+                },
+                {
+                    name: 'Blockchain',
+                },
+                {
+                    name: 'Altcoins',
+                },
+                {
+                    name: 'Bitcoin',
+                },
+                {
+                    name: 'Ethereum',
+                },
+                {
+                    name: 'Finance',
+                },
+                {
+                    name: 'Regulation',
+                },
+                {
+                    name: 'Security',
+                },
+                {
+                    name: 'Analytics',
+                },
+                {
+                    name: 'Market',
+                },
+                {
+                    name: 'GameFi',
+                },
+                {
+                    name: 'Experts',
+                },
+                {
+                    name: 'Crypto Emergency',
+                },
+                {
+                    name: 'Other',
+                },
+            ]
+        }
         // console.log('=e60c81=', data, name, this)
     }
 }
