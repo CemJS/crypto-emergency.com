@@ -195,7 +195,13 @@ export const display = function () {
                   Креативность
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+
+
+              <div class="f-center pt-25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -257,7 +263,11 @@ export const display = function () {
                   JSX
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center pt-25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -321,7 +331,12 @@ export const display = function () {
                   JSX
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+
+              <div class="f-center pt-25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -379,7 +394,11 @@ export const display = function () {
                   REST
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center pt-25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -439,7 +458,11 @@ export const display = function () {
                   Bash
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center pt-25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -504,7 +527,11 @@ export const display = function () {
                   App Store
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center pt-25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -569,7 +596,11 @@ export const display = function () {
                   Web3
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center pt-25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -652,7 +683,11 @@ export const display = function () {
                   Google
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center pt-25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 

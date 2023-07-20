@@ -39,6 +39,28 @@ const listener = {
                 },
             ];
         }
+        if (window.location.pathname.includes("list-ico")) {
+            this.Static.records = [
+                {
+                    name: 'Все',
+                },
+                {
+                    name: 'ICO',
+                },
+                {
+                    name: 'IDO',
+                },
+                {
+                    name: 'IEO',
+                },
+                {
+                    name: 'IGO',
+                },
+                {
+                    name: 'IFO'
+                }
+            ]
+        }
         // console.log('=e60c81=', data, name, this)
     }
 }
