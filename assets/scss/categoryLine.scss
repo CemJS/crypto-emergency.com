@@ -149,15 +149,18 @@
         opacity: 1;
     }
 
-    @media(max-width: 767px) {
-        font-size: 12px;
-        line-height: 16px;
-        height: 28px;
-        padding: 0 15px;
-    }
+    // @media(max-width: 767px) {
+    //     font-size: 12px;
+    //     line-height: 16px;
+    //     height: 28px;
+    //     padding: 0 15px;
+    // }
 
     @media(max-width: 464px) {
-        height: 25px;
+        font-size: 14px;
+        line-height: 18;
+        height: 30px;
+        // height: 25px;
     }
 
 }
