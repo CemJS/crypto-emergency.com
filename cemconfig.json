@@ -1,11 +1,14 @@
 {
   "ver": "1.0.0",
   "port": 3000,
+  "api": "http://127.0.0.1:3333/api/events/",
   "pages": [
     {
       "url": "/",
       "front": [
         "header",
+        "courseLine",
+        "banners",
         "footer"
       ]
     },
@@ -16,20 +19,35 @@
         "exchangeRates",
         "footer"
       ]
+    },
+    {
+      "url": "/contacts",
+      "front": [
+        "header",
+        "contacts",
+        "footer"
+      ]
+    },
+    {
+      "url": "/about",
+      "front": [
+        "header",
+        "about",
+        "footer"
+      ]
+    },
+    {
+      "url": "/list-startaps",
+      "front": [
+        "header",
+        "categoryLine",
+        "startaps",
+        "footer"
+      ]
     }
   ],
   "hook": {
     "proxyWeb": [
-      {
-        "url": "/api/events",
-        "host": "127.0.0.1",
-        "port": "6445"
-      },
-      {
-        "url": "/api/",
-        "host": "127.0.0.1",
-        "port": "6445"
-      },
       {
         "url": "/assets/upload",
         "host": "crypto-emergency.com",
@@ -37,5 +55,6 @@
       }
     ]
   },
-  "microFrontends": {}
+  "microFrontends": {},
+  "services": {}
 }

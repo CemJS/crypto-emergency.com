@@ -1,10 +1,13 @@
 import esbuild from "esbuild";
 import http from 'http'
+import httpProxy from 'http-proxy'
 import { sassPlugin } from "esbuild-sass-plugin";
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import path from 'path'
 import fs from 'fs'
+
+const proxy = httpProxy.createProxyServer({});
 
 let nameFront
 const runServe = process.argv.includes("--runServe")
@@ -57,9 +60,35 @@ const options = {
     ],
 }
 
+const checkServices = async function (dir) {
+    if (!fs.existsSync(dir)) {
+        return {}
+    }
+
+    const services = {}
+    fs.readdirSync(dir).map(file => {
+        if (file[0] != ".") {
+            services[file] = {
+                service: true,
+                name: file,
+                path: {}
+            }
+            if (fs.existsSync(path.join(dir, file, "index.ts"))) {
+                services[file].path.js = `/assets/js/_${file}.js`
+                options.entryPoints.push({ in: path.join(dir, file, "index.ts"), out: path.resolve(options.outdir, "js", `_${file}`) })
+            }
+            if (fs.existsSync(path.join(dir, file, "cemconfig.json"))) {
+                let cemconfig = JSON.parse(fs.readFileSync(path.join(dir, file, "cemconfig.json")))
+                Object.assign(services[file], cemconfig)
+            }
+        }
+    });
+    return services
+}
+
 const checkFrontend = async function (dir, name) {
     if (!fs.existsSync(dir)) {
-        return []
+        return {}
     }
     const frontends = {}
     fs.readdirSync(dir).map(file => {
@@ -100,6 +129,9 @@ const start = async function () {
     const microFrontends = await checkFrontend(dirFrontends, nameFront);
     fs.writeFileSync('microFrontends.json', JSON.stringify(microFrontends));
 
+    const services = await checkServices(dirServices);
+    fs.writeFileSync('services.json', JSON.stringify(services));
+
     const ctx = await esbuild.context(options).catch(() => process.exit(1))
     console.log("⚡ Build complete! ⚡")
     if (runServe) {
@@ -109,7 +141,7 @@ const start = async function () {
         http.createServer((req, res) => {
 
             const options = {
-                hostname: serve.host,
+                hostname: "127.0.0.1",
                 port: serve.port,
                 path: req.url,
                 method: req.method,
@@ -128,27 +160,17 @@ const start = async function () {
             })
 
             if (!haveChange && req.url !== "/esbuild" && !req.url.startsWith("/assets")) {
-                options.path = "/"
+                req.url = "/"
             }
+            proxy.web(req, res, { target: `http://${options.hostname}:${options.port}`, changeOrigin: true });
 
-            const proxyReq = http.request(options, proxyRes => {
-                if (proxyRes.statusCode === 404) {
-                    res.writeHead(404, { 'Content-Type': 'text/html' })
-                    res.end('<h1>A custom 404 page</h1>')
-                    return
-                }
-                res.writeHead(proxyRes.statusCode, proxyRes.headers)
-                proxyRes.pipe(res, { end: true })
-            })
-
-            proxyReq.on('error', function (err) {
-                console.log('=1e96c7=', err)
-                res.writeHead(500, { 'Content-Type': 'text/html' })
-                res.end('<h1>Internal Error</h1>')
-                return
+            proxy.on('error', function (err, req, res) {
+                res.writeHead(500, {
+                    'Content-Type': 'text/plain'
+                });
+                res.end('Something went wrong. And we are reporting a custom error message.');
             });
 
-            req.pipe(proxyReq, { end: true })
         }).listen(cemconfig.port)
         await ctx.watch()
     }

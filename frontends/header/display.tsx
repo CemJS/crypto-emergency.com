@@ -10,18 +10,46 @@ export const display = function () {
 						<a class="header__logo" href="/"
 							onclick={this.Fn.link}
 						>
-							<img src={logo} alt="Логотип." />
+							<img src="./assets/svg/header/logo.svg" alt="Логотип." />
 						</a>
-						<a class="header__menu_link">Контакты</a>
-						<a class="header__menu_link">О нас</a>
+						<a class="header__menu_link"
+							href="/contacts"
+							onclick={this.Fn.link}
+						>Контакты</a>
+						<a class="header__menu_link"
+							href="/about"
+							onclick={this.Fn.link}
+						>О нас</a>
 						<a class="header__menu_link">Новости</a>
 					</nav>
 					<div class="header__auth">
-						<div class="header__language">
+						<div class="header__language"
+							onclick={() => {
+								this.Fn.initOne({
+									name: "mainLanguage", ifOpen: (front) => {
+										// console.log('=9e3bb6=', front)
+										setTimeout(() => {
+											front.clearData()
+										}, 500);
+									}
+								})
+							}}
+						>
 							<span>Русский</span>
 						</div>
 						<button class="header__auth_log" type="button">Вход</button>
-						<button class="header__auth_sign" type="button">
+						<button class="header__auth_sign" type="button"
+							onclick={() => {
+								this.Fn.initOne({
+									name: "modalRegistration", ifOpen: (front) => {
+										// console.log('=9e3bb6=', front)
+										setTimeout(() => {
+											front.clearData()
+										}, 500);
+									}
+								})
+							}}
+						>
 							<span>Регистрация</span>
 						</button>
 					</div>

@@ -28,7 +28,7 @@ export const display = function () {
                     <td>
                       <div class="exchangerates__cellwrap">
                         <div class="exchangerates__currency">
-                          <img src={`/assets/svg/coinsExchange/${item.nameCoin}.svg`} />
+                          <img src={`/assets/svg/exchangeRates/${item.nameCoin}.svg`} />
                           <span>{item.nameCoin}</span>
 
                         </div>

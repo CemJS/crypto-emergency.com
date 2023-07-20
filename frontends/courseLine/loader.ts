@@ -1,9 +1,19 @@
 export const loader = function () {
 
-  new EventSource('/api/events/CoinsCourse').addEventListener('message', ({ data }) => {
-    let records = JSON.parse(data)
+  let eventSource = this.eventSource(`CoinsCourse?uuid=${this.Variable.myInfo.uuid}&courseLine=true`)
 
+  eventSource.addEventListener('message', ({ data }) => {
+    let records = JSON.parse(data)
     this.Static.records = records
     this.init()
-  })
+  });
+
+  eventSource.addEventListener('update', ({ data }) => {
+    let record = JSON.parse(data)
+    let index = this.Static.records.findIndex(item => item._id == record._id)
+    if (index >= 0) {
+      this.Static.records[index] = record
+      this.init()
+    }
+  });
 }

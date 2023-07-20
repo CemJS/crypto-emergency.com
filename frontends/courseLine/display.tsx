@@ -1,7 +1,15 @@
 import { Cemjsx } from "cemjs-all"
+import up_arrow from '@svg/courseLine/up_arrow.svg'
+import down_arrow from '@svg/courseLine/down_arrow.svg'
+
+interface Course {
+  _id: string
+  nameCoin: string
+  currentCourse: number
+  change: number
+}
 
 export const display = function () {
-  // console.log('=d29158=',this.Fn.link)
   if (this.Static.records) {
     return (
       <div class="line line-wrap">
@@ -11,16 +19,15 @@ export const display = function () {
           onclick={this.Fn.link}
         >
           {
-          ([1, 2, 3, 4]).map(() => {
-            return (
-              <div class="line__track">
-                {
-                  this.Static.records?.map((course) => {
-                    if (course?.courseLine == true) {
+            ([1, 2, 3, 4]).map(() => {
+              return (
+                <div class="line__track">
+                  {
+                    this.Static.records.map((course: Course) => {
                       return (
                         <div class="line__item">
                           <div class="line__item_img">
-                            <img src={`/assets/svg/coins/${course.nameCoin}.svg`}></img>
+                            <img src={`/assets/icons/coins/${course.nameCoin}.svg`}></img>
                           </div>
                           <span class="line__item_text">{course.nameCoin + "/USDT"}</span>
                           <span class="line__item_text line__item_price">
@@ -31,20 +38,18 @@ export const display = function () {
                           <div class="line__item_change">
                             {course.change.toFixed(2)}
                             <div class="line-img_change">
-                              <img src={`/assets/svg/${course.change >= 0 ? "up_arrow" : "down_arrow"}.svg`}></img>
+                              <img src={course.change >= 0 ? up_arrow : down_arrow}></img>
                             </div>
                           </div>
                         </div>
                       )
-                    }
-                  })
-                }
-              </div>
-            )
-          })
-        }
+                    })
+                  }
+                </div>
+              )
+            })
+          }
         </a>
-        
       </div>
     )
   }

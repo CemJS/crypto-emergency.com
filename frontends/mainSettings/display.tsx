@@ -10,7 +10,7 @@ collapseBodyShow = {
 };
 
 const showCollapseBody = function (e) {
-  console.log('=107f5a=', e.target.dataset.number)
+  // console.log('=107f5a=', e.target.dataset.number)
   collapseBodyShow[e.target.dataset.number] = !collapseBodyShow[e.target.dataset.number];
   e.stopPropagation();
 };
@@ -18,15 +18,27 @@ const showCollapseBody = function (e) {
 export const display = function () {
   return (
     <div class="modal modal_open modal_fullscreen">
+      <div class="modal__black"
+        onclick={() => {
+          setTimeout(() => {
+            this.clearData()
+          }, 5);
+        }}
+      />
       <section class="main-menu main-menu_active">
         <header class="main-menu__header">
           <div class="main-menu__btn">
             <div
               class="main-menu__btn_wrap"
-              onclick={(e) => {
-                // fn.modals.close(ID)
-                // fn.modals.ModalMainPageIconsMenu()
-                // fn.modals.ModalMainServices()
+              onclick={() => {
+                this.Fn.initOne({
+                  name: "mainServices", ifOpen: (front) => {
+                    // console.log('=094142=',front)
+                    setTimeout(() => {
+                      front.clearData()
+                    }, 500);
+                  }
+                })
               }}
             >
               <span>Сервисы</span>
@@ -35,20 +47,31 @@ export const display = function () {
           <div
             class="main-menu__language"
             onclick={() => {
-              // fn.modals.ModalLanguageSite({}, true)
+              this.Fn.initOne({
+                name: "mainLanguage", ifOpen: (front) => {
+                  // console.log('=9e3bb6=', front)
+                  setTimeout(() => {
+                    front.clearData()
+                  }, 500);
+                }
+              })
             }}
           >
             <div class="main-menu__language_wrap">
               <div class="main-menu__language_control">
-                <img class="language_change_world" src={`/assets/svg/language_change_world.svg`} /> Русский
+                <img class="language_change_world" src={`/assets/svg/mainSettings/language_world.svg`} /> Русский
               </div>
             </div>
           </div>
           <button
-            style="position: relative; top:auto; right: auto;"
             type="button"
             class="main-menu__close"
-          // onclick={() => { fn.modals.close(ID) }}
+            onclick={() => {
+              this.$el.childNodes[1].classList.remove("main-menu_active")
+              setTimeout(() => {
+                this.clearData()
+              }, 500);
+            }}
           ></button>
         </header>
         <div class="main-menu__body">
@@ -59,43 +82,43 @@ export const display = function () {
           </div>
           <div class="main-menu__content main-menu_main_content">
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_lenta.svg`} />
+              <img src={`/assets/svg/mainSettings/lenta.svg`} />
               <span class="mobile_user_menu_link">Лента пользователей</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_answers_questions.svg`} />
+              <img src={`/assets/svg/mainSettings/answers_questions.svg`} />
               <span class="mobile_user_menu_link">Вопросы и ответы</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_ico.svg`} />
+              <img src={`/assets/svg/mainSettings/ico.svg`} />
               <span class="mobile_user_menu_link">ICO Рейтинг</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_startaps.svg`} />
+              <img src={`/assets/svg/mainSettings/startaps.svg`} />
               <span class="mobile_user_menu_link">Стартапы</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_news.svg`} />
+              <img src={`/assets/svg/mainSettings/news.svg`} />
               <span class="mobile_user_menu_link">Новости</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_exchanges.svg`} />
+              <img src={`/assets/svg/mainSettings/exchanges.svg`} />
               <span class="mobile_user_menu_link">Обменники</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_users.svg`} />
+              <img src={`/assets/svg/mainSettings/users.svg`} />
               <span class="mobile_user_menu_link">Пользователи</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_univercsity.svg`} />
+              <img src={`/assets/svg/mainSettings/university.svg`} />
               <span class="mobile_user_menu_link">Крипто университет</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_expert.svg`} />
+              <img src={`/assets/svg/mainSettings/expert.svg`} />
               <span class="mobile_user_menu_link">Эксперты</span>
             </a>
             <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/main_menu_contentmaker.svg`} />
+              <img src={`/assets/svg/mainSettings/contentmaker.svg`} />
               <span class="mobile_user_menu_link">Создатели контента</span>
             </a>
           </div>
@@ -125,10 +148,10 @@ export const display = function () {
                   style={!collapseBodyShow.one ? null : "max-height: 200px"}
                 >
                   <div class="accordion__body">
-                    <a class="accordion__link">
+                    <a class="accordion__link" href="/about" onclick={this.Fn.Link}>
                       О нас
                     </a>
-                    <a class="accordion__link">
+                    <a class="accordion__link" href="/career" onclick={this.Fn.Link}>
                       Карьера
                     </a>
                     <a class="accordion__link">
@@ -225,12 +248,12 @@ export const display = function () {
                 <a
                   href="https://apps.apple.com/ru/app/crypto-emergency/id1635628021"
                   target="_blank"
-                  class="c-button__app"
+                  class="accordion__app"
                 >
-                  <img src={`/assets/svg/appstore.svg`} />
+                  <img src={`/assets/svg/mainSettings/appstore.svg`} />
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.cryptoemergency" target="_blank" class="c-button__app">
-                  <img src={`/assets/svg/googleplay.svg`} />
+                <a href="https://play.google.com/store/apps/details?id=com.cryptoemergency" target="_blank" class="accordion__app" style="margin-right: 0;">
+                  <img src={`/assets/svg/mainSettings/googleplay.svg`} />
                 </a>
               </div>
             </div>
@@ -241,16 +264,16 @@ export const display = function () {
                     target="_blank"
                     href="https://t.me/cryptoemergencychat"
                   >
-                    <img src={`/assets/svg/telegram_icon.svg`} />
+                    <img src={`/assets/svg/mainSettings/telegram.svg`} />
                   </a>
                 </div>
-                
+
                 <div class="footer__socials_link">
                   <a
                     target="_blank"
                     href="https://www.youtube.com/channel/UCb9Fx-fNikzs-OZwnTXepLg/"
                   >
-                    <img src={`/assets/svg/youtube_icon.svg`} />
+                    <img src={`/assets/svg/mainSettings/youtube.svg`} />
                   </a>
                 </div>
                 <div class="footer__socials_link">
@@ -258,7 +281,7 @@ export const display = function () {
                     target="_blank"
                     href="https://twitter.com/cryptoemergency"
                   >
-                    <img src={`/assets/svg/twitter_icon.svg`} />
+                    <img src={`/assets/svg/mainSettings/twitter.svg`} />
                   </a>
                 </div>
                 <div class="footer__socials_link">
@@ -266,7 +289,7 @@ export const display = function () {
                     target="_blank"
                     href="https://discord.com/invite/Qdm7W8DjYc"
                   >
-                    <img src={`/assets/svg/discord_icon.svg`} />
+                    <img src={`/assets/svg/mainSettings/discord.svg`} />
                   </a>
                 </div>
                 <div class="footer__socials_link">
@@ -274,7 +297,7 @@ export const display = function () {
                     target="_blank"
                     href="https://github.com/CryptoEmergency"
                   >
-                    <img src={`/assets/svg/github_icon.svg`} />
+                    <img src={`/assets/svg/mainSettings/github.svg`} />
                   </a>
                 </div>
                 <div class="footer__socials_link">
@@ -282,7 +305,7 @@ export const display = function () {
                     target="_blank"
                     href="https://www.tiktok.com/@cryptoemergencyrussia"
                   >
-                    <img src={`/assets/svg/tiktok_icon.svg`} />
+                    <img src={`/assets/svg/mainSettings/tiktok.svg`} />
                   </a>
                 </div>
                 <div class="footer__socials_link">
@@ -290,9 +313,12 @@ export const display = function () {
                     target="_blank"
                     href="https://www.linkedin.com/company/86302977"
                   >
-                    <img src={`/assets/svg/linkedin_icon.svg`} />
+                    <img src={`/assets/svg/mainSettings/linkedin.svg`} />
                   </a>
                 </div>
+              </div>
+              <div class="footer__copyright">
+                ©2020-2023 Crypto Emergency
               </div>
             </div>
           </div>
