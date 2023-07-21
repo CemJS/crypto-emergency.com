@@ -1,6 +1,107 @@
 import { Cemjsx } from "cemjs-all"
+import lenta from '@svg/mainSettings/lenta.svg'
+import questions from '@svg/mainSettings/answers_questions.svg'
+import ico from '@svg/mainSettings/ico.svg'
+import startups from '@svg/mainSettings/startups.svg'
+import news from '@svg/mainSettings/news.svg'
+import exchanges from '@svg/mainSettings/exchanges.svg'
+import users from '@svg/mainSettings/users.svg'
+import university from '@svg/mainSettings/university.svg'
+import expert from '@svg/mainSettings/expert.svg'
+import contentmaker from '@svg/mainSettings/contentmaker.svg'
+import telegram from '@svg/mainSettings/telegram.svg'
+import youtube from '@svg/mainSettings/youtube.svg'
+import twitter from '@svg/mainSettings/twitter.svg'
+import discord from '@svg/mainSettings/discord.svg'
+import github from '@svg/mainSettings/github.svg'
+import tiktok from '@svg/mainSettings/tiktok.svg'
+import linkedin from '@svg/mainSettings/linkedin.svg'
 
 let socialIcon, collapseBodyShow;
+
+const sections = [
+  {
+    category: "Лента пользователей",
+    img: lenta,
+    url: "#"
+  },
+  {
+    category: "Вопросы и ответы",
+    img: questions,
+    url: "#"
+  },
+  {
+    category: "ICO Рейтинг",
+    img: ico,
+    url: "/list-ico"
+  },
+  {
+    category: "Стартапы",
+    img: startups,
+    url: "/list-startaps"
+  },
+  {
+    category: "Новости",
+    img: news,
+    url: "/news"
+  },
+  {
+    category: "Обменники",
+    img: exchanges,
+    url: "#"
+  },
+  {
+    category: "Пользователи",
+    img: users,
+    url: "#"
+  },
+  {
+    category: "Крипто университет",
+    img: university,
+    url: "#"
+  },
+  {
+    category: "Эксперты",
+    img: expert,
+    url: "#"
+  },
+  {
+    category: "Создатели контента",
+    img: contentmaker,
+    url: "#"
+  },
+]
+
+const socials = [
+  {
+    img: telegram,
+    url: "https://t.me/cryptoemergencychat"
+  },
+  {
+    img: youtube,
+    url: "https://www.youtube.com/channel/UCb9Fx-fNikzs-OZwnTXepLg/"
+  },
+  {
+    img: twitter,
+    url: "https://twitter.com/cryptoemergency"
+  },
+  {
+    img: discord,
+    url: "https://discord.com/invite/Qdm7W8DjYc"
+  },
+  {
+    img: github,
+    url: "https://github.com/CryptoEmergency"
+  },
+  {
+    img: tiktok,
+    url: "https://www.tiktok.com/@cryptoemergencyrussia"
+  },
+  {
+    img: linkedin,
+    url: "https://www.linkedin.com/company/86302977"
+  }
+]
 
 collapseBodyShow = {
   one: false,
@@ -81,46 +182,20 @@ export const display = function () {
             </div>
           </div>
           <div class="main-menu__content main-menu_main_content">
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/lenta.svg`} />
-              <span class="mobile_user_menu_link">Лента пользователей</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/answers_questions.svg`} />
-              <span class="mobile_user_menu_link">Вопросы и ответы</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/ico.svg`} />
-              <span class="mobile_user_menu_link">ICO Рейтинг</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/startaps.svg`} />
-              <span class="mobile_user_menu_link">Стартапы</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/news.svg`} />
-              <span class="mobile_user_menu_link">Новости</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/exchanges.svg`} />
-              <span class="mobile_user_menu_link">Обменники</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/users.svg`} />
-              <span class="mobile_user_menu_link">Пользователи</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/university.svg`} />
-              <span class="mobile_user_menu_link">Крипто университет</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/expert.svg`} />
-              <span class="mobile_user_menu_link">Эксперты</span>
-            </a>
-            <a class="main-menu__link main-menu__link_visible" href="#">
-              <img src={`/assets/svg/mainSettings/contentmaker.svg`} />
-              <span class="mobile_user_menu_link">Создатели контента</span>
-            </a>
+            {
+              sections.map((item) => {
+                return (
+                  <a class="main-menu__link main-menu__link_visible"
+                    href={item.url}
+                    onclick={this.Fn.link}
+                  >
+                    <img src={item.img} />
+                    <span class="mobile_user_menu_link">{item.category}</span>
+                  </a>
+                )
+              })
+            }
+
           </div>
           <div class="main-menu__title">
             <div class="main-menu__title_wrap">
@@ -259,63 +334,20 @@ export const display = function () {
             </div>
             <div class="main-menu__footer_bottom">
               <div class="footer__socials">
-                <div class="footer__socials_link">
-                  <a
-                    target="_blank"
-                    href="https://t.me/cryptoemergencychat"
-                  >
-                    <img src={`/assets/svg/mainSettings/telegram.svg`} />
-                  </a>
-                </div>
-
-                <div class="footer__socials_link">
-                  <a
-                    target="_blank"
-                    href="https://www.youtube.com/channel/UCb9Fx-fNikzs-OZwnTXepLg/"
-                  >
-                    <img src={`/assets/svg/mainSettings/youtube.svg`} />
-                  </a>
-                </div>
-                <div class="footer__socials_link">
-                  <a
-                    target="_blank"
-                    href="https://twitter.com/cryptoemergency"
-                  >
-                    <img src={`/assets/svg/mainSettings/twitter.svg`} />
-                  </a>
-                </div>
-                <div class="footer__socials_link">
-                  <a
-                    target="_blank"
-                    href="https://discord.com/invite/Qdm7W8DjYc"
-                  >
-                    <img src={`/assets/svg/mainSettings/discord.svg`} />
-                  </a>
-                </div>
-                <div class="footer__socials_link">
-                  <a
-                    target="_blank"
-                    href="https://github.com/CryptoEmergency"
-                  >
-                    <img src={`/assets/svg/mainSettings/github.svg`} />
-                  </a>
-                </div>
-                <div class="footer__socials_link">
-                  <a
-                    target="_blank"
-                    href="https://www.tiktok.com/@cryptoemergencyrussia"
-                  >
-                    <img src={`/assets/svg/mainSettings/tiktok.svg`} />
-                  </a>
-                </div>
-                <div class="footer__socials_link">
-                  <a
-                    target="_blank"
-                    href="https://www.linkedin.com/company/86302977"
-                  >
-                    <img src={`/assets/svg/mainSettings/linkedin.svg`} />
-                  </a>
-                </div>
+                {
+                  socials.map((item) => {
+                    return (
+                      <div class="footer__socials_link">
+                        <a
+                          target="_blank"
+                          href={item.url}
+                        >
+                          <img src={item.img} />
+                        </a>
+                      </div>
+                    )
+                  })
+                }
               </div>
               <div class="footer__copyright">
                 ©2020-2023 Crypto Emergency

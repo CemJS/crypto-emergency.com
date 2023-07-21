@@ -23,7 +23,10 @@ export const display = function () {
 							href="/about"
 							onclick={this.Fn.link}
 						>О нас</a>
-						<a class="header__menu_link">Новости</a>
+						<a class="header__menu_link"
+							href="/news"
+							onclick={this.Fn.link}
+						>Новости</a>
 					</nav>
 					<div class="header__auth">
 						<div class="header__language"
