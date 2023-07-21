@@ -31,8 +31,9 @@ export const display = function () {
             <div class="reset-password__form_input">
               <input type="text" placeholder="Введите ваш e-mail"
                 oninput={(e) => {
-                  if (this._fn.validateEmail(e.target.value)) {
+                  if (this.Services.functions.validateEmail(e.target.value)) {
                     this.Static.isValid = true
+                    this.Ref.button.disabled = false
                   } else {
                     this.Static.isValid = false
                   }
@@ -41,7 +42,7 @@ export const display = function () {
               />
             </div>
             <div class="reset-password__form_footer">
-              <button class={["button", "button_gradient",
+              <button ref="button" disabled class={["button", "button_gradient",
                   !this.Static.isValid ? "button_inactive" : null
                 ]}
               >

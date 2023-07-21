@@ -132,13 +132,9 @@ export const display = function () {
             <div
               class="main-menu__btn_wrap"
               onclick={() => {
+                this.clearData()
                 this.Fn.initOne({
-                  name: "mainServices", ifOpen: (front) => {
-                    // console.log('=094142=',front)
-                    setTimeout(() => {
-                      front.clearData()
-                    }, 500);
-                  }
+                  name: "mainServices"
                 })
               }}
             >

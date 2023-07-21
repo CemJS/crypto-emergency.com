@@ -55,6 +55,16 @@
       border-radius: 15px;
       text-align: center;
       box-sizing: content-box;
+      cursor: pointer;
+
+      &:hover {
+
+        &:not(.footer__nav_logo) {
+          filter: invert(39%) sepia(18%) saturate(4538%) hue-rotate(228deg) brightness(93%) contrast(90%);
+        }
+          
+        
+      }
     }
 
     &_logo {

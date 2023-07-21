@@ -84,6 +84,11 @@
     overflow-x: hidden;
     max-height: 285px;
 
+    @media (max-width: 464px) {
+      max-height: 100%;
+      grid-gap: 20px;
+    }
+
     &::-webkit-scrollbar {
       width: 6px;
     }
@@ -95,12 +100,6 @@
 
     &::-webkit-scrollbar-track {
       background-color: transparent;
-    }
-
-    @media (max-width: 464px) {
-      max-height: 100%;
-      overflow: auto;
-      grid-gap: 20px;
     }
   }
 

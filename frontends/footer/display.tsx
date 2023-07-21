@@ -15,7 +15,6 @@ export const display = function () {
 						onclick={() => {
 							this.Fn.initOne({
 								name: "mainSettings", ifOpen: (front) => {
-									// console.log('=9e3bb6=', front)
 									front.$el.childNodes[1].classList.remove("main-menu_active")
 									setTimeout(() => {
 										front.clearData()
