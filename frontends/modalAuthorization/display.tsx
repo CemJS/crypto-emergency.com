@@ -1,6 +1,7 @@
 import { Cemjsx } from "cemjs-all"
 import lock from "@svg/modalRegistration/lock.svg"
 import eye from "@svg/modalRegistration/eye.svg"
+import eyeSlash from "@svg/modalRegistration/eye-slash.svg"
 import blank from "@images/modalAuthorization/blank.gif"
 import phone from 'json/phoneCodes.json'
 
@@ -60,8 +61,7 @@ export const display = function () {
               E-mail
             </button>
             <button class={["button", "button_toggler", this.Static.buttonActive == "phone" ? "button_active" : null]}
-
-            style="margin-right: 0"
+              style="margin-right: 0"
               onclick={() => {
                 this.Static.buttonActive = "phone"
               }}
@@ -84,8 +84,28 @@ export const display = function () {
                 {
                   this.Static.buttonActive == 'email'
                     ?
-                    <div class="authorization-form__email_input email">
-                      <input type="text" placeholder={this.Static.email.placeholder} />
+                    <div>
+                      <div class="error">
+                        <span style={this.Ref.email?.value.length > 0 && this.Static.email.valid == false ? "display: block" : "display: none"}>Неверный e-mail</span>
+                      </div>
+                      <div class="authorization-form__email_input email">
+                        <input
+                          ref="email"
+                          type="text"
+                          placeholder={this.Static.email.placeholder}
+                          style={this.Ref.email?.value.length > 0 && this.Static.email.valid == false ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : null}
+                          oninput={(e) => {
+                            if (this.Services.functions.validateEmail(e.target.value)) {
+                              this.Static.email.valid = true
+                            } else {
+                              this.Static.email.valid = false
+                            }
+                            this.fn("checkForm")
+                            this.init()
+                          }}
+                        />
+                      </div>
+
                     </div>
                     :
                     <div class="authorization-form__phone">
@@ -134,12 +154,28 @@ export const display = function () {
                       </div>
                     </div>
                 }
-
               </div>
               <div class="authorization-form__password">
                 <img class="lock" src={lock} />
-                <input type="text" placeholder={this.Static.pass.placeholder} />
-                <img class="eye" src={eye} />
+                <input
+                  ref="password"
+                  type={this.Static.viewPassword ? "text" : "password"}
+                  placeholder={this.Static.pass.placeholder}
+                  style={this.Static.pass.value.length > 0 ? "border-color: green" : null}
+                  oninput={(e) => {
+                    this.Static.pass.value = e.target.value
+                    if (this.Static.pass.value.length > 1) {
+                      this.Static.pass.valid = true
+                    }
+                    this.fn("checkForm")
+                    this.init()
+                  }}
+                />
+                <img class="eye" src={this.Static.viewPassword ? eyeSlash : eye}
+                  onclick={() => {
+                    this.Static.viewPassword = !this.Static.viewPassword
+                  }}
+                />
               </div>
               <div class="authorization-form__agree">
                 <span>
