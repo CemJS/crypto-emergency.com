@@ -12,7 +12,51 @@ const idbGet = async function (table, key) {
     return await idb[table].get(key)
 }
 
-export { uuidv4, moment }
+const dateFormat = function (data, type) {
+    if (!data) {
+        return
+    }
+
+    moment.locale("ru");
+    data = data.replace(' ', 'T')
+    switch (type) {
+        case "now": 
+        let secondsBefor = Math.round(
+            (Number(moment().format("x")) - Number(moment(data).format("x"))) / 1000
+        );
+        if (secondsBefor < 86400) {
+            return moment(data).fromNow();
+        } else {
+            return moment(data).format("DD MMMM YYYY");
+        };
+        case "time":
+            return moment(data).format('YYYY-MM-DD HH:mm')
+        case "chatdate":
+            return moment(data).format("dd, D MMM");
+        case "course":
+            return moment(data).format("D MMMM");
+        case "chattime":
+            let secondsBefore = Math.round(
+                (Number(moment().format("x")) - Number(moment(data).format("x"))) / 1000
+            );
+            return moment(data).format("HH:mm");
+            case "chatlist":
+                let secondBefore = Math.round(
+                    (Number(moment().format("x")) - Number(moment(data).format("x"))) / 1000
+                );
+                if (secondBefore < 86400) {
+                    return moment(data).format("HH:mm");
+                } else if (secondBefore < 604800) {
+                    return moment(data).format("dddd");
+                } else {
+                    return moment(data).format("DD.MM.YY");
+                };
+            default:
+                return moment(data).format("YYYY-MM-DD");
+    }
+}
+
+export { uuidv4, dateFormat }
 
 export const loader = async function (Variable) {
     if (this.Variable) {
