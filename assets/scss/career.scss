@@ -151,6 +151,23 @@ $professionsBack: (
         position: relative;
         max-width: 255px;
 
+        .employment_points {
+          position: absolute;
+          top: 18px;
+          left: 45px;
+          transform: translateY(-50%);
+          display: flex;
+          justify-content: space-between;
+          gap: 5px;
+
+          &_item {
+            height: 2px;
+            width: 5px;
+            // border-radius: $ellipse;
+            background: $fioletFill_gradient;
+          }
+        }
+
         &::before {
           content: '';
           position: absolute;
@@ -205,6 +222,16 @@ $professionsBack: (
       gap: 25px;
       transition: 1s;
       cursor: pointer;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 0%;
+        z-index: -1;
+      }
 
       &_image {
         display: block;
@@ -233,9 +260,18 @@ $professionsBack: (
       }
 
       &:hover {
+        transition: 1s;
         background: $fioletBlue_gradient;
         border: 1px solid $fiolet;
+
+        &::before {
+          top: 0;
+          height: 100%;
+        }
       }
+
+
+
     }
   }
 
@@ -623,5 +659,13 @@ $professionsBack: (
 
       }
     }
+  }
+}
+
+
+@keyframes fadeHover {
+  0% {
+    opacity: 0;
+    background: $fioletBlue_gradient;
   }
 }

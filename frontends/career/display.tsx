@@ -102,6 +102,26 @@ export const display = function () {
                 employment.map((item, index) => {
                   return (
                     <div class="employment_item">
+                      <div class="employment_points">
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                      </div>
                       <span>{`0${index + 1}`}</span>
                       <p>{item.text}</p>
                     </div>
@@ -197,8 +217,20 @@ export const display = function () {
               </div>
 
 
-              <div class="f-center pt-25">
-                <button class="btn btn_gradient">
+              <div class="f-center mt_25">
+                <button
+                  class="btn btn_gradient"
+                  onclick={() => {
+                    this.Fn.initOne({
+                      name: "modalMessage", ifOpen: (front) => {
+                        // console.log('=9e3bb6=', front)
+                        setTimeout(() => {
+                          front.clearData()
+                        }, 500);
+                      }
+                    })
+                  }}
+                >
                   <span>Откликнуться</span>
                 </button>
               </div>
@@ -263,7 +295,7 @@ export const display = function () {
                   JSX
                 </div>
               </div>
-              <div class="f-center pt-25">
+              <div class="f-center mt_25">
                 <button class="btn btn_gradient">
                   <span>Откликнуться</span>
                 </button>
@@ -332,7 +364,7 @@ export const display = function () {
                 </div>
               </div>
 
-              <div class="f-center pt-25">
+              <div class="f-center mt_25">
                 <button class="btn btn_gradient">
                   <span>Откликнуться</span>
                 </button>
@@ -394,7 +426,7 @@ export const display = function () {
                   REST
                 </div>
               </div>
-              <div class="f-center pt-25">
+              <div class="f-center mt_25">
                 <button class="btn btn_gradient">
                   <span>Откликнуться</span>
                 </button>
@@ -458,7 +490,7 @@ export const display = function () {
                   Bash
                 </div>
               </div>
-              <div class="f-center pt-25">
+              <div class="f-center mt_25">
                 <button class="btn btn_gradient">
                   <span>Откликнуться</span>
                 </button>
@@ -527,7 +559,7 @@ export const display = function () {
                   App Store
                 </div>
               </div>
-              <div class="f-center pt-25">
+              <div class="f-center mt_25">
                 <button class="btn btn_gradient">
                   <span>Откликнуться</span>
                 </button>
@@ -596,7 +628,7 @@ export const display = function () {
                   Web3
                 </div>
               </div>
-              <div class="f-center pt-25">
+              <div class="f-center mt_25">
                 <button class="btn btn_gradient">
                   <span>Откликнуться</span>
                 </button>
@@ -683,7 +715,7 @@ export const display = function () {
                   Google
                 </div>
               </div>
-              <div class="f-center pt-25">
+              <div class="f-center mt_25">
                 <button class="btn btn_gradient">
                   <span>Откликнуться</span>
                 </button>

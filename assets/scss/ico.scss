@@ -17,13 +17,58 @@
     filter: blur(250px);
   }
 
-  // &_inner {}
-
   &_tabs {
     display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: $borderR;
+    margin: 15px 0;
+    position: relative;
 
-    // &_item {
-    // }
+    &_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 15px;
+      position: relative;
+      z-index: 2;
+      border-radius: $borderR;
+      cursor: pointer;
+      transition: .5s;
+      height: 60px;
+      width: $tabItemIco;
+      transition: all ease-in-out 0.35s;
+
+      span {
+        font-size: 18px;
+        transition: all ease-in-out 0.35s;
+      }
+
+      &_active {
+        span {
+          transition: all ease-in-out 0.35s;
+          font-weight: 700;
+        }
+      }
+
+      &:hover {
+        span {
+          font-weight: 700;
+          transition: all ease-in-out 0.35s;
+        }
+      }
+
+    }
+
+    &_slider {
+      position: absolute;
+      height: 60px;
+      width: $tabItemIco;
+      z-index: 1;
+      box-shadow: 0 0 10px 1px rgba(221, 221, 221, 0.5);
+      border-radius: $borderR;
+      transition: all ease-in-out 0.35s;
+      left: 0;
+    }
   }
 
   &_list {
@@ -60,14 +105,32 @@
 
       &_info {
         grid-area: info;
+
+        h5 {
+          font-size: 22px;
+          font-weight: 700;
+          margin: 0 0 15px 0;
+        }
+
+        p {
+          font-size: 18px;
+          line-height: 24px;
+          margin: 0;
+          -webkit-line-clamp: 3;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          margin-right: 15px;
+        }
       }
 
       &_date {
+        font-size: 14px;
         display: flex;
         justify-content: space-between;
         grid-area: date;
+        margin-right: 15px;
       }
-
 
       &:hover {
         background: transparent;
@@ -75,5 +138,48 @@
         transform: scale(0.98);
       }
     }
+  }
+
+  &_tba {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.05em;
+
+    img {
+      width: 15px;
+      margin-right: 5px;
+    }
+  }
+
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeInRight;
+  -moz-animation-name: fadeInRight;
+  -o-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

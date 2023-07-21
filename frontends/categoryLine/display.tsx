@@ -3,13 +3,18 @@ import { Cemjsx } from "cemjs-all"
 let x1, y1 = null;
 
 export const display = function () {
+
   if (this.Static.records) {
     return (
       <div class="page page__container">
-        <div class="category-wrap category-wrap_shadow-left category-wrap_shadow-right">
+        <div class="category-wrap">
           <ul
             class="category-carousel"
             ref="categoryCarousel"
+            // onclick={() => {
+            //   console.log('=4a322c=', this.Static.icoList)
+            //   this.init()
+            // }}
             onmousedown={(e) => {
               this.Static.isDrag = true;
               this.Ref.categoryCarousel.classList.add("dragging");
@@ -78,6 +83,11 @@ export const display = function () {
                   draggable="false"
                   onclick={() => {
                     this.cross({ event: "press", name: item.name })
+                    this.Static.icoList.classList.add('animated');
+                    setTimeout(() => {
+                      this.Static.icoList.classList.remove('animated');
+                    }, 500)
+                    this.init()
                   }}>
                   <span>{item.name}</span>
                 </li>

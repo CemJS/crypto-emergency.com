@@ -6,7 +6,7 @@ export const display = function () {
   return (
     <section class="startaps">
       <div class="wrapper">
-        <div class="startaps_inner">
+        <div class="startaps_inner" ref="startapsList">
           {
             this.Static.records.map((item, index) => {
               return (
