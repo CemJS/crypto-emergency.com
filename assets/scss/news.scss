@@ -1,11 +1,27 @@
 @import 'utils/variables.scss';
 
 .news {
+  padding: 0 30px;
+  padding-bottom: 80px;
+
+  @media (max-width: 1239px) {
+    padding: 0 15px 80px 15px;
+  }
 
   &__inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
+
+    @media (max-width: 875px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 15px;
+    }
+
+    @media (max-width: 650px) {
+      grid-template-columns: 1fr;
+      grid-gap: 7px;
+    }
 
     &::before {
       content: "";
@@ -32,6 +48,15 @@
     border: 1px solid transparent;
     cursor: pointer;
 
+    @media (max-width: 750px) {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      grid-template-rows: 72px auto;
+      gap: 10px;
+      padding: 15px;
+      height: 122px;
+    }
+
     &:hover {
       background: transparent;
       border: 1px solid rgba(150, 150, 150, 0.5);
@@ -39,9 +64,20 @@
     }
 
     &_image {
+      overflow: hidden;
+
       img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
+
+        @media (max-width: 750px) {
+          width: 72px;
+          height: 72px;
+          margin-bottom: 0;
+          margin-right: 12px;
+          border-radius: 5px;
+        }
       }
     }
 
@@ -55,6 +91,17 @@
       font-size: 18px;
       font-weight: 700;
       align-self: flex-start;
+
+      @media (max-width: 875px) {
+        font-size: 16px;
+      }
+
+      @media (max-width: 750px) {
+        height: auto;
+        padding-top: 0;
+        font-size: 14px;
+        -webkit-line-clamp: 4;
+      }
     }
 
     &_description {
@@ -66,6 +113,14 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       align-self: flex-end;
+
+      @media (max-width: 875px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 750px) {
+        display: none;
+      }
     }
 
     &_statistic {
@@ -74,6 +129,10 @@
       justify-content: space-between;
       color: #838BA3;
       font-size: 13px;
+
+      @media (max-width: 750px) {
+        grid-column: 1 / span 2;
+      }
 
       img {
         filter: invert(60%) sepia(11%) saturate(674%) hue-rotate(187deg) brightness(91%) contrast(81%);
