@@ -26,7 +26,6 @@ const sendAuthorization = async function (e) {
 }
 
 export const display = function () {
-  console.log('=0b660d=', phone)
   return (
     <div class="modal modal_open">
       <div class="modal__black"
@@ -149,7 +148,14 @@ export const display = function () {
                 </span>
               </div>
               <div class="authorization-form__forgot">
-                <a class="agree" href="">Забыли пароль?</a>
+                <button class="agree"
+                  onclick={() => {
+                    this.clearData()
+                    this.Fn.initOne({
+                      name: "modalRecoverPass"
+                    })
+                  }}
+                >Забыли пароль?</button>
               </div>
             </div>
             <div class="authorization-form__footer">

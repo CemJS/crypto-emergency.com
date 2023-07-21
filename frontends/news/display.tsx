@@ -26,7 +26,7 @@ export const display = function () {
                       <img src={comments} alt="Комментарии." />
                       {item.statistic.comments}
                     </span>
-                    <span>{this.Services.functions.moment(item.showDate).format("YYYY-MM-DD")}</span>
+                    <span>{this.Services.functions.dateFormat(item.showDate)}</span>
                   </div>
                 </div>
               )
