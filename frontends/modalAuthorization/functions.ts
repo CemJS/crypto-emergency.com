@@ -13,7 +13,6 @@ const fn = {
     this.Static.isValid = true
     
     this.init()
-    return this.Static.isValid
   }
 }
 

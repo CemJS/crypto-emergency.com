@@ -27,6 +27,10 @@ $indents: (
   70: 70px,
 );
 
+.hidden{
+  display: none!important;
+}
+
 // padding, margin
 @each $index,
 $indent in $indents {
