@@ -13,7 +13,7 @@ export const display = function () {
       <div class="modal__container reset-password">
         <header class="modal__header reset-password__header">
           <h2 class="registration__title">
-            Восстановение пароля
+            Восстановление пароля
           </h2>
           <button
             class="modal__close"
