@@ -1,16 +1,19 @@
 import { Cemjsx } from "cemjs-all"
+import user from '@svg/modalMessage/icon_user.svg'
+import email from '@svg/modalMessage/icon_email.svg'
+
 
 export const display = function () {
   return (
-    <div 
+    <div
       class="modalWindow"
-      onclick={(e)=>{
-        if(e.target === this.Ref.modalBody){
-          setTimeout(()=>{
+      onclick={(e) => {
+        if (e.target === this.Ref.modalBody) {
+          setTimeout(() => {
             this.clearData()
           }, 5)
         }
-      }}  
+      }}
     >
       <div class="modalWindow_body" ref="modalBody">
         <div class="modalWindow_content">
@@ -20,13 +23,27 @@ export const display = function () {
             <span class="modalWindow_header_subtitle">Напиши нам, и мы с Вами свяжемся!</span>
           </header>
           <main class="modalWindow_main">
-            <div>
-              <label>Ваше имя</label>
-              <input placeholder="Ваше имя"></input>
+            <div class="modalWindow_field">
+              <input type="text"></input>
+              <div class="modalWindow_field_labelLine">
+                <img src={user}></img>
+                <span>Ваше имя</span>
+              </div>
+            </div>
+            <div class="modalWindow_field">
+              <input type="text"></input>
+              <div class="modalWindow_field_labelLine">
+                <img src={email}></img>
+                <span>Email</span>
+              </div>
             </div>
           </main>
           <footer class="modalWindow_footer">
-            <button>Отправить</button>
+            <div class="f-center">
+              <button class="btn btn_gradient">
+                <span>Отправить</span>
+              </button>
+            </div>
           </footer>
         </div>
       </div>
