@@ -55,8 +55,8 @@ export const display = function () {
           <div class="authorization__mobileoreemail">
             <button class={["button", "button_toggler", this.Static.buttonActive == "email" ? "button_active" : null]}
               onclick={() => {
-                this.Static.buttonActive = "email"
                 this.Static.email.value = ""
+                this.Static.buttonActive = "email"
               }}
             >
               E-mail
@@ -64,8 +64,8 @@ export const display = function () {
             <button class={["button", "button_toggler", this.Static.buttonActive == "phone" ? "button_active" : null]}
               style="margin-right: 0"
               onclick={() => {
-                this.Static.buttonActive = "phone"
                 this.Static.phone.value = ""
+                this.Static.buttonActive = "phone"
               }}
             >
               Телефон
@@ -94,6 +94,7 @@ export const display = function () {
                         <input
                           ref="email"
                           type="text"
+                          value={this.Static.email.value}
                           placeholder={this.Static.email.placeholder}
                           style={this.Ref.email?.value.length > 0 && this.Static.email.valid == false ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : null}
                           oninput={(e) => {
@@ -102,6 +103,7 @@ export const display = function () {
                             } else {
                               this.Static.email.valid = false
                             }
+                            this.Static.email.value = e.target.value
                             this.fn("checkForm")
                             this.init()
                           }}
@@ -151,7 +153,25 @@ export const display = function () {
                         </div>
                       </div>
                       <div class="phone__number">
-                        <input ref="phone" type="number" placeholder="99900000000" />
+                        <input 
+                          ref="phone" 
+                          type="number" 
+                          placeholder="99900000000"  
+                          // value={this.Static.phone.value}
+                          style={this.Static.phone?.value.length < 6 &&  this.Static.phone?.value.length > 16 ? "background: red" : null}
+                          // style={this.Static.phone.value.length < 6 &&  this.Static.phone.value.length > 16 && this.Static.phone.valid == false ? "border-color: red" : this.Static.phone.valid == true ? "border-color: green" : null}
+                          oninput={(e) => {
+                            if (e.target.value.lenght > 6 &&  e.target.value.lenght < 16) {
+                              this.Static.phone.valid = true
+                            } else {
+                              this.Static.phone.valid = false
+                            }
+                            this.Static.phone.value = e.target.value
+                            console.log('=29a6e1=',this.Static.phone)
+                            this.fn("checkForm")
+                            this.init()
+                          }}
+                        />
                       </div>
                     </div>
                 }
