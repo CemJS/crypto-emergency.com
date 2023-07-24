@@ -53,6 +53,14 @@
         "news",
         "footer"
       ]
+    },
+    {
+      "url": "/career",
+      "front": [
+        "header",
+        "career",
+        "footer"
+      ]
     }
   ],
   "hook": {
