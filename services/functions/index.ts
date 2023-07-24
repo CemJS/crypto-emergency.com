@@ -1,6 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { openDB } from 'idb';
 import moment from 'moment';
+import validator from 'validator'
+import { validateForms } from './validateForms';
 
 let idb: any = {}
 
@@ -64,7 +66,7 @@ const dateFormat = function (data, type) {
   }
 }
 
-export { uuidv4, dateFormat, validateEmail }
+export { uuidv4, dateFormat, validateEmail, validateForms, validator }
 
 export const loader = async function (Variable) {
   if (this.Variable) {

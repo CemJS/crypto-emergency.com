@@ -14,7 +14,8 @@
     "http-proxy": "^1.18.1",
     "idb": "^7.1.1",
     "moment": "^2.29.4",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
