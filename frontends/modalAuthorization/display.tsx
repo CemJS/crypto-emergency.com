@@ -56,6 +56,7 @@ export const display = function () {
             <button class={["button", "button_toggler", this.Static.buttonActive == "email" ? "button_active" : null]}
               onclick={() => {
                 this.Static.buttonActive = "email"
+                this.Static.email.value = ""
               }}
             >
               E-mail
@@ -64,6 +65,7 @@ export const display = function () {
               style="margin-right: 0"
               onclick={() => {
                 this.Static.buttonActive = "phone"
+                this.Static.phone.value = ""
               }}
             >
               Телефон
@@ -86,7 +88,7 @@ export const display = function () {
                     ?
                     <div>
                       <div class="error">
-                        <span style={this.Ref.email?.value.length > 0 && this.Static.email.valid == false ? "display: block" : "display: none"}>Неверный e-mail</span>
+                        <span style={this.Ref.email?.value.length > 1 && this.Static.email.valid == false ? "display: block" : "display: none"}>Неверный e-mail</span>
                       </div>
                       <div class="authorization-form__email_input email">
                         <input
@@ -105,7 +107,6 @@ export const display = function () {
                           }}
                         />
                       </div>
-
                     </div>
                     :
                     <div class="authorization-form__phone">
@@ -150,7 +151,7 @@ export const display = function () {
                         </div>
                       </div>
                       <div class="phone__number">
-                        <input type="text" placeholder="99900000000" />
+                        <input ref="phone" type="number" placeholder="99900000000" />
                       </div>
                     </div>
                 }
@@ -161,11 +162,13 @@ export const display = function () {
                   ref="password"
                   type={this.Static.viewPassword ? "text" : "password"}
                   placeholder={this.Static.pass.placeholder}
-                  style={this.Static.pass.value.length > 0 ? "border-color: green" : null}
+                  style={this.Static.pass.value.length > 1 ? "border-color: green" : null}
                   oninput={(e) => {
                     this.Static.pass.value = e.target.value
                     if (this.Static.pass.value.length > 1) {
                       this.Static.pass.valid = true
+                    } else {
+                      this.Static.pass.valid = false
                     }
                     this.fn("checkForm")
                     this.init()
