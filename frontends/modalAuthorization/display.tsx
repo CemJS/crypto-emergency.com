@@ -27,6 +27,7 @@ const sendAuthorization = async function (e) {
 }
 
 export const display = function () {
+  console.log('=a75bd8=', this.Ref)
   return (
     <div class="modal modal_open">
       <div class="modal__black"
@@ -56,6 +57,7 @@ export const display = function () {
             <button class={["button", "button_toggler", this.Static.buttonActive == "email" ? "button_active" : null]}
               onclick={() => {
                 this.Static.email.value = ""
+                this.Static.phone.value = ""
                 this.Static.buttonActive = "email"
               }}
             >
@@ -65,6 +67,7 @@ export const display = function () {
               style="margin-right: 0"
               onclick={() => {
                 this.Static.phone.value = ""
+                this.Static.email.value = ""
                 this.Static.buttonActive = "phone"
               }}
             >
@@ -88,7 +91,7 @@ export const display = function () {
                     ?
                     <div>
                       <div class="error">
-                        <span style={this.Ref.email?.value.length > 1 && this.Static.email.valid == false ? "display: block" : "display: none"}>Неверный e-mail</span>
+                        <span style={this.Static.email?.value.length > 1 && this.Static.email.valid == false ? "display: block" : "display: none"}>Неверный e-mail</span>
                       </div>
                       <div class="authorization-form__email_input email">
                         <input
@@ -96,7 +99,7 @@ export const display = function () {
                           type="text"
                           value={this.Static.email.value}
                           placeholder={this.Static.email.placeholder}
-                          style={this.Ref.email?.value.length > 0 && this.Static.email.valid == false ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : null}
+                          style={this.Static.email?.value.length > 0 && this.Static.email.valid == false ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : null}
                           oninput={(e) => {
                             if (this.Services.functions.validateEmail(e.target.value)) {
                               this.Static.email.valid = true
@@ -153,21 +156,21 @@ export const display = function () {
                         </div>
                       </div>
                       <div class="phone__number">
-                        <input 
-                          ref="phone" 
-                          type="number" 
-                          placeholder="99900000000"  
-                          // value={this.Static.phone.value}
-                          style={this.Static.phone?.value.length < 6 &&  this.Static.phone?.value.length > 16 ? "background: red" : null}
+                        <input
+                          ref="phone"
+                          type="number"
+                          placeholder="99900000000"
+                          value={this.Static.phone.value}
+                          style={this.Static.phone?.value.length < 6 || this.Static.phone?.value.length > 16 ? "background: red" : null}
                           // style={this.Static.phone.value.length < 6 &&  this.Static.phone.value.length > 16 && this.Static.phone.valid == false ? "border-color: red" : this.Static.phone.valid == true ? "border-color: green" : null}
                           oninput={(e) => {
-                            if (e.target.value.lenght > 6 &&  e.target.value.lenght < 16) {
+                            if (e.target.value.length > 6 || e.target.value.length < 16) {
                               this.Static.phone.valid = true
                             } else {
                               this.Static.phone.valid = false
                             }
                             this.Static.phone.value = e.target.value
-                            console.log('=29a6e1=',this.Static.phone)
+                            console.log('=29a6e1=', this.Static.phone)
                             this.fn("checkForm")
                             this.init()
                           }}
