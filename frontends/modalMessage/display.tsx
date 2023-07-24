@@ -17,21 +17,33 @@ export const display = function () {
     >
       <div class="modalWindow_body" ref="modalBody">
         <div class="modalWindow_content">
-          <button class="modalWindow_button_close">X</button>
+          <button
+            class="modalWindow_button_close"
+            onclick={(e) => {
+              setTimeout(() => {
+                this.clearData()
+              }, 5)
+            }}
+          >X</button>
           <header class="modalWindow_header">
             <h3 class="modalWindow_header_title">Связь с нами</h3>
             <span class="modalWindow_header_subtitle">Напиши нам, и мы с Вами свяжемся!</span>
           </header>
           <main class="modalWindow_main">
-            <div class="modalWindow_field">
-              <input type="text"></input>
+            <div
+              class={["modalWindow_field",]}
+              onclick={() => {
+                console.log('=7ccaa8=', this.Ref.userName.value)
+              }}
+            >
+              <input type="text" ref="userName"></input>
               <div class="modalWindow_field_labelLine">
                 <img src={user}></img>
                 <span>Ваше имя</span>
               </div>
             </div>
             <div class="modalWindow_field">
-              <input type="text"></input>
+              <input type="email" ref="userEmail"></input>
               <div class="modalWindow_field_labelLine">
                 <img src={email}></img>
                 <span>Email</span>

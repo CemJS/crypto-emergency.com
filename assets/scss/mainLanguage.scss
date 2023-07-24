@@ -12,7 +12,7 @@
 
   &__container {
     height: 620px;
-    color: $main_text;
+    color: var(--main_text);
     border-radius: 20px;
   }
 
@@ -23,7 +23,7 @@
     padding: 40px 50px;
     height: 100%;
     overflow-y: auto;
-  
+
     &::-webkit-scrollbar {
       width: 6px;
     }

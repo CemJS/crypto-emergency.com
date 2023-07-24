@@ -22,7 +22,7 @@ $professionsBack: (
 );
 
 .career {
-  background: $primaryBack;
+  background: var(--primaryBack);
   position: relative;
   overflow: hidden;
   padding-bottom: 100px;
@@ -61,7 +61,7 @@ $professionsBack: (
       top: -35%;
       width: 950px;
       height: 950px;
-      background: $fiolet_gradient;
+      background: var(--fiolet_gradient);
       filter: blur(225px);
       z-index: 0;
     }
@@ -70,7 +70,7 @@ $professionsBack: (
       max-width: 600px;
       position: relative;
       z-index: 1;
-      text-shadow: 2px 2px 10px $black;
+      text-shadow: 2px 2px 10px var(--black);
       padding: 150px 0;
     }
 
@@ -93,9 +93,9 @@ $professionsBack: (
 
     .advantages_item {
       padding: 20px;
-      background: $noble_black;
-      border-radius: $borderR;
-      border: 1px solid $black_iris;
+      background: var(--noble_black);
+      border-radius: var(--borderR);
+      border: 1px solid var(--black_iris);
 
       &_circle {
         display: flex;
@@ -104,8 +104,8 @@ $professionsBack: (
         width: 80px;
         height: 80px;
         padding: 20px;
-        border-radius: $ellipse;
-        background: $black_iris;
+        border-radius: var(--ellipse);
+        background: var(--black_iris);
         margin-bottom: 20px;
       }
 
@@ -132,7 +132,7 @@ $professionsBack: (
         p {
           font-size: 14px;
           line-height: 20px;
-          color: $secondary_text;
+          color: var(--secondary_text);
         }
       }
 
@@ -163,8 +163,8 @@ $professionsBack: (
           &_item {
             height: 2px;
             width: 5px;
-            // border-radius: $ellipse;
-            background: $fioletFill_gradient;
+            // border-radius: var(--ellipse);
+            background: var(--fioletFill_gradient);
           }
         }
 
@@ -175,13 +175,13 @@ $professionsBack: (
           left: 0;
           width: 25px;
           height: 25px;
-          border-radius: $ellipse;
-          background: $fioletFill_gradient;
+          border-radius: var(--ellipse);
+          background: var(--fioletFill_gradient);
         }
 
         span,
         p {
-          background: $text_gradient;
+          background: var(--text_gradient);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           font-weight: 700;
@@ -213,9 +213,9 @@ $professionsBack: (
     }
 
     .professions_item {
-      background: $noble_black;
-      border-radius: $borderR;
-      border: 1px solid $black_iris;
+      background: var(--noble_black);
+      border-radius: var(--borderR);
+      border: 1px solid var(--black_iris);
       padding: 15px 30px;
       display: flex;
       align-items: center;
@@ -261,8 +261,8 @@ $professionsBack: (
 
       &:hover {
         transition: 1s;
-        background: $fioletBlue_gradient;
-        border: 1px solid $fiolet;
+        background: var(--fioletBlue_gradient);
+        border: 1px solid var(--fiolet);
 
         &::before {
           top: 0;
@@ -283,7 +283,7 @@ $professionsBack: (
 
     .vacancy {
       background: #2B3040;
-      border-radius: $borderR;
+      border-radius: var(--borderR);
       border: 1px solid #353C50;
       padding: 25px;
 
@@ -302,7 +302,7 @@ $professionsBack: (
       &_active {
         text-transform: uppercase;
         font-weight: 800;
-        background: $green_gradient;
+        background: var(--green_gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -315,13 +315,13 @@ $professionsBack: (
         &_item {
           border: 1px solid #353C50;
           background: #353C50;
-          border-radius: $borderR;
+          border-radius: var(--borderR);
           padding: 15px;
 
           &_text {
             padding-bottom: 10px;
             font-size: 14px;
-            color: $secondary_text;
+            color: var(--secondary_text);
           }
         }
 
@@ -666,6 +666,6 @@ $professionsBack: (
 @keyframes fadeHover {
   0% {
     opacity: 0;
-    background: $fioletBlue_gradient;
+    background: var(--fioletBlue_gradient);
   }
 }

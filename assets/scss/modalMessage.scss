@@ -72,8 +72,8 @@ h3 {
       font-size: 16px;
       padding: 0 30px;
       line-height: 50px;
-      border-radius: $borderR;
-      border: 1px solid $secondary_text;
+      border-radius: var(--borderR);
+      border: 1px solid var(--secondary_text);
       background: transparent;
       transition: 0.1s ease;
       z-index: 5;
@@ -89,21 +89,31 @@ h3 {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: $secondary_text;
+      color: var(--secondary_text);
     }
 
     input:focus {
-      color: $akebi_purple;
-      border: 1px solid $akebi_purple;
+      color: var(--akebi_purple);
+      border: 1px solid var(--akebi_purple);
     }
 
 
     input:focus+.modalWindow_field_labelLine {
-      color: $akebi_purple;
+      color: var(--akebi_purple);
       height: 30px;
       line-height: 30px;
       transform: translate(-15px, -16px) scale(0.88);
       z-index: 5;
+    }
+
+    .field_fill {
+      .modalWindow_field_labelLine {
+        color: var(--akebi_purple);
+        height: 30px;
+        line-height: 30px;
+        transform: translate(-15px, -16px) scale(0.88);
+        z-index: 5;
+      }
     }
 
   }
