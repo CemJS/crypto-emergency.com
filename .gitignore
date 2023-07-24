@@ -1,4 +1,6 @@
 node_modules
 public/assets
 .env
+microFrontends.json
+services.json
 package-lock.json
