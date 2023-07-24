@@ -27,8 +27,8 @@ $indents: (
   70: 70px,
 );
 
-.hidden{
-  display: none!important;
+.hidden {
+  display: none !important;
 }
 
 // padding, margin
@@ -91,20 +91,44 @@ $indent in $indents {
   height: 100vh;
 }
 
+// elements beauty
+.cube {
+  position: fixed;
+  width: 52px;
+  height: 43px;
+  filter: blur(1px);
+}
+
+.triangle {
+  position: fixed;
+  width: 59px;
+  height: 58px;
+  filter: blur(1px);
+}
+
+.cylinder {
+  position: fixed;
+  width: 45px;
+  height: 37px;
+  filter: blur(1px);
+}
+
+// elements beauty
+
 // different buttons
 .btn_gradient {
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  color: $main_text;
+  color: var(--main_text);
   border: none;
   outline: none;
   position: relative;
   z-index: 2;
   padding: 15px 30px;
-  border-radius: $borderR;
+  border-radius: var(--borderR);
   background-color: transparent;
-  background-image: $btn_gradient;
+  background-image: var(--btn_gradient);
   background-size: 100% 2px;
   background-position: 0 100%, 0 0;
   background-repeat: no-repeat;
@@ -121,7 +145,7 @@ $indent in $indents {
     width: 21px;
     border: 2px solid #2C66B8;
     border-right: none;
-    border-radius: $borderR 0 0 $borderR;
+    border-radius: var(--borderR) 0 0 var(--borderR);
   }
 
   &:after {
@@ -129,7 +153,7 @@ $indent in $indents {
     border-left: none;
     left: auto;
     right: 0;
-    border-radius: 0 $borderR $borderR 0;
+    border-radius: 0 var(--borderR) var(--borderR) 0;
   }
 }
 
@@ -139,6 +163,7 @@ $indent in $indents {
 
   &__container {
     padding-top: 70px;
+    padding-bottom: 100px;
   }
 }
 

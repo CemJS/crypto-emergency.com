@@ -48,7 +48,7 @@ const sections = [
   {
     category: "Обменники",
     img: exchanges,
-    url: "#"
+    url: "/list-exchanges"
   },
   {
     category: "Пользователи",
@@ -276,7 +276,7 @@ export const display = function () {
                   style={!collapseBodyShow.three ? null : "max-height: 200px"}
                 >
                   <div class="accordion__body">
-                    <a class="accordion__link">
+                    <a class="accordion__link" href="/user-agreement">
                       Пользовательское соглашение
                     </a>
                     <a class="accordion__link">

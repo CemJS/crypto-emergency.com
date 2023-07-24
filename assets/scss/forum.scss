@@ -1,7 +1,7 @@
 @import 'utils/variables.scss';
 
 .footer {
-  
+
   &__container {
     position: fixed;
     display: flex;
@@ -97,21 +97,22 @@
 
 
 
-.text_img{
+.text_img {
   // display: flex;
   // align-items: center;
   gap: 5%;
   // padding: 0 2.5%;
   margin-bottom: 100px;
 }
+
 // .background_logo img{
 //   // display: flex;
 //   // justify-content: center;
 //   width: 100%;
 // }
 
-.forum{
-  &_preview{
+.forum {
+  &_preview {
     height: 500px;
     background: url('./images/forum/bg4.png');
     margin-top: 100px;
@@ -119,7 +120,8 @@
     background-repeat: no-repeat;
     background-position: center;
   }
-  &_preview_about h1{
+
+  &_preview_about h1 {
     position: absolute;
     bottom: 50%;
     font-size: 400%;
@@ -130,34 +132,36 @@
 
 
 
-h4{
+h4 {
   margin: 25px 0;
   text-align: center;
   font-size: 300%;
 }
 
-.items_about{
+.items_about {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
-.items_about .head{
+.items_about .head {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 
 }
-.items_about .head img{
+
+.items_about .head img {
   margin-right: 10px;
   width: 55px;
 }
-.items_about .head h5{
+
+.items_about .head h5 {
   font-size: 130%;
 }
 
 
-.item_about{
+.item_about {
   background: #444B5F;
   padding: 10px;
   border-radius: 10px;
@@ -167,7 +171,7 @@ h4{
   border: solid 5px transparent;
   position: relative;
 
-  &::before{
+  &::before {
     position: absolute;
     content: '';
     transition: 0.5s;
@@ -175,8 +179,8 @@ h4{
 
 }
 
-.item_about:hover{
-  &::before{
+.item_about:hover {
+  &::before {
     top: 0;
     left: 0;
     bottom: 0;
@@ -189,9 +193,9 @@ h4{
 }
 
 
-.event_list{
+.event_list {
   margin-bottom: 100px;
-  
+
 }
 
 .tabs {
@@ -201,61 +205,66 @@ h4{
   // border-bottom: 1px solid #8846D3;
 }
 
-.tabs span{
+.tabs span {
   padding: 20px;
-  background:#444B5F;
+  background: #444B5F;
   border-bottom: 1px solid #8846D3;
 }
 
 .tabs span:active {
   background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
 }
-.tabs .active_year{
-  border-right: 1px solid #8846D3;;
+
+.tabs .active_year {
+  border-right: 1px solid #8846D3;
+  ;
   background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
-  
+
 }
-.tabs .tab_year{
+
+.tabs .tab_year {
   border-top-right-radius: 10px;
 }
 
-.speakers{
+.speakers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background: #444B5F;
   padding: 10px;
   border-radius: 0px 0px 10px 10px;
 }
-.speaker{
+
+.speaker {
   display: flex;
   flex-direction: column;
   border-radius: 50%;
   align-items: center;
   padding: 15px;
 
-  &_about{
+  &_about {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
 
-  &_about p{
+  &_about p {
     text-align: center;
     font-size: 1.1rem;
   }
 }
 
-.photo img{
+.photo img {
   width: 318px;
   border-radius: 50%;
   border: 2px solid #00D5BE;
-  
+
 }
+
 // .show_all {
 
 // }
 
-.partners_list{
+.partners_list {
   display: grid;
   grid-template-columns: calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px);
   background: #444B5F;
@@ -263,7 +272,7 @@ h4{
   gap: 10px;
 
 
-  &_item{
+  &_item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -273,7 +282,8 @@ h4{
     border: 1px solid #8846D3;
     border-radius: 10px;
   }
-  &_item img{
+
+  &_item img {
     max-width: 82%;
     max-height: 100% !important;
     margin: auto;
@@ -283,32 +293,34 @@ h4{
 
 
 
-.page{
-  padding-bottom: 65px;
-}
+// .page{
+//   padding-bottom: 65px;
+// }
 
 @media(max-width: 992px) {
-  .speakers{
+  .speakers {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(max-width: 767px) {
+    .partners_list {
+      grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+    }
+
+    .speakers {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .items_about {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
 }
 
-@media(max-width: 767px) {
-  .partners_list {
-    grid-template-columns: calc(50% - 5px) calc(50% - 5px);
-  }
-  .speakers{
+@media(max-width: 464px) {
+  .items_about {
     grid-template-columns: repeat(1, 1fr);
-  }
-  }
-  .items_about{
-    grid-template-columns: repeat(2, 1fr);
-    gap:15px;
+    gap: 15px;
   }
 }
-
- @media(max-width: 464px) {
-  .items_about{
-    grid-template-columns: repeat(1, 1fr);
-    gap:15px;
-  }
- }

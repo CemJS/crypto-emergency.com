@@ -11,7 +11,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: $main_gradient;
+    background: var(--main_gradient);
     height: 400px;
     width: 400px;
     filter: blur(250px);
@@ -20,7 +20,7 @@
   &_tabs {
     display: flex;
     background: rgba(0, 0, 0, 0.3);
-    border-radius: $borderR;
+    border-radius: var(--borderR);
     margin: 15px 0;
     position: relative;
 
@@ -31,11 +31,11 @@
       padding: 20px 15px;
       position: relative;
       z-index: 2;
-      border-radius: $borderR;
+      border-radius: var(--borderR);
       cursor: pointer;
       transition: .5s;
       height: 60px;
-      width: $tabItemIco;
+      width: var(--tabItemIco);
       transition: all ease-in-out 0.35s;
 
       span {
@@ -62,10 +62,10 @@
     &_slider {
       position: absolute;
       height: 60px;
-      width: $tabItemIco;
+      width: var(--tabItemIco);
       z-index: 1;
       box-shadow: 0 0 10px 1px rgba(221, 221, 221, 0.5);
-      border-radius: $borderR;
+      border-radius: var(--borderR);
       transition: all ease-in-out 0.35s;
       left: 0;
     }
@@ -75,7 +75,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    gap: $borderR;
+    gap: var(--borderR);
 
     &_item {
       position: relative;
@@ -83,9 +83,9 @@
       grid-template-columns: 20% 80%;
       background: rgba(255, 255, 255, 0.09);
       box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
-      border-radius: $borderR;
-      padding: $borderR;
-      gap: $borderR;
+      border-radius: var(--borderR);
+      padding: var(--borderR);
+      gap: var(--borderR);
       overflow: hidden;
       transition: 0.5s;
       border: 1px solid transparent;
@@ -99,7 +99,7 @@
 
         img {
           width: 100%;
-          border-radius: $borderR;
+          border-radius: var(--borderR);
         }
       }
 
@@ -134,7 +134,7 @@
 
       &:hover {
         background: transparent;
-        border: 1px solid $border;
+        border: 1px solid var(--border);
         transform: scale(0.98);
       }
     }
