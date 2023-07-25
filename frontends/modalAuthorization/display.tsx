@@ -5,29 +5,7 @@ import eyeSlash from "@svg/modalRegistration/eye-slash.svg"
 import blank from "@images/modalAuthorization/blank.gif"
 import phone from 'json/phoneCodes.json'
 
-const sendAuthorization = async function (e) {
-  e.preventDefault();
-  if (!this.Static.isValid) {
-    return false
-  }
-
-  let data = {
-    pass: this.Static.pass.value,
-    email: "",
-    phone: "",
-    code: ""
-  };
-  if (this.Static.buttonActive == "email") {
-    data.email = this.Static.email.value
-  } else {
-    data.phone = `+${this.Static.phone.value}`
-    // data.phone = `+${Static.phone.code}${this.Static.phone.value}`
-    // data.code = Static.phone.abbr
-  }
-}
-
 export const display = function () {
-  // console.log('=a75bd8=', this.Ref)
   return (
     <div class="modal modal_open">
       <div class="modal__black"
@@ -38,8 +16,8 @@ export const display = function () {
         }}
       />
       <div class="modal__container authorization">
-        <header class="modal__header authorization__header">
-          <h2 class="authorization__title">
+        <header class="modal__header">
+          <h2>
             Авторизация
           </h2>
           <button
