@@ -221,15 +221,10 @@ h4 {
   background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
 
 }
-<<<<<<< Updated upstream
-
-.tabs .tab_year {
-=======
 .tabs .tab:first-child{
   border-top-left-radius: 10px;
 }
 .tabs .tab:last-child{
->>>>>>> Stashed changes
   border-top-right-radius: 10px;
 }
 
@@ -255,12 +250,8 @@ h4 {
   align-items: center;
   padding: 15px;
 
-<<<<<<< Updated upstream
-  &_about {
-=======
 
   &_about{
->>>>>>> Stashed changes
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -272,16 +263,6 @@ h4 {
   }
 }
 
-<<<<<<< Updated upstream
-.photo img {
-  width: 318px;
-  border-radius: 50%;
-  border: 2px solid #00D5BE;
-
-}
-
-// .show_all {
-=======
 
 .photo img{
   width: 318px;
@@ -289,7 +270,6 @@ h4 {
   border: 2px solid #8846D3;
   position: relative;
 }
->>>>>>> Stashed changes
 
 .show_all{
   background: #444B5F;
