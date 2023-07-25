@@ -30,20 +30,22 @@ export const display = function () {
             <label>E-mail</label>
             <div class="reset-password__form_input">
               <input type="text" placeholder="Введите ваш e-mail"
+                style={this.Static.email?.value.length > 0 && this.Static.email.valid == false ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : null}
                 oninput={(e) => {
                   if (this.Services.functions.validateEmail(e.target.value)) {
-                    this.Static.isValid = true
+                    this.Static.email.valid = true
                     this.Ref.button.disabled = false
                   } else {
-                    this.Static.isValid = false
+                    this.Static.email.valid = false
                   }
+                  this.Static.email.value = e.target.value
                   this.init()
                 }}
               />
             </div>
             <div class="reset-password__form_footer">
               <button ref="button" disabled class={["button", "button_gradient",
-                  !this.Static.isValid ? "button_inactive" : null
+                  !this.Static.email.valid ? "button_inactive" : null
                 ]}
               >
                 <span>Восстановить</span>

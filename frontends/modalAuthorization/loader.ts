@@ -7,7 +7,6 @@ export const loader = function () {
     error: false,
     label: "E-mail",
     placeholder: "Введите ваш E-mail",
-    type: "text",
   }
 
   this.Static.phone = {
