@@ -33,7 +33,6 @@ export const display = function () {
 							onclick={() => {
 								this.Fn.initOne({
 									name: "mainLanguage", ifOpen: (front) => {
-										// console.log('=9e3bb6=', front)
 										setTimeout(() => {
 											front.clearData()
 										}, 500);
@@ -47,7 +46,6 @@ export const display = function () {
 							onclick={() => {
 								this.Fn.initOne({
 									name: "modalAuthorization", ifOpen: (front) => {
-										// console.log('=9e3bb6=', front)
 										setTimeout(() => {
 											front.clearData()
 										}, 500);
@@ -59,7 +57,6 @@ export const display = function () {
 							onclick={() => {
 								this.Fn.initOne({
 									name: "modalRegistration", ifOpen: (front) => {
-										// console.log('=9e3bb6=', front)
 										setTimeout(() => {
 											front.clearData()
 										}, 500);
