@@ -5,7 +5,7 @@ import { listener } from "./listener"
 import { fn } from "./functions"
 
 export const micro: Micro = {
-    name: "ico",
+    name: "listExchange",
     loader,
     display,
     listener,

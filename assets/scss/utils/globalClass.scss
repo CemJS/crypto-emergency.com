@@ -25,6 +25,9 @@ $indents: (
   50: 50px,
   60: 60px,
   70: 70px,
+  80: 80px,
+  90: 90px,
+  100: 100px
 );
 
 .hidden {
@@ -114,6 +117,23 @@ $indent in $indents {
 }
 
 // elements beauty
+
+// text elements
+// h1
+.main-title {
+  font-size: 42px;
+  line-height: 48px;
+  font-weight: 700;
+}
+
+// все остальные
+.general-title {
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: 500;
+}
+
+// text elements
 
 // different buttons
 .btn_gradient {

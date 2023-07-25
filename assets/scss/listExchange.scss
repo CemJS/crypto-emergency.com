@@ -1,0 +1,31 @@
+.listExchange {
+  // padding-top: 100px;
+
+
+
+  &_pagination {
+    display: flex;
+    justify-content: center;
+
+    .pag_list {
+      display: flex;
+      gap: 10px;
+      max-width: 400px;
+      justify-content: space-between;
+
+      &_item {
+        width: 35px;
+        height: 35px;
+        border: none;
+        outline: none;
+        background: transparent;
+        transition: .5s;
+        color: var(--white);
+
+        &:hover {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
