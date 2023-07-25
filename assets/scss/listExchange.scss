@@ -1,7 +1,55 @@
 .listExchange {
-  // padding-top: 100px;
+  padding-bottom: 100px;
+  &::before {
+    content: '';
+    position: fixed;
+    left: -10%;
+    top: -8%;
+    background: url('svg/about/vector_1.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
 
+  &_icon{
+    width: 15px;
+    height: 15px;
+  }
 
+  &_table{
+    width: 100%;
+    border-collapse: collapse;
+
+    &_index{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_head{
+      background: var(--back_opacity);
+    }
+
+    &_row{
+      height: 55px;
+      border-top-left-radius: var(--borderR);
+      border-top-right-radius: var(--borderR);
+      // display: grid;
+      // grid-template-columns: 20px 20px 0.5fr 1fr ;
+    }
+
+    &_body{
+      .listExchange_table_row:not(:last-child){
+        border-bottom: 1px solid var(--border)
+      }
+    }
+
+    &_coins{
+      display: flex;
+    }
+  }
 
   &_pagination {
     display: flex;

@@ -136,17 +136,21 @@ $indent in $indents {
 // text elements
 
 // different buttons
-.btn_gradient {
+.btn{
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
   color: var(--main_text);
   border: none;
   outline: none;
-  position: relative;
-  z-index: 2;
-  padding: 15px 30px;
   border-radius: var(--borderR);
+  padding: 15px 30px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn_gradient {
+  z-index: 2;
   background-color: transparent;
   background-image: var(--btn_gradient);
   background-size: 100% 2px;
@@ -176,6 +180,8 @@ $indent in $indents {
     border-radius: 0 var(--borderR) var(--borderR) 0;
   }
 }
+
+
 
 // different buttons
 
