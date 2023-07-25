@@ -1,6 +1,7 @@
 export const loader = function () {
   this.Static.showAllSpeakers = true;
-  this.Static.tabName = 'CryptoЮГ2023';
+  this.Static.speakersTabName = 'CryptoЮГ2023';
+  this.Static.partnersTabName = 'CryptoЮГ2023'
   // let eventSource = this.eventSource(`CoinsCourse?uuid=${this.Variable.myInfo.uuid}&courseLine=true`)
 
   // eventSource.addEventListener('message', ({ data }) => {

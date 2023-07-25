@@ -74,50 +74,7 @@ interface Course {
   currentCourse: number
   change: number
 }
-const speakers_2 = [
-  {
-    id : 14,
-    photo: speaker14,
-    speaker: 'Сергей Павлович',
-    about_speaker: 'Люди PRO',
-    show: true
-  },
-  {
-    id : 2,
-    photo: speaker2,
-    speaker: 'Андрей Тугарин',
-    about_speaker: 'CEO компании GMT Legal',
-    show: true
-  },
-  {
-    id : 6,
-    photo: speaker6,
-    speaker: 'Вероника Близнец',
-    about_speaker: 'Адвокат, юрист-международник',
-    show: true
-  },
-  {
-    id : 7,
-    photo: speaker7,
-    speaker: 'Mr. Sailer YouTube',
-    about_speaker: 'Блогер журналист',
-    show: true
-  },
-  {
-    id : 29,
-    photo: speaker29,
-    speaker: 'Олег Иванов',
-    about_speaker: 'Серийный предприниматель, инвестор',
-    show: true
-  },
-  {
-    id : 8,
-    photo: speaker8,
-    speaker: 'Валерий Осипов',
-    about_speaker: 'ArtEmotioChain',
-    show: false
-  }
-]
+
 
 const speakers = [
   {   
@@ -125,335 +82,355 @@ const speakers = [
     photo: speaker3,
     speaker: 'Александр Бражников',
     about_speaker: 'Исполнительный директор РАКИБ',
-    show: true
+    show: true,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 27,
     photo: speaker27,
     speaker: 'Павел Гудимов',
     about_speaker:'Директор по развитию РАКИБ',
-    show: true
+    show: true,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 5,
     photo: speaker5,
     speaker: 'Алексей Зюзин',
     about_speaker: 'Организатор Crypto Summit',
-    show: true
+    show: true,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 15,
     photo: speaker15,
     speaker: 'Владимир Туров',
     about_speaker: 'Turov Invest',
-    show: true
+    show: true,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 1,
     photo: speaker1,
     speaker: 'Ян Кривоносов',
     about_speaker: 'CEO Crypto Emergency',
-    show: true
+    show: true,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 14,
     photo: speaker14,
     speaker: 'Сергей Павлович',
     about_speaker: 'Люди PRO',
-    show: true
+    show: true,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 2,
     photo: speaker2,
     speaker: 'Андрей Тугарин',
     about_speaker: 'CEO компании GMT Legal',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023'] 
   },
   {
     id : 6,
     photo: speaker6,
     speaker: 'Вероника Близнец',
     about_speaker: 'Адвокат, юрист-международник',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023'] 
   },
   {
     id : 7,
     photo: speaker7,
     speaker: 'Mr. Sailer YouTube',
     about_speaker: 'Блогер журналист',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023'] 
   },
   {
     id : 29,
     photo: speaker29,
     speaker: 'Олег Иванов',
     about_speaker: 'Серийный предприниматель, инвестор',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023'] 
   },
   {
     id : 8,
     photo: speaker8,
     speaker: 'Валерий Осипов',
     about_speaker: 'ArtEmotioChain',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023'] 
   },
   {
     id : 9,
     photo: speaker9,
     speaker: 'Александр Изюрьев',
     about_speaker: 'Основатель клуба инвесторов UnionClub',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023'] 
   },
   {
     id : 10,
     photo: speaker10,
     speaker: 'Ярослав Кожухов',
     about_speaker: 'Metis',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 25,
     photo: speaker25,
     speaker: 'Кирилл Филимонов',
     about_speaker: 'Основатель Россграм',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 30,
     photo: speaker30,
     speaker: 'Владислав Судьин',
     about_speaker: 'Зам. председателя Комиссии по инновациям и инвестициям IFSPD',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 12,
     photo:speaker12,
     speaker: 'Вячеслав Носков',
     about_speaker: 'PRO BLOCKCHAIN MEDIA',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 26,
     photo: speaker26,
     speaker: 'Бурков Максим',
     about_speaker: 'Основатель группы web3 компаний Pro Blockchain Media',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 13,
     photo: speaker13,
     speaker: 'Денис Магданов',
     about_speaker: 'DUMA NETWORK',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 17,
     photo: speaker17,
     speaker: 'Сергей Грабский',
     about_speaker: 'Руководитель Ассоциации цифрового развития Краснодарского края',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 18,
     photo: speaker18,
     speaker: 'Евгений Сапожников',
     about_speaker: 'Основатель обменника криптовалют Keine-exchange',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 19,
     photo: speaker19,
     speaker:'Денис Стригун' ,
     about_speaker: 'CEO WEB3Space',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 20,
     photo: speaker20,
     speaker: 'Иван Деркач',
     about_speaker: 'CTO WEB3Space',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 21,
     photo: speaker21,
     speaker: 'Дмитрий Романов',
     about_speaker: 'Консультант блокчейн-проектов',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 22,
     photo: speaker22,
     speaker: 'Илья Ткаченко',
     about_speaker: 'Криптоэксперт',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 23,
     photo: speaker23,
     speaker: 'Тимофей Григоренко',
     about_speaker: 'Майнинг, владелец 1GHS',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 24,
     photo: speaker24,
     speaker: 'Лев Пониманский',
     about_speaker: 'Криптоэнтузиаст',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
     id : 28,
     photo: speaker28,
     speaker: 'Наталья Сазонова',
     about_speaker: 'CEO Rabotavkripte',
-    show: false
+    show: false,
+    visited:['CryptoЮГ2023'] 
   }
 ]
 
-const partners2 = [
-  {
-    url : "https://www.instagram.com/abrau1870/",
-    logo: partner7,
-  },
-  {
-    url : "https://www.instagram.com/barycoffee.nvr/",
-    logo: partner8,
-  },
-  {
-    url : "https://hginov.ru/",
-    logo: partner9,
-  },
-  {
-    url : "https://ti.turovinvest.ru/",
-    logo: partner10,
-  },
-  {
-    url : "https://cryptonews.net/ru/",
-    logo: partner11,
-  },
-  {
-    url : "https://ru.beincrypto.com/",
-    logo: partner12,
-  },
-  {
-    url : "https://cripta.games/",
-    logo: partner13,
-  },
-  {
-    url : "https://www.artemotiochain.ru/",
-    logo: partner14,
-  },
-]
 const partners = [
   {
     url : "https://keine-exchange.com/?rid=29633",
     logo: partner1,
+    visited:['CryptoЮГ2022']
   },
   {
     url : "http://тц-черноморский.рф/",
     logo: partner2,
+    visited:['CryptoЮГ2022']
   },
   {
     url : "https://cryptoholding.ru/",
     logo: partner3,
+    visited:['CryptoЮГ2022']
   },
   {
     url : "https://racib.com/",
     logo: partner4,
+    visited:['CryptoЮГ2022']
   },
   {
     url : "https://carding.pro/",
     logo: partner5,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://blockchain24.pro/",
     logo: partner6,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://www.instagram.com/abrau1870/",
     logo: partner7,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://www.instagram.com/barycoffee.nvr/",
     logo: partner8,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://hginov.ru/",
     logo: partner9,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://ti.turovinvest.ru/",
     logo: partner10,
+    visited:['CryptoЮГ2023']
   },
   {
     url : "https://cryptonews.net/ru/",
     logo: partner11,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://ru.beincrypto.com/",
     logo: partner12,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://cripta.games/",
     logo: partner13,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://www.artemotiochain.ru/",
     logo: partner14,
+    visited:['CryptoЮГ2023']
   },
   {
     url : "https://duma.network/",
     logo: partner15,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://pro-blockchain.com/crypto-news",
     logo: partner16,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://miningmoon.ru/",
     logo: partner17,
+    visited:['CryptoЮГ2023']
   },
   {
     url : "https://t.me/MetisDAO_ru",
     logo: partner18,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://getblock.net/how-it-works",
     logo: partner19,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://web3space.io/bot",
     logo: partner20,
+    visited:['CryptoЮГ2023']
   },
   {
     url : "https://7winds.mobi/",
     logo: partner21,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://t.me/channel_SoulMate",
     logo: partner22,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://kollegiya-sokolov.ru/",
     logo: partner23,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://daogogreen.com/",
     logo: partner24,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://rossgram.ru/",
     logo: partner25,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     url : "https://altcoinlog.com/",
     logo: partner26,
+    visited:['CryptoЮГ2023']
   },
   {
     url : "https://t.me/unionclub_chat",
     logo: partner27,
-  },
+    visited: ['CryptoЮГ2023']
+  }
 ]
 
 
@@ -526,27 +503,28 @@ export const display = function () {
               <h4>Спикеры</h4>
               <div class="events_list">
                 <div class="tabs">
-                  <span class={['tabs_year', this.Static.tabName == 'CryptoЮГ2023' ? 'active_year' : null]}
+                  <span class={['tab', this.Static.speakersTabName == 'CryptoЮГ2023' ? 'active_year' : null]}
                   onclick={()=>{
-                    this.Static.tabName = 'CryptoЮГ2023';
+                    this.Static.speakersTabName = 'CryptoЮГ2023';
                     this.init();
 
                   }}
                   >
                     CryptoЮГ2023</span>
-                  <span class={['tab_year', this.Static.tabName == 'CryptoЮГ2022' ? 'active_year' : null]}
+                  <span class={['tab', this.Static.speakersTabName == 'CryptoЮГ2022' ? 'active_year' : null]}
                   onclick={()=>{
-                    this.Static.tabName = 'CryptoЮГ2022';
+                    this.Static.speakersTabName = 'CryptoЮГ2022';
                     this.init();
                   }}  
                   >
                     CryptoЮГ2022</span>
                 </div>
-                <div class={["speakers", this.Static.tabName == 'CryptoЮГ2023' ? null : "hidden"  ]}>
+          
+                <div class="speakers">
                   {
                     speakers.map((item, index)=>{
                       return(
-                        <div class={["speaker", item.show ? null : "hidden"]}>
+                        <div class={["speaker", item.show ? null : "hidden", item.visited.includes(this.Static.speakersTabName)? null : "hidden"]}>
                           <div class='photo'>
                             <img src={item.photo} alt="img" />
                           </div>
@@ -558,90 +536,51 @@ export const display = function () {
                       )
                     })
                   }
-
-                  <div 
-                    class="show_all"
-                    ref="button"
-                    onclick={()=>{
-                      this.Ref.button.classList.add('hidden')
-                      speakers.forEach((item, index)=>{
-                        item.show = true
-                      })
-                      this.init()
-                    }}
-                  >
-                    <span type="button">Показать всех</span>
-                  </div>
                 </div>
-                <div class={["speakers", this.Static.tabName == 'CryptoЮГ2022' ? null : "hidden"  ]}>
-                  {
-                    speakers_2.map((item, index)=>{
-                      return(
-                        <div class={["speaker", item.show ? null : "hidden"]}>
-                          <div class='photo'>
-                            <img src={item.photo} alt="img" />
-                          </div>
-                          <div class='speaker_about'>
-                            <h3>{item.speaker}</h3>
-                            <p>{item.about_speaker}</p>
-                          </div>
-                        </div>
-                      )
-                    })
-                  }
-                  <div 
-                    class="show_all"
-                    ref="button"
-                    onclick={()=>{
-                      this.Ref.button.classList.add('hidden')
-                      speakers_2.forEach((item, index)=>{
-                        item.show = true
-                      })
-                      this.init()
-                    }}
-                  >
-                    <span type="button">Показать всех</span>
-                  </div>
-                </div>
-                
               </div>
+              <button class="btn-test"><span>кнопка</span></button>
+              <div 
+                class="show_all"
+                ref="button"
+                onclick={()=>{
+                  this.Ref.button.classList.add('hidden')
+                  speakers.forEach((item, index)=>{
+                    item.show = true
+                  })
+                  this.init()
+                }}
+              >
+                <span type="button">Показать всех</span>
+              </div>
+              
             </section>
 
             <section class="partners_section">
               <h4>Партнеры</h4>
                 <div class="tabs">
-                  <span class={['tabs_year', this.Static.tabName == 'CryptoЮГ2023' ? 'active_year' : null]}
+                  <span class={['tab', this.Static.partnersTabName == 'CryptoЮГ2023' ? 'active_year' : null]}
                   onclick={()=>{
-                    this.Static.tabName = 'CryptoЮГ2023';
+                    this.Static.partnersTabName = 'CryptoЮГ2023';
                     this.init();
 
                   }}
                   >
                     CryptoЮГ2023</span>
-                  <span class={['tab_year', this.Static.tabName == 'CryptoЮГ2022' ? 'active_year' : null]}
+                  <span class={['tab', this.Static.partnersTabName == 'CryptoЮГ2022' ? 'active_year' : null]}
                   onclick={()=>{
-                    this.Static.tabName = 'CryptoЮГ2022';
+                    this.Static.partnersTabName = 'CryptoЮГ2022';
                     this.init();
                   }}  
                   >
                     CryptoЮГ2022</span>
                 </div>
-              <div class = {["partners_list", this.Static.tabName == 'CryptoЮГ2023' ? null : "hidden"  ]}>
+              <div class = "partners_list">
                   {
                     partners.map((item, index)=>{
                       return(
-                        <a target="_blank" href={item.url} class="partners_list_item">
-                          <img src={item.logo} alt="img" />
-                        </a>
-                      )
-                    })
-                  }
-              </div>
-              <div class = "partners_list">
-                  {
-                    partners2.map((item, index)=>{
-                      return(
-                        <a target="_blank" href={item.url} class="partners_list_item">
+
+                        <a target="_blank" href={item.url} class={["partners_list_item", item.visited.includes(this.Static.partnersTabName)? null : "hidden"]}>
+                        
                           <img src={item.logo} alt="img" />
                         </a>
                       )
