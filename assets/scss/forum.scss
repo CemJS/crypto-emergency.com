@@ -132,7 +132,7 @@
 
 
 
-h4 {
+.wrapper h4 {
   margin: 25px 0;
   text-align: center;
   font-size: 300%;
@@ -202,38 +202,62 @@ h4 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   font-weight: 700;
-  // border-bottom: 1px solid #8846D3;
+  position: relative;
+  margin-bottom: 10px;
+  height: 60px;
+  background: #444B5F;
+  border-radius: var(--borderR);
+  cursor: pointer;
 }
 
 .tabs span {
   padding: 20px;
-  background: #444B5F;
-  border-bottom: 1px solid #8846D3;
+  width: 620px;
+  z-index: 2;
+
 }
 
-.tabs span:active {
-  background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
-}
+// .tabs span:active {
+  
+//   background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
+// }
 
 .tabs .active_year {
-  border-right: 1px solid #8846D3;
-  ;
   background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
 
 }
 .tabs .tab:first-child{
   border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
-.tabs .tab:last-child{
-  border-top-right-radius: 10px;
+// .tabs .tab:last-child{
+//   border-top-right-radius: 10px;
+//   border-bottom-right-radius: 10px;
+// }
+
+.activeTab{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 620px;
+  transition: all ease-in-out 0.35s;
+  z-index: 1;
+  box-shadow: 0 0 10px 1px rgba(221, 221, 221, 0.5);
+  border-radius: 10px;
 }
+// .activeTab:active{
+//   background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
+// }
 
 .speakers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background: #444B5F;
   padding: 10px;
+  transition: 2s linear;
 }
+
 
 .speaker .photo:hover{
   transform: scale(0.95);
@@ -344,13 +368,6 @@ h4 {
     width: 240px;
   }
 }
-// .btn-test:
-// }
-
-
-// .page{
-//   padding-bottom: 65px;
-// }
 
 @media(max-width: 992px) {
   .speakers {

@@ -1,7 +1,31 @@
 export const loader = function () {
   this.Static.showAllSpeakers = true;
   this.Static.speakersTabName = 'CryptoЮГ2023';
-  this.Static.partnersTabName = 'CryptoЮГ2023'
+  this.Static.partnersTabName = 'CryptoЮГ2023';
+
+  this.Static.activeName = 'CryptoЮГ2023';
+
+  this.Static.activeIndex = 0;
+  this.Static.value = 5
+  this.Static.value2="fhfhfh"
+
+  this.initAuto(["value","value2"],(val,key)=>{
+    console.log('=eb7653=',123,val,key)
+    if (val > 15){
+      return false
+    }
+    return true
+  })
+
+
+  // this.initAuto("value",(val,p)=>{
+  //   console.log('=eb7653=',123,val,p)
+  //   if (val > 15){
+  //     return false
+  //   }
+  //   return true
+  // })
+  // this.initAuto("value2")
   // let eventSource = this.eventSource(`CoinsCourse?uuid=${this.Variable.myInfo.uuid}&courseLine=true`)
 
   // eventSource.addEventListener('message', ({ data }) => {

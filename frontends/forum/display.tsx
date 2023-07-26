@@ -66,7 +66,14 @@ import partner25 from '@images/forum/partners/partner25.png'
 import partner26 from '@images/forum/partners/partner26.png'
 import partner27 from '@images/forum/partners/partner27.png'
 
-
+const tabs = [
+  {
+    name: 'CryptoЮГ2023'
+  },
+  {
+    name: 'CryptoЮГ2022'
+  },
+]
 
 interface Course {
   _id: string
@@ -74,7 +81,6 @@ interface Course {
   currentCourse: number
   change: number
 }
-
 
 const speakers = [
   {   
@@ -470,6 +476,54 @@ const contentAbout = [
 
 export const display = function () {
 
+// return (
+//   <div class="forum forum_preview">
+//      <div id="Ttest" class="Tttest" ref='reftest'> {this.Static.value}</div>
+//      <button
+//     //  onclick={()=>{
+//     //   let tmp = document.querySelector('.Tttest')
+//     //   tmp.innerHTML = String(Number(tmp.innerHTML) + 1)
+      
+//     //  }}
+
+//     //  onclick={()=>{
+//     //   this.Ref.reftest.innerHTML = String(Number(this.Ref.reftest.innerHTML) + 1)
+    
+//     //   // console.log(this.Ref.reftest.innerText)
+//     //  }}
+
+
+//     //  onclick={()=>{
+
+//     //   this.Static.value ++
+//     //   // this.init()
+//     //   // console.log(this.Ref.reftest.innerText)
+//     //  }}
+
+
+//      onclick={(e)=>{
+//       // console.log('=da2006=',e.target)
+//       // e.target.innerText = "TEst222"
+//       this.Static.value ++
+//       // this.init()
+//       // console.log(this.Ref.reftest.innerText)
+//      }}
+
+//     //  onclick={()=>{
+//     //   this.Static.value ++
+//     //   this.init()
+//     //   // console.log(this.Ref.reftest.innerText)
+//     //  }}
+//      >434343</button>
+//      <br></br>
+//      <button
+//      onclick={()=>{
+//       this.Static.value2 = "TEST"
+//      }}>{this.Static.value2}</button>
+// </div>
+   
+// )
+
     return (
 
       <div class="forum">
@@ -487,7 +541,9 @@ export const display = function () {
                 {
                   contentAbout.map((item, index)=>{
                     return(
-                      <div class="item_about">
+                      <div class="item_about"
+
+                      >
                         <div class='head'> 
                           <img src={item.img} alt="img" />
                           <h5>{item.title}</h5>  
@@ -503,28 +559,36 @@ export const display = function () {
               <h4>Спикеры</h4>
               <div class="events_list">
                 <div class="tabs">
-                  <span class={['tab', this.Static.speakersTabName == 'CryptoЮГ2023' ? 'active_year' : null]}
-                  onclick={()=>{
-                    this.Static.speakersTabName = 'CryptoЮГ2023';
-                    this.init();
-
-                  }}
-                  >
-                    CryptoЮГ2023</span>
-                  <span class={['tab', this.Static.speakersTabName == 'CryptoЮГ2022' ? 'active_year' : null]}
-                  onclick={()=>{
-                    this.Static.speakersTabName = 'CryptoЮГ2022';
-                    this.init();
-                  }}  
-                  >
-                    CryptoЮГ2022</span>
+                  {
+                    tabs.map((item, index)=>{
+                      return(
+                        <span 
+                          class='tab'
+                          ref="tabItem"
+                          onclick={()=>{
+                            this.Static.activeIndex = index;
+                            this.Ref.activeTab.style.left = `${this.Ref.tabItem.offsetWidth * this.Static.activeIndex}px`;
+                            this.Static.speakersTabName = item.name;
+                            this.Ref.speakersContent.classList.add('animated');
+                            setTimeout(() => {
+                              this.Ref.speakersContent.classList.remove('animated');
+                            }, 500)
+                            this.init();
+                          }}
+                        >
+                            {item.name}
+                        </span>
+                      )
+                    })
+                  }
+                  <div class="activeTab" ref="activeTab"></div>
                 </div>
           
-                <div class="speakers">
+                <div class="speakers" ref="speakersContent">
                   {
                     speakers.map((item, index)=>{
                       return(
-                        <div class={["speaker", item.show ? null : "hidden", item.visited.includes(this.Static.speakersTabName)? null : "hidden"]}>
+                        <div class={["speaker", item.show && item.visited.includes(this.Static.speakersTabName) ? null : "hidden"]}>
                           <div class='photo'>
                             <img src={item.photo} alt="img" />
                           </div>
@@ -538,13 +602,14 @@ export const display = function () {
                   }
                 </div>
               </div>
-              <button class="btn-test"><span>кнопка</span></button>
+              {/* <button class="btn-test"><span>кнопка</span></button> */}
               <div 
                 class="show_all"
                 ref="button"
                 onclick={()=>{
                   this.Ref.button.classList.add('hidden')
                   speakers.forEach((item, index)=>{
+                    
                     item.show = true
                   })
                   this.init()
@@ -557,9 +622,10 @@ export const display = function () {
 
             <section class="partners_section">
               <h4>Партнеры</h4>
-                <div class="tabs">
+                <div class="tabs" ref="forumTabs">
                   <span class={['tab', this.Static.partnersTabName == 'CryptoЮГ2023' ? 'active_year' : null]}
                   onclick={()=>{
+                    let line = document.querySelector('.tab_border')
                     this.Static.partnersTabName = 'CryptoЮГ2023';
                     this.init();
 
@@ -573,6 +639,7 @@ export const display = function () {
                   }}  
                   >
                     CryptoЮГ2022</span>
+                  <div class="tab_border"></div>
                 </div>
               <div class = "partners_list">
                   {
