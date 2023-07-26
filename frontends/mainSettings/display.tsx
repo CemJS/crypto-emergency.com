@@ -249,7 +249,10 @@ export const display = function () {
                   style={!collapseBodyShow.two ? null : "max-height: 200px"}
                 >
                   <div class="accordion__body">
-                    <a class="accordion__link">
+                    <a class="accordion__link"
+                      href="/contacts"
+                      onclick={this.Fn.link}
+                    >
                       Контакты
                     </a>
                     <a class="accordion__link">
@@ -350,7 +353,6 @@ export const display = function () {
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </div>

@@ -31,7 +31,8 @@ const services = [
   },
   {
     image: "rates",
-    title: "Курсы валют"
+    title: "Курсы валют",
+    url: "/exchange-rates"
   },
   {
     image: "ico",
@@ -49,7 +50,8 @@ const services = [
   },
   {
     image: "career",
-    title: "Карьера с нами"
+    title: "Карьера с нами",
+    url: "/career"
   },
   {
     image: "university",
