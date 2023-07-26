@@ -1,6 +1,5 @@
 const fn = {
   "checkForm": function () {
-
     if (this.Static.pass.valid) {
       if (this.Static.email.valid || this.Static.phone.valid) {
         this.Static.isValid = true

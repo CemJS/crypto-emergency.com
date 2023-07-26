@@ -36,7 +36,12 @@ export const display = function () {
             {
               this.Static.listLang.map((item) => {
                 return (
-                  <li class="change-language__item">
+                  <li class="change-language__item"
+                    onclick={() => {
+                      this.cross({ name: item.eng_name, nameOrig: item.orig_name, code: item.code })
+                      this.clearData()
+                    }}
+                  >
                     {item.eng_name} ({item.orig_name})
                   </li>
                 )

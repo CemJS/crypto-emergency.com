@@ -3,6 +3,7 @@
   &__title {
     margin: 25px 0;
     font-size: 24px;
+    text-align: center;
   }
 
   &__search {
@@ -53,7 +54,7 @@
     color: var(--white);
 
     &:hover {
-      background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
+      background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 14.26%, #FF22AC 105.28%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }

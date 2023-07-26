@@ -10,7 +10,9 @@ export const display = function () {
 					<a class="footer__nav_icon footer__nav_users" href="#"></a>
 					<a class="footer__nav_icon footer__nav_posts" href="#"></a>
 					<a class="footer__nav_icon footer__nav_questions" href="#"></a>
-					<a class="footer__nav_icon footer__nav_news" href="#"></a>
+					<a class="footer__nav_icon footer__nav_news" href="/news"
+						onclick={this.Fn.link}
+					></a>
 					<a class="footer__nav_icon footer__nav_burger"
 						onclick={() => {
 							this.Fn.initOne({

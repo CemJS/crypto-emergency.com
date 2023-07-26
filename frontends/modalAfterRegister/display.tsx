@@ -12,7 +12,11 @@ export const display = function () {
         </header>
         <div class="modal__body">
           <div class="after-register">
-            <form class="after-register__form">
+            <form class="after-register__form"
+              onsubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
               <div class="after-register__block">
                 <label>Nickname</label>
                 <div class="error">
@@ -37,6 +41,7 @@ export const display = function () {
                     this.Static.nickname.valid = validate[1]
                     this.Static.nickname.value = e.target.value
 
+                    this.fn("checkForm")
                     this.init()
                   }}
                 />
@@ -51,7 +56,9 @@ export const display = function () {
                   value={this.Static.lang.value}
                   placeholder={this.Static.lang.placeholder}
                   onclick={() => {
-                    
+                    this.Fn.initOne({
+                      name: "changeLanguage"
+                    })
                   }}
                 />
               </div>
@@ -65,6 +72,11 @@ export const display = function () {
                     type="text"
                     value={this.Static.country.value}
                     placeholder={this.Static.country.placeholder}
+                    onclick={() => {
+                      this.Fn.initOne({
+                        name: "modalSelectCountry"
+                      })
+                    }}
                   />
                 </div>
               </div>
@@ -79,7 +91,6 @@ export const display = function () {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

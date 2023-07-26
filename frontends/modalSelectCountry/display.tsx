@@ -37,7 +37,12 @@ export const display = function () {
             {
               this.Static.listCountries.map((item) => {
                 return (
-                  <li class="select-country__item">
+                  <li class="select-country__item"
+                  onclick={() => {
+                    this.cross({ name: item.na, code: item.co })
+                    this.clearData()
+                  }}
+                  >
                     <img src={blank} class={["flag", `flag-${item.co}`]}/>
                     {item.na}
                   </li>
