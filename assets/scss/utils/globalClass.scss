@@ -116,27 +116,30 @@ $indent in $indents {
   filter: blur(1px);
 }
 
+
+
 // elements beauty
 
 // text elements
 // h1
-.main-title {
+.main_title {
   font-size: 42px;
   line-height: 48px;
   font-weight: 700;
 }
 
 // все остальные
-.general-title {
+.general_title {
   font-size: 36px;
   line-height: 42px;
   font-weight: 500;
+  margin: 10px 0 25px 0;
 }
 
 // text elements
 
 // different buttons
-.btn{
+.btn {
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;

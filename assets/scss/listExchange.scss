@@ -1,5 +1,11 @@
 .listExchange {
   padding-bottom: 100px;
+  position: relative;
+
+  .general_title {
+    text-align: center;
+  }
+
   &::before {
     content: '';
     position: fixed;
@@ -13,40 +19,119 @@
     z-index: -1;
   }
 
-  &_icon{
-    width: 15px;
-    height: 15px;
+  &_lineB {
+    position: fixed;
+    bottom: 60px;
+    right: 0;
+    z-index: -1;
   }
 
-  &_table{
+  &_favourites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &_table {
     width: 100%;
     border-collapse: collapse;
+    position: relative;
 
-    &_index{
+    &_head {
+      font-size: 14px;
+
+      .listExchange_table_row {
+        background: var(--back_opacity);
+        border-top-left-radius: var(--borderR);
+        border-top-right-radius: var(--borderR);
+      }
+    }
+
+    &_row {
+      display: grid;
+      grid-template-columns: 40px 40px 0.5fr 1fr 0.5fr;
+      border: 1px solid var(--borderR);
+
+      th,
+      td {
+        padding: 10px 15px;
+      }
+
+      // &:hover {
+      //   background: var(--back_opacity);
+      // }
+    }
+
+    &_name,
+    &_coins,
+    &_filter {
+      display: flex;
+      align-items: center;
+      // padding: 0 15px;
+    }
+
+    &_index,
+    &_btn {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    &_head{
-      background: var(--back_opacity);
+    &_filter {
+      justify-content: flex-end;
+
+      img {
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+      }
     }
 
-    &_row{
-      height: 55px;
-      border-top-left-radius: var(--borderR);
-      border-top-right-radius: var(--borderR);
-      // display: grid;
-      // grid-template-columns: 20px 20px 0.5fr 1fr ;
+    &_btn {
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
 
-    &_body{
-      .listExchange_table_row:not(:last-child){
+    .coins_wrap {
+      &_item {
+        // transform: translateX(-5px);
+        width: 32px;
+        height: 32px;
+        transition: all ease-in-out 0.3s;
+
+        &:hover {
+          transform: translateY(-10px);
+        }
+      }
+
+      // &_item:first-child {
+      //   transform: translateX(0);
+      // }
+    }
+
+
+
+    &_body {
+      font-size: 16px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-bottom-left-radius: var(--borderR);
+      border-bottom-right-radius: var(--borderR);
+
+      .listExchange_table_row:not(:last-child) {
         border-bottom: 1px solid var(--border)
       }
     }
 
-    &_coins{
+    &_coins {
       display: flex;
     }
   }
@@ -69,9 +154,19 @@
         background: transparent;
         transition: .5s;
         color: var(--white);
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all ease-in-out 0.35s;
+
+        &_active {
+          color: var(--fiolet);
+        }
 
         &:hover {
           font-weight: 700;
+          font-size: 19px;
+          transition: all ease-in-out 0.35s;
         }
       }
     }
