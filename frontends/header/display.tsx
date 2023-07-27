@@ -2,7 +2,6 @@ import { Cemjsx } from "cemjs-all"
 import logo from '@svg/logo.svg'
 
 export const display = function () {
-	console.log('=421d0e=', this)
 	return (
 		<header class="header">
 			<div class="header__container">
