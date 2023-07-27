@@ -1,6 +1,6 @@
 const fn = {
   "addEvent": function ({ cat }) {
-    let url = `News?uuid=${this.Variable.myInfo.uuid}`
+    let url = `News?uuid=${this.Variable.myInfo.uuid}&lang=ru`
     if (cat) {
       url += `&cat=${cat}`
     }
