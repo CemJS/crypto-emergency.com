@@ -6,4 +6,10 @@ export const loader = function () {
         this.Static.records = records
         this.init()
     });
+
+    eventSource.addEventListener('add', ({ data }) => {
+        let records = JSON.parse(data)
+        this.Static.records.push(...records)
+        this.init()
+    });
 }
