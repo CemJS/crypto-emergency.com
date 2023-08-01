@@ -1,0 +1,174 @@
+.listExchange {
+  padding-bottom: 100px;
+  position: relative;
+
+  .general_title {
+    text-align: center;
+  }
+
+  &::before {
+    content: '';
+    position: fixed;
+    left: -10%;
+    top: -8%;
+    background: url('svg/about/vector_1.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &_lineB {
+    position: fixed;
+    bottom: 60px;
+    right: 0;
+    z-index: -1;
+  }
+
+  &_favourites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &_table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+
+    &_head {
+      font-size: 14px;
+
+      .listExchange_table_row {
+        background: var(--back_opacity);
+        border-top-left-radius: var(--borderR);
+        border-top-right-radius: var(--borderR);
+      }
+    }
+
+    &_row {
+      display: grid;
+      grid-template-columns: 40px 40px 0.5fr 1fr 0.5fr;
+      border: 1px solid var(--borderR);
+
+      th,
+      td {
+        padding: 10px 15px;
+      }
+
+      // &:hover {
+      //   background: var(--back_opacity);
+      // }
+    }
+
+    &_name,
+    &_coins,
+    &_filter {
+      display: flex;
+      align-items: center;
+      // padding: 0 15px;
+    }
+
+    &_index,
+    &_btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_filter {
+      justify-content: flex-end;
+
+      img {
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    &_btn {
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .coins_wrap {
+      &_item {
+        // transform: translateX(-5px);
+        width: 32px;
+        height: 32px;
+        transition: all ease-in-out 0.3s;
+
+        &:hover {
+          transform: translateY(-10px);
+        }
+      }
+
+      // &_item:first-child {
+      //   transform: translateX(0);
+      // }
+    }
+
+
+
+    &_body {
+      font-size: 16px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-bottom-left-radius: var(--borderR);
+      border-bottom-right-radius: var(--borderR);
+
+      .listExchange_table_row:not(:last-child) {
+        border-bottom: 1px solid var(--border)
+      }
+    }
+
+    &_coins {
+      display: flex;
+    }
+  }
+
+  &_pagination {
+    display: flex;
+    justify-content: center;
+
+    .pag_list {
+      display: flex;
+      gap: 10px;
+      max-width: 400px;
+      justify-content: space-between;
+
+      &_item {
+        width: 35px;
+        height: 35px;
+        border: none;
+        outline: none;
+        background: transparent;
+        transition: .5s;
+        color: var(--white);
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all ease-in-out 0.35s;
+
+        &_active {
+          color: var(--fiolet);
+        }
+
+        &:hover {
+          font-weight: 700;
+          font-size: 19px;
+          transition: all ease-in-out 0.35s;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,5 @@
-@import 'utils/variables.scss';
-
 .line {
-  margin-top: 50px;
+  margin-top: 70px;
 
   &-wrap {
     position: relative;
@@ -93,7 +91,7 @@
     }
 
     &_price {
-      color: $text_fiolet;
+      color: var(--text_fiolet);
     }
 
     &_change {

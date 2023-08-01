@@ -7,7 +7,6 @@ export const loader = function () {
     error: false,
     label: "E-mail",
     placeholder: "Введите ваш E-mail",
-    type: "text",
   }
 
   this.Static.phone = {
@@ -31,5 +30,5 @@ export const loader = function () {
 
   this.Static.isValid = false
 
-  this.initAuto("buttonActive");
+  this.initAuto(["buttonActive", "viewPassword"]);
 }

@@ -8,6 +8,13 @@ const fn = {
         }
         let eventSource
 
+        if (this.Ref.startapsList) {
+            this.Ref.startapsList.classList.add('animated');
+            setTimeout(() => {
+                this.Ref.startapsList.classList.remove('animated');
+            }, 500)
+        }
+
         if (this._ListsEventSource.length) {
             eventSource = this.eventSourceChange(url)
         } else {

@@ -31,7 +31,8 @@ const services = [
   },
   {
     image: "rates",
-    title: "Курсы валют"
+    title: "Курсы валют",
+    url: "/exchange-rates"
   },
   {
     image: "ico",
@@ -39,15 +40,18 @@ const services = [
   },
   {
     image: "startaps",
-    title: "Стартапы"
+    title: "Стартапы",
+    url: "/list-startaps",
   },
   {
     image: "news",
-    title: "Новости"
+    title: "Новости",
+    url: "/news"
   },
   {
     image: "career",
-    title: "Карьера с нами"
+    title: "Карьера с нами",
+    url: "/career"
   },
   {
     image: "university",
@@ -78,7 +82,9 @@ export const display = function () {
               {
                 services.map((item) => {
                   return (
-                    <a href="" class="services__link">
+                    <a href={item.url} class="services__link"
+                    onclick={this.Fn.link}
+                    >
                       <div class="services__image">
                         <img src={`/assets/svg/mainServices/${item.image}.svg`} />
                       </div>

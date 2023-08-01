@@ -1,5 +1,3 @@
-@import 'utils/fonts.scss';
-
 .contacts {
   background: #2B3040;
 
@@ -33,6 +31,10 @@
     max-width: 1240px;
     width: 100%;
     margin: 0 auto;
+
+    textarea:focus {
+      outline: none;
+    }
   }
 
   &__content {
@@ -246,11 +248,21 @@
       }
     }
 
-    a {
+    &_mail {
       display: inline-block;
       text-decoration: none;
       position: relative;
       z-index: 1;
+
+      &:hover {
+        background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      span {
+        margin-bottom: 0;
+      }
     }
   }
 

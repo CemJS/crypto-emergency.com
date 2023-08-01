@@ -2,7 +2,6 @@ import { Cemjsx } from "cemjs-all"
 import logo from '@svg/logo.svg'
 
 export const display = function () {
-	console.log('=421d0e=', this)
 	return (
 		<header class="header">
 			<div class="header__container">
@@ -23,14 +22,16 @@ export const display = function () {
 							href="/about"
 							onclick={this.Fn.link}
 						>О нас</a>
-						<a class="header__menu_link">Новости</a>
+						<a class="header__menu_link"
+							href="/news"
+							onclick={this.Fn.link}
+						>Новости</a>
 					</nav>
 					<div class="header__auth">
 						<div class="header__language"
 							onclick={() => {
 								this.Fn.initOne({
 									name: "mainLanguage", ifOpen: (front) => {
-										// console.log('=9e3bb6=', front)
 										setTimeout(() => {
 											front.clearData()
 										}, 500);
@@ -40,12 +41,21 @@ export const display = function () {
 						>
 							<span>Русский</span>
 						</div>
-						<button class="header__auth_log" type="button">Вход</button>
+						<button class="header__auth_log" type="button"
+							onclick={() => {
+								this.Fn.initOne({
+									name: "modalAuthorization", ifOpen: (front) => {
+										setTimeout(() => {
+											front.clearData()
+										}, 500);
+									}
+								})
+							}}
+						>Вход</button>
 						<button class="header__auth_sign" type="button"
 							onclick={() => {
 								this.Fn.initOne({
 									name: "modalRegistration", ifOpen: (front) => {
-										// console.log('=9e3bb6=', front)
 										setTimeout(() => {
 											front.clearData()
 										}, 500);

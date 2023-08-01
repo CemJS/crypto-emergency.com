@@ -127,7 +127,7 @@ const start = async function () {
     }
 
     const microFrontends = await checkFrontend(dirFrontends, nameFront);
-    fs.writeFileSync('microFrontends.json', JSON.stringify(microFrontends));
+    fs.writeFileSync('frontends.json', JSON.stringify(microFrontends));
 
     const services = await checkServices(dirServices);
     fs.writeFileSync('services.json', JSON.stringify(services));

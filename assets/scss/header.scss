@@ -1,13 +1,11 @@
-@import 'utils/variables.scss';
-
 .header {
   position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  border-bottom: 1px solid $black_iris;
-  background: $noble_black;
+  border-bottom: 1px solid var(--black_iris);
+  background: var(--noble_black);
   z-index: 1000;
 
   &__container {
@@ -42,7 +40,7 @@
 
     &_link {
       margin-right: 30px;
-      color: $white;
+      color: var(--white);
       cursor: pointer;
       text-decoration: none;
 
@@ -71,7 +69,7 @@
       width: 120px;
       height: 54px;
     }
-    
+
     img {
       width: 100%;
       max-width: 100%;
@@ -79,7 +77,7 @@
     }
   }
 
-	&__language {
+  &__language {
     position: relative;
     display: inline-block;
     width: 130px;
@@ -104,7 +102,7 @@
       margin-top: -3px;
       background-image: url("./svg/header/arrow_bottom.svg");
     }
-	}
+  }
 
   &__auth {
     display: flex;
@@ -112,11 +110,11 @@
 
     button {
       padding: 0;
-      font-family: $base_font;
+      font-family: var(--base_font);
       font-weight: 500;
       border: none;
       background-color: transparent;
-      color: $white;
+      color: var(--white);
       cursor: pointer;
     }
 
@@ -124,7 +122,7 @@
       font-size: 16px;
       margin-right: 20px;
 
-      @media (max-width: 360px){
+      @media (max-width: 360px) {
         font-size: 13px;
       }
 

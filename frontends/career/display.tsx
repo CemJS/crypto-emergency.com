@@ -102,6 +102,26 @@ export const display = function () {
                 employment.map((item, index) => {
                   return (
                     <div class="employment_item">
+                      <div class="employment_points">
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                        <span class="employment_points_item"></span>
+                      </div>
                       <span>{`0${index + 1}`}</span>
                       <p>{item.text}</p>
                     </div>
@@ -195,7 +215,25 @@ export const display = function () {
                   Креативность
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+
+
+              <div class="f-center mt_25">
+                <button
+                  class="btn btn_gradient"
+                  onclick={() => {
+                    this.Fn.initOne({
+                      name: "modalMessage", ifOpen: (front) => {
+                        // console.log('=9e3bb6=', front)
+                        setTimeout(() => {
+                          front.clearData()
+                        }, 500);
+                      }
+                    })
+                  }}
+                >
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -257,7 +295,11 @@ export const display = function () {
                   JSX
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center mt_25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -321,7 +363,12 @@ export const display = function () {
                   JSX
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+
+              <div class="f-center mt_25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -379,7 +426,11 @@ export const display = function () {
                   REST
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center mt_25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -439,7 +490,11 @@ export const display = function () {
                   Bash
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center mt_25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -504,7 +559,11 @@ export const display = function () {
                   App Store
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center mt_25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -569,7 +628,11 @@ export const display = function () {
                   Web3
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center mt_25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 
@@ -652,7 +715,11 @@ export const display = function () {
                   Google
                 </div>
               </div>
-              <button class="btn btn_gradient">Откликнуться</button>
+              <div class="f-center mt_25">
+                <button class="btn btn_gradient">
+                  <span>Откликнуться</span>
+                </button>
+              </div>
 
             </div>
 

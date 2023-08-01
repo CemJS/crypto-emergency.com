@@ -12,7 +12,6 @@
         height: 54px;
         margin-right: 10px;
         margin-bottom: 15px;
-        margin-top: 15px;
         border: 0;
         border-radius: 12px;
         font-weight: 600;
@@ -49,6 +48,12 @@
     
     &__email {
       margin-bottom: 15px;
+
+			& .error {
+				color: #FD374E;
+				font-weight: 600;
+				margin-bottom: 3px;
+			}
 
       &_input {
         position: relative;
@@ -224,6 +229,7 @@
         right: 20px;
         transform: translateY(-50%);
         filter: invert(64%) sepia(8%) saturate(739%) hue-rotate(189deg) brightness(94%) contrast(91%);
+				cursor: pointer;
       }
     }
 
@@ -238,6 +244,7 @@
     }
 
     .agree {
+			font-size: 16px;
       background: linear-gradient(96.72deg, #0eadb9 1.79%, #8a04e0 49.32%, #ff30fb 108.21%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -260,7 +267,24 @@
     }
 
     &__registration {
-      position: relative;
+      display: flex;
+    	height: 50px;
+    	min-width: 186px;
+			width: 100%;
+    	position: relative;
+    	overflow: hidden;
+    	text-decoration: none;
+    	text-transform: uppercase;
+    	color: #fff;
+    	font-size: 14px;
+    	text-align: center;
+    	border-radius: 10px;
+			background: transparent;
+    	border-style: solid;
+    	-o-border-image: linear-gradient(45deg, #3bade3 0%, #576fe6 25%, #9844b7 51%, #ff357f 100%);
+    	border-image: linear-gradient(45deg, #3bade3 0%, #576fe6 25%, #9844b7 51%, #ff357f 100%);
+    	border-image-slice: 1;
+    	border-width: 2px;
 
       &::after {
         background: #202432;
@@ -269,6 +293,10 @@
         border-image-slice: 1;
         border-width: 2px;
       }
+
+			span {
+				margin: auto;
+			}
     }
   }
 }

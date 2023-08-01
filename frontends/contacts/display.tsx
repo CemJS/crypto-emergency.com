@@ -3,7 +3,7 @@ import donat from '@svg/contacts/donation.svg'
 
 export const display = function () {
   return (
-    <div class="page page__container">
+    <div class="page page__container" style="padding-bottom: 0">
       <div class="contacts">
         <div class="contacts__container">
           <h2 class="contacts__title">Контакты</h2>
@@ -17,13 +17,13 @@ export const display = function () {
                     <div>
                       <label>Имя</label>
                       <div class="contacts__form_name">
-                        <input type="text" placeholder="Введите ваше имя" />
+                        <input type="text" placeholder="Введите ваше имя" disabled />
                       </div>
                     </div>
                     <div>
                       <label>E-mail</label>
                       <div class="contacts__form_email">
-                        <input type="text" placeholder="Введите ваше E-mail" />
+                        <input type="text" placeholder="Введите ваше E-mail" disabled />
                       </div>
                     </div>
                     <div>
@@ -40,7 +40,7 @@ export const display = function () {
                 <span class="contacts__info_label">Адрес:</span>
                 <span class="contacts__info_text">Business address: Didzioji Str. 14-1, Vilnius, the Republic of Lithuania</span>
                 <span class="contacts__info_label">E-mail:</span>
-                <a href="mailto:support@crypto-emergency.com">
+                <a class="contacts__info_mail" href="mailto:support@crypto-emergency.com">
                   <span class="contacts__info_text">
                     support@crypto-emergency.com
                   </span>

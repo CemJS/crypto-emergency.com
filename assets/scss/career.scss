@@ -1,5 +1,6 @@
 @import 'utils/variables.scss';
 @import 'utils/grid.scss';
+@import 'utils/flex.scss';
 
 $advantagesBack: (
   0: url('svg/career/advantages_icon-1.svg'),
@@ -21,7 +22,7 @@ $professionsBack: (
 );
 
 .career {
-  background: $primaryBack;
+  background: var(--primaryBack);
   position: relative;
   overflow: hidden;
   padding-bottom: 100px;
@@ -60,7 +61,7 @@ $professionsBack: (
       top: -35%;
       width: 950px;
       height: 950px;
-      background: $fiolet_gradient;
+      background: var(--fiolet_gradient);
       filter: blur(225px);
       z-index: 0;
     }
@@ -69,7 +70,7 @@ $professionsBack: (
       max-width: 600px;
       position: relative;
       z-index: 1;
-      text-shadow: 2px 2px 10px $black;
+      text-shadow: 2px 2px 10px var(--black);
       padding: 150px 0;
     }
 
@@ -92,9 +93,9 @@ $professionsBack: (
 
     .advantages_item {
       padding: 20px;
-      background: $noble_black;
-      border-radius: $borderR;
-      border: 1px solid $black_iris;
+      background: var(--noble_black);
+      border-radius: var(--borderR);
+      border: 1px solid var(--black_iris);
 
       &_circle {
         display: flex;
@@ -103,8 +104,8 @@ $professionsBack: (
         width: 80px;
         height: 80px;
         padding: 20px;
-        border-radius: $ellipse;
-        background: $black_iris;
+        border-radius: var(--ellipse);
+        background: var(--black_iris);
         margin-bottom: 20px;
       }
 
@@ -131,7 +132,7 @@ $professionsBack: (
         p {
           font-size: 14px;
           line-height: 20px;
-          color: $secondary_text;
+          color: var(--secondary_text);
         }
       }
 
@@ -150,6 +151,23 @@ $professionsBack: (
         position: relative;
         max-width: 255px;
 
+        .employment_points {
+          position: absolute;
+          top: 18px;
+          left: 45px;
+          transform: translateY(-50%);
+          display: flex;
+          justify-content: space-between;
+          gap: 5px;
+
+          &_item {
+            height: 2px;
+            width: 5px;
+            // border-radius: var(--ellipse);
+            background: var(--fioletFill_gradient);
+          }
+        }
+
         &::before {
           content: '';
           position: absolute;
@@ -157,13 +175,13 @@ $professionsBack: (
           left: 0;
           width: 25px;
           height: 25px;
-          border-radius: $ellipse;
-          background: $fioletFill_gradient;
+          border-radius: var(--ellipse);
+          background: var(--fioletFill_gradient);
         }
 
         span,
         p {
-          background: $text_gradient;
+          background: var(--text_gradient);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           font-weight: 700;
@@ -195,15 +213,25 @@ $professionsBack: (
     }
 
     .professions_item {
-      background: $noble_black;
-      border-radius: $borderR;
-      border: 1px solid $black_iris;
+      background: var(--noble_black);
+      border-radius: var(--borderR);
+      border: 1px solid var(--black_iris);
       padding: 15px 30px;
       display: flex;
       align-items: center;
       gap: 25px;
       transition: 1s;
       cursor: pointer;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 0%;
+        z-index: -1;
+      }
 
       &_image {
         display: block;
@@ -232,9 +260,18 @@ $professionsBack: (
       }
 
       &:hover {
-        background: $fioletBlue_gradient;
-        border: 1px solid $fiolet;
+        transition: 1s;
+        background: var(--fioletBlue_gradient);
+        border: 1px solid var(--fiolet);
+
+        &::before {
+          top: 0;
+          height: 100%;
+        }
       }
+
+
+
     }
   }
 
@@ -246,7 +283,7 @@ $professionsBack: (
 
     .vacancy {
       background: #2B3040;
-      border-radius: $borderR;
+      border-radius: var(--borderR);
       border: 1px solid #353C50;
       padding: 25px;
 
@@ -265,7 +302,7 @@ $professionsBack: (
       &_active {
         text-transform: uppercase;
         font-weight: 800;
-        background: $green_gradient;
+        background: var(--green_gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -278,13 +315,13 @@ $professionsBack: (
         &_item {
           border: 1px solid #353C50;
           background: #353C50;
-          border-radius: $borderR;
+          border-radius: var(--borderR);
           padding: 15px;
 
           &_text {
             padding-bottom: 10px;
             font-size: 14px;
-            color: $secondary_text;
+            color: var(--secondary_text);
           }
         }
 
@@ -361,7 +398,7 @@ $professionsBack: (
 
     &_preview {
 
-      &::before{
+      &::before {
         left: -35%;
       }
 
@@ -421,7 +458,7 @@ $professionsBack: (
 
     &_preview {
 
-      &::before{
+      &::before {
         width: 850px;
         height: 850px;
         left: -60%;
@@ -441,8 +478,8 @@ $professionsBack: (
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .employment_item{
-        p{
+      .employment_item {
+        p {
           line-height: 22px;
         }
       }
@@ -452,14 +489,15 @@ $professionsBack: (
       grid-template-columns: repeat(2, 1fr);
     }
 
-    &_vacancies{
-      padding-bottom: 0!important;
-      .vacancy{
-        &_main{
+    &_vacancies {
+      padding-bottom: 0 !important;
+
+      .vacancy {
+        &_main {
           flex-direction: column;
 
-          &_item{
-            &_text{
+          &_item {
+            &_text {
               line-height: 20px;
             }
           }
@@ -469,154 +507,165 @@ $professionsBack: (
   }
 }
 
-@media(max-width: 464px){
-  .career{
+@media(max-width: 464px) {
+  .career {
 
-    &_title{
+    &_title {
       font-size: 26px;
       line-height: 36px;
       margin-bottom: 15px;
     }
 
-    &::before{
+    &::before {
       background-size: 250px;
       top: 55px;
-      filter: blur(2px);    ;
-      -webkit-filter: blur(2px)    ;
+      filter: blur(2px);
+      ;
+      -webkit-filter: blur(2px);
     }
 
-    &_preview{
-      &_inner{
+    &_preview {
+      &_inner {
         max-width: 100%;
         padding: 0;
       }
 
-      &_title{
+      &_title {
         font-size: 24px;
         line-height: 36px;
         margin: 40px 0 10px 0;
       }
 
-      &_text{
+      &_text {
         font-weight: 700;
       }
     }
 
-    &_advantages{
-      &_inner{
+    &_advantages {
+      &_inner {
         gap: 10px;
         grid-template-columns: 1fr;
 
-        
+
       }
 
-      .advantages_item{
+      .advantages_item {
         background: #1d202966;
         filter: drop-shadow(0 4px 5px (black));
         padding: 15px;
-        
-        &_circle{
+
+        &_circle {
           width: 80px;
           height: px;
         }
 
-        &_info{
-          h3, p{
+        &_info {
+
+          h3,
+          p {
             font-size: 16px;
             line-height: 18px;
           }
 
-          h3{
+          h3 {
             font-size: 18px;
           }
         }
       }
     }
 
-    &_employment{
-      &_inner{
+    &_employment {
+      &_inner {
         grid-template-columns: 1fr;
       }
 
-      .employment_item{
+      .employment_item {
         max-width: 100%;
         padding-top: 35px;
 
-        p{
+        p {
           font-size: 14px;
           margin-top: 0;
         }
       }
     }
 
-    &_professions{
-      &_inner{
+    &_professions {
+      &_inner {
         grid-template-columns: 1fr;
         gap: 10px;
       }
 
-      .professions_item{
+      .professions_item {
         padding: 10px 15px;
 
-        &_image{
+        &_image {
           margin-right: 0;
         }
 
-        span{
+        span {
           font-size: 16px;
         }
       }
     }
 
-    &_vacancies{
-      .vacancy{
+    &_vacancies {
+      .vacancy {
         padding: 15px;
         position: relative;
 
-        &_header{
+        &_header {
           flex-direction: column;
           align-items: flex-start;
           gap: 15px;
 
-          img{
+          img {
             width: 40px;
           }
         }
 
-        &_title{
+        &_title {
           font-size: 20px;
         }
 
-        &_active{
+        &_active {
           position: absolute;
           right: 15px;
           top: 25px;
         }
 
-        &_text{
+        &_text {
           font-size: 14px;
-          
+
         }
 
-        &_main{
-          &_item{
-            h3{
+        &_main {
+          &_item {
+            h3 {
               margin: 0 0 15px 0;
             }
 
-            &_text{
+            &_text {
               padding-bottom: 5px;
             }
           }
         }
 
-        &_skills{
-          &_item{
+        &_skills {
+          &_item {
             font-size: 14px;
           }
         }
 
       }
     }
+  }
+}
+
+
+@keyframes fadeHover {
+  0% {
+    opacity: 0;
+    background: var(--fioletBlue_gradient);
   }
 }

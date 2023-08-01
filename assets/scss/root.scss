@@ -22,7 +22,7 @@ body {
 }
 
 html {
-    scrollbar-color: $akebi_purple transparent;
+    scrollbar-color: var(--akebi_purple) transparent;
     scrollbar-width: thin;
 }
 
@@ -31,7 +31,7 @@ body {
     margin: 0px;
     padding: 0 !important;
     overflow: overlay;
-    color: $white;
+    color: var(--white);
     background-color: #1D2029;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
@@ -49,7 +49,7 @@ body {
 
     &::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        background: linear-gradient(45deg, $summer_sky 0, $blue_oyster_cult 45%, $akebi_purple 57%, $lilac_lotion 70%);
+        background: linear-gradient(45deg, var(--summer_sky) 0, var(--blue_oyster_cult) 45%, var(--akebi_purple) 57%, var(--lilac_lotion) 70%);
     }
 
     &::-webkit-scrollbar-track {
@@ -62,8 +62,8 @@ p {
 }
 
 a {
-    
-    color: $white;
+
+    color: var(--white);
 }
 
 h2 {

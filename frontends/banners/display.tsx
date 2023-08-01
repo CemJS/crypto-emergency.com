@@ -25,7 +25,7 @@ export const display = function () {
 
 
   const dragging = (e, carousel) => {
-    console.log('=43807a=', carousel.scrollLeft)
+    // console.log('=43807a=', carousel.scrollLeft)
     if (!isDragging) return;
     e.preventDefault();
     carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
@@ -36,7 +36,7 @@ export const display = function () {
   }
 
   const autoPLay = (speed, carousel, slide) => {
-    console.log('=8ffa15=', timeoutId)
+    // console.log('=8ffa15=', timeoutId)
     if (!timeoutId) {
       timeoutId = setInterval(() => {
         carousel.scrollLeft += slide.offsetWidth + 20;
@@ -50,14 +50,14 @@ export const display = function () {
 
       carousel.scrollLeft = carousel.offsetWidth + slide.offsetWidth;
       carousel.classList.remove("no-transition");
-      console.log('=Data.sliderCarousel.scrollLeft=', carousel.scrollLeft)
+      // console.log('=Data.sliderCarousel.scrollLeft=', carousel.scrollLeft)
       this.init()
     } else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
       carousel.classList.add("no-transition");
 
       carousel.scrollLeft = carousel.offsetWidth + slide.offsetWidth;
       carousel.classList.remove("no-transition");
-      console.log('=Data.sliderCarousel.scrollLeft=', carousel.scrollLeft)
+      // console.log('=Data.sliderCarousel.scrollLeft=', carousel.scrollLeft)
       this.init()
     }
   }
@@ -81,7 +81,7 @@ export const display = function () {
         ref="sliderWrap"
         class="slider__wrap"
         onMouseLeave={() => {
-          console.log('=8ffa15=', timeoutId)
+          // console.log('=8ffa15=', timeoutId)
           autoPLay(2000, this.Ref.sliderCarousel, this.Ref.slide)
         }}
       >

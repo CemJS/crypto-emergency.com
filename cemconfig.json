@@ -1,7 +1,7 @@
 {
   "ver": "1.0.0",
   "port": 3000,
-  "api": "https://cemjs.cryptodev.store/api/events/",
+  "api": "http://127.0.0.1:33333/api/events/",
   "pages": [
     {
       "url": "/",
@@ -42,6 +42,31 @@
         "header",
         "categoryLine",
         "startaps",
+        "footer"
+      ]
+    },
+    {
+      "url": "/news",
+      "front": [
+        "header",
+        "categoryLine",
+        "news",
+        "footer"
+      ]
+    },
+    {
+      "url": "/career",
+      "front": [
+        "header",
+        "career",
+        "footer"
+      ]
+    },
+    {
+      "url": "/forum",
+      "front": [
+        "header",
+        "forum",
         "footer"
       ]
     }

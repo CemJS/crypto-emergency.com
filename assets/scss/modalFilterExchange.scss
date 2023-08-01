@@ -1,0 +1,42 @@
+@import 'utils/globalClassModal.scss';
+
+.modalWindow_coinWrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+
+  &_item {
+    transition: all ease-in-out 0.2s;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: var(--borderR);
+
+    &_img {
+      width: 32px;
+      height: 32px;
+      margin-right: 15px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &_text {
+      font-size: 16px;
+    }
+
+    &:hover {
+      background: transparent;
+      border: 1px solid var(--border);
+      // transform: scale(0.98);
+    }
+  }
+
+  .coin_active {
+    transform: scale(0.9);
+    border: 1px solid var(--border);
+  }
+
+}

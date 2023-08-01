@@ -1,18 +1,15 @@
-@import 'utils/variables.scss';
-
 .language {
   &__title {
-    line-height: 80px;
     margin: 0;
     font-weight: 600;
     font-size: 18px;
     border-bottom: 1px solid #444B5F;
-    padding: 0 50px;
+    padding: 30px 50px;
   }
 
   &__container {
     height: 620px;
-    color: $main_text;
+    color: var(--main_text);
     border-radius: 20px;
   }
 
@@ -23,7 +20,7 @@
     padding: 40px 50px;
     height: 100%;
     overflow-y: auto;
-  
+
     &::-webkit-scrollbar {
       width: 6px;
     }

@@ -1,0 +1,185 @@
+@import 'utils/variables.scss';
+@import 'utils/grid.scss';
+@import 'utils/flex.scss';
+
+.ico {
+  padding-bottom: 80px;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--main_gradient);
+    height: 400px;
+    width: 400px;
+    filter: blur(250px);
+  }
+
+  &_tabs {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--borderR);
+    margin: 15px 0;
+    position: relative;
+
+    &_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 15px;
+      position: relative;
+      z-index: 2;
+      border-radius: var(--borderR);
+      cursor: pointer;
+      transition: .5s;
+      height: 60px;
+      width: var(--tabItemIco);
+      transition: all ease-in-out 0.35s;
+
+      span {
+        font-size: 18px;
+        transition: all ease-in-out 0.35s;
+      }
+
+      &_active {
+        span {
+          transition: all ease-in-out 0.35s;
+          font-weight: 700;
+        }
+      }
+
+      &:hover {
+        span {
+          font-weight: 700;
+          transition: all ease-in-out 0.35s;
+        }
+      }
+
+    }
+
+    &_slider {
+      position: absolute;
+      height: 60px;
+      width: var(--tabItemIco);
+      z-index: 1;
+      box-shadow: 0 0 10px 1px rgba(221, 221, 221, 0.5);
+      border-radius: var(--borderR);
+      transition: all ease-in-out 0.35s;
+      left: 0;
+    }
+  }
+
+  &_list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: var(--borderR);
+
+    &_item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 20% 80%;
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
+      border-radius: var(--borderR);
+      padding: var(--borderR);
+      gap: var(--borderR);
+      overflow: hidden;
+      transition: 0.5s;
+      border: 1px solid transparent;
+      cursor: pointer;
+      grid-template-areas:
+        'img info'
+        'date date';
+
+      &_image {
+        grid-area: img;
+
+        img {
+          width: 100%;
+          border-radius: var(--borderR);
+        }
+      }
+
+      &_info {
+        grid-area: info;
+
+        h5 {
+          font-size: 22px;
+          font-weight: 700;
+          margin: 0 0 15px 0;
+        }
+
+        p {
+          font-size: 18px;
+          line-height: 24px;
+          margin: 0;
+          -webkit-line-clamp: 3;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          margin-right: 15px;
+        }
+      }
+
+      &_date {
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        grid-area: date;
+        margin-right: 15px;
+      }
+
+      &:hover {
+        background: transparent;
+        border: 1px solid var(--border);
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &_tba {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.05em;
+
+    img {
+      width: 15px;
+      margin-right: 5px;
+    }
+  }
+
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeInRight;
+  -moz-animation-name: fadeInRight;
+  -o-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
