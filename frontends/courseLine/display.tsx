@@ -31,7 +31,7 @@ export const display = function () {
                             <img src={`/assets/svg/exchangeRates/${course.nameCoin}.svg`} alt="" />
                           </div>
                           <span class="line__item_text">{course.nameCoin + "/USDT"}</span>
-                          <span class="line__item_text line__item_price">
+                          <span class="line__item_text text_important">
                             ${course.currentCourse.toFixed(
                               course.nameCoin === "cem" ? 4 : 2
                             )}

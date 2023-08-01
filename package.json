@@ -22,5 +22,17 @@
     "esbuild-sass-plugin": "^2.10.0",
     "path": "^0.12.7",
     "postcss": "^8.4.24"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CemJS/crypto-emergency.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CemJS/crypto-emergency.com/issues"
+  },
+  "homepage": "https://github.com/CemJS/crypto-emergency.com#readme",
+  "description": ""
 }

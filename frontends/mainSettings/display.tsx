@@ -48,7 +48,7 @@ const sections = [
   {
     category: "Обменники",
     img: exchanges,
-    url: "/list-exchanges"
+    url: "/list-exchange"
   },
   {
     category: "Пользователи",
