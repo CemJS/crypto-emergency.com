@@ -8,12 +8,12 @@ const fn = {
         }
         let eventSource
 
-        if (this.Ref.icoList) {
-            this.Ref.icoList.classList.add('animated');
-            setTimeout(() => {
-                this.Ref.icoList.classList.remove('animated');
-            }, 500)
-        }
+        // if (this.Ref.icoList) {
+        //     this.Ref.icoList.classList.add('animated');
+        //     setTimeout(() => {
+        //         this.Ref.icoList.classList.remove('animated');
+        //     }, 500)
+        // }
 
         if (this._ListsEventSource.length) {
             eventSource = this.eventSourceChange(url)

@@ -23,18 +23,18 @@ export const display = function () {
                       </span>
                     </div>
                     <div class="lenta__item_statistic statistic">
-                      <span class="statistic__date">{item.showDate}</span>
+                      <span class="statistic__date">{this.Services.functions.dateFormat(item.showDate, "now")}</span>
                       <div class="statistic__rating">
-                        <img src={dislike} />
+                        <img class="statistic__rating_like" src={dislike} />
                         <span>{item.Statistic.rating}</span>
-                        <img src={like} />
+                        <img class="statistic__rating_like" src={like} />
                       </div>
                       <div class="statistic__rating">
-                        <div class="statistic__img">
+                        <div class="statistic__rating_img">
                           <img src={comments} />
                           2
                         </div>
-                        <div class="statistic__img">
+                        <div class="statistic__rating_img">
                           <img src={views} />
                           23
                         </div>

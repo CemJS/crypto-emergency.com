@@ -14,6 +14,7 @@ const states = [
 ]
 
 export const display = function () {
+  console.log('=d9f0fc=',this.Static.records)
   return (
     <section class="ico">
       <div class="wrapper">
