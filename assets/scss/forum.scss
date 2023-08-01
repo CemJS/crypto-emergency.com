@@ -129,8 +129,9 @@
 }
 
 
-
-
+.wrapper{
+  overflow: hidden;
+}
 
 .wrapper h4 {
   margin: 25px 0;
@@ -246,9 +247,7 @@
   box-shadow: 0 0 10px 1px rgba(221, 221, 221, 0.5);
   border-radius: 10px;
 }
-// .activeTab:active{
-//   background: linear-gradient(56.57deg, #2973FF 0%, #8846D3 51.56%, #FF22AC 105.28%);
-// }
+
 
 .speakers {
   display: grid;
@@ -313,11 +312,15 @@
 }
 
 .partners_list {
-  display: grid;
-  grid-template-columns: calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px);
+  display: flex;
   background: #444B5F;
   padding: 10px;
   gap: 10px;
+  position: relative;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: 0;
+  transition: all 0.4s linear;
 
 
   &_item {
@@ -325,16 +328,18 @@
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    overflow: hidden;
-    height: 120px;
+    // overflow: hidden;
+    // height: 120px;
     border: 1px solid #8846D3;
     border-radius: 10px;
+    // width: 300px; 
+    // display: block;
   }
 
   &_item img {
-    max-width: 82%;
-    max-height: 100% !important;
-    margin: auto;
+    // max-width: 82%;
+    width: 200px;
+    height: auto;
   }
 }
 

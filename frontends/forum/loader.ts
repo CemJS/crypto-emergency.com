@@ -7,7 +7,9 @@ export const loader = function () {
 
   this.Static.activeIndex = 0;
   this.Static.value = 5
-  this.Static.value2="fhfhfh"
+  this.Static.value2="fhfhfh";
+
+
 
   this.initAuto(["value","value2"],(val,key)=>{
     console.log('=eb7653=',123,val,key)
