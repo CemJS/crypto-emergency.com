@@ -45,30 +45,6 @@
       ]
     },
     {
-      "url": "/user-cookies",
-      "front": [
-        "header",
-        "userCookies",
-        "footer"
-      ]
-    },
-    {
-      "url": "/user-data-policy",
-      "front": [
-        "header",
-        "userDataPolicy",
-        "footer"
-      ]
-    },
-    {
-      "url": "/userAgreement",
-      "front": [
-        "header",
-        "userAgreement",
-        "footer"
-      ]
-    },
-    {
       "url": "/list-startaps",
       "front": [
         "header",
@@ -100,6 +76,14 @@
       "front": [
         "header",
         "career",
+        "footer"
+      ]
+    },
+    {
+      "regex": "/user-",
+      "front": [
+        "header",
+        "rules",
         "footer"
       ]
     }
