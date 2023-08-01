@@ -128,12 +128,22 @@ $indent in $indents {
   font-weight: 700;
 }
 
-// все остальные
 .general_title {
-  font-size: 36px;
-  line-height: 42px;
-  font-weight: 500;
+  font-size: 44px;
+  line-height: 58px;
+  font-weight: 700;
   margin: 10px 0 25px 0;
+  text-align: center;
+}
+
+// все остальные
+.text_important {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  background: var(--btn_gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 // text elements

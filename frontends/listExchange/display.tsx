@@ -183,7 +183,6 @@ export const display = function () {
                 )
               })
             }
-
           </tbody>
         </table>
         <div class="listExchange_pagination mt_25">

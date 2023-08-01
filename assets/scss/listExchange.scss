@@ -2,9 +2,9 @@
   padding-bottom: 100px;
   position: relative;
 
-  .general_title {
-    text-align: center;
-  }
+  // .general_title {
+  //   text-align: center;
+  // }
 
   &::before {
     content: '';
@@ -43,7 +43,7 @@
     position: relative;
 
     &_head {
-      font-size: 14px;
+      font-size: 18px;
 
       .listExchange_table_row {
         background: var(--back_opacity);
@@ -160,7 +160,10 @@
         transition: all ease-in-out 0.35s;
 
         &_active {
-          color: var(--fiolet);
+          // color: var(--fiolet);
+          border-radius: var(--borderR);
+          padding: 10px 12px;
+          background: #8846d37e;
         }
 
         &:hover {

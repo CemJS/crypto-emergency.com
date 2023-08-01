@@ -28,7 +28,7 @@
     box-shadow: 15px 15px 25px #212531;
     border-radius: 4px;
 
-    tr {
+    &_row {
       position: relative;
 
       &::after {
@@ -58,7 +58,7 @@
           background: transparent;
         }
       }
-      
+
     }
   }
 
@@ -67,7 +67,7 @@
     padding: 15px 0;
 
     &>* {
-        margin: auto;
+      margin: auto;
     }
   }
 
