@@ -25,7 +25,7 @@
 
     &_body {
 
-      img {
+      > img {
         padding-top: 70px;
         width: 100%;
       }
@@ -38,12 +38,51 @@
     & .statistic {
       display: flex;
       justify-content: space-between;
-      margin: 10px 5px 15px;
+      margin: 10px 10px 20px;
+      padding: 0 20px;
 
       &__rating {
         display: flex;
         grid-gap: 15px;
         align-items: center;
+
+        span {
+          min-width: 20px;
+          position: relative;
+          font-weight: 700;
+          background: linear-gradient(45deg, #3bade3 0%, #576fe6 25%, #9844b7 51%, #ff357f 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          letter-spacing: 1px;
+          text-align: center;
+          font-size: 22px;
+        }
+
+        &_like {
+          z-index: 3;
+          height: 26px;
+          width: 26px;
+          border-radius: 50%;
+        }
+
+        &_img {
+          display: flex;
+          align-items: center;
+          grid-gap: 10px;
+
+          img {
+            height: 16px;
+            filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(284deg) brightness(107%) contrast(105%);
+          }
+        }
+      }
+
+      &__date {
+        position: absolute;
+        bottom: -15px;
+        left: 20px;
+        font-size: 9px;
+        color: #B1B7CE;
       }
     }
   }
