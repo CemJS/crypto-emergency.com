@@ -45,10 +45,18 @@
       ]
     },
     {
-      "url": "/userCookies",
+      "url": "/user-cookies",
       "front": [
         "header",
         "userCookies",
+        "footer"
+      ]
+    },
+    {
+      "url": "/user-data-policy",
+      "front": [
+        "header",
+        "userDataPolicy",
         "footer"
       ]
     },
