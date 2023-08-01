@@ -37,11 +37,44 @@
       ]
     },
     {
+      "url": "/forum",
+      "front": [
+        "header",
+        "forum",
+        "footer"
+      ]
+    },
+    {
+      "url": "/userCookies",
+      "front": [
+        "header",
+        "userCookies",
+        "footer"
+      ]
+    },
+    {
+      "url": "/userAgreement",
+      "front": [
+        "header",
+        "userAgreement",
+        "footer"
+      ]
+    },
+    {
       "url": "/list-startaps",
       "front": [
         "header",
         "categoryLine",
         "startaps",
+        "footer"
+      ]
+    },
+    {
+      "url": "/list-ico",
+      "front": [
+        "header",
+        "categoryLine",
+        "ico",
         "footer"
       ]
     },
@@ -59,14 +92,6 @@
       "front": [
         "header",
         "career",
-        "footer"
-      ]
-    },
-    {
-      "url": "/forum",
-      "front": [
-        "header",
-        "forum",
         "footer"
       ]
     }

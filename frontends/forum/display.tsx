@@ -475,55 +475,6 @@ const contentAbout = [
 ]
 
 export const display = function () {
-
-// return (
-//   <div class="forum forum_preview">
-//      <div id="Ttest" class="Tttest" ref='reftest'> {this.Static.value}</div>
-//      <button
-//     //  onclick={()=>{
-//     //   let tmp = document.querySelector('.Tttest')
-//     //   tmp.innerHTML = String(Number(tmp.innerHTML) + 1)
-      
-//     //  }}
-
-//     //  onclick={()=>{
-//     //   this.Ref.reftest.innerHTML = String(Number(this.Ref.reftest.innerHTML) + 1)
-    
-//     //   // console.log(this.Ref.reftest.innerText)
-//     //  }}
-
-
-//     //  onclick={()=>{
-
-//     //   this.Static.value ++
-//     //   // this.init()
-//     //   // console.log(this.Ref.reftest.innerText)
-//     //  }}
-
-
-//      onclick={(e)=>{
-//       // console.log('=da2006=',e.target)
-//       // e.target.innerText = "TEst222"
-//       this.Static.value ++
-//       // this.init()
-//       // console.log(this.Ref.reftest.innerText)
-//      }}
-
-//     //  onclick={()=>{
-//     //   this.Static.value ++
-//     //   this.init()
-//     //   // console.log(this.Ref.reftest.innerText)
-//     //  }}
-//      >434343</button>
-//      <br></br>
-//      <button
-//      onclick={()=>{
-//       this.Static.value2 = "TEST"
-//      }}>{this.Static.value2}</button>
-// </div>
-   
-// )
-
     return (
 
       <div class="forum">
@@ -542,7 +493,6 @@ export const display = function () {
                   contentAbout.map((item, index)=>{
                     return(
                       <div class="item_about"
-
                       >
                         <div class='head'> 
                           <img src={item.img} alt="img" />
@@ -607,7 +557,8 @@ export const display = function () {
                 class="show_all"
                 ref="button"
                 onclick={()=>{
-                  this.Ref.button.classList.add('hidden')
+                  // this.Ref.button.classList.add('hidden')
+                  this.Ref.button
                   speakers.forEach((item, index)=>{
                     
                     item.show = true
@@ -623,6 +574,7 @@ export const display = function () {
             <section class="partners_section">
               <h4>Партнеры</h4>
                 <div class="tabs" ref="forumTabs">
+
                   <span class={['tab', this.Static.partnersTabName == 'CryptoЮГ2023' ? 'active_year' : null]}
                   onclick={()=>{
                     let line = document.querySelector('.tab_border')
@@ -641,19 +593,38 @@ export const display = function () {
                     CryptoЮГ2022</span>
                   <div class="tab_border"></div>
                 </div>
-              <div class = "partners_list">
+                <button ref ='next'
+                onclick={()=>{
+                  // this.Ref.list.scrollLeft -= this.Ref.slide.offsetWidth + 20;
+                  let MainWidth = this.Ref.slide.offsetWidth * partners.length;
+                  // if()
+                  this.Ref.list.style.transform += `translateX(-${this.Ref.slide.offsetWidth}px)`
+                  console.log('=2f0798=', this.Ref.list.style.transform)
+                  this.init()
+                }
+              }
+                >
+                  Кнопка далее</button>
+              <div class = "partners_list" ref='list'>
+                
                   {
                     partners.map((item, index)=>{
                       return(
 
-                        <a target="_blank" href={item.url} class={["partners_list_item", item.visited.includes(this.Static.partnersTabName)? null : "hidden"]}>
+                        <div ref="slide" target="_blank" href={item.url} class={["partners_list_item", item.visited.includes(this.Static.partnersTabName)? null : "hidden"]}>
                         
                           <img src={item.logo} alt="img" />
-                        </a>
+                        </div>
                       )
                     })
                   }
               </div>
+              <button ref ='back'
+                onclick={()=>{
+
+                }}
+              >
+                Кнопка назад</button>
             </section>
         </div>
       </div>
