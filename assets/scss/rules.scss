@@ -183,10 +183,12 @@ h2 {
   
 }
 
-@media(max-width: 992px) {}
 
 @media(max-width: 767px) {
-  .userCookies{
+  .userRules{
+    h1{
+      font-size: 40px;
+    }
     &_text {
       font-size: 14px;
   }
@@ -198,7 +200,7 @@ h2 {
 }
 
 @media(max-width: 464px) {
-  .userCookies{
+  .userRules{
     &_text {
       font-size: 14px;
     } 

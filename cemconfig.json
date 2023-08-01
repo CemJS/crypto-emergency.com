@@ -104,10 +104,10 @@
       ]
     },
     {
-      "url": "/user-agreement",
+      "regex": "/user-",
       "front": [
         "header",
-        "userAgreement",
+        "rules",
         "footer"
       ]
     }

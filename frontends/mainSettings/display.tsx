@@ -282,7 +282,7 @@ export const display = function () {
                     <a class="accordion__link" href="/user-agreement">
                       Пользовательское соглашение
                     </a>
-                    <a class="accordion__link">
+                    <a class="accordion__link" href="/user-data-policy" onclick={this.Fn.link}>
                       Политика использования данных
                     </a>
                     <a class="accordion__link">
