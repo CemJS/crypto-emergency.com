@@ -10,7 +10,7 @@ export const display = function () {
       <div class="wrapper">
         <section class="userCookies_welcome">
           <h1 class="userCookies_welcome_title">Политика Cookies</h1>
-          <p class="userCookies_version userCookies_text">Редакция от xx.xx.2023</p>
+          <p class="userCookies_version userCookies_text">Редакция от 16.12.2023</p>
         </section>
         <section>
           <h2 class="userCookies_title">ЧТО ТАКОЕ ФАЙЛЫ COOKIE?</h2>
@@ -33,18 +33,15 @@ export const display = function () {
           <h2 class="userCookies_title">ДОГОВОР ПОЛЬЗОВАНИЯ</h2>
           <p class="userCookies_text">Продолжая пользоваться нашим сайтом, вы соглашаетесь на размещение файлов cookie на вашем устройстве. Если вы решили отказаться от наших файлов cookie, мы не можем гарантировать, что ваше посещение сайта будет таким же успешным, как при получении файлов cookie.</p>
         </section>
-        <section>
-          <p class="userCookies_text">Мы можем изменять наш Сервис и правила, и у нас может возникать необходимость внести изменения в настоящие Условия для точного отражения в них нашего Сервиса и правил. Если иное не требуется по законодательству, мы будем уведомлять вас путем размещения обновленной версии Условий на нашем сайте. Если после этого вы продолжите использовать Сервис, вы обязаны будете соблюдать обновленные Условия. Если вы не согласны с настоящими Условиями или какой-либо обновленной версией Условий, вы можете удалить свой аккаунт.</p>
-        </section>
         <div class="userCookies_button" >
-        <button class="download" type="button"
-							onclick={() => {
-								
-							}}
+        <a href="/assets/docs/cookieRU.pdf" target="_blank">
+          <button class="download" type="button"
 						>
 						<span>Скачать</span>
 					</button>
+        </a>
         </div>
+        
         <img src={cube} class="cube" />
         <img src={triangle} class="triangle" />
         <img src={cylinder} class="cylinder" />
