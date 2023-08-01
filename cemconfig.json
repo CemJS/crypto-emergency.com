@@ -29,14 +29,6 @@
       ]
     },
     {
-      "url": "/career",
-      "front": [
-        "header",
-        "career",
-        "footer"
-      ]
-    },
-    {
       "url": "/contacts",
       "front": [
         "header",

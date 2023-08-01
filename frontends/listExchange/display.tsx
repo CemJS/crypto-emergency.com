@@ -120,10 +120,11 @@ let rows = 10;
 let start = rows * currentPage;
 let end = start + rows;
 
-
-const paginated = listExchange.slice(start, end)
+let paginated = listExchange.slice(start, end)
 
 export const display = function () {
+  this.Static.arr = listExchange.slice(this.Static.start, this.Static.end)
+
   console.log('=194ce8=', listExchange.length)
   return (
     <section class="listExchange effect_lines pt_80">
@@ -189,7 +190,17 @@ export const display = function () {
           <div class="pag_list">
             <button class="pag_list_item" ref="pagPrev"><img src={prev} /></button>
             <button class="pag_list_item pag_list_item_active">1</button>
-            <button class="pag_list_item">2</button>
+            <button 
+              class="pag_list_item"
+              onclick={()=>{
+                start = 2;
+                paginated = listExchange.slice(start, end)
+                // console.log('=52c897=', this.Static.start)
+                this.init();
+              }}
+            >
+                2
+              </button>
             <button class="pag_list_item">3</button>
             <button class="pag_list_item">4</button>
             <button class="pag_list_item">...</button>
