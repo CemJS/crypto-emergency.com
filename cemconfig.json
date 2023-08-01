@@ -21,6 +21,22 @@
       ]
     },
     {
+      "url": "/list-exchange",
+      "front": [
+        "header",
+        "listExchange",
+        "footer"
+      ]
+    },
+    {
+      "url": "/career",
+      "front": [
+        "header",
+        "career",
+        "footer"
+      ]
+    },
+    {
       "url": "/contacts",
       "front": [
         "header",
@@ -80,10 +96,18 @@
       ]
     },
     {
-      "regex": "/user-",
+      "url": "/forum",
       "front": [
         "header",
-        "rules",
+        "forum",
+        "footer"
+      ]
+    },
+    {
+      "url": "/user-agreement",
+      "front": [
+        "header",
+        "userAgreement",
         "footer"
       ]
     }

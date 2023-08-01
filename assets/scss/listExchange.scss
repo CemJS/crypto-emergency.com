@@ -6,18 +6,7 @@
   //   text-align: center;
   // }
 
-  &::before {
-    content: '';
-    position: fixed;
-    left: -10%;
-    top: -8%;
-    background: url('svg/about/vector_1.svg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-  }
+
 
   &_lineB {
     position: fixed;
@@ -55,7 +44,7 @@
     &_row {
       display: grid;
       grid-template-columns: 40px 40px 0.5fr 1fr 0.5fr;
-      border: 1px solid var(--borderR);
+      // border: 1px solid var(--borderR);
 
       th,
       td {
@@ -73,6 +62,11 @@
       display: flex;
       align-items: center;
       // padding: 0 15px;
+    }
+
+    .coins_wrap {
+      display: flex;
+      align-items: center;
     }
 
     &_index,

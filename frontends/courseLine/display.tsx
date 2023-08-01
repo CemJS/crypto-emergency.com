@@ -27,7 +27,8 @@ export const display = function () {
                       return (
                         <div class="line__item">
                           <div class="line__item_img">
-                            <img src={`/assets/icons/coins/${course.nameCoin}.svg`}></img>
+                            {/* <img src={`/assets/icons/coins/${course.nameCoin}.svg`}></img> */}
+                            <img src={`/assets/svg/exchangeRates/${course.nameCoin}.svg`} alt="" />
                           </div>
                           <span class="line__item_text">{course.nameCoin + "/USDT"}</span>
                           <span class="line__item_text line__item_price">

@@ -126,7 +126,7 @@ const paginated = listExchange.slice(start, end)
 export const display = function () {
   console.log('=194ce8=', listExchange.length)
   return (
-    <section class="listExchange pt_80">
+    <section class="listExchange effect_lines pt_80">
       <div class="wrapper">
         <h1 class="general_title">Список обменных пунктов</h1>
 
@@ -159,7 +159,7 @@ export const display = function () {
                 return (
                   <tr class="listExchange_table_row">
                     <td class="listExchange_favourites">
-                      <img src={star} alt="Избранное" class="listExchange_icon" />
+                      <img src={star} alt="Избранные обменники" class="listExchange_icon" />
                     </td>
                     <td class="listExchange_table_index">{index + 1}</td>
                     <td class="listExchange_table_name">{item.name}</td>
