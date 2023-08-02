@@ -2,6 +2,7 @@
 
 
   &_table {
+    border-collapse: collapse;
     width: 100%;
     // background: #313541;
     // box-shadow: 15px 15px 25px #212531;
@@ -36,7 +37,7 @@
 
 
     &_body {
-      border: 1px solid var(--border) !important;
+      border: 1px solid var(--border);
       border-top: none;
       font-weight: 600;
 

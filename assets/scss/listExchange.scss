@@ -2,12 +2,6 @@
   padding-bottom: 100px;
   position: relative;
 
-  // .general_title {
-  //   text-align: center;
-  // }
-
-
-
   &_lineB {
     position: fixed;
     bottom: 60px;
@@ -24,6 +18,13 @@
   &_icon {
     width: 20px;
     height: 20px;
+  }
+
+  &_table_wrapper {
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &_table {
@@ -137,8 +138,22 @@
     .pag_list {
       display: flex;
       gap: 10px;
-      max-width: 400px;
+      max-width: fit-content;
       justify-content: space-between;
+      background: var(--btn_gradient);
+      padding: 10px;
+      border-radius: var(--borderR);
+
+      &_count {
+        display: flex;
+        gap: 5px;
+        max-width: 120px;
+        overflow: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: 0;
+        transition: all 0.4s linear;
+      }
 
       &_item {
         width: 35px;
@@ -152,18 +167,24 @@
         font-weight: 500;
         cursor: pointer;
         transition: all ease-in-out 0.35s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--borderR);
+        padding: 10px 12px;
+
+        img {
+          height: 15px;
+        }
+
 
         &_active {
-          // color: var(--fiolet);
-          border-radius: var(--borderR);
-          padding: 10px 12px;
-          background: #8846d37e;
+          background: var(--noble_black);
         }
 
         &:hover {
-          font-weight: 700;
-          font-size: 19px;
           transition: all ease-in-out 0.35s;
+          background: var(--noble_black);
         }
       }
     }

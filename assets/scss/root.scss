@@ -32,7 +32,7 @@ body {
     padding: 0 !important;
     overflow: overlay;
     color: var(--white);
-    background-color: #1D2029;
+    background-color: var(--noble_black);
     width: 100%;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -77,6 +77,11 @@ h2 {
     @media (min-width: 1200px) {
         font-size: 2rem;
     }
+}
+
+ul {
+    padding: 0;
+    margin: 0;
 }
 
 li {
