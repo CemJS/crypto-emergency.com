@@ -4,81 +4,183 @@ import dislike from "@svg/lenta/dislike.svg"
 import like from "@svg/lenta/like.svg"
 import comments from "@svg/lenta/comments.svg"
 import views from "@svg/lenta/views.svg"
+import frameDefault from "@svg/lenta/default.svg"
+import teamLogo from "@svg/lenta/mini_logo.svg"
+import leveGray from "@svg/lenta/level_gray.svg"
+import avatarDefault from "@images/lenta/avatar_default.png"
 
-export const display = function () {
-  console.log('=cbf168=',this.Static.records)
+const lentaMedia = function (item) {
 
-  const lentaMedia = function ( item ) {
+  if (item?.length == 0 || item == undefined) { return null }
+  // console.log('=a0a1aa=',item[0]?.name)
 
-    if (item.length == 0) { return null }
-    let arrVideo = item.filter((item) => item.type === "video");
-    let arrImage = item.filter((item) => item.type === "image");
+  let arrVideo = item.filter((item) => item.type === "video");
+  let arrImage = item.filter((item) => item.type === "image");
 
-    if (!arrVideo.length && arrImage.length == 1) {
-      return (
-        <img src={`/assets/upload/posts/${item[0]?.name}`} />
-      )
-    }
+  if (!arrVideo.length && arrImage.length == 1) {
+    return (
+      <img src={`/assets/upload/posts/${item[0]?.name}`} />
+    )
+  }
 
-    if (!arrImage.length && arrVideo.length == 1) {
-      return (
-        <div class="lenta__item_video">
-          {
-            item[0].previewName
+  if (!arrImage.length && arrVideo.length == 1) {
+    return (
+      <div class="lenta__item_video">
+        {
+          item[0].previewName
             ?
             <img src={`/assets/upload/posts/${item[0]?.previewName}`} />
             :
             <img src={videoBackground} />
-          }
-        </div>
-        
-      )
-    }
+        }
+      </div>
+    )
   }
+}
+
+export const display = function () {
+  console.log('=cbf168=', this.Static.records)
 
   return (
     <div class="lenta">
       <div class="lenta__container">
         {
-          this.Static.records?.map((item) => {
+          this.Static.records?.map((item, i) => {
+            let mediaFiles
+
+            if (item.media) {
+              mediaFiles = item.media.filter((item) => {
+                return typeof item == 'object'
+              });
+            }
+            let text
+            if (typeof item.text !== "undefined") {
+              text = item.text
+            }
+            else {
+              text = ""
+            }
+
             return (
               <div class="lenta__item">
                 <div class="lenta__item_wrapper">
+                  <div class="lenta__item_header">
+                    <a class="avatar" href="">
+                      <div class="avatar__icon">
+                        <img class="avatar__photo"
+                          src={item.author.avatar?.name
+                            ?
+                            `/assets/upload/avatar/${item.author.avatar?.name}`
+                            :
+                            { avatarDefault }
+                          }
+                        />
+                        <img class="avatar__frame"
+                          src={item.author.frame?.name
+                            ?
+                            `/assets/images/lenta/${item.author.frame?.name}`
+                            :
+                            frameDefault
+                          }
+                        />
+                        {
+                          item.author.status?.team
+                            ?
+                            <img class="avatar__team"
+                              src={item.author.status?.team
+                                ?
+                                teamLogo
+                                :
+                                null
+                              }
+                            />
+                            :
+                            <div>
+                              <div class="avatar__level">
+                                <img src={leveGray} />
+                                <span>{item.author.statistic.level}</span>
+                              </div>
+                            </div>
+                        }
+
+                      </div>
+                      <div class="avatar__name">
+                        <span>{item.author.nickname}</span>
+                      </div>
+                      <div class="avatar__settings">
+                        
+                      </div>
+                    </a>
+                  </div>
                   <div class="lenta__item_body">
                     {
-                      item.Media.length > 0
+                      item.media.length > 0
                         ?
-                        lentaMedia(item.Media)
+                        lentaMedia(item.media)
                         :
                         null
                     }
                     {/* <img src={`/assets/upload/posts/${item.Media[0]?.name}`} alt="" /> */}
-                    <div class="lenta__item_description">
+                    <div class={["lenta__item_description",
+                      !mediaFiles.length && item.text.length < 250 ? "lenta__item_background" : null
+                    ]}>
                       <span>
                         {
-                          item.text.length > 50
-                          ?
-                          this.Services.functions.editText(item.text, {clear: true})
-                          :
-                          item.text
+                          mediaFiles.length
+                            ?
+                            this.Services.functions.editText(item.text, { slice: 50, clear: true, html: true })
+                            :
+                            this.Services.functions.editText(item.text, { slice: 550, paragraph: true, clear: true, html: true })
                         }
                       </span>
+                      <div>
+                        {
+                          mediaFiles.length
+                            ?
+                            item.text.length > 50
+                              ?
+                              <div>
+                                <span hidden={true}>
+                                  {this.Services.functions.editText(item.text, { paragraph: true, clear: true, html: true })}
+                                </span>
+                                <span class="lenta__item_description_full">Показать все</span>
+                              </div>
+                              :
+                              null
+                            :
+                            item.text.length > 550
+                              ?
+                              <div>
+                                <span hidden={true}>
+                                  {this.Services.functions.editText(item.text, { paragraph: true, clear: true, html: true })}
+                                </span>
+                                <span
+                                  class="lenta__item_description_full"
+                                  onclick={(e) => {
+                                    console.log('=cd4d4f=')
+                                  }}
+                                >Показать все</span>
+                              </div>
+                              :
+                              null
+                        }
+                      </div>
                     </div>
                     <div class="lenta__item_statistic statistic">
                       <span class="statistic__date">{this.Services.functions.dateFormat(item.showDate, "now")}</span>
                       <div class="statistic__rating">
                         <img class="statistic__rating_like" src={dislike} />
-                        <span>{item.Statistic.rating}</span>
+                        <span>{item.statistic.rating}</span>
                         <img class="statistic__rating_like" src={like} />
                       </div>
                       <div class="statistic__rating">
                         <div class="statistic__rating_img">
                           <img src={comments} />
-                          2
+                          {item.statistic.comments}
                         </div>
                         <div class="statistic__rating_img">
                           <img src={views} />
-                          23
+                          {item.statistic.view}
                         </div>
                       </div>
                     </div>

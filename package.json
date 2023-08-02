@@ -11,6 +11,7 @@
   "dependencies": {
     "cemjs-all": "^1.0.5",
     "esbuild": "^0.18.6",
+    "html-dom-parser": "^4.0.0",
     "http-proxy": "^1.18.1",
     "idb": "^7.1.1",
     "moment": "^2.29.4",
