@@ -1,5 +1,6 @@
 import { Cemjsx } from "cemjs-all"
 import calendar from '@svg/icon/calendar.svg'
+import One from './display/one'
 
 const states = [
   {
@@ -14,6 +15,9 @@ const states = [
 ]
 
 export const display = function () {
+  if (this.Static.record) {
+    return One.bind(this)()
+  }
   return (
     <section class="ico">
       <div class="wrapper">
@@ -47,7 +51,10 @@ export const display = function () {
             {
               this.Static.records.map((item, index) => {
                 return (
-                  <div class="ico_list_item">
+                  <div class="ico_list_item" onclick={() => {
+                    this.Static.record = item;
+                    this.init()
+                  }}>
                     <span class="category">{item.category}</span>
                     <div class="ico_list_item_image">
                       <img src={`/assets/upload/worldPress/${item.icon}`} alt="ICO Rating"></img>
@@ -56,7 +63,17 @@ export const display = function () {
                     <div class="ico_list_item_info">
                       <h5>{item.title}</h5>
                       <p>{item.description}</p>
-
+                      <p class="ico_list_item_finance pt_15">
+                        <span class="text_important">${item.nowMoney}</span> / ${item.targetMoney}
+                        <span class="pl_15" style="color: #ffffff; font-size: 24px;">
+                          {
+                            item.targetMoney <= 0 ? '0' :
+                              Math.round(
+                                ((item.nowMoney && item.nowMoney > 0 ? item.nowMoney : 0) * 100) / item.targetMoney
+                              )
+                          }%
+                        </span>
+                      </p>
                     </div>
 
                     {

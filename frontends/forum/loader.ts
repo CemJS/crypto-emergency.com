@@ -2,12 +2,14 @@ export const loader = function () {
   this.Static.showAllSpeakers = true;
   this.Static.speakersTabName = 'CryptoЮГ2023';
   this.Static.partnersTabName = 'CryptoЮГ2023';
-
+  this.Static.partnersSlice = []
   this.Static.activeName = 'CryptoЮГ2023';
 
   this.Static.activeIndex = 0;
   this.Static.value = 5
-  this.Static.value2="fhfhfh"
+  this.Static.value2="fhfhfh";
+
+
 
   this.initAuto(["value","value2"],(val,key)=>{
     console.log('=eb7653=',123,val,key)
@@ -16,6 +18,7 @@ export const loader = function () {
     }
     return true
   })
+
 
 
   // this.initAuto("value",(val,p)=>{

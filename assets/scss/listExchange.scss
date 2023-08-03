@@ -2,23 +2,6 @@
   padding-bottom: 100px;
   position: relative;
 
-  .general_title {
-    text-align: center;
-  }
-
-  &::before {
-    content: '';
-    position: fixed;
-    left: -10%;
-    top: -8%;
-    background: url('svg/about/vector_1.svg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-  }
-
   &_lineB {
     position: fixed;
     bottom: 60px;
@@ -37,13 +20,18 @@
     height: 20px;
   }
 
+  &_table_wrapper {
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   &_table {
-    width: 100%;
-    border-collapse: collapse;
-    position: relative;
+
 
     &_head {
-      font-size: 14px;
+      font-size: 18px;
 
       .listExchange_table_row {
         background: var(--back_opacity);
@@ -55,7 +43,7 @@
     &_row {
       display: grid;
       grid-template-columns: 40px 40px 0.5fr 1fr 0.5fr;
-      border: 1px solid var(--borderR);
+      // border: 1px solid var(--borderR);
 
       th,
       td {
@@ -73,6 +61,11 @@
       display: flex;
       align-items: center;
       // padding: 0 15px;
+    }
+
+    .coins_wrap {
+      display: flex;
+      align-items: center;
     }
 
     &_index,
@@ -118,18 +111,18 @@
 
 
 
-    &_body {
-      font-size: 16px;
-      font-weight: 500;
-      border: 1px solid var(--border);
-      border-top: none;
-      border-bottom-left-radius: var(--borderR);
-      border-bottom-right-radius: var(--borderR);
+    // &_body {
+    //   font-size: 16px;
+    //   font-weight: 500;
+    //   border: 1px solid var(--border);
+    //   border-top: none;
+    //   border-bottom-left-radius: var(--borderR);
+    //   border-bottom-right-radius: var(--borderR);
 
-      .listExchange_table_row:not(:last-child) {
-        border-bottom: 1px solid var(--border)
-      }
-    }
+    //   .listExchange_table_row:not(:last-child) {
+    //     border-bottom: 1px solid var(--border)
+    //   }
+    // }
 
     &_coins {
       display: flex;
@@ -143,8 +136,22 @@
     .pag_list {
       display: flex;
       gap: 10px;
-      max-width: 400px;
+      max-width: fit-content;
       justify-content: space-between;
+      background: var(--btn_gradient);
+      padding: 10px;
+      border-radius: var(--borderR);
+
+      &_count {
+        display: flex;
+        gap: 5px;
+        max-width: 120px;
+        overflow: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: 0;
+        transition: all 0.4s linear;
+      }
 
       &_item {
         width: 35px;
@@ -158,15 +165,24 @@
         font-weight: 500;
         cursor: pointer;
         transition: all ease-in-out 0.35s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--borderR);
+        padding: 10px 12px;
+
+        img {
+          height: 15px;
+        }
+
 
         &_active {
-          color: var(--fiolet);
+          background: var(--noble_black);
         }
 
         &:hover {
-          font-weight: 700;
-          font-size: 19px;
           transition: all ease-in-out 0.35s;
+          background: var(--noble_black);
         }
       }
     }

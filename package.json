@@ -11,9 +11,11 @@
   "dependencies": {
     "cemjs-all": "^1.0.5",
     "esbuild": "^0.18.6",
+    "html-dom-parser": "^4.0.0",
     "http-proxy": "^1.18.1",
     "idb": "^7.1.1",
     "moment": "^2.29.4",
+    "sanitize-html": "^2.11.0",
     "uuid": "^9.0.0",
     "validator": "^13.9.0"
   },
@@ -22,5 +24,17 @@
     "esbuild-sass-plugin": "^2.10.0",
     "path": "^0.12.7",
     "postcss": "^8.4.24"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CemJS/crypto-emergency.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CemJS/crypto-emergency.com/issues"
+  },
+  "homepage": "https://github.com/CemJS/crypto-emergency.com#readme",
+  "description": ""
 }

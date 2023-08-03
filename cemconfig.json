@@ -9,6 +9,7 @@
         "header",
         "courseLine",
         "banners",
+        "lenta",
         "footer"
       ]
     },
@@ -17,6 +18,22 @@
       "front": [
         "header",
         "exchangeRates",
+        "footer"
+      ]
+    },
+    {
+      "url": "/list-exchange",
+      "front": [
+        "header",
+        "listExchange",
+        "footer"
+      ]
+    },
+    {
+      "url": "/list-trade",
+      "front": [
+        "header",
+        "listTrade",
         "footer"
       ]
     },
@@ -37,11 +54,36 @@
       ]
     },
     {
+      "url": "/forum",
+      "front": [
+        "header",
+        "forum",
+        "footer"
+      ]
+    },
+    {
+      "url": "/partners",
+      "front": [
+        "header",
+        "partners",
+        "footer"
+      ]
+    },
+    {
       "url": "/list-startaps",
       "front": [
         "header",
         "categoryLine",
         "startaps",
+        "footer"
+      ]
+    },
+    {
+      "url": "/list-ico",
+      "front": [
+        "header",
+        "categoryLine",
+        "ico",
         "footer"
       ]
     },
@@ -69,6 +111,22 @@
         "forum",
         "footer"
       ]
+    },
+    {
+      "url": "/error",
+      "front": [
+        "header",
+        "error",
+        "footer"
+      ]
+    },
+    {
+      "regex": "/user-",
+      "front": [
+        "header",
+        "rules",
+        "footer"
+      ]
     }
   ],
   "hook": {
@@ -77,6 +135,11 @@
         "url": "/assets/upload",
         "host": "crypto-emergency.com",
         "port": "80"
+      },
+      {
+        "url": "/api/events",
+        "host": "127.0.0.1",
+        "port": "33333"
       }
     ]
   },
