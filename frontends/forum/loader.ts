@@ -2,7 +2,7 @@ export const loader = function () {
   this.Static.showAllSpeakers = true;
   this.Static.speakersTabName = 'CryptoЮГ2023';
   this.Static.partnersTabName = 'CryptoЮГ2023';
-
+  this.Static.partnersSlice = []
   this.Static.activeName = 'CryptoЮГ2023';
 
   this.Static.activeIndex = 0;
@@ -18,6 +18,7 @@ export const loader = function () {
     }
     return true
   })
+
 
 
   // this.initAuto("value",(val,p)=>{

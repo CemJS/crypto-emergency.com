@@ -88,7 +88,7 @@ const speakers = [
     photo: speaker3,
     speaker: 'Александр Бражников',
     about_speaker: 'Исполнительный директор РАКИБ',
-    show: true,
+    // show: true,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -96,7 +96,7 @@ const speakers = [
     photo: speaker27,
     speaker: 'Павел Гудимов',
     about_speaker:'Директор по развитию РАКИБ',
-    show: true,
+    // show: true,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -104,15 +104,15 @@ const speakers = [
     photo: speaker5,
     speaker: 'Алексей Зюзин',
     about_speaker: 'Организатор Crypto Summit',
-    show: true,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    // show: true,
+    visited:['CryptoЮГ2023', ] 
   },
   {
     id : 15,
     photo: speaker15,
     speaker: 'Владимир Туров',
     about_speaker: 'Turov Invest',
-    show: true,
+    // show: true,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -120,31 +120,31 @@ const speakers = [
     photo: speaker1,
     speaker: 'Ян Кривоносов',
     about_speaker: 'CEO Crypto Emergency',
-    show: true,
+    // show: true,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
-  {
-    id : 14,
-    photo: speaker14,
-    speaker: 'Сергей Павлович',
-    about_speaker: 'Люди PRO',
-    show: true,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
-  },
+  // {
+  //   id : 14,
+  //   photo: speaker14,
+  //   speaker: 'Сергей Павлович',
+  //   about_speaker: 'Люди PRO',
+  //   // show: true,
+  //   visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+  // },
   {
     id : 2,
     photo: speaker2,
     speaker: 'Андрей Тугарин',
     about_speaker: 'CEO компании GMT Legal',
-    show: false,
-    visited:['CryptoЮГ2023'] 
+    // show: false,
+    visited:['CryptoЮГ2022'] 
   },
   {
     id : 6,
     photo: speaker6,
     speaker: 'Вероника Близнец',
     about_speaker: 'Адвокат, юрист-международник',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023'] 
   },
   {
@@ -152,7 +152,7 @@ const speakers = [
     photo: speaker7,
     speaker: 'Mr. Sailer YouTube',
     about_speaker: 'Блогер журналист',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023'] 
   },
   {
@@ -160,7 +160,7 @@ const speakers = [
     photo: speaker29,
     speaker: 'Олег Иванов',
     about_speaker: 'Серийный предприниматель, инвестор',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023'] 
   },
   {
@@ -168,7 +168,7 @@ const speakers = [
     photo: speaker8,
     speaker: 'Валерий Осипов',
     about_speaker: 'ArtEmotioChain',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023'] 
   },
   {
@@ -176,7 +176,7 @@ const speakers = [
     photo: speaker9,
     speaker: 'Александр Изюрьев',
     about_speaker: 'Основатель клуба инвесторов UnionClub',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023'] 
   },
   {
@@ -184,7 +184,7 @@ const speakers = [
     photo: speaker10,
     speaker: 'Ярослав Кожухов',
     about_speaker: 'Metis',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -192,7 +192,7 @@ const speakers = [
     photo: speaker25,
     speaker: 'Кирилл Филимонов',
     about_speaker: 'Основатель Россграм',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -200,7 +200,7 @@ const speakers = [
     photo: speaker30,
     speaker: 'Владислав Судьин',
     about_speaker: 'Зам. председателя Комиссии по инновациям и инвестициям IFSPD',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -208,7 +208,7 @@ const speakers = [
     photo:speaker12,
     speaker: 'Вячеслав Носков',
     about_speaker: 'PRO BLOCKCHAIN MEDIA',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -216,7 +216,7 @@ const speakers = [
     photo: speaker26,
     speaker: 'Бурков Максим',
     about_speaker: 'Основатель группы web3 компаний Pro Blockchain Media',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -224,7 +224,7 @@ const speakers = [
     photo: speaker13,
     speaker: 'Денис Магданов',
     about_speaker: 'DUMA NETWORK',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -232,7 +232,7 @@ const speakers = [
     photo: speaker17,
     speaker: 'Сергей Грабский',
     about_speaker: 'Руководитель Ассоциации цифрового развития Краснодарского края',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -240,7 +240,7 @@ const speakers = [
     photo: speaker18,
     speaker: 'Евгений Сапожников',
     about_speaker: 'Основатель обменника криптовалют Keine-exchange',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -248,7 +248,7 @@ const speakers = [
     photo: speaker19,
     speaker:'Денис Стригун' ,
     about_speaker: 'CEO WEB3Space',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -256,7 +256,7 @@ const speakers = [
     photo: speaker20,
     speaker: 'Иван Деркач',
     about_speaker: 'CTO WEB3Space',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -264,7 +264,7 @@ const speakers = [
     photo: speaker21,
     speaker: 'Дмитрий Романов',
     about_speaker: 'Консультант блокчейн-проектов',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -272,7 +272,7 @@ const speakers = [
     photo: speaker22,
     speaker: 'Илья Ткаченко',
     about_speaker: 'Криптоэксперт',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -280,7 +280,7 @@ const speakers = [
     photo: speaker23,
     speaker: 'Тимофей Григоренко',
     about_speaker: 'Майнинг, владелец 1GHS',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -288,7 +288,7 @@ const speakers = [
     photo: speaker24,
     speaker: 'Лев Пониманский',
     about_speaker: 'Криптоэнтузиаст',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   },
   {
@@ -296,10 +296,14 @@ const speakers = [
     photo: speaker28,
     speaker: 'Наталья Сазонова',
     about_speaker: 'CEO Rabotavkripte',
-    show: false,
+    // show: false,
     visited:['CryptoЮГ2023'] 
   }
 ]
+
+let arr = speakers.slice(0, 6);
+
+let arrFinish = [];
 
 const partners = [
   {
@@ -439,6 +443,12 @@ const partners = [
   }
 ]
 
+speakers.forEach(item => {
+  if(item.visited.includes('CryptoЮГ2023') && arrFinish.length < 6){
+    arrFinish.push(item);
+    // console.log('=b37d44=',arrFinish)
+  }
+});
 
 const contentAbout = [
   {
@@ -473,8 +483,9 @@ const contentAbout = [
     text: 'На форуме выступают дальновидные спикеры, которые могут вдохновить тебя вывести собственные идеи и проекты на новый уровень.'
   },
 ]
-
 export const display = function () {
+  console.log(arrFinish);
+
     return (
 
       <div class="forum">
@@ -505,24 +516,32 @@ export const display = function () {
                 }
               </div>
             </section>
-              <section class="event_section">
+
+            
+{/* speakers tabs */}
+            <section class="event_section">
               <h4>Спикеры</h4>
               <div class="events_list">
-                <div class="tabs">
+                <div class="tabs" 
+                  
+                >
                   {
                     tabs.map((item, index)=>{
                       return(
                         <span 
                           class='tab'
-                          ref="tabItem"
+                          ref="tabItem1"
+
                           onclick={()=>{
                             this.Static.activeIndex = index;
-                            this.Ref.activeTab.style.left = `${this.Ref.tabItem.offsetWidth * this.Static.activeIndex}px`;
+                            this.Ref.activeTab.style.left = `${this.Ref.tabItem1.offsetWidth * this.Static.activeIndex}px`;
                             this.Static.speakersTabName = item.name;
+                            this.fn("tab", speakers, arrFinish);
                             this.Ref.speakersContent.classList.add('animated');
                             setTimeout(() => {
                               this.Ref.speakersContent.classList.remove('animated');
                             }, 500)
+                            
                             this.init();
                           }}
                         >
@@ -533,12 +552,17 @@ export const display = function () {
                   }
                   <div class="activeTab" ref="activeTab"></div>
                 </div>
-          
+{/* speakers */}
+
                 <div class="speakers" ref="speakersContent">
                   {
-                    speakers.map((item, index)=>{
+                    
+                    arrFinish.map((item, index)=>{
+                      // console.log('=5a91e5=',item.visited)
                       return(
-                        <div class={["speaker", item.show && item.visited.includes(this.Static.speakersTabName) ? null : "hidden"]}>
+                        
+                        <div class={["speaker", ]} 
+                        >
                           <div class='photo'>
                             <img src={item.photo} alt="img" />
                           </div>
@@ -552,15 +576,19 @@ export const display = function () {
                   }
                 </div>
               </div>
+
+{/* speakers show_all button */}
+
               <div 
                 class="show_all"
                 ref="button"
                 onclick={()=>{
-                  this.Ref.button
-                  speakers.forEach((item, index)=>{
+                
+                  // speakers.forEach((item, index)=>{
                     
-                    item.show = true
-                  })
+                  //   item.show = true
+                  // })
+                  arr = speakers
                   this.init()
                 }}
               >
@@ -569,6 +597,10 @@ export const display = function () {
               
             </section>
 
+
+
+
+{/* partners tabs*/}
             <section class="partners_section">
               <h4>Партнеры</h4>
   
@@ -578,10 +610,10 @@ export const display = function () {
                       return(
                         <span 
                           class='tab'
-                          ref="tabItem"
+                          ref="tabItem2"
                           onclick={()=>{
                             this.Static.activeIndex = index;
-                            this.Ref.activeTab.style.left = `${this.Ref.tabItem.offsetWidth * this.Static.activeIndex}px`;
+                            this.Ref.activeTab2.style.left = `${this.Ref.tabItem2.offsetWidth * this.Static.activeIndex}px`;
                             this.Static.partnersTabName = item.name;
                             this.Ref.partners_content.classList.add('animated');
                             setTimeout(() => {
@@ -595,9 +627,18 @@ export const display = function () {
                       )
                     })
                   }
-                  <div class="activeTab" ref="activeTab"></div>
+                  <div class="activeTab" ref="activeTab2"></div>
                 </div>
           
+
+
+
+
+
+
+
+{/*partners  slider */}
+
                 <button ref ='next'
                 onclick={()=>{
                   // this.Ref.list.scrollLeft -= this.Ref.slide.offsetWidth + 20;
