@@ -552,12 +552,10 @@ export const display = function () {
                   }
                 </div>
               </div>
-              {/* <button class="btn-test"><span>кнопка</span></button> */}
               <div 
                 class="show_all"
                 ref="button"
                 onclick={()=>{
-                  // this.Ref.button.classList.add('hidden')
                   this.Ref.button
                   speakers.forEach((item, index)=>{
                     
@@ -573,45 +571,53 @@ export const display = function () {
 
             <section class="partners_section">
               <h4>Партнеры</h4>
+  
                 <div class="tabs" ref="forumTabs">
-
-                  <span class={['tab', this.Static.partnersTabName == 'CryptoЮГ2023' ? 'active_year' : null]}
-                  onclick={()=>{
-                    let line = document.querySelector('.tab_border')
-                    this.Static.partnersTabName = 'CryptoЮГ2023';
-                    this.init();
-
-                  }}
-                  >
-                    CryptoЮГ2023</span>
-                  <span class={['tab', this.Static.partnersTabName == 'CryptoЮГ2022' ? 'active_year' : null]}
-                  onclick={()=>{
-                    this.Static.partnersTabName = 'CryptoЮГ2022';
-                    this.init();
-                  }}  
-                  >
-                    CryptoЮГ2022</span>
-                  <div class="tab_border"></div>
+                  {
+                    tabs.map((item, index)=>{
+                      return(
+                        <span 
+                          class='tab'
+                          ref="tabItem"
+                          onclick={()=>{
+                            this.Static.activeIndex = index;
+                            this.Ref.activeTab.style.left = `${this.Ref.tabItem.offsetWidth * this.Static.activeIndex}px`;
+                            this.Static.partnersTabName = item.name;
+                            this.Ref.partners_content.classList.add('animated');
+                            setTimeout(() => {
+                              this.Ref.partners_content.classList.remove('animated');
+                            }, 500)
+                            this.init();
+                          }}
+                        >
+                            {item.name}
+                        </span>
+                      )
+                    })
+                  }
+                  <div class="activeTab" ref="activeTab"></div>
                 </div>
+          
                 <button ref ='next'
                 onclick={()=>{
                   // this.Ref.list.scrollLeft -= this.Ref.slide.offsetWidth + 20;
                   let MainWidth = this.Ref.slide.offsetWidth * partners.length;
+                  console.log(partners.length)
                   // if()
-                  this.Ref.list.style.transform += `translateX(-${this.Ref.slide.offsetWidth}px)`
-                  console.log('=2f0798=', this.Ref.list.style.transform)
+                  this.Ref.partners_content.style.transform += `translateX(-${this.Ref.slide.offsetWidth}px)`
+                  console.log('=2f0798=', this.Ref.partners_content.style.transform)
                   this.init()
                 }
               }
                 >
                   Кнопка далее</button>
-              <div class = "partners_list" ref='list'>
-                
+              <div class = "partners_list" ref='partners_content'>
                   {
                     partners.map((item, index)=>{
                       return(
 
-                        <div ref="slide" target="_blank" href={item.url} class={["partners_list_item", item.visited.includes(this.Static.partnersTabName)? null : "hidden"]}>
+                        <div ref="slide" target="_blank" href={item.url} class={["partners_list_item",
+                         item.visited.includes(this.Static.partnersTabName)? null : "hidden"]}>
                         
                           <img src={item.logo} alt="img" />
                         </div>
@@ -621,7 +627,11 @@ export const display = function () {
               </div>
               <button ref ='back'
                 onclick={()=>{
-
+                  let MainWidth = this.Ref.slide.offsetWidth * partners.length;
+                  // if()
+                  this.Ref.partners_content.style.transform += `translateX(+${this.Ref.slide.offsetWidth}px)`
+                  console.log('=2f0798=', this.Ref.partners_content.style.transform)
+                  this.init()
                 }}
               >
                 Кнопка назад</button>

@@ -62,6 +62,14 @@
       ]
     },
     {
+      "url": "/partners",
+      "front": [
+        "header",
+        "partners",
+        "footer"
+      ]
+    },
+    {
       "url": "/list-startaps",
       "front": [
         "header",
@@ -101,6 +109,14 @@
       "front": [
         "header",
         "forum",
+        "footer"
+      ]
+    },
+    {
+      "url": "/error",
+      "front": [
+        "header",
+        "error",
         "footer"
       ]
     },
