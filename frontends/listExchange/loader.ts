@@ -217,6 +217,15 @@ export const loader = function () {
     this.Static.arrPag.push(i);
   }
 
+  let eventSource = this.eventSource(`Exchanges?uuid=${this.Variable.myInfo.uuid}&courseLine=true`)
+
+  eventSource.addEventListener('message', ({ data }) => {
+    let records = JSON.parse(data)
+    this.Static.records = records
+    console.log('=f63a78=', this.Static.records)
+    this.init()
+  });
+
   // let eventSource = this.eventSource(`Startaps?uuid=${this.Variable.myInfo.uuid}&cat=NFT`)
 
   // eventSource.addEventListener('message', ({ data }) => {
