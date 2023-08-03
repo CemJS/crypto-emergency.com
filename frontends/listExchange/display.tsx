@@ -20,13 +20,14 @@ import lineB from '@svg/lines/linesB.svg'
 
 
 export const display = function () {
+  // console.log('=86c197=', this.Static.paginated)
   return (
     <section class="listExchange effect_lines pt_80">
       <div class="wrapper">
         <h1 class="general_title">Список обменных пунктов</h1>
 
         <div class="listExchange_table_wrapper">
-          <table class="listExchange_table">
+          <table class="listExchange_table table">
             <thead class="listExchange_table_head">
               <tr class="listExchange_table_row">
                 <th></th>
@@ -49,29 +50,29 @@ export const display = function () {
                 </th>
               </tr>
             </thead>
-            <tbody class="listExchange_table_body">
+            <tbody class="table_body listExchange_table_body">
               {
                 this.Static.paginated.map((item, index) => {
                   return (
-                    <tr class="listExchange_table_row">
+                    <tr class="table_row listExchange_table_row">
                       <td class="listExchange_favourites">
                         <img src={star} alt="Избранные обменники" class="listExchange_icon" />
                       </td>
-                      <td class="listExchange_table_index">{item.id}</td>
+                      <td class="listExchange_table_index">{index + 1}</td>
                       <td class="listExchange_table_name">{item.name}</td>
                       <td class="listExchange_table_coins">
-                        {/* <div class="coins_wrap">
+                        <div class="coins_wrap">
                           {
-                            item.coins.map((item, index) => {
+                            item.list_coins.map((el, index) => {
                               return (
-                                <img src={item} class="coins_wrap_item"></img>
+                                <img src={`/assets/icons/coins/${el.icon}.svg`} class="coins_wrap_item"></img>
                               )
                             })
                           }
-                        </div> */}
+                        </div>
                       </td>
                       <td class="listExchange_table_btn">
-                        <a class="btn btn_gradient" target="_blank">
+                        <a class="btn btn_gradient" href={item.url} onclick={this.Fn.link}>
                           <span>Обменять</span>
                         </a>
                       </td>

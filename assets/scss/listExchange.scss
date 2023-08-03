@@ -28,9 +28,7 @@
   }
 
   &_table {
-    width: 100%;
-    border-collapse: collapse;
-    position: relative;
+
 
     &_head {
       font-size: 18px;
@@ -113,18 +111,18 @@
 
 
 
-    &_body {
-      font-size: 16px;
-      font-weight: 500;
-      border: 1px solid var(--border);
-      border-top: none;
-      border-bottom-left-radius: var(--borderR);
-      border-bottom-right-radius: var(--borderR);
+    // &_body {
+    //   font-size: 16px;
+    //   font-weight: 500;
+    //   border: 1px solid var(--border);
+    //   border-top: none;
+    //   border-bottom-left-radius: var(--borderR);
+    //   border-bottom-right-radius: var(--borderR);
 
-      .listExchange_table_row:not(:last-child) {
-        border-bottom: 1px solid var(--border)
-      }
-    }
+    //   .listExchange_table_row:not(:last-child) {
+    //     border-bottom: 1px solid var(--border)
+    //   }
+    // }
 
     &_coins {
       display: flex;

@@ -390,3 +390,96 @@ $indent in $indents {
     }
   }
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  position: relative;
+
+  &_favourites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &_head {
+    font-size: 18px;
+
+    .table_row {
+      height: 55px;
+      background: var(--back_opacity);
+      border-top-left-radius: var(--borderR);
+      border-top-right-radius: var(--borderR);
+
+
+
+
+    }
+  }
+
+  &_row {
+    display: grid;
+    // height: 55px;
+
+    th,
+    td {
+      padding: 10px 15px;
+    }
+
+    &_category {
+      .category-carousel {
+        padding: 0;
+      }
+    }
+
+  }
+
+  &_index,
+  &_name,
+  &_coins,
+  &_filter {
+    display: flex;
+    align-items: center;
+  }
+
+  &_rating,
+  &_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_body {
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom-left-radius: var(--borderR);
+    border-bottom-right-radius: var(--borderR);
+
+    .table_row:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+  }
+
+  // &_row {
+  //   height: 55px;
+
+  //   th,
+  //   td {
+  //     padding: 10px 15px;
+  //   }
+  // }
+
+  &_trades {
+    &_row {
+      grid-template-columns: 40px 40px 1fr 150px 1fr 1fr;
+    }
+  }
+
+}

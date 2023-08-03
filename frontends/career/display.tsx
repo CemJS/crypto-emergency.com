@@ -66,6 +66,7 @@ const professions = [
 ]
 
 export const display = function () {
+  console.log('=fef7b2=', this.Static.sections)
   return (
     <div class="page page__container">
       <div class="career">
@@ -76,7 +77,7 @@ export const display = function () {
               <span class="career_preview_text">Присоединяйтесь к нашей команде.</span>
             </div>
           </section>
-          <section class="career_advantages">
+          <section class="career_advantages careerSection">
             <h2 class="career_title">Преимущества</h2>
             <div class="career_advantages_inner">
               {
@@ -95,7 +96,7 @@ export const display = function () {
               }
             </div>
           </section>
-          <section class="career_employment">
+          <section class="career_employment careerSection">
             <h2 class="career_title">Как устроиться в нашу компанию?</h2>
             <div class="career_employment_inner">
               {
@@ -130,7 +131,7 @@ export const display = function () {
               }
             </div>
           </section>
-          <section class="career_professions">
+          <section class="career_professions careerSection">
             <h2 class="career_title">Выбери свою профессию</h2>
             <div class="career_professions_inner">
               {
@@ -145,7 +146,7 @@ export const display = function () {
               }
             </div>
           </section>
-          <section class="career_vacancies">
+          <section class="career_vacancies careerSection">
             <div class="vacancy">
               <div class="vacancy_header pb_15">
                 <img src={icon} alt="Вакансия в компанию Crypto Emergency"></img>

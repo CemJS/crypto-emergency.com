@@ -7,6 +7,15 @@ export const loader = function () {
   this.Static.dex = 'DEX';
 
 
+  let eventSource = this.eventSource(`Trades?uuid=${this.Variable.myInfo.uuid}&courseLine=true`)
+
+  eventSource.addEventListener('message', ({ data }) => {
+    let records = JSON.parse(data)
+    this.Static.records = records
+    // console.log('=f63a78=', this.Static.arr)
+    this.init()
+  });
+
   // const function  = ()
 
   // this.Static.arr = [
