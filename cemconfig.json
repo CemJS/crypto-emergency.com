@@ -1,7 +1,7 @@
 {
   "ver": "1.0.0",
   "port": 3000,
-  "api": "http://127.0.0.1:33333/api/events/",
+  "api": "http://5.44.40.229:33333/api/events/",
   "pages": [
     {
       "url": "/",

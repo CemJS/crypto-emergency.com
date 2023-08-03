@@ -7,7 +7,9 @@ import views from "@svg/lenta/views.svg"
 import frameDefault from "@svg/lenta/default.svg"
 import teamLogo from "@svg/lenta/mini_logo.svg"
 import leveGray from "@svg/lenta/level_gray.svg"
+import points from "@svg/lenta/points.svg"
 import avatarDefault from "@images/lenta/avatar_default.png"
+import Show from './display/show'
 
 const lentaMedia = function (item) {
 
@@ -39,10 +41,13 @@ const lentaMedia = function (item) {
 }
 
 export const display = function () {
+  if (this.Static.record) {
+    return Show.bind(this)()
+  }
   console.log('=cbf168=', this.Static.records)
 
   return (
-    <div class="lenta">
+    <section class="lenta">
       <div class="lenta__container">
         {
           this.Static.records?.map((item, i) => {
@@ -64,8 +69,13 @@ export const display = function () {
             return (
               <div class="lenta__item">
                 <div class="lenta__item_wrapper">
-                  <div class="lenta__item_header">
-                    <a class="avatar" href="">
+                  <div class="lenta__item_header"
+                    onclick={() => {
+                      this.Static.record = item
+                      this.init()
+                    }}
+                  >
+                    <a class="avatar" href="#">
                       <div class="avatar__icon">
                         <img class="avatar__photo"
                           src={item.author.avatar?.name
@@ -107,10 +117,11 @@ export const display = function () {
                       <div class="avatar__name">
                         <span>{item.author.nickname}</span>
                       </div>
-                      <div class="avatar__settings">
-                        
-                      </div>
+
                     </a>
+                    <div class="avatar__settings">
+                      <img src={points} />
+                    </div>
                   </div>
                   <div class="lenta__item_body">
                     {
@@ -124,7 +135,12 @@ export const display = function () {
                     <div class={["lenta__item_description",
                       !mediaFiles.length && item.text.length < 250 ? "lenta__item_background" : null
                     ]}>
-                      <span>
+                      <span 
+                        onclick={() => {
+                          this.Static.record = item
+                          this.init()
+                        }}
+                      >
                         {
                           mediaFiles.length
                             ?
@@ -139,25 +155,45 @@ export const display = function () {
                             ?
                             item.text.length > 50
                               ?
-                              <div>
+                              <div
+                                onclick={(e) => {
+                                  let el = e.currentTarget
+                                  el.firstElementChild.hidden = false
+                                  el.parentElement.parentElement.firstElementChild.hidden = true
+                                }}
+                              >
                                 <span hidden={true}>
                                   {this.Services.functions.editText(item.text, { paragraph: true, clear: true, html: true })}
                                 </span>
-                                <span class="lenta__item_description_full">Показать все</span>
+                                <span
+                                  onclick={(e) => {
+                                    let el = e.currentTarget
+                                    el.innerHTML = ""
+                                  }}
+                                  class="lenta__item_description_full">Показать все</span>
                               </div>
                               :
                               null
                             :
                             item.text.length > 550
                               ?
-                              <div>
+                              <div
+                                onclick={(e) => {
+                                  let el = e.currentTarget
+                                  el.lastChild.hidden = true
+                                  el.firstElementChild.hidden = false
+                                  el.parentElement.parentElement.firstElementChild.hidden = true
+                                  // console.log('=2f10aa=',el.parentElement.parentElement.firstElementChild.hidden = true)
+                                }}
+                              >
                                 <span hidden={true}>
                                   {this.Services.functions.editText(item.text, { paragraph: true, clear: true, html: true })}
                                 </span>
                                 <span
                                   class="lenta__item_description_full"
                                   onclick={(e) => {
-                                    console.log('=cd4d4f=')
+                                    let el = e.currentTarget
+                                    el.innerHTML = ""
                                   }}
                                 >Показать все</span>
                               </div>
@@ -191,7 +227,7 @@ export const display = function () {
           })
         }
       </div>
-      <button
+      {/* <button
         onclick={() => {
           let data = {
             uuid: this.Variable.myInfo.uuid,
@@ -205,7 +241,7 @@ export const display = function () {
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
           })
-        }}>1234</button>
-    </div>
+        }}>1234</button> */}
+    </section>
   )
 }
