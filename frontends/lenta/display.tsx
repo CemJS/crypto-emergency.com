@@ -112,7 +112,6 @@ export const display = function () {
                               </div>
                             </div>
                         }
-
                       </div>
                       <div class="avatar__name">
                         <span>{item.author.nickname}</span>
@@ -160,9 +159,15 @@ export const display = function () {
                                   let el = e.currentTarget
                                   el.firstElementChild.hidden = false
                                   el.parentElement.parentElement.firstElementChild.hidden = true
+                                  
                                 }}
                               >
-                                <span hidden={true}>
+                                <span hidden={true}
+                                  onclick={() => {
+                                    this.Static.record = item
+                                    this.init()
+                                  }}
+                                >
                                   {this.Services.functions.editText(item.text, { paragraph: true, clear: true, html: true })}
                                 </span>
                                 <span
@@ -186,7 +191,12 @@ export const display = function () {
                                   // console.log('=2f10aa=',el.parentElement.parentElement.firstElementChild.hidden = true)
                                 }}
                               >
-                                <span hidden={true}>
+                                <span hidden={true}
+                                  onclick={() => {
+                                    this.Static.record = item
+                                    this.init()
+                                  }}
+                                >
                                   {this.Services.functions.editText(item.text, { paragraph: true, clear: true, html: true })}
                                 </span>
                                 <span
