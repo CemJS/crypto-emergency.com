@@ -123,15 +123,15 @@ export const display = function () {
 
                         <div class="content">
                           <a target="_blank" href={item.urlENG} class="ruLink">
+                          <span class="spanRegionRU">{item.regionRU}</span>
                           {item.loginRU}
-                            <span class="spanRegionRU">{item.regionRU}</span>
+                            
                           </a>
 
                           
                           <a target="_blank" href={item.urlRU} class="engLink">
-                          {item.loginENG}
-                            
-                            <span class="spanRegionENG">{item.regionENG}</span>
+                          <span class="spanRegionENG">{item.regionENG}</span>
+                          {item.loginENG} 
                           </a>
                         </div>
                       </div>
