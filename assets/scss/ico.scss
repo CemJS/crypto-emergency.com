@@ -5,6 +5,12 @@
 .ico {
   padding-bottom: 80px;
 
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+
   &::before {
     content: '';
     position: fixed;
@@ -187,4 +193,136 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+// ico inner
+
+.icoItem {
+
+  &_header {
+    display: flex;
+    gap: 25px;
+    padding: 25px 0;
+
+    &_icon {
+      height: 80px;
+      width: 80px;
+      border-radius: var(--borderR);
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &_desc {
+      p {
+        font-size: 18px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  &_info {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+
+    &_cover {
+      img {
+        width: 100%;
+      }
+    }
+
+    &_desc {
+      position: relative;
+
+      &_item:first-child {
+        display: flex;
+        gap: 15px;
+        padding-bottom: 15px;
+      }
+    }
+  }
+
+  &_category {
+    background: var(--white);
+    border-radius: var(--borderR);
+    padding: 10px;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    span {
+      font-size: 22px;
+      line-height: 26px;
+    }
+  }
+
+  &_gallery {
+    &_wrap {
+      position: relative;
+    }
+  }
+
+  &_btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-radius: var(--ellipse);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
+
+    img {
+      height: 25px;
+    }
+
+    &_prev {
+      left: -50px;
+    }
+
+    &_next {
+      right: -50px;
+    }
+
+    &:hover {
+      background: transparent;
+      border: 1px solid var(--border);
+      transform: translateY(-50%) scale(0.98);
+    }
+  }
+
+  &_carousel {
+    display: flex;
+    gap: 15px;
+
+    &_item {
+      height: 350px;
+      // width: 100%;
+      width: 350px;
+      cursor: pointer;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: var(--borderR);
+      }
+    }
+  }
+}
+
+.token_list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
