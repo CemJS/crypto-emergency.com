@@ -2,10 +2,10 @@ import { Cemjsx } from "cemjs-all"
 import up_arrow from '@svg/courseLine/up_arrow.svg'
 import networking from '@svg/forum/networking.svg'
 import communication from '@svg/forum/communication.svg'
-import innovation  from '@svg/forum/innovation.svg'
+import innovation from '@svg/forum/innovation.svg'
 import inspiration from '@svg/forum/inspiration.svg'
 import education from '@svg/forum/education.svg'
-import bg4  from '@images/forum/bg4.png'
+import bg4 from '@images/forum/bg4.png'
 import speaker1 from '@images/forum/speakers/speaker1.jpg'
 import speaker2 from '@images/forum/speakers/speaker2.jpg'
 import speaker3 from '@images/forum/speakers/speaker3.jpg'
@@ -82,46 +82,49 @@ interface Course {
   change: number
 }
 
+
+let howMutchSpeakers = 6
+
 const speakers = [
-  {   
-    id : 3,
+  {
+    id: 3,
     photo: speaker3,
     speaker: 'Александр Бражников',
     about_speaker: 'Исполнительный директор РАКИБ',
     // show: true,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 27,
+    id: 27,
     photo: speaker27,
     speaker: 'Павел Гудимов',
-    about_speaker:'Директор по развитию РАКИБ',
+    about_speaker: 'Директор по развитию РАКИБ',
     // show: true,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 5,
+    id: 5,
     photo: speaker5,
     speaker: 'Алексей Зюзин',
     about_speaker: 'Организатор Crypto Summit',
     // show: true,
-    visited:['CryptoЮГ2023', ] 
+    visited: ['CryptoЮГ2023',]
   },
   {
-    id : 15,
+    id: 15,
     photo: speaker15,
     speaker: 'Владимир Туров',
     about_speaker: 'Turov Invest',
     // show: true,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 1,
+    id: 1,
     photo: speaker1,
     speaker: 'Ян Кривоносов',
     about_speaker: 'CEO Crypto Emergency',
     // show: true,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   // {
   //   id : 14,
@@ -132,172 +135,172 @@ const speakers = [
   //   visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
   // },
   {
-    id : 2,
+    id: 2,
     photo: speaker2,
     speaker: 'Андрей Тугарин',
     about_speaker: 'CEO компании GMT Legal',
     // show: false,
-    visited:['CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2022']
   },
   {
-    id : 6,
+    id: 6,
     photo: speaker6,
     speaker: 'Вероника Близнец',
     about_speaker: 'Адвокат, юрист-международник',
     // show: false,
-    visited:['CryptoЮГ2023'] 
+    visited: ['CryptoЮГ2023']
   },
   {
-    id : 7,
+    id: 7,
     photo: speaker7,
     speaker: 'Mr. Sailer YouTube',
     about_speaker: 'Блогер журналист',
     // show: false,
-    visited:['CryptoЮГ2023'] 
+    visited: ['CryptoЮГ2023']
   },
   {
-    id : 29,
+    id: 29,
     photo: speaker29,
     speaker: 'Олег Иванов',
     about_speaker: 'Серийный предприниматель, инвестор',
     // show: false,
-    visited:['CryptoЮГ2023'] 
+    visited: ['CryptoЮГ2023']
   },
   {
-    id : 8,
+    id: 8,
     photo: speaker8,
     speaker: 'Валерий Осипов',
     about_speaker: 'ArtEmotioChain',
     // show: false,
-    visited:['CryptoЮГ2023'] 
+    visited: ['CryptoЮГ2023']
   },
   {
-    id : 9,
+    id: 9,
     photo: speaker9,
     speaker: 'Александр Изюрьев',
     about_speaker: 'Основатель клуба инвесторов UnionClub',
     // show: false,
-    visited:['CryptoЮГ2023'] 
+    visited: ['CryptoЮГ2023']
   },
   {
-    id : 10,
+    id: 10,
     photo: speaker10,
     speaker: 'Ярослав Кожухов',
     about_speaker: 'Metis',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 25,
+    id: 25,
     photo: speaker25,
     speaker: 'Кирилл Филимонов',
     about_speaker: 'Основатель Россграм',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 30,
+    id: 30,
     photo: speaker30,
     speaker: 'Владислав Судьин',
     about_speaker: 'Зам. председателя Комиссии по инновациям и инвестициям IFSPD',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 12,
-    photo:speaker12,
+    id: 12,
+    photo: speaker12,
     speaker: 'Вячеслав Носков',
     about_speaker: 'PRO BLOCKCHAIN MEDIA',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 26,
+    id: 26,
     photo: speaker26,
     speaker: 'Бурков Максим',
     about_speaker: 'Основатель группы web3 компаний Pro Blockchain Media',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 13,
+    id: 13,
     photo: speaker13,
     speaker: 'Денис Магданов',
     about_speaker: 'DUMA NETWORK',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 17,
+    id: 17,
     photo: speaker17,
     speaker: 'Сергей Грабский',
     about_speaker: 'Руководитель Ассоциации цифрового развития Краснодарского края',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 18,
+    id: 18,
     photo: speaker18,
     speaker: 'Евгений Сапожников',
     about_speaker: 'Основатель обменника криптовалют Keine-exchange',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 19,
+    id: 19,
     photo: speaker19,
-    speaker:'Денис Стригун' ,
+    speaker: 'Денис Стригун',
     about_speaker: 'CEO WEB3Space',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 20,
+    id: 20,
     photo: speaker20,
     speaker: 'Иван Деркач',
     about_speaker: 'CTO WEB3Space',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 21,
+    id: 21,
     photo: speaker21,
     speaker: 'Дмитрий Романов',
     about_speaker: 'Консультант блокчейн-проектов',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 22,
+    id: 22,
     photo: speaker22,
     speaker: 'Илья Ткаченко',
     about_speaker: 'Криптоэксперт',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 23,
+    id: 23,
     photo: speaker23,
     speaker: 'Тимофей Григоренко',
     about_speaker: 'Майнинг, владелец 1GHS',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 24,
+    id: 24,
     photo: speaker24,
     speaker: 'Лев Пониманский',
     about_speaker: 'Криптоэнтузиаст',
     // show: false,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 28,
+    id: 28,
     photo: speaker28,
     speaker: 'Наталья Сазонова',
     about_speaker: 'CEO Rabotavkripte',
     // show: false,
-    visited:['CryptoЮГ2023'] 
+    visited: ['CryptoЮГ2023']
   }
 ]
 
@@ -307,144 +310,144 @@ let arrFinish = [];
 
 const partners = [
   {
-    url : "https://keine-exchange.com/?rid=29633",
+    url: "https://keine-exchange.com/?rid=29633",
     logo: partner1,
-    visited:['CryptoЮГ2022']
+    visited: ['CryptoЮГ2022']
   },
   {
-    url : "http://тц-черноморский.рф/",
+    url: "http://тц-черноморский.рф/",
     logo: partner2,
-    visited:['CryptoЮГ2022']
+    visited: ['CryptoЮГ2022']
   },
   {
-    url : "https://cryptoholding.ru/",
+    url: "https://cryptoholding.ru/",
     logo: partner3,
-    visited:['CryptoЮГ2022']
+    visited: ['CryptoЮГ2022']
   },
   {
-    url : "https://racib.com/",
+    url: "https://racib.com/",
     logo: partner4,
-    visited:['CryptoЮГ2022']
+    visited: ['CryptoЮГ2022']
   },
   {
-    url : "https://carding.pro/",
+    url: "https://carding.pro/",
     logo: partner5,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://blockchain24.pro/",
+    url: "https://blockchain24.pro/",
     logo: partner6,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://www.instagram.com/abrau1870/",
+    url: "https://www.instagram.com/abrau1870/",
     logo: partner7,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://www.instagram.com/barycoffee.nvr/",
+    url: "https://www.instagram.com/barycoffee.nvr/",
     logo: partner8,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://hginov.ru/",
+    url: "https://hginov.ru/",
     logo: partner9,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://ti.turovinvest.ru/",
+    url: "https://ti.turovinvest.ru/",
     logo: partner10,
-    visited:['CryptoЮГ2023']
+    visited: ['CryptoЮГ2023']
   },
   {
-    url : "https://cryptonews.net/ru/",
+    url: "https://cryptonews.net/ru/",
     logo: partner11,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://ru.beincrypto.com/",
+    url: "https://ru.beincrypto.com/",
     logo: partner12,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://cripta.games/",
+    url: "https://cripta.games/",
     logo: partner13,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://www.artemotiochain.ru/",
+    url: "https://www.artemotiochain.ru/",
     logo: partner14,
-    visited:['CryptoЮГ2023']
+    visited: ['CryptoЮГ2023']
   },
   {
-    url : "https://duma.network/",
+    url: "https://duma.network/",
     logo: partner15,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://pro-blockchain.com/crypto-news",
+    url: "https://pro-blockchain.com/crypto-news",
     logo: partner16,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://miningmoon.ru/",
+    url: "https://miningmoon.ru/",
     logo: partner17,
-    visited:['CryptoЮГ2023']
+    visited: ['CryptoЮГ2023']
   },
   {
-    url : "https://t.me/MetisDAO_ru",
+    url: "https://t.me/MetisDAO_ru",
     logo: partner18,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://getblock.net/how-it-works",
+    url: "https://getblock.net/how-it-works",
     logo: partner19,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://web3space.io/bot",
+    url: "https://web3space.io/bot",
     logo: partner20,
-    visited:['CryptoЮГ2023']
+    visited: ['CryptoЮГ2023']
   },
   {
-    url : "https://7winds.mobi/",
+    url: "https://7winds.mobi/",
     logo: partner21,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://t.me/channel_SoulMate",
+    url: "https://t.me/channel_SoulMate",
     logo: partner22,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://kollegiya-sokolov.ru/",
+    url: "https://kollegiya-sokolov.ru/",
     logo: partner23,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://daogogreen.com/",
+    url: "https://daogogreen.com/",
     logo: partner24,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://rossgram.ru/",
+    url: "https://rossgram.ru/",
     logo: partner25,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022']
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    url : "https://altcoinlog.com/",
+    url: "https://altcoinlog.com/",
     logo: partner26,
-    visited:['CryptoЮГ2023']
+    visited: ['CryptoЮГ2023']
   },
   {
-    url : "https://t.me/unionclub_chat",
+    url: "https://t.me/unionclub_chat",
     logo: partner27,
     visited: ['CryptoЮГ2023']
   }
 ]
 
 speakers.forEach(item => {
-  if(item.visited.includes('CryptoЮГ2023') && arrFinish.length < 6){
+  if (item.visited.includes('CryptoЮГ2023') && arrFinish.length < 6) {
     arrFinish.push(item);
     // console.log('=b37d44=',arrFinish)
   }
@@ -452,7 +455,7 @@ speakers.forEach(item => {
 
 const contentAbout = [
   {
-    img:'',
+    img: '',
     title: 'Crypto Юг 2023',
     text: 'Прекрасная возможность провести время приятно и с пользой, открыть для себя новые возможности, повысить экспертность и увеличить доход.'
   },
@@ -484,201 +487,224 @@ const contentAbout = [
   },
 ]
 export const display = function () {
-  console.log(arrFinish);
+  console.log(this.Static.speakersTabName);
 
-    return (
+  return (
 
-      <div class="forum">
-        <section class="forum_preview">
-          <div class="wrapper">
-            <div class="forum_preview_about">
-              <h1>Crypto ЮГ</h1>
-            </div>
-          </div>
-        </section>
+    <div class="forum">
+      <section class="forum_preview">
         <div class="wrapper">
-          <div class="page page__container ">
-            <section class="about_section">
-              <div class="items_about">
+          <div class="forum_preview_about">
+            <h1>Crypto ЮГ</h1>
+          </div>
+        </div>
+      </section>
+      <div class="wrapper">
+        <div class="page page__container ">
+          <section class="about_section">
+            <div class="items_about">
+              {
+                contentAbout.map((item, index) => {
+                  return (
+                    <div class="item_about"
+                    >
+                      <div class='head'>
+                        <img src={item.img} alt="img" />
+                        <h5>{item.title}</h5>
+                      </div>
+                      <p>{item.text}</p>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </section>
+
+
+          {/* speakers tabs */}
+          <section class="event_section">
+            <h4>Спикеры</h4>
+            <div class="events_list">
+              <div class="tabs"
+
+              >
                 {
-                  contentAbout.map((item, index)=>{
-                    return(
-                      <div class="item_about"
+                  tabs.map((item, index) => {
+                    return (
+                      <span
+                        class='tab'
+                        ref="tabItem1"
+
+                        onclick={() => {
+                          this.Static.activeIndex = index;
+                          this.Ref.activeTab.style.left = `${this.Ref.tabItem1.offsetWidth * this.Static.activeIndex}px`;
+                          this.Static.speakersTabName = item.name;
+                          this.fn("tab", speakers, arrFinish);
+                          this.Ref.speakersContent.classList.add('animated');
+                          setTimeout(() => {
+                            this.Ref.speakersContent.classList.remove('animated');
+                          }, 500)
+
+                          this.init();
+                        }}
                       >
-                        <div class='head'> 
-                          <img src={item.img} alt="img" />
-                          <h5>{item.title}</h5>  
+                        {item.name}
+                      </span>
+                    )
+                  })
+                }
+                <div class="activeTab" ref="activeTab"></div>
+              </div>
+              {/* speakers */}
+
+              <div class="speakers" ref="speakersContent">
+                {
+
+                  (speakers.filter((item, index) => {
+                    if (item.visited.includes(this.Static.speakersTabName)) {
+                      return true
+                    }
+                    return false
+                  }).slice(0, this.Static.howMutchSpeakers)).map((item, index) => {
+                    return (
+
+                      <div class={["speaker",]}
+                      >
+                        <div class='photo'>
+                          <img src={item.photo} alt="img" />
                         </div>
-                        <p>{item.text}</p>
+                        <div class='speaker_about'>
+                          <h3>{item.speaker}</h3>
+                          <p>{item.about_speaker}</p>
+                        </div>
                       </div>
                     )
                   })
                 }
-              </div>
-            </section>
+                {/* {
 
-            
-{/* speakers tabs */}
-            <section class="event_section">
-              <h4>Спикеры</h4>
-              <div class="events_list">
-                <div class="tabs" 
-                  
-                >
-                  {
-                    tabs.map((item, index)=>{
-                      return(
-                        <span 
-                          class='tab'
-                          ref="tabItem1"
+                  arrFinish.map((item, index) => {
+                    return (
 
-                          onclick={()=>{
-                            this.Static.activeIndex = index;
-                            this.Ref.activeTab.style.left = `${this.Ref.tabItem1.offsetWidth * this.Static.activeIndex}px`;
-                            this.Static.speakersTabName = item.name;
-                            this.fn("tab", speakers, arrFinish);
-                            this.Ref.speakersContent.classList.add('animated');
-                            setTimeout(() => {
-                              this.Ref.speakersContent.classList.remove('animated');
-                            }, 500)
-                            
-                            this.init();
-                          }}
-                        >
-                            {item.name}
-                        </span>
-                      )
-                    })
-                  }
-                  <div class="activeTab" ref="activeTab"></div>
-                </div>
-{/* speakers */}
-
-                <div class="speakers" ref="speakersContent">
-                  {
-                    
-                    arrFinish.map((item, index)=>{
-                      // console.log('=5a91e5=',item.visited)
-                      return(
-                        
-                        <div class={["speaker", ]} 
-                        >
-                          <div class='photo'>
-                            <img src={item.photo} alt="img" />
-                          </div>
-                          <div class='speaker_about'>
-                            <h3>{item.speaker}</h3>
-                            <p>{item.about_speaker}</p>
-                          </div>
+                      <div class={["speaker",]}
+                      >
+                        <div class='photo'>
+                          <img src={item.photo} alt="img" />
                         </div>
-                      )
-                    })
-                  }
-                </div>
+                        <div class='speaker_about'>
+                          <h3>{item.speaker}</h3>
+                          <p>{item.about_speaker}</p>
+                        </div>
+                      </div>
+                    )
+                  })
+                } */}
               </div>
+            </div>
 
-{/* speakers show_all button */}
+            {/* speakers show_all button */}
 
-              <div 
-                class="show_all"
-                ref="button"
-                onclick={()=>{
-                
-                  // speakers.forEach((item, index)=>{
-                    
-                  //   item.show = true
-                  // })
-                  arr = speakers
-                  this.init()
-                }}
-              >
-                <span type="button">Показать всех</span>
-              </div>
-              
-            </section>
+            <div
+              class="show_all"
+              ref="button"
+              onclick={() => {
 
+                // speakers.forEach((item, index)=>{
 
+                //   item.show = true
+                // })
+                arr = speakers
+                this.Static.howMutchSpeakers = speakers.length
+                this.init()
+              }}
+            >
+              <span type="button">Показать всех</span>
+            </div>
 
-
-{/* partners tabs*/}
-            <section class="partners_section">
-              <h4>Партнеры</h4>
-  
-                <div class="tabs" ref="forumTabs">
-                  {
-                    tabs.map((item, index)=>{
-                      return(
-                        <span 
-                          class='tab'
-                          ref="tabItem2"
-                          onclick={()=>{
-                            this.Static.activeIndex = index;
-                            this.Ref.activeTab2.style.left = `${this.Ref.tabItem2.offsetWidth * this.Static.activeIndex}px`;
-                            this.Static.partnersTabName = item.name;
-                            this.Ref.partners_content.classList.add('animated');
-                            setTimeout(() => {
-                              this.Ref.partners_content.classList.remove('animated');
-                            }, 500)
-                            this.init();
-                          }}
-                        >
-                            {item.name}
-                        </span>
-                      )
-                    })
-                  }
-                  <div class="activeTab" ref="activeTab2"></div>
-                </div>
-          
+          </section>
 
 
 
 
+          {/* partners tabs*/}
+          <section class="partners_section">
+            <h4>Партнеры</h4>
 
-
-
-{/*partners  slider */}
-
-                <button ref ='next'
-                onclick={()=>{
-                  // this.Ref.list.scrollLeft -= this.Ref.slide.offsetWidth + 20;
-                  let MainWidth = this.Ref.slide.offsetWidth * partners.length;
-                  console.log(partners.length)
-                  // if()
-                  this.Ref.partners_content.style.transform += `translateX(-${this.Ref.slide.offsetWidth}px)`
-                  console.log('=2f0798=', this.Ref.partners_content.style.transform)
-                  this.init()
-                }
+            <div class="tabs" ref="forumTabs">
+              {
+                tabs.map((item, index) => {
+                  return (
+                    <span
+                      class='tab'
+                      ref="tabItem2"
+                      onclick={() => {
+                        this.Static.activeIndex = index;
+                        this.Ref.activeTab2.style.left = `${this.Ref.tabItem2.offsetWidth * this.Static.activeIndex}px`;
+                        this.Static.partnersTabName = item.name;
+                        this.Ref.partners_content.classList.add('animated');
+                        setTimeout(() => {
+                          this.Ref.partners_content.classList.remove('animated');
+                        }, 500)
+                        this.init();
+                      }}
+                    >
+                      {item.name}
+                    </span>
+                  )
+                })
               }
-                >
-                  Кнопка далее</button>
-              <div class = "partners_list" ref='partners_content'>
-                  {
-                    partners.map((item, index)=>{
-                      return(
+              <div class="activeTab" ref="activeTab2"></div>
+            </div>
 
-                        <div ref="slide" target="_blank" href={item.url} class={["partners_list_item",
-                         item.visited.includes(this.Static.partnersTabName)? null : "hidden"]}>
-                        
-                          <img src={item.logo} alt="img" />
-                        </div>
-                      )
-                    })
-                  }
-              </div>
-              <button ref ='back'
-                onclick={()=>{
-                  let MainWidth = this.Ref.slide.offsetWidth * partners.length;
-                  // if()
-                  this.Ref.partners_content.style.transform += `translateX(+${this.Ref.slide.offsetWidth}px)`
-                  console.log('=2f0798=', this.Ref.partners_content.style.transform)
-                  this.init()
-                }}
-              >
-                Кнопка назад</button>
-            </section>
+
+
+
+
+
+
+
+            {/*partners  slider */}
+
+            <button ref='next'
+              onclick={() => {
+                // this.Ref.list.scrollLeft -= this.Ref.slide.offsetWidth + 20;
+                let MainWidth = this.Ref.slide.offsetWidth * partners.length;
+                console.log(partners.length)
+                // if()
+                this.Ref.partners_content.style.transform += `translateX(-${this.Ref.slide.offsetWidth}px)`
+                console.log('=2f0798=', this.Ref.partners_content.style.transform)
+                this.init()
+              }
+              }
+            >
+              Кнопка далее</button>
+            <div class="partners_list" ref='partners_content'>
+              {
+                partners.map((item, index) => {
+                  return (
+
+                    <div ref="slide" target="_blank" href={item.url} class={["partners_list_item",
+                      item.visited.includes(this.Static.partnersTabName) ? null : "hidden"]}>
+
+                      <img src={item.logo} alt="img" />
+                    </div>
+                  )
+                })
+              }
+            </div>
+            <button ref='back'
+              onclick={() => {
+                let MainWidth = this.Ref.slide.offsetWidth * partners.length;
+                // if()
+                this.Ref.partners_content.style.transform += `translateX(+${this.Ref.slide.offsetWidth}px)`
+                console.log('=2f0798=', this.Ref.partners_content.style.transform)
+                this.init()
+              }}
+            >
+              Кнопка назад</button>
+          </section>
         </div>
       </div>
-      </div>
-    )
+    </div>
+  )
 }
