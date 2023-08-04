@@ -18,7 +18,7 @@ const socialNetworks=[
   {
     logo: instagram,
     regionRU: 'RU',
-    regionENG: 'ENG',
+    regionENG: 'EN',
     loginRU: '@RUcryproemergency',
     loginENG: '@ENGcryproemergency',
     urlRU: '',
@@ -28,7 +28,7 @@ const socialNetworks=[
   {
     logo: facebook,
     regionRU: 'RU',
-    regionENG: 'ENG',
+    regionENG: 'EN',
     loginRU: '@RUcryproemergency',
     loginENG: '@ENGcryproemergency',
     urlRU: '',
@@ -37,7 +37,7 @@ const socialNetworks=[
   {
     logo: tiktok,
     regionRU: 'RU',
-    regionENG: 'ENG',
+    regionENG: 'EN',
     loginRU: '@RUcryproemergency',
     loginENG: '@ENGcryproemergency',
     urlRU: '',
@@ -46,7 +46,7 @@ const socialNetworks=[
   {
     logo: youtube ,
     regionRU: 'RU',
-    regionENG: 'ENG',
+    regionENG: 'EN',
     loginRU: '@RUcryproemergency',
     loginENG: '@ENGcryproemergency',
     urlRU: '',
@@ -55,7 +55,7 @@ const socialNetworks=[
   {
     logo: vk,
     regionRU: 'RU',
-    regionENG: 'ENG',
+    regionENG: 'EN',
     loginRU: '@RUcryproemergency',
     loginENG: '@ENGcryproemergency',
     urlRU: '',
@@ -63,14 +63,14 @@ const socialNetworks=[
   },
   {
     logo: linkedin,
-    regionENG: 'ENG',
+    regionENG: 'EN',
     loginENG: '@ENGcryproemergency',
     urlENG: 'https://www.linkedin.com/company/86302977'
   },
   {
     logo: twitter,
     regionRU: 'RU',
-    regionENG: 'ENG',
+    regionENG: 'EN',
     loginRU: '@RUcryproemergency',
     loginENG: '@ENGcryproemergency',
     urlRU: 'https://twitter.com/cryptoemergency',
@@ -87,7 +87,7 @@ const socialNetworks=[
   {
     logo: facebook,
     regionRU: 'RU',
-    regionENG: 'ENG',
+    regionENG: 'EN',
 
     loginRU: '@RUcryproemergency',
     loginENG: '@ENGcryproemergency',
@@ -97,7 +97,7 @@ const socialNetworks=[
   {
     logo: github,
     loginENG: '@ENGcryproemergency',
-    regionENG: 'ENG',
+    regionENG: 'EN',
     url: 'https://github.com/CryptoEmergency'  
   },
 ]
