@@ -304,7 +304,7 @@ const speakers = [
   }
 ]
 
-let arr = speakers.slice(0, 6);
+// let arr = speakers.slice(0, 6);
 
 let arrFinish = [];
 
@@ -487,7 +487,7 @@ const contentAbout = [
   },
 ]
 export const display = function () {
-  console.log(this.Static.speakersTabName);
+  // console.log(this.Static.speakersTabName);
 
   return (
 
@@ -521,7 +521,7 @@ export const display = function () {
           </section>
 
 
-          {/* speakers tabs */}
+{/* speakers tabs */}
           <section class="event_section">
             <h4>Спикеры</h4>
             <div class="events_list">
@@ -555,7 +555,8 @@ export const display = function () {
                 }
                 <div class="activeTab" ref="activeTab"></div>
               </div>
-              {/* speakers */}
+
+{/* speakers */}
 
               <div class="speakers" ref="speakersContent">
                 {
@@ -628,16 +629,21 @@ export const display = function () {
               ref="button"
               onclick={() => {
 
-                // speakers.forEach((item, index)=>{
-
-                //   item.show = true
-                // })
-                arr = speakers
-                this.Static.howMutchSpeakers = speakers.length
-                this.init()
+                if(this.Static.howMutchSpeakers == 6)
+                  {
+                    this.Static.howMutchSpeakers = speakers.length;
+                    this.Ref.buttonSpan.innerText = 'Скрыть'
+                    this.init()
+                  }
+                  else
+                  {
+                    this.Static.howMutchSpeakers = 6 
+                    this.Ref.buttonSpan.textContent = 'Показать всех'
+                    this.init()
+                  }
               }}
             >
-              <span type="button">Показать всех</span>
+              <span ref ='buttonSpan' type="button">Показать всех</span>
             </div>
 
           </section>
@@ -645,7 +651,7 @@ export const display = function () {
 
 
 
-          {/* partners tabs*/}
+{/* partners tabs*/}
           <section class="partners_section">
             <h4>Партнеры</h4>
 
@@ -682,7 +688,7 @@ export const display = function () {
 
 
 
-            {/*partners  slider */}
+{/*partners  slider */}
 
             <button ref='next'
               onclick={() => {
