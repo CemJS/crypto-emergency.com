@@ -59,6 +59,16 @@
     "ver": "1.0.0",
     "visable": true
   },
+  "pagination": {
+    "front": true,
+    "name": "courseLine",
+    "path": {
+      "js": "/assets/js/pagination.js",
+      "css": "/assets/css/pagination.css"
+    },
+    "ver": "1.0.0",
+    "visable": true
+  },
   "exchangeRates": {
     "front": true,
     "name": "exchangeRates",
@@ -115,6 +125,16 @@
     "path": {
       "js": "/assets/js/listExchange.js",
       "css": "/assets/css/listExchange.css"
+    },
+    "ver": "1.0.0",
+    "visable": true
+  },
+  "listTrades": {
+    "front": true,
+    "name": "listTrades",
+    "path": {
+      "js": "/assets/js/listTrades.js",
+      "css": "/assets/css/listTrades.css"
     },
     "ver": "1.0.0",
     "visable": true
