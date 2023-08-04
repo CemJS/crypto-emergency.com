@@ -70,6 +70,14 @@
       ]
     },
     {
+      "url": "/social_networks",
+      "front": [
+        "header",
+        "socialNetworks",
+        "footer"
+      ]
+    },
+    {
       "url": "/list-startaps",
       "front": [
         "header",

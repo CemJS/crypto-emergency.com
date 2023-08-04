@@ -126,14 +126,14 @@ const speakers = [
     // show: true,
     visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
-  // {
-  //   id : 14,
-  //   photo: speaker14,
-  //   speaker: 'Сергей Павлович',
-  //   about_speaker: 'Люди PRO',
-  //   // show: true,
-  //   visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
-  // },
+  {
+    id : 14,
+    photo: speaker14,
+    speaker: 'Сергей Павлович',
+    about_speaker: 'Люди PRO',
+    // show: true,
+    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+  },
   {
     id: 2,
     photo: speaker2,
@@ -522,6 +522,7 @@ export const display = function () {
 
 
 {/* speakers tabs */}
+
           <section class="event_section">
             <h4>Спикеры</h4>
             <div class="events_list">
@@ -622,7 +623,7 @@ export const display = function () {
               </div>
             </div>
 
-            {/* speakers show_all button */}
+{/* speakers show_all button */}
 
             <div
               class="show_all"
@@ -655,7 +656,7 @@ export const display = function () {
           <section class="partners_section">
             <h4>Партнеры</h4>
 
-            <div class="tabs" ref="forumTabs">
+            {/* <div class="tabs" ref="forumTabs">
               {
                 tabs.map((item, index) => {
                   return (
@@ -670,6 +671,8 @@ export const display = function () {
                         setTimeout(() => {
                           this.Ref.partners_content.classList.remove('animated');
                         }, 500)
+                        this.Ref.partners_content.style.transform = null
+                        // console.log('=1b762b=',this.Ref.slide.offsetWidth)
                         this.init();
                       }}
                     >
@@ -679,7 +682,7 @@ export const display = function () {
                 })
               }
               <div class="activeTab" ref="activeTab2"></div>
-            </div>
+            </div> */}
 
 
 
@@ -690,26 +693,44 @@ export const display = function () {
 
 {/*partners  slider */}
 
+{/* next */}
             <button ref='next'
               onclick={() => {
-                // this.Ref.list.scrollLeft -= this.Ref.slide.offsetWidth + 20;
-                let MainWidth = this.Ref.slide.offsetWidth * partners.length;
-                console.log(partners.length)
-                // if()
-                this.Ref.partners_content.style.transform += `translateX(-${this.Ref.slide.offsetWidth}px)`
-                console.log('=2f0798=', this.Ref.partners_content.style.transform)
-                this.init()
+                let MainWidth = this.Ref.slide.offsetWidth * (partners.length-5);
+                if (this.Static.startPosition < MainWidth){
+                  
+                  
+                  console.log(partners.length, this.Ref.slide.offsetWidth, MainWidth)
+                  let itemWidth = this.Ref.slide.offsetWidth 
+                  
+                  this.Static.startPosition += itemWidth
+                  this.Ref.partners_content.style.transform.translateX= this.Static.startPosition +'px'
+
+                  
+                  
+
+                  console.log('=bd64de=',this.Static.startPosition)
+                  console.log('=2f0798=', this.Ref.partners_content.style.transform)
+                  this.init()
+                }
+                else
+                {
+                  null
+                }
+               
               }
               }
             >
               Кнопка далее</button>
+
+{/* partners  */}
             <div class="partners_list" ref='partners_content'>
               {
                 partners.map((item, index) => {
                   return (
 
                     <div ref="slide" target="_blank" href={item.url} class={["partners_list_item",
-                      item.visited.includes(this.Static.partnersTabName) ? null : "hidden"]}>
+                      item.visited.includes(this.Static.partnersTabName) ? null : null ]}>
 
                       <img src={item.logo} alt="img" />
                     </div>
@@ -717,13 +738,20 @@ export const display = function () {
                 })
               }
             </div>
+
+
+{/* back */}
             <button ref='back'
               onclick={() => {
-                let MainWidth = this.Ref.slide.offsetWidth * partners.length;
-                // if()
-                this.Ref.partners_content.style.transform += `translateX(+${this.Ref.slide.offsetWidth}px)`
-                console.log('=2f0798=', this.Ref.partners_content.style.transform)
-                this.init()
+                if (this.Static.startPosition > 0){
+                  let MainWidth = this.Ref.slide.offsetWidth * partners.length;
+                  let itemWidth = this.Ref.slide.offsetWidth
+                  this.Ref.partners_content.style.transform += `translateX(+${itemWidth+10}px)`
+                  this.Static.startPosition -= itemWidth
+                  console.log('=bd64de=',this.Static.startPosition)
+                  console.log('=2f0798=', this.Ref.partners_content.style.transform)
+                  this.init()
+                }
               }}
             >
               Кнопка назад</button>

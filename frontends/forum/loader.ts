@@ -4,12 +4,14 @@ export const loader = function () {
   this.Static.partnersTabName = 'CryptoЮГ2023';
   this.Static.partnersSlice = []
   this.Static.activeName = 'CryptoЮГ2023';
-
-  this.Static.activeIndex = 0;
-  this.Static.value = 5
-  this.Static.value2 = "fhfhfh";
-
   this.Static.howMutchSpeakers = 6
+  this.Static.activeIndex = 0;
+  // this.Static.value = this.Ref.slide.offsetWidth
+ 
+  // slider
+  this.Static.startPosition = 0
+
+
 
 
   this.initAuto(["value", "value2"], (val, key) => {
