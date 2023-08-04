@@ -17,72 +17,86 @@ import youtube from '@svg/social_networks/youtube.svg'
 const socialNetworks=[
   {
     logo: instagram,
-    region: 'RU',
-    url: '' 
+    regionRU: 'RU',
+    regionENG: 'ENG',
+    loginRU: '@RUcryproemergency',
+    loginENG: '@ENGcryproemergency',
+    urlRU: '',
+    urlENG: '' 
   },
+
   {
-    logo: instagram,
-    region: 'ENG',
-    url: '' 
-  },
-  {
-    logo: telegram,
-    region: 'RU',
-    url: '' 
-  },
-  {
-    logo: telegram,
-    region: 'ENG',
-    url: '' 
-  },
-  {
-    logo: tiktok,
-    region: 'RU',
-    url: '' 
+    logo: facebook,
+    regionRU: 'RU',
+    regionENG: 'ENG',
+    loginRU: '@RUcryproemergency',
+    loginENG: '@ENGcryproemergency',
+    urlRU: '',
+    urlENG: '' 
   },
   {
     logo: tiktok,
-    region: 'ENG' ,
-    url: '' 
+    regionRU: 'RU',
+    regionENG: 'ENG',
+    loginRU: '@RUcryproemergency',
+    loginENG: '@ENGcryproemergency',
+    urlRU: '',
+    urlENG: '' 
   },
   {
     logo: youtube ,
-    region: 'RU',
-    url: '' 
-  },
-  {
-    logo: youtube,
-    region: 'ENG' ,
-    url: '' 
+    regionRU: 'RU',
+    regionENG: 'ENG',
+    loginRU: '@RUcryproemergency',
+    loginENG: '@ENGcryproemergency',
+    urlRU: '',
+    urlENG: '' 
   },
   {
     logo: vk,
-    region: 'RU',
-    url: '' 
+    regionRU: 'RU',
+    regionENG: 'ENG',
+    loginRU: '@RUcryproemergency',
+    loginENG: '@ENGcryproemergency',
+    urlRU: '',
+    urlENG: ''
   },
   {
     logo: linkedin,
-    region: 'ENG',
-    url: 'https://www.linkedin.com/company/86302977' 
+    regionENG: 'ENG',
+    loginENG: '@ENGcryproemergency',
+    urlENG: 'https://www.linkedin.com/company/86302977'
   },
   {
     logo: twitter,
-    region: 'ENG',
-    url: 'https://twitter.com/cryptoemergency'  
+    regionRU: 'RU',
+    regionENG: 'ENG',
+    loginRU: '@RUcryproemergency',
+    loginENG: '@ENGcryproemergency',
+    urlRU: 'https://twitter.com/cryptoemergency',
+    urlENG: ''  
   },
   {
     logo: discord,
-    region: 'ENG',
-    url: '' 
+    regionRU: 'RU',
+    loginRU: '@RUcryproemergency',
+    urlRU: 'https://github.com/CryptoEmergency',
+    urlENG: ''
   },
   {
     logo: facebook,
-    region: 'ENG',
-    url: '' 
+    regionRU: 'RU',
+    regionENG: 'ENG',
+
+    loginRU: '@RUcryproemergency',
+    loginENG: '@ENGcryproemergency',
+    urlRU: 'https://github.com/CryptoEmergency',
+    urlENG: 'https://github.com/CryptoEmergency'
   },
   {
     logo: github,
-    region: 'ENG',
+    loginENG: '@ENGcryproemergency',
+    regionENG: 'ENG',
     url: 'https://github.com/CryptoEmergency'  
   },
 ]
@@ -101,10 +115,22 @@ export const display = function () {
                 {
                   socialNetworks.map((item, index)=>{
                     return(
-                      <a target="_blank" href={item.url} class="socialNetwork-list_item">
-                        <img src={item.logo} alt="" />
-                        <span>{item.region}</span>
-                      </a>
+                      <div class="socialNetwork-list_item">
+                        <img src={item.logo} alt="img" />
+                        <div class="content">
+                          
+                          
+                          <a target="_blank" href={item.urlENG} class="ru">
+                          {item.loginRU}
+                            <span class="regionRU">{item.regionRU}</span>
+                          </a><br />
+                          <a target="_blank" href={item.urlRU} class="eng">
+                          {item.loginENG}
+                            
+                            <span class="regionENG">{item.regionENG}</span>
+                          </a>
+                        </div>
+                      </div>
                     )
                   })
                 }

@@ -17,6 +17,8 @@
     
     
         &_item{
+            display: flex;
+            flex-direction: column;
             width: 100%;
             text-align: center;
             box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
@@ -28,19 +30,53 @@
             transition: 0.5s;
             border: 1px solid transparent;
             position: relative;
+            align-items: center;
 
-            span{
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                text-transform: uppercase;
-                font-weight: 700;
-                font-size: 14px;
-                background: var(--fioletBlue_gradient);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+
+            img{
+                width: 100px;
+                height: 100px;
+            }
+            .content{
+                .ru{
+                    position: relative;
+                    .regionRU{
+                        position: absolute;
+                        top: 0;
+
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        font-size: 14px;
+                        background: var(--fioletBlue_gradient);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }    
                 }
-        }
+                .eng{
+                    position: relative;
+                    .regionENG{
+                        position: absolute;
+                        top: 0;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        font-size: 14px;
+                        background: var(--fioletBlue_gradient);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        
+                    }
+                }
+                
+                    
+                
+                
+            }
+            
+            
+        
+        
+        }   
+
     
     
         &_item:hover{
