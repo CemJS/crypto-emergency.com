@@ -79,6 +79,7 @@ const socialNetworks=[
   {
     logo: discord,
     regionRU: 'RU',
+
     loginRU: '@RUcryproemergency',
     urlRU: 'https://github.com/CryptoEmergency',
     urlENG: ''
@@ -116,18 +117,21 @@ export const display = function () {
                   socialNetworks.map((item, index)=>{
                     return(
                       <div class="socialNetwork-list_item">
-                        <img src={item.logo} alt="img" />
+                        <div class="img">
+                          <img src={item.logo} alt="img" />
+                        </div>
+
                         <div class="content">
-                          
-                          
-                          <a target="_blank" href={item.urlENG} class="ru">
+                          <a target="_blank" href={item.urlENG} class="ruLink">
                           {item.loginRU}
-                            <span class="regionRU">{item.regionRU}</span>
-                          </a><br />
-                          <a target="_blank" href={item.urlRU} class="eng">
+                            <span class="spanRegionRU">{item.regionRU}</span>
+                          </a>
+
+                          
+                          <a target="_blank" href={item.urlRU} class="engLink">
                           {item.loginENG}
                             
-                            <span class="regionENG">{item.regionENG}</span>
+                            <span class="spanRegionENG">{item.regionENG}</span>
                           </a>
                         </div>
                       </div>
