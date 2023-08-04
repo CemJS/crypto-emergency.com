@@ -560,6 +560,25 @@ export const display = function () {
               <div class="speakers" ref="speakersContent">
                 {
 
+                  (speakers.filter(item => item.visited.includes(this.Static.speakersTabName)).slice(0, this.Static.howMutchSpeakers)).map((item, index) => {
+                    return (
+
+                      <div class={["speaker",]}
+                      >
+                        <div class='photo'>
+                          <img src={item.photo} alt="img" />
+                        </div>
+                        <div class='speaker_about'>
+                          <h3>{item.speaker}</h3>
+                          <p>{item.about_speaker}</p>
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+
+                {/* {
+
                   (speakers.filter((item, index) => {
                     if (item.visited.includes(this.Static.speakersTabName)) {
                       return true
@@ -580,7 +599,7 @@ export const display = function () {
                       </div>
                     )
                   })
-                }
+                } */}
                 {/* {
 
                   arrFinish.map((item, index) => {

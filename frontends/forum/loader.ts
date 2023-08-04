@@ -9,7 +9,7 @@ export const loader = function () {
   this.Static.value = 5
   this.Static.value2 = "fhfhfh";
 
-  this.Static.howMutchSpeakers = 6
+  this.Static.howMutchSpeakers = 3
 
 
   this.initAuto(["value", "value2"], (val, key) => {
