@@ -74,9 +74,11 @@
     },
     {
       "url": "/error",
-      "front": [
-        "error"
-      ]
+      "front": "error"
+    },
+    {
+      "url": "/questions",
+      "front": "questions"
     },
     {
       "regex": "/user-",
