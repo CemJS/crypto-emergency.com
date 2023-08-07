@@ -1,9 +1,13 @@
 import { Cemjsx } from "cemjs-all"
 import views from "@svg/news/views.svg"
 import comments from "@svg/news/comments.svg"
+import Show from './display/show'
 
 export const display = function () {
-  console.log('=0954b4=',this)
+  if (this.Static.record) {
+    return Show.bind(this)()
+  }
+  console.log('=0954b4=',this.Static.records)
   return (
     <section class="news">
       <div class="wrapper">
@@ -11,7 +15,12 @@ export const display = function () {
           {
             this.Static.records?.map((item) => {
               return (
-                <div class="news__item">
+                <div class="news__item"
+                  onclick={() => {
+                    this.Static.record = item
+                    this.init()
+                  }}
+                >
                   <div class="news__item_image">
                     <img src={`/assets/upload/news/${item.image}`} />
                   </div>
