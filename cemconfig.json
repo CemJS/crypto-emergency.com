@@ -4,9 +4,14 @@
   "api": "http://127.0.0.1:33333/api/events/",
   "pages": [
     {
+      "all": true,
+      "front": [
+        "header"
+      ]
+    },
+    {
       "url": "/",
       "front": [
-        "header",
         "courseLine",
         "banners",
         "lenta",
@@ -40,9 +45,7 @@
     {
       "url": "/contacts",
       "front": [
-        "header",
-        "contacts",
-        "footer"
+        "contacts"
       ]
     },
     {
@@ -133,6 +136,12 @@
       "front": [
         "header",
         "rules",
+        "footer"
+      ]
+    },
+    {
+      "all": true,
+      "front": [
         "footer"
       ]
     }
