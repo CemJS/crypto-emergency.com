@@ -7,6 +7,7 @@ export const display = function () {
   return (
     <div
       class="modalWindow"
+      ref="modalWindow"
       onclick={(e) => {
         if (e.target === this.Ref.modalBody) {
           setTimeout(() => {

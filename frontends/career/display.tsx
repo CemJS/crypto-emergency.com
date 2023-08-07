@@ -67,7 +67,6 @@ const professions = [
 
 
 export const display = function () {
-  // console.log('=fef7b2=', this.Static.sections)
   return (
     <div class="page page__container">
       <div class="career">
@@ -183,7 +182,7 @@ export const display = function () {
               <p class="vacancy_text">Рабочая неделя 5/2 c началом рабочего дня (10:00 - 18:00 Мск)</p>
               <p class="vacancy_text">Мы находимся в Новороссийске, можем организовать встречу в офисе.</p>
 
-              <h3>Ключевые навыки</h3>
+              <h3 class="pY_15">Ключевые навыки</h3>
 
               <div class="vacancy_skills">
                 <div class="vacancy_skills_item">
@@ -231,6 +230,8 @@ export const display = function () {
                         }, 500);
                       }
                     })
+                    // this.Ref.modalWindow.classList.add('activeModal');
+                    this.init()
                   }}
                 >
                   <span>Откликнуться</span>
@@ -272,7 +273,7 @@ export const display = function () {
               <p class="vacancy_text">Рабочая неделя 5/2 c началом рабочего дня (10:00 - 18:00 Мск)</p>
               <p class="vacancy_text">Мы находимся в Новороссийске, можем организовать встречу в офисе.</p>
 
-              <h3>Ключевые навыки</h3>
+              <h3 class="pY_15">Ключевые навыки</h3>
 
               <div class="vacancy_skills">
                 <div class="vacancy_skills_item">
@@ -340,7 +341,7 @@ export const display = function () {
               <p class="vacancy_text">Рабочая неделя 5/2 c началом рабочего дня (10:00 - 18:00 Мск)</p>
               <p class="vacancy_text">Мы находимся в Новороссийске, можем организовать встречу в офисе.</p>
 
-              <h3>Ключевые навыки</h3>
+              <h3 class="pY_15">Ключевые навыки</h3>
 
               <div class="vacancy_skills">
                 <div class="vacancy_skills_item">
@@ -409,7 +410,7 @@ export const display = function () {
               <p class="vacancy_text">Рабочая неделя 5/2 c началом рабочего дня (10:00 - 18:00 Мск)</p>
               <p class="vacancy_text">Мы находимся в Новороссийске, можем организовать встречу в офисе.</p>
 
-              <h3>Ключевые навыки</h3>
+              <h3 class="pY_15">Ключевые навыки</h3>
 
               <div class="vacancy_skills">
                 <div class="vacancy_skills_item">
@@ -470,7 +471,7 @@ export const display = function () {
               <p class="vacancy_text">Рабочая неделя 5/2 c началом рабочего дня (10:00 - 18:00 Мск)</p>
               <p class="vacancy_text">Мы находимся в Новороссийске, можем организовать встречу в офисе.</p>
 
-              <h3>Ключевые навыки</h3>
+              <h3 class="pY_15">Ключевые навыки</h3>
 
               <div class="vacancy_skills">
                 <div class="vacancy_skills_item">
@@ -533,7 +534,7 @@ export const display = function () {
               <p class="vacancy_text">Рабочая неделя 5/2 c началом рабочего дня (10:00 - 18:00 Мск)</p>
               <p class="vacancy_text">Мы находимся в Новороссийске, можем организовать встречу в офисе.</p>
 
-              <h3>Ключевые навыки</h3>
+              <h3 class="pY_15">Ключевые навыки</h3>
 
               <div class="vacancy_skills">
                 <div class="vacancy_skills_item">
@@ -602,7 +603,7 @@ export const display = function () {
               <p class="vacancy_text">Рабочая неделя 5/2 c началом рабочего дня (10:00 - 18:00 Мск)</p>
               <p class="vacancy_text">Мы находимся в Новороссийске, можем организовать встречу в офисе.</p>
 
-              <h3>Ключевые навыки</h3>
+              <h3 class="pY_15">Ключевые навыки</h3>
 
               <div class="vacancy_skills">
                 <div class="vacancy_skills_item">
@@ -677,7 +678,7 @@ export const display = function () {
               <p class="vacancy_text">Рабочая неделя 5/2 c началом рабочего дня (10:00 - 18:00 Мск)</p>
               <p class="vacancy_text">Мы находимся в Новороссийске, можем организовать встречу в офисе.</p>
 
-              <h3>Ключевые навыки</h3>
+              <h3 class="pY_15">Ключевые навыки</h3>
 
               <div class="vacancy_skills">
                 <div class="vacancy_skills_item">

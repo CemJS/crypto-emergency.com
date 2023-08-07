@@ -51,7 +51,6 @@
     cursor: pointer;
 
     &_image {
-
       img {
         width: 100%;
         border-radius: var(--borderR);
@@ -59,7 +58,6 @@
     }
 
     &_info {
-
       h5 {
         font-size: 22px;
         font-weight: 700;
@@ -74,7 +72,6 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        // margin-right: 15px;
       }
     }
 
@@ -104,8 +101,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     font: 25px;
-
-    // &_cover {}
   }
 
   &_btns {

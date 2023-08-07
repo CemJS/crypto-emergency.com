@@ -112,7 +112,6 @@ $professionsBack: (
       $back in $advantagesBack {
         &_circle-#{$index}::before {
           content: '';
-          // background: $back;
           background-image: $back;
           background-repeat: no-repeat;
           background-size: contain;
@@ -126,6 +125,7 @@ $professionsBack: (
         h3 {
           font-size: 18px;
           line-height: 24px;
+          padding-bottom: 10px;
         }
 
         p {
@@ -454,6 +454,7 @@ $professionsBack: (
     &_title {
       margin-bottom: 30px;
       font-size: 36px;
+      line-height: 48px;
     }
 
     &_preview {
@@ -490,9 +491,11 @@ $professionsBack: (
     }
 
     &_vacancies {
-      padding-bottom: 0 !important;
+      // padding-bottom: 0 !important;
 
       .vacancy {
+        padding: 15px;
+
         &_main {
           flex-direction: column;
 
@@ -569,6 +572,7 @@ $professionsBack: (
 
           h3 {
             font-size: 18px;
+            line-height: 22px;
           }
         }
       }
@@ -610,6 +614,8 @@ $professionsBack: (
     }
 
     &_vacancies {
+      padding-bottom: 20px;
+
       .vacancy {
         padding: 15px;
         position: relative;
