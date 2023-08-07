@@ -1,3 +1,3 @@
 export const loader = function () {
-  this.Static.modalWindow = this.Ref.modalWindow;
+  this.Static.body = document.querySelector('body');
 }

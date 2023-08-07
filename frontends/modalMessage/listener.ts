@@ -4,12 +4,11 @@ const listener = {
         // console.log('=e60c81=', data, name, this, this.Ref.tabs)
     },
     "finish": function (data, name, t) {
-        this.Static.modalWindow = this.Ref.modalWindow;
         setTimeout(() => {
             this.Ref.modalWindow.classList.add('activeModal');
-        }, 200)
-        // this.Ref.modalWindow.classList.add('activeModal');
-        console.log('=ab7913=', this.Static.modalWindow)
+            this.Static.body.classList.add('activeModal');
+            this.Static.body.style.overflow = 'hidden';
+        }, 100)
     }
 }
 

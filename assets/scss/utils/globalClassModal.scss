@@ -6,24 +6,38 @@ h3 {
   margin: 0;
 }
 
+body.activeModal {
+  .page {
+    animation: scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+}
+
 .modalWindow {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.3);
   top: 0;
   left: 0;
   transform: scale(0);
   z-index: 100;
-
+  transition: all 0.3s ease;
+  animation: quickScaleDown 0s 0.5s linear forwards;
 
   &.activeModal {
     transform: scale(1);
+    animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+    .modalWindow_body {
+      animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+
+    .modalWindow_content {
+      opacity: 0;
+      animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
   }
 
-  &.out {
-    animation: quickScaleDown 0s 0.5s linear forwards;
-  }
 
   &_body {
     min-height: 100%;
@@ -40,13 +54,12 @@ h3 {
     width: 100%;
     position: relative;
     padding: 35px;
-    // background: rgba(255, 255, 255, 0.09);
     background: #202432;
-    // box-shadow: 0px 0px 16px 0px rgba(29, 33, 45, 0.8);
-    box-shadow: 0 0 30px -8px rgba(221, 221, 221, 0.5);
+    box-shadow: 0 0 23px -10px rgba(221, 221, 221, 0.5);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(7px);
     color: #FFFFFF;
+    animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   }
 
   &_header {
@@ -159,9 +172,6 @@ h3 {
 }
 
 
-
-
-
 @keyframes quickScaleDown {
   0% {
     transform: scale(1);
@@ -173,5 +183,49 @@ h3 {
 
   100% {
     transform: scale(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, .0);
+  }
+
+  100% {
+    background: rgba(0, 0, 0, .3);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(.8) translateY(1000px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleDown {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(.8) translateY(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleBack {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(.85);
   }
 }
