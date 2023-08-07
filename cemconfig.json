@@ -5,145 +5,86 @@
   "pages": [
     {
       "all": true,
-      "front": [
-        "header"
-      ]
+      "front": "header"
     },
     {
       "url": "/",
       "front": [
         "courseLine",
         "banners",
-        "lenta",
-        "footer"
+        "lenta"
       ]
     },
     {
       "url": "/exchange-rates",
-      "front": [
-        "header",
-        "exchangeRates",
-        "footer"
-      ]
+      "front": "exchangeRates"
     },
     {
       "url": "/list-exchange",
-      "front": [
-        "header",
-        "listExchange",
-        "footer"
-      ]
+      "front": "listExchange"
     },
     {
       "url": "/list-trade",
-      "front": [
-        "header",
-        "listTrade",
-        "footer"
-      ]
+      "front": "listTrade"
     },
     {
       "url": "/contacts",
-      "front": [
-        "contacts"
-      ]
+      "front": "contacts"
     },
     {
       "url": "/about",
-      "front": [
-        "header",
-        "about",
-        "footer"
-      ]
+      "front": "about"
     },
     {
       "url": "/forum",
-      "front": [
-        "header",
-        "forum",
-        "footer"
-      ]
+      "front": "forum"
     },
     {
       "url": "/partners",
-      "front": [
-        "header",
-        "partners",
-        "footer"
-      ]
+      "front": "partners"
     },
     {
       "url": "/social_networks",
-      "front": [
-        "header",
-        "socialNetworks",
-        "footer"
-      ]
+      "front": "socialNetworks"
     },
     {
       "url": "/list-startaps",
       "front": [
-        "header",
         "categoryLine",
-        "startaps",
-        "footer"
+        "startaps"
       ]
     },
     {
       "url": "/list-ico",
       "front": [
-        "header",
         "categoryLine",
-        "ico",
-        "footer"
+        "ico"
       ]
     },
     {
       "url": "/news",
       "front": [
-        "header",
         "categoryLine",
-        "news",
-        "footer"
+        "news"
       ]
     },
     {
       "url": "/career",
-      "front": [
-        "header",
-        "career",
-        "footer"
-      ]
-    },
-    {
-      "url": "/forum",
-      "front": [
-        "header",
-        "forum",
-        "footer"
-      ]
+      "front": "career"
     },
     {
       "url": "/error",
       "front": [
-        "header",
-        "error",
-        "footer"
+        "error"
       ]
     },
     {
       "regex": "/user-",
-      "front": [
-        "header",
-        "rules",
-        "footer"
-      ]
+      "front": "rules"
     },
     {
       "all": true,
-      "front": [
-        "footer"
-      ]
+      "front": "footer"
     }
   ],
   "hook": {
