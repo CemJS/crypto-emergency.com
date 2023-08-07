@@ -65,7 +65,7 @@ export const display = function () {
                       <p>{item.description}</p>
                       <p class="ico_list_item_finance pt_15">
                         <span class="text_important">${item.nowMoney}</span> / ${item.targetMoney}
-                        <span class="pl_15" style="color: #ffffff; font-size: 24px;">
+                        <span class="pl_15 ico_percent">
                           {
                             item.targetMoney <= 0 ? '0' :
                               Math.round(

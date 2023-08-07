@@ -65,8 +65,9 @@ const professions = [
   },
 ]
 
+
 export const display = function () {
-  console.log('=fef7b2=', this.Static.sections)
+  // console.log('=fef7b2=', this.Static.sections)
   return (
     <div class="page page__container">
       <div class="career">
@@ -725,7 +726,9 @@ export const display = function () {
             </div>
 
           </section>
-          <h2 class="career_title">Ждём <span class="ttu">тебя</span> в нашей команде!</h2>
+          <h2
+            ref="jdem"
+            class="career_title">Ждём <span class="ttu">тебя</span> в нашей команде!</h2>
         </div>
 
       </div>
