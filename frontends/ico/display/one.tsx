@@ -89,41 +89,47 @@ export default function () {
           </div>
         </section>
 
-        <section class="icoItem_gallery pt_25">
-          <h2 class="often_title">Галерея</h2>
-          <div class="icoItem_gallery_wrap pt_20">
-            <button class="icoItem_btn icoItem_btn_prev">
-              <img src={back} />
-            </button>
-            <button class="icoItem_btn icoItem_btn_next">
-              <img src={next} />
-            </button>
-            <div class="icoItem_carousel">
-              {
-                this.Static.record.media.map((item, index) => {
-                  return (
-                    <div
-                      class="icoItem_carousel_item"
-                      onclick={() => {
-                        this.Fn.initOne({
-                          name: "modalGallery", ifOpen: (front) => {
-                            setTimeout(() => {
-                              front.clearData()
-                            }, 500);
-                          }
-                        })
-                        this.cross({ records: this.Static.record.media })
-                        this.init()
-                      }}
-                    >
-                      <img src={`/assets/upload/worldPress/${item.name}`} alt="Gallery photo" />
-                    </div>
-                  )
-                })
-              }
-            </div>
-          </div>
-        </section>
+
+        {
+          this.Static.record.media.length ?
+            <section class="icoItem_gallery pt_25">
+              <h2 class="often_title">Галерея</h2>
+              <div class="icoItem_gallery_wrap pt_20">
+                <button class="icoItem_btn icoItem_btn_prev">
+                  <img src={back} />
+                </button>
+                <button class="icoItem_btn icoItem_btn_next">
+                  <img src={next} />
+                </button>
+                <div class="icoItem_carousel">
+                  {
+                    this.Static.record.media.map((item, index) => {
+                      return (
+                        <div
+                          class="icoItem_carousel_item"
+                          onclick={() => {
+                            this.Fn.initOne({
+                              name: "modalGallery", ifOpen: (front) => {
+                                setTimeout(() => {
+                                  front.clearData()
+                                }, 500);
+                              }
+                            })
+                            this.cross({ records: this.Static.record.media })
+                            this.init()
+                          }}
+                        >
+                          <img src={`/assets/upload/worldPress/${item.name}`} alt="Gallery photo" />
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            </section> : null
+        }
+
+
       </div>
     </div>
 

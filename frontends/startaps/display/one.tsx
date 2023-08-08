@@ -35,6 +35,8 @@ export default function () {
           </div>
         </div>
 
+        <h2 class="general_title">{this.Static.record.title}</h2>
+
         <section class="startap_info">
           <div class="startap_info_item startap_info_item_media">
             <div class="startap_info_cover">
@@ -81,8 +83,17 @@ export default function () {
             </div>
           </div>
           <div class="startap_info_item startap_info_item_desc">
-            <h2 class="startap_info_title">{this.Static.record.title}</h2>
+
             <p class="startap_text">{this.Static.record.description}</p>
+            <div class="startap_socials">
+              {
+                this.Static.record.social.map((item, index) => {
+                  return (
+                    <a >{item.name}</a>
+                  )
+                })
+              }
+            </div>
           </div>
 
         </section>
