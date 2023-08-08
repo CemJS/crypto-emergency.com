@@ -201,7 +201,7 @@
   },
   "modalGallery": {
     "front": true,
-    "name": "modalTool",
+    "name": "modalGallery",
     "path": {
       "js": "/assets/js/modalGallery.js",
       "css": "/assets/css/modalGallery.css"

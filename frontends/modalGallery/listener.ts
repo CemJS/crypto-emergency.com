@@ -1,12 +1,9 @@
 const listener = {
     "cross": [{
         "front": "ico",
-        "fn": function ({ name, nameOrig, code }) {
-            this.Static.lang.name = name
-            this.Static.lang.orig = nameOrig
-            this.Static.lang.code = code
-            this.Static.lang.value = `${name} (${nameOrig})`
-            this.fn("checkForm")
+        "fn": function ({ records }) {
+            console.log('=627aeb=', records)
+            this.Static.arr = records
             this.init()
         }
     },

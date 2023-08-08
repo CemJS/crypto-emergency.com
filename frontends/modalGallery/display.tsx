@@ -1,7 +1,7 @@
 import { Cemjsx } from "cemjs-all"
 
 
-export const display = function (records) {
+export const display = function () {
   // console.log('=727e5f=', this.Static.body)
   return (
     <div
@@ -12,9 +12,9 @@ export const display = function (records) {
           setTimeout(() => {
             this.clearData()
           }, 5)
-          this.Ref.modalWindow.classList.remove('activeModal');
-          this.Static.body.classList.remove('activeModal');
-          this.Static.body.style.overflow = 'auto';
+          // this.Ref.modalWindow.classList.remove('activeModal');
+          // this.Static.body.classList.remove('activeModal');
+          // this.Static.body.style.overflow = 'auto';
         }
       }}
     >
@@ -34,7 +34,7 @@ export const display = function (records) {
 
           <main class="modalWindow_main">
             <div class="modalGallery_wrap">
-              <div class="modalGallery_carousel"></div>
+              <div class="modalGallery_carousel">modal</div>
             </div>
           </main>
         </div>
