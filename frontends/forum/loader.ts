@@ -9,6 +9,14 @@ export const loader = function () {
   // this.Static.value = this.Ref.slide.offsetWidth
  
   // slider
+
+  this.Static.currentSlide = 0;
+
+  // this.Static.numSlides = this.Ref.partners_content.children.length;
+  this.Static.maxSlidesPerShift = 5;
+
+
+
   this.Static.startPosition = 0
 
 

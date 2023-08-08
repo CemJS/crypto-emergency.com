@@ -696,30 +696,18 @@ export const display = function () {
 {/* next */}
             <button ref='next'
               onclick={() => {
-                let MainWidth = this.Ref.slide.offsetWidth * (partners.length-5);
-                if (this.Static.startPosition < MainWidth){
-                  
-                  
-                  console.log(partners.length, this.Ref.slide.offsetWidth, MainWidth)
-                  let itemWidth = this.Ref.slide.offsetWidth 
-                  
-                  this.Static.startPosition += itemWidth
-                  this.Ref.partners_content.style.transform.translateX= this.Static.startPosition +'px'
+                let slidesNum = this.Ref.partners_content.children.length
+                let itemWidth = this.Ref.slide.offsetWidth + 10
 
-                  
-                  
+                if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
+                  this.Static.currentSlide++;
+                  console.log(this.Static.currentSlide)
+              } 
 
-                  console.log('=bd64de=',this.Static.startPosition)
-                  console.log('=2f0798=', this.Ref.partners_content.style.transform)
-                  this.init()
-                }
-                else
-                {
-                  null
-                }
-               
-              }
-              }
+
+              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+            }}
+
             >
               Кнопка далее</button>
 
@@ -743,16 +731,15 @@ export const display = function () {
 {/* back */}
             <button ref='back'
               onclick={() => {
-                if (this.Static.startPosition > 0){
-                  let MainWidth = this.Ref.slide.offsetWidth * partners.length;
-                  let itemWidth = this.Ref.slide.offsetWidth
-                  this.Ref.partners_content.style.transform += `translateX(+${itemWidth+10}px)`
-                  this.Static.startPosition -= itemWidth
-                  console.log('=bd64de=',this.Static.startPosition)
-                  console.log('=2f0798=', this.Ref.partners_content.style.transform)
-                  this.init()
-                }
-              }}
+                let itemWidth = this.Ref.slide.offsetWidth + 10
+                
+                if (this.Static.currentSlide > 0) {
+                  this.Static.currentSlide--;
+                  console.log(this.Static.currentSlide)
+              }
+
+              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+            }}
             >
               Кнопка назад</button>
           </section>
