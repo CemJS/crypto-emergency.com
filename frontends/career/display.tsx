@@ -23,15 +23,19 @@ const advantages = [
 const employment = [
   {
     text: 'Выберите интересующую вас категорию.',
+    points: 20,
   },
   {
     text: 'Ознакомьтесь с требованиями данной вакансии.',
+    points: 20,
   },
   {
     text: 'Отправляйте заявку в форме указанной в вакансии.',
+    points: 20,
   },
   {
     text: 'В случае положительного решения мы с вами свяжемся. Удачи вам!',
+    points: 20,
   },
 ]
 
@@ -104,6 +108,9 @@ export const display = function () {
                   return (
                     <div class="employment_item">
                       <div class="employment_points">
+
+
+
                         <span class="employment_points_item"></span>
                         <span class="employment_points_item"></span>
                         <span class="employment_points_item"></span>

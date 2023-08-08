@@ -189,6 +189,26 @@
     "ver": "1.0.0",
     "visable": true
   },
+  "modalTool": {
+    "front": true,
+    "name": "modalTool",
+    "path": {
+      "js": "/assets/js/modalTool.js",
+      "css": "/assets/css/modalTool.css"
+    },
+    "ver": "1.0.0",
+    "visable": true
+  },
+  "modalGallery": {
+    "front": true,
+    "name": "modalTool",
+    "path": {
+      "js": "/assets/js/modalGallery.js",
+      "css": "/assets/css/modalGallery.css"
+    },
+    "ver": "1.0.0",
+    "visable": true
+  },
   "modalRecoverPass": {
     "front": true,
     "name": "modalRecoverPass",

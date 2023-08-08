@@ -102,7 +102,18 @@ export default function () {
               {
                 this.Static.record.media.map((item, index) => {
                   return (
-                    <div class="icoItem_carousel_item">
+                    <div
+                      class="icoItem_carousel_item"
+                      onclick={() => {
+                        // this.Fn.initOne({
+                        //   name: "modalTool", ifOpen: (front) => {
+                        //     setTimeout(() => {
+                        //       front.clearData()
+                        //     }, 500);
+                        //   }
+                        // })
+                      }}
+                    >
                       <img src={`/assets/upload/worldPress/${item.name}`} alt="Gallery photo" />
                     </div>
                   )

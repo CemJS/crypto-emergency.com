@@ -17,15 +17,26 @@ export default function () {
             >
             </img>
           </div>
-          <div class="tool">
+          <div
+            class="tool"
+            onclick={() => {
+              this.Fn.initOne({
+                name: "modalTool", ifOpen: (front) => {
+                  setTimeout(() => {
+                    front.clearData()
+                  }, 500);
+                }
+              })
+            }}
+          >
             <span class="tool_item"></span>
             <span class="tool_item"></span>
             <span class="tool_item"></span>
           </div>
         </div>
 
-        <div class="startap_info">
-          <div class="startap_info_item">
+        <section class="startap_info">
+          <div class="startap_info_item startap_info_item_media">
             <div class="startap_info_cover">
               {
                 this.Static.record.cover ?
@@ -51,21 +62,58 @@ export default function () {
                   }
                 </div> : null
             }
-            <div class="startap_info_desc">
-              {this.Static.record.descriptionShort}
+            <div class="startap_box">
+              <p class="startap_text">
+                {this.Static.record.descriptionShort}
+              </p>
             </div>
             <div class="startap_btns">
-              <a href={this.Static.record.whitePaperLink} onclick={this.Fn.link} class="btn btn_default">
+              <a
+                onclick={this.Fn.link}
+                href={this.Static.record.whitePaperLink}
+                class={["btn btn_gradient", this.Static.record.whitePaperLink ? null : "button_inactive"]}
+              >
                 <span>WhitePaper</span>
               </a>
-              <a href={this.Static.record.siteLink} onclick={this.Fn.link} class="btn btn_default">
+              <a href={this.Static.record.siteLink} onclick={this.Fn.link} class="btn btn_gradient">
                 <span>WebSite</span>
               </a>
             </div>
           </div>
-          <div class="startap_info_item"></div>
+          <div class="startap_info_item startap_info_item_desc">
+            <h2 class="startap_info_title">{this.Static.record.title}</h2>
+            <p class="startap_text">{this.Static.record.description}</p>
+          </div>
 
-        </div>
+        </section>
+
+        {/* <h2 class="general_title">Токеномика</h2>
+        <section class="startap_tokenomica ">
+          <div class="tokenomica_pie">
+            <svg class="chart" width="250" height="250" viewBox="0 0 40 40">
+              <circle class="unit" r="15.9" cx="50%" cy="50%"></circle>
+              <circle class="unit" r="15.9" cx="50%" cy="50%"></circle>
+              <circle class="unit" r="15.9" cx="50%" cy="50%"></circle>
+            </svg>
+          </div>
+          <div class="tokenomica_desc">
+            {
+              this.Static.record.tokenomica.map((item, index) => {
+                return (
+                  <div class="tokenomica_desc_item">
+                    <div class={["tokenomica_desc_item_line", `tokenomica_desc_item_line-${index}`]}></div>
+                    <div class="tokenomica_desc_item_text">{item.name}</div>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </section> */}
+
+        {/* <section class="startap_gallery">
+
+        </section> */}
+
       </div>
     </div>
 

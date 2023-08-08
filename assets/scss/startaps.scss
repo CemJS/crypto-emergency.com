@@ -1,3 +1,13 @@
+$tokenomicaBack: (
+  0: #e7f700,
+  1: #A43CF9,
+  2: #FF9B00,
+  3: #1D7AF8,
+  4: #FF6E6C,
+  5: violet,
+  6: rgb(61, 153, 61),
+);
+
 .startaps {
   padding-bottom: 80px;
 
@@ -37,7 +47,7 @@
 
   &_item {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20% 75%;
     grid-template-rows: auto;
     background: rgba(255, 255, 255, 0.09);
     box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.80);
@@ -97,15 +107,163 @@
 
 // startap inner page
 .startap {
+  padding-top: 25px;
+
+  &_box {
+    // padding: 15px;
+    // box-shadow: inset 0 0 0 3000px rgba(150, 150, 150, 0.192);
+    // filter: blur(10px);
+    padding: 15px;
+    box-shadow: 0 0 1rem 0 rgba(33, 31, 31, 0.2);
+    position: relative;
+    border-radius: var(--borderR);
+    overflow: hidden;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rebeccapurple;
+      filter: blur(60px);
+    }
+  }
+
+  &_text {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+  }
+
   &_info {
+    padding-top: 25px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    font: 25px;
+    gap: 25px;
+
+    &_cover {
+      max-width: 650px;
+
+      img {
+        width: 100%;
+        border-radius: var(--borderR);
+      }
+    }
+
+    &_title {
+      text-align: center;
+      font-size: 30px;
+      line-height: 48px;
+      font-weight: 700;
+    }
+
+    &_item {
+      &_media {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      &_desc {
+        height: 350px;
+        overflow-y: scroll;
+        padding-right: 10px;
+
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--fiolet);
+          border-radius: var(--borderR);
+          border: 2px solid transparent;
+        }
+      }
+    }
   }
 
   &_btns {
     display: flex;
     gap: 15px;
+  }
+
+  &_tokenomica {
+    display: flex;
+    justify-content: space-around;
+    gap: 25px;
+  }
+
+  .tokenomica {
+    &_desc {
+      &_item {
+        &_line {
+          height: 5px;
+          width: 45px;
+          border-radius: 5px;
+        }
+
+
+      }
+    }
+  }
+
+  @each $index,
+  $back in $tokenomicaBack {
+    .tokenomica_desc_item_line-#{$index} {
+      background: $back;
+    }
+  }
+
+}
+
+
+
+.unit {
+  fill: none;
+  stroke-width: 3;
+  cursor: pointer;
+
+  animation-name: render;
+  animation-duration: 1.5s;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+
+.unit:hover,
+.hovered {
+  opacity: 0.8;
+  stroke-width: 4;
+}
+
+.unit:nth-child(1) {
+  stroke: var(--akebi_purple);
+  stroke-dasharray: 33.3 100;
+  // stroke-dashoffset: -33.3;
+}
+
+.unit:nth-child(2) {
+  stroke: var(--blue_oyster_cult);
+  stroke-dasharray: 33.3 100;
+  stroke-dashoffset: -33.3;
+}
+
+.unit:nth-child(3) {
+  stroke: var(--blue_oyster_cult);
+  stroke-dasharray: 33.3 100;
+  stroke-dashoffset: -66.6;
+}
+
+@keyframes render {
+  0% {
+    stroke-dasharray: 0 100;
   }
 }
 
