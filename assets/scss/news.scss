@@ -140,6 +140,20 @@
     max-width: 1240px;
     margin: 0 auto;
 
+    &::after {
+      content: "";
+      position: fixed;
+      right: 0;
+      top: 20%;
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(315deg, #6e72fc 0%, #ad1deb 65%, #a5a4cb 100%, #8989bb 100%);
+      background-size: 1000%;
+      animation: background 20s linear alternate infinite;
+      filter: blur(355px);
+      z-index: -1;
+    }
+
     h1 {
       margin-bottom: 8px;
       padding: 0 30px;
@@ -496,5 +510,14 @@
       margin-top: 10px;
     }
     }
+  }
+}
+
+@keyframes background {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
   }
 }

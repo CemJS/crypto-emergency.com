@@ -109,23 +109,9 @@ export default function () {
                                 <span>{comment.rating}</span>
                                 <img src={like} />
                               </div>
-                              <span class="user-comment__answer"
-                                onclick={(e) => {
-                                  let el = e.currentTarget
-                                  el.parentElement.parentElement.lastChild.style = "display: flex"
-                                }}
-                              >Ответить</span>
                               <div class="user-comment__settings">
                                 <img src={points} />
                               </div>
-                            </div>
-                            <div class="lenta__comment user-comment__form">
-                              <div class="lenta__comment_field">
-                                <textarea rows="1" data-max-height="200" data-scroll-last="48"></textarea>
-                              </div>
-                              <button class="lenta__comment_button">
-                                <img src={sendMessage} />
-                              </button>
                             </div>
                           </div>
                           {
