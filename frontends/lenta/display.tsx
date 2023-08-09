@@ -44,10 +44,12 @@ export const display = function () {
   if (this.Static.record) {
     return Show.bind(this)()
   }
-  console.log('=cbf168=', this.Static.records)
+  console.log('=cbf168=', window.location.pathname)
 
   return (
-    <section class="lenta effect_lines">
+    <section class="lenta effect_lines"
+      style={window.location.pathname == "/lenta-users" ? "padding-top: 100px" : "padding-top: 0"}
+    >
       <div class="lenta__container">
         {
           this.Static.records?.map((item, i) => {

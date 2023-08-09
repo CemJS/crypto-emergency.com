@@ -128,15 +128,6 @@ export default function () {
               <div class={["lenta__item_description",
                 !mediaFiles.length && item.text.length < 250 ? "lenta__item_background" : null
               ]}>
-                <span>
-                  {
-                    mediaFiles.length
-                      ?
-                      this.Services.functions.editText(item.text, { slice: 50, clear: true, html: true })
-                      :
-                      this.Services.functions.editText(item.text, { slice: 550, paragraph: true, clear: true, html: true })
-                  }
-                </span>
                 <div>
                   {
                     mediaFiles.length

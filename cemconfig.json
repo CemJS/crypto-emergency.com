@@ -16,6 +16,10 @@
       ]
     },
     {
+      "url": "/lenta-users",
+      "front": "lenta"
+    },
+    {
       "url": "/exchange-rates",
       "front": "exchangeRates"
     },

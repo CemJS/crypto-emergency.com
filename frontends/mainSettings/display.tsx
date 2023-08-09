@@ -23,12 +23,12 @@ const sections = [
   {
     category: "Лента пользователей",
     img: lenta,
-    url: "#"
+    url: "/lenta-users"
   },
   {
     category: "Вопросы и ответы",
     img: questions,
-    url: "#"
+    url: "/questions"
   },
   {
     category: "ICO Рейтинг",
