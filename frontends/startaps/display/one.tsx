@@ -60,11 +60,15 @@ export default function () {
               <a
                 onclick={this.Fn.link}
                 href={this.Static.record.whitePaperLink}
-                class={["btn btn_gradient", this.Static.record.whitePaperLink ? null : "button_inactive"]}
+                class={["btn", this.Static.record.whitePaperLink ? "btn_gradient" : "btn_disable"]}
               >
                 <span>WhitePaper</span>
               </a>
-              <a href={this.Static.record.siteLink} onclick={this.Fn.link} class="btn btn_gradient">
+              <a
+                onclick={this.Fn.link}
+                class={["btn", this.Static.record.siteLink ? "btn_gradient" : "btn_disable"]}
+                href={this.Static.record.siteLink}
+              >
                 <span>WebSite</span>
               </a>
             </div>
@@ -88,6 +92,32 @@ export default function () {
             }
           </div>
         </section>
+
+        {
+          this.Static.record.roadMap.length ?
+            <section class="startap_roadmap">
+              <h2 class="general_title">Дорожная карта</h2>
+              {
+                this.Static.record.roadMap.length && this.Static.record.roadMap[0].image ?
+                  <div class="startap_roadmap_image">
+                    <img src={`/assets/upload/worldPress/${this.Static.record.roadMap[0].image}`} />
+                  </div> :
+                  <div class="startap_roadmap_board">
+                    {
+                      this.Static.record.map((item, index) => {
+                        return (
+                          <div class="startap_roadmap_board_item">
+                            <span class="text_important">{item.year}</span>
+                            <p>{item.description}</p>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+              }
+
+            </section> : null
+        }
 
         {
           this.Static.record.tokenomica.length ?
@@ -140,7 +170,7 @@ export default function () {
                       return (
                         <div class="startap_team_item">
                           <div class="startap_team_item_img">
-                            {/* <img src="" alt="" /> */}
+                            <img src={`/assets/upload/worldPress/${item.foto}`}></img>
                           </div>
                           <span class="startap_team_item_name">{item.name}</span>
                           <span class="startap_team_item_pos">{item.position}</span>

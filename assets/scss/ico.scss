@@ -311,13 +311,14 @@
     &:hover {
       background: transparent;
       border: 1px solid var(--border);
-      transform: translateY(-50%) scale(0.98);
+      transform: translateY(-50%) scale(1.1);
     }
   }
 
   &_carousel {
     display: flex;
     gap: 15px;
+    overflow: hidden;
 
     &_item {
       height: 350px;
@@ -333,6 +334,57 @@
       }
     }
   }
+
+  &_tallage {
+    &_wrap {
+      width: 550px;
+      height: 250px;
+      background: rgba(221, 221, 221, 0.25);
+      margin: 0 auto;
+      border-radius: var(--borderR);
+      border: 1px solid var(--border);
+      padding: 25px;
+      transition: box-shadow 0.1s, transform 0.1s;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 15px;
+    }
+
+    &_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      &_percent {
+        font-size: 64px;
+        line-height: 76px;
+        font-weight: 700;
+        position: relative;
+
+        &::before {
+          content: '%';
+          position: absolute;
+          right: -65px;
+
+        }
+      }
+    }
+
+    &_item:first-child {
+      flex-direction: column;
+      gap: 15;
+    }
+
+
+
+    &_text {
+      font-size: 54px;
+      line-height: 68px;
+      font-weight: 700;
+    }
+  }
+
 }
 
 .token_list {

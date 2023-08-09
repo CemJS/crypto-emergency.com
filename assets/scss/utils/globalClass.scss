@@ -222,39 +222,79 @@ $indent in $indents {
   padding: 15px 30px;
   transition: all 0.3s ease;
   position: relative;
-}
 
-.btn_gradient {
-  z-index: 2;
-  background-color: transparent;
-  background-image: var(--btn_gradient);
-  background-size: 100% 2px;
-  background-position: 0 100%, 0 0;
-  background-repeat: no-repeat;
-  background-clip: border-box;
+  &_gradient {
+    z-index: 2;
+    background-color: transparent;
+    background-image: var(--btn_gradient);
+    background-size: 100% 2px;
+    background-position: 0 100%, 0 0;
+    background-repeat: no-repeat;
+    background-clip: border-box;
 
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 21px;
-    border: 2px solid #2C66B8;
-    border-right: none;
-    border-radius: var(--borderR) 0 0 var(--borderR);
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 21px;
+      border: 2px solid #2C66B8;
+      border-right: none;
+      border-radius: var(--borderR) 0 0 var(--borderR);
+    }
+
+    &:after {
+      border: 2px solid #8859EC;
+      border-left: none;
+      left: auto;
+      right: 0;
+      border-radius: 0 var(--borderR) var(--borderR) 0;
+    }
   }
 
-  &:after {
-    border: 2px solid #8859EC;
-    border-left: none;
-    left: auto;
-    right: 0;
-    border-radius: 0 var(--borderR) var(--borderR) 0;
+  &_disable {
+    background: #808080;
+    cursor: default;
+
   }
 }
+
+// .btn_gradient {
+//   z-index: 2;
+//   background-color: transparent;
+//   background-image: var(--btn_gradient);
+//   background-size: 100% 2px;
+//   background-position: 0 100%, 0 0;
+//   background-repeat: no-repeat;
+//   background-clip: border-box;
+
+//   &:before,
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     z-index: -1;
+//     left: 0;
+//     top: 0;
+//     bottom: 0;
+//     width: 21px;
+//     border: 2px solid #2C66B8;
+//     border-right: none;
+//     border-radius: var(--borderR) 0 0 var(--borderR);
+//   }
+
+//   &:after {
+//     border: 2px solid #8859EC;
+//     border-left: none;
+//     left: auto;
+//     right: 0;
+//     border-radius: 0 var(--borderR) var(--borderR) 0;
+//   }
+// }
+
+
 
 // different buttons
 

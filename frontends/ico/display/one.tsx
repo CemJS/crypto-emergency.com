@@ -117,11 +117,55 @@ export default function () {
           </div>
         </section>
 
+        <section class="icoItem_tallage pt_50">
+          <div
+            class="icoItem_tallage_wrap"
+            ref="card"
+            onmousemove={(e) => {
+              const xVal = e.layerX;
+              const yVal = e.layerY;
+              const xRotation = 20 * ((xVal - this.Static.cardWidth / 2) / this.Static.cardWidth);
+              const yRotation = -20 * ((yVal - this.Static.cardHeight / 2) / this.Static.cardHeight);
+              const string = `perspective(500px) scale(1.1) rotateX(${xRotation}deg) rotateY(${yRotation}deg) `;
+              this.Ref.card.style.transform = string;
+            }}
+            onmouseout={(e) => {
+              this.Ref.card.style.transform = `scale(1) rotateX(0) rotateY(0)`
+            }}
+          >
+            <div class="icoItem_tallage_item">
+              <span class="text_important icoItem_tallage_text">
+                {
+                  this.Static.record.nowMoney && this.Static.record.nowMoney > 0 ?
+                    `$ ${this.Static.record.nowMoney}` : '$0'
+                }
+              </span>
+              <span style="font-size: 40px; font-weight: 600;">of</span>
+              <span class="icoItem_tallage_text">
+                {
+                  this.Static.record.targetMoney ? `$ ${this.Static.record.targetMoney}` : '$0'
+                }
+              </span>
+            </div>
+            <div class="icoItem_tallage_item">
+              <span class="icoItem_tallage_item_percent">
+                {
+                  this.Static.record.targetMoney <= 0 ?
+                    '0%' :
+                    Math.round(
+                      ((this.Static.record.nowMoney && this.Static.record.nowMoney > 0 ?
+                        this.Static.record.nowMoney : 0) * 100) / this.Static.record.targetMoney)
+                }
+              </span>
+            </div>
+          </div>
+        </section>
+
 
         {
           this.Static.record.media.length ?
             <section class="icoItem_gallery pt_25">
-              <h2 class="often_title">Галерея</h2>
+              <h2 class="general_title">Галерея</h2>
               <div class="icoItem_gallery_wrap pt_20">
                 <button class="icoItem_btn icoItem_btn_prev">
                   <img src={back} />
