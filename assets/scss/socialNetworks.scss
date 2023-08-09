@@ -12,7 +12,7 @@
 
     .socialNetwork-list{
         display: grid;
-        grid-template-columns: calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px);
+        grid-template-columns: repeat(4,1fr);
         gap: 10px;
     
     
@@ -43,8 +43,7 @@
             }
             
             .content{
-                display: flex;
-                flex-wrap: wrap;
+               
                 line-height: 28px;
 
                 img{
@@ -53,8 +52,7 @@
                 }
 
                 .ruLink{
-                    display: flex;
-                    justify-content: space-between;    
+                    display: flex; 
                     align-items: center;
                 }
                 .spanRegionRU{
@@ -68,7 +66,7 @@
                     
                 .engLink{
                     display: flex;
-                    justify-content: space-between;
+                    
                     align-items: center;
                 }
                 .spanRegionENG{
@@ -114,7 +112,7 @@
 
     .apps-main_list{
         display: grid;
-        grid-template-columns: calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px);
+        grid-template-columns: repeat(4,1fr);
         gap: 10px;
     
     
@@ -178,13 +176,21 @@
 
     }
 }    
-@media(max-width: 1080px) {
+@media(max-width: 1090px) {
     .socialNetwork_main{
         .title{
             font-size: 24px;
         }
         .socialNetwork-list{
-            grid-template-columns:calc(33% - 7.5px) calc(33% - 7.5px) calc(33% - 7.5px);
+            grid-template-columns:repeat(3,1fr);
+        }
+    }
+    .apps-main{
+        .title{
+            font-size: 24px;
+        }
+        .apps-main_list{
+            grid-template-columns:repeat(3,1fr)
         }
     }
 }
@@ -198,34 +204,53 @@
         .title{
             font-size: 23px;
         }
-        .socialNetwork-list{
-            grid-template-columns:calc(33% - 7.5px) calc(33% - 7.5px) calc(33% - 7.5px);
-        }
+        
     }
 }
 
-@media(max-width: 830px) {
+@media(max-width: 866px) {
     .socialNetwork_main{
         .title{
             font-size: 20px;
         }
         .socialNetwork-list{
-            grid-template-columns:calc(50% - 7.5px) calc(50% - 7.5px)
+            grid-template-columns:repeat(2,1fr);
+        }
+    }
+    .apps-main{
+        .title{
+            font-size: 20px;
+        }
+        .apps-main_list{
+            grid-template-columns:repeat(2,1fr)
         }
     }
 }
 
-@media(max-width: 562px) {
+@media(max-width: 590px) {
     .socialNetwork_main{
         .title{
             font-size: 16px;
         }
         .socialNetwork-list{
-            grid-template-columns:calc(100% - 7.5px)
+            grid-template-columns:repeat(1,1fr);
+        }
+    }
+    .apps-main{
+        .title{
+            font-size: 16px;
+        }
+        .apps-main_list{
+            grid-template-columns:repeat(1,1fr)
         }
     }
 }
 @media(max-width: 350px){
+    .socialNetwork_main{
+        .title{
+            font-size: 14px;
+        }
+    }
     .socialNetwork_main{
         .title{
             font-size: 14px;

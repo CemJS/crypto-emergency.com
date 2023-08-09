@@ -4,7 +4,7 @@ export const loader = function () {
   this.Static.partnersTabName = 'CryptoЮГ2023';
   this.Static.partnersSlice = []
   this.Static.activeName = 'CryptoЮГ2023';
-  this.Static.howMutchSpeakers = 6
+  this.Static.howMutchSpeakers = 8
   this.Static.activeIndex = 0;
   // this.Static.value = this.Ref.slide.offsetWidth
  

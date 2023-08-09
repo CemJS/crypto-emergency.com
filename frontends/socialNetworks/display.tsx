@@ -114,7 +114,7 @@ const apps=[
     logo: crypto_emergency,
     appstore: 'https://apps.apple.com/es/app/crypto-emergency/id1635628021',
     playmarket: 'https://play.google.com/store/apps/details?id=com.cryptoemergency&hl=en&gl=US',
-  }
+  },
 ]
 
 export const display = function () {
@@ -151,11 +151,12 @@ export const display = function () {
                   })
                 }
                 
+                
               </div>
             </div>
             <div class="apps-main">
               <div class="title">
-               <h1>Наши приложения</h1>
+               <h1>Наши проекты</h1>
               </div>
               <div class="apps-main_list">
               {
@@ -182,21 +183,14 @@ export const display = function () {
                   )
                 })
               }
-              </div>
-              <div class="title">
-               <h1>Наши проекты</h1>
-               <div class="apps-main_list">
-                  <a class="apps-main_list_item" target="_blank" href='https://cemscan.com/'>
-                    <div class="img">
-                      <img src={crypto_emergency} alt="img" />
-                      <p>CemScan</p>
-                    </div>
-                  </a>
+                <a class="apps-main_list_item" target="_blank" href='https://cemscan.com/'>
+                  <div class="img">
+                    <img src={crypto_emergency} alt="img" />
+                    <p>BlockChain CemScan</p>
+                  </div>
+                </a>
               </div>
               </div>
-
-
-            </div>
           </div>
       </main>
     )

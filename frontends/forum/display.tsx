@@ -83,7 +83,7 @@ interface Course {
 }
 
 
-let howMutchSpeakers = 6
+let howMutchSpeakers = 8
 
 const speakers = [
   {
@@ -447,7 +447,7 @@ const partners = [
 ]
 
 speakers.forEach(item => {
-  if (item.visited.includes('CryptoЮГ2023') && arrFinish.length < 6) {
+  if (item.visited.includes('CryptoЮГ2023') && arrFinish.length < 8) {
     arrFinish.push(item);
     // console.log('=b37d44=',arrFinish)
   }
@@ -630,7 +630,7 @@ export const display = function () {
               ref="button"
               onclick={() => {
 
-                if(this.Static.howMutchSpeakers == 6)
+                if(this.Static.howMutchSpeakers == 8)
                   {
                     this.Static.howMutchSpeakers = speakers.length;
                     this.Ref.buttonSpan.innerText = 'Скрыть'
@@ -638,7 +638,7 @@ export const display = function () {
                   }
                   else
                   {
-                    this.Static.howMutchSpeakers = 6 
+                    this.Static.howMutchSpeakers = 8
                     this.Ref.buttonSpan.textContent = 'Показать всех'
                     this.init()
                   }
