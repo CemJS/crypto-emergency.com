@@ -5,6 +5,8 @@ import communication from '@svg/forum/communication.svg'
 import innovation from '@svg/forum/innovation.svg'
 import inspiration from '@svg/forum/inspiration.svg'
 import education from '@svg/forum/education.svg'
+import crypto_emergency from '@svg/forum/crypto_emergency.svg'
+
 import bg4 from '@images/forum/bg4.png'
 import speaker1 from '@images/forum/speakers/speaker1.jpg'
 import speaker2 from '@images/forum/speakers/speaker2.jpg'
@@ -304,7 +306,6 @@ const speakers = [
   }
 ]
 
-// let arr = speakers.slice(0, 6);
 
 let arrFinish = [];
 
@@ -449,13 +450,12 @@ const partners = [
 speakers.forEach(item => {
   if (item.visited.includes('CryptoЮГ2023') && arrFinish.length < 8) {
     arrFinish.push(item);
-    // console.log('=b37d44=',arrFinish)
   }
 });
 
 const contentAbout = [
   {
-    img: '',
+    img: crypto_emergency,
     title: 'Crypto Юг 2023',
     text: 'Прекрасная возможность провести время приятно и с пользой, открыть для себя новые возможности, повысить экспертность и увеличить доход.'
   },
@@ -487,7 +487,6 @@ const contentAbout = [
   },
 ]
 export const display = function () {
-  // console.log(this.Static.speakersTabName);
 
   return (
 
@@ -692,9 +691,8 @@ export const display = function () {
 
 
 {/*partners  slider */}
-
 {/* next */}
-            <button ref='next'
+              <button ref='next' class ="nextBtn"
               onclick={() => {
                 let slidesNum = this.Ref.partners_content.children.length
                 let itemWidth = this.Ref.slide.offsetWidth + 10
@@ -704,15 +702,32 @@ export const display = function () {
                   console.log(this.Static.currentSlide)
               } 
 
+              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+            }}
+            >
+              N
+              </button>
+{/* back */}
+              <button ref='back' class ="prevBtn"
+              onclick={() => {
+                let itemWidth = this.Ref.slide.offsetWidth + 10
+                
+                if (this.Static.currentSlide > 0) {
+                  this.Static.currentSlide--;
+                  console.log(this.Static.currentSlide)
+              }
 
               this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
             }}
-
             >
-              Кнопка далее</button>
+              P
+            </button>
+
+            
 
 {/* partners  */}
             <div class="partners_list" ref='partners_content'>
+
               {
                 partners.map((item, index) => {
                   return (
@@ -729,20 +744,9 @@ export const display = function () {
 
 
 {/* back */}
-            <button ref='back'
-              onclick={() => {
-                let itemWidth = this.Ref.slide.offsetWidth + 10
-                
-                if (this.Static.currentSlide > 0) {
-                  this.Static.currentSlide--;
-                  console.log(this.Static.currentSlide)
-              }
-
-              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
-            }}
-            >
-              Кнопка назад</button>
+            
           </section>
+          <div class="backgroundBlur"></div>
         </div>
       </div>
     </div>
