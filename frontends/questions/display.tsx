@@ -18,6 +18,12 @@ export const display = function () {
           <div class="questions__container">
             <h4>Последние вопросы</h4>
             <p class="questions__description">Задавайте свои вопросы, получайте грамотные и понятные ответы на родном языке, совершенно бесплатно.</p>
+            <div class="questions__ask">
+
+            </div>
+            <div class="questions__search">
+              <input type="text" placeholder="Поиск по вопросам" />
+            </div>
             <div class="questions__list">
               {
                 this.Static.records?.map((item) => {
@@ -66,6 +72,9 @@ export const display = function () {
                             <span>{item.author.nickname}</span>
                           </div>
                         </a>
+                        <div class="questions__item_languages btn btn_gradient">
+                          <span>Русский</span>
+                        </div>
                       </div>
                       <div class={["questions__item_preview",
                         item.title.length < 15 && item.text ? "questions__item_preview_row" : null
@@ -96,7 +105,12 @@ export const display = function () {
                         <span>{this.Services.functions.dateFormat(item.showDate, "now")}</span>
                       </div>
                       <div class="questions__item_footer">
-                        <button class="btn btn_gradient">Ответить</button>
+                        <button class="btn btn_gradient"
+                          onclick={() => {
+                            this.Static.record = item
+                            this.init()
+                          }}
+                        >Ответить</button>
                       </div>
                     </div>
                   )

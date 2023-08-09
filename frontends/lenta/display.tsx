@@ -44,7 +44,6 @@ export const display = function () {
   if (this.Static.record) {
     return Show.bind(this)()
   }
-  console.log('=cbf168=', window.location.pathname)
 
   return (
     <section class="lenta effect_lines"
