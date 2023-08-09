@@ -72,17 +72,45 @@ export default function () {
 
               </div>
               <div class="icoItem_info_desc_item">
-                <h5>Token sale:</h5>
+                <h5 class="icoItem_info_desc_title">Token sale:
+                  {
+                    this.Static.record.dateIsKnow ?
+                      <span class="ml_10">TBA</span> :
+                      <span class="ml_10">{this.Services.functions.dateFormat(this.Static.record.startDate, "point")} - {this.Services.functions.dateFormat(this.Static.record.endDate, "point")}</span>
+                  }
+                </h5>
                 <ul class="token_list">
-                  <li>{`Name: ${this.Static.record.name}`}</li>
-                  <li>{`Token type: ${this.Static.record.type}`}</li>
-                  <li>{`${this.Static.record.category} Token price: 1 ${this.Static.record.name} = ${this.Static.record.price} USD`}</li>
-                  <li>{`Tokens for sale: ${this.Static.record.targetSell.toLocaleString()} token`}</li>
-                  <li>{`Total tokens: ${this.Static.record.totalSupply.toLocaleString()} token`}</li>
-                  <li>{`Available for Token Sale: 
-                    ${((this.Static.record.forSell / this.Static.record.totalSupply) * 100).toFixed(1)}%`}
+                  <li>Name: <span class="ttu bold ml_5">{this.Static.record.name}</span></li>
+                  {
+                    this.Static.record?.type ?
+                      <li>Token type: <span class="ttu bold ml_5">{this.Static.record.type}</span></li> : null
+                  }
+                  <li>
+                    {`${this.Static.record.category} Token price:`}
+                    <span class="ttu bold ml_5">
+                      {`1 ${this.Static.record.name} = ${this.Static.record.price} USD`}
+                    </span>
                   </li>
-                  <li>{`Accepts: ${this.Static.record.sellType}`}</li>
+                  <li>
+                    Tokens for sale:
+                    <span class="ttu bold ml_5">
+                      {`${this.Static.record.targetSell.toLocaleString()} token`}
+                    </span>
+                  </li>
+
+                  <li>
+                    Total tokens:
+                    <span class="ttu bold ml_5">
+                      {`${this.Static.record.totalSupply.toLocaleString()} token`}
+                    </span>
+                  </li>
+                  <li>
+                    Available for Token Sale:
+                    <span class="ttu bold ml_5">
+                      {`${((this.Static.record.forSell / this.Static.record.totalSupply) * 100).toFixed(1)}%`}
+                    </span>
+                  </li>
+                  <li>Accepts:<span class="ttu bold ml_5">{this.Static.record.sellType}</span></li>
                 </ul>
               </div>
             </div>

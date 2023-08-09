@@ -193,8 +193,9 @@
 }
 
 .tabs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  // display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+  display: flex;
   font-weight: 700;
   position: relative;
   margin-bottom: 10px;
@@ -206,7 +207,8 @@
 
 .tabs span {
   padding: 20px;
-  width: 620px;
+  // width: 620px;
+  width: 100%;
   z-index: 2;
 
 }
@@ -236,7 +238,7 @@
   top: 0;
   left: 0;
   height: 60px;
-  width: 620px;
+  // width: 620px;
   transition: all ease-in-out 0.35s;
   z-index: 1;
   box-shadow: 0 0 10px 1px rgba(221, 221, 221, 0.5);
@@ -319,7 +321,7 @@
   }
 }
 
-.partners_section{
+.partners_section {
 
   h4 {
     margin: 25px 0;
@@ -327,9 +329,10 @@
     font-size: 300%;
   }
 
-  button{
+  button {
     padding: 15px;
   }
+
   .partners_list {
     gap: 10px;
     position: relative;
@@ -342,8 +345,8 @@
     scroll-behavior: smooth;
     scrollbar-width: 0;
     transition: all 0.4s linear;
-  
-  
+
+
     &_item {
       display: flex;
       flex-direction: column;
@@ -357,7 +360,7 @@
       // width: 300px; 
       // display: block;
     }
-  
+
     &_item img {
       // max-width: 82%;
       width: 100%;
@@ -402,14 +405,17 @@
     gap: 15px;
   }
 }
+
 @media(max-width: 550px) {
   .photo img {
     width: 65%;
   }
+
   .speakers {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
 @media(max-width: 464px) {
   .items_about {
     grid-template-columns: repeat(1, 1fr);

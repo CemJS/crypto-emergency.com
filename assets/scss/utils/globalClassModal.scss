@@ -20,7 +20,7 @@ body.activeModal {
   top: 0;
   left: 0;
   transform: scale(0);
-  z-index: 100;
+  z-index: 1001;
   transition: all 0.3s ease;
   animation: quickScaleDown 0s 0.5s linear forwards;
 

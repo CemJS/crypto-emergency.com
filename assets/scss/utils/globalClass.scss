@@ -119,11 +119,40 @@ $indent in $indents {
 
 }
 
+.effect_lines {
+  &::before {
+    content: '';
+    position: fixed;
+    left: -10%;
+    top: -8%;
+    background: url('svg/about/vector_1.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    // filter: blur(1px);
+  }
+}
 
+.effect_figure {
+  &::after {
+    content: '';
+    position: fixed;
+    right: -50px;
+    bottom: 10%;
+    transform: translateY(10%);
+    background: url('svg/lines/figure.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 700px;
+    width: 450px;
+    z-index: -1;
+    // filter: blur(1px);
+  }
+}
 
 // elements beauty
-
-
 
 // text elements
 // h1
@@ -148,7 +177,6 @@ $indent in $indents {
   text-align: center;
 }
 
-// все остальные
 .text_important {
   font-size: 18px;
   line-height: 22px;
@@ -168,6 +196,17 @@ $indent in $indents {
 }
 
 // color style 
+.secondary_text {
+  color: #CACACA;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.ttu {
+  text-transform: uppercase;
+}
 
 // text elements
 
@@ -217,64 +256,15 @@ $indent in $indents {
   }
 }
 
-
-
 // different buttons
 
 .page {
   padding: 70px 0;
-
-  // &__container {
-  //   padding-top: 70px;
-  //   padding-bottom: 100px;
-  // }
 }
 
 .wrapper {
   max-width: 1240px;
   margin: 0 auto;
-}
-
-.effect_lines {
-  &::before {
-    content: '';
-    position: fixed;
-    left: -10%;
-    top: -8%;
-    background: url('svg/about/vector_1.svg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    // filter: blur(1px);
-  }
-}
-
-.effect_figure {
-  &::after {
-    content: '';
-    position: fixed;
-    right: -50px;
-    bottom: 10%;
-    transform: translateY(10%);
-    background: url('svg/lines/figure.svg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 700px;
-    width: 450px;
-    z-index: -1;
-    // filter: blur(1px);
-  }
-}
-
-
-.secondary_text {
-  color: #CACACA;
-}
-
-.ttu {
-  text-transform: uppercase;
 }
 
 .modal {
@@ -439,16 +429,11 @@ $indent in $indents {
       background: var(--back_opacity);
       border-top-left-radius: var(--borderR);
       border-top-right-radius: var(--borderR);
-
-
-
-
     }
   }
 
   &_row {
     display: grid;
-    // height: 55px;
 
     th,
     td {
@@ -490,15 +475,6 @@ $indent in $indents {
       border-bottom: 1px solid var(--border);
     }
   }
-
-  // &_row {
-  //   height: 55px;
-
-  //   th,
-  //   td {
-  //     padding: 10px 15px;
-  //   }
-  // }
 
   &_trades {
     &_row {
@@ -545,6 +521,7 @@ $indent in $indents {
       height: 8px;
       background: var(--btn_gradient);
       border-radius: var(--ellipse);
+      cursor: pointer;
     }
 
     &:hover {

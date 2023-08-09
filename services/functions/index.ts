@@ -41,6 +41,8 @@ const dateFormat = function (data, type) {
       } else {
         return moment(data).format("DD MMMM YYYY");
       };
+    case "point":
+      return moment(data).format("YYYY.MM.DD")
     case "time":
       return moment(data).format('YYYY-MM-DD HH:mm')
     case "chatdate":
@@ -68,14 +70,14 @@ const dateFormat = function (data, type) {
   }
 }
 
-export { 
-  uuidv4, 
-  dateFormat, 
-  validateEmail, 
-  validateForms, 
-  validator, 
-  editText, 
-  sliceString 
+export {
+  uuidv4,
+  dateFormat,
+  validateEmail,
+  validateForms,
+  validator,
+  editText,
+  sliceString
 }
 
 export const loader = async function (Variable) {
