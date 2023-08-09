@@ -114,7 +114,7 @@
 
     .apps-main_list{
         display: grid;
-        grid-template-columns: calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px);
+        grid-template-columns: calc(25% - 7.5px) calc(25% - 7.5px) calc(25% - 7.5px);
         gap: 10px;
     
     
@@ -193,6 +193,7 @@
 
 
 @media(max-width: 992px) {
+    
     .socialNetwork_main{
         .title{
             font-size: 23px;
