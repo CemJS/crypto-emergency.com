@@ -9,12 +9,41 @@ import leveGray from "@svg/lenta/level_gray.svg"
 import points from "@svg/lenta/points.svg"
 import sendMessage from "@svg/lenta/send_message.svg"
 import avatarDefault from "@images/lenta/avatar_default.png"
+import back from '@svg/icon/prev.svg'
 
 export default function () {
   console.log('=57c87c=', this.Static.record)
   let item = this.Static.record
   return (
     <div class="news-show">
+      <div class="back">
+          <div class="back_arrow">
+            <img
+              src={back}
+              onclick={() => {
+                delete this.Static.record
+                this.init()
+              }}
+            >
+            </img>
+          </div>
+          <div
+            class="tool"
+            onclick={() => {
+              this.Fn.initOne({
+                name: "modalTool", ifOpen: (front) => {
+                  setTimeout(() => {
+                    front.clearData()
+                  }, 500);
+                }
+              })
+            }}
+          >
+            <span class="tool_item"></span>
+            <span class="tool_item"></span>
+            <span class="tool_item"></span>
+          </div>
+        </div>
       <h1>{item.title}</h1>
       <section class="news-show__container">
         <div class="news-show__img">

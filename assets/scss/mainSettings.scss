@@ -313,11 +313,8 @@
 
   &__footer {
     padding: 0 10px;
-
-    @media (min-width: 440px) {
-      width: calc(100% - 60px);
-      margin: 0 auto;
-    }
+    width: calc(100% - 60px);
+    margin: 0 auto;
 
     &_nav {
       flex-direction: column;
