@@ -18,13 +18,13 @@
     position: fixed;
     top: -70px;
     left: -270px;
-    background: url("svg/questions/line-1.svg");
+    background: url("svg/questions/line.svg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 100%;
     width: 100%;
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.7;
   }
 
   &__container {
@@ -42,6 +42,53 @@
     font-size: 16px;
     line-height: 28px;
     max-width: 431px;
+  }
+
+  &__search {
+    width: 96%;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 16px;
+      width: 25px;
+      height: 25px;
+      background: url("svg/questions/search_icon.svg");
+      background-size: 100% 100%;
+    }
+
+    input {
+      width: 100%;
+      height: 55px;
+      background-color: #2B3040;
+      border-radius: 30px;
+      border: 0;
+      color: #ffffff;
+      padding-left: 40px;
+      background-position: left 20px bottom 20px;
+      font-size: 16px;
+      transition: 0.5s;
+      margin: 0 auto;
+
+      &::placeholder {
+        padding-left: 30px;
+        color: #9198B3;
+      }
+
+      &:focus {
+        outline: none;
+        border: 1px solid var(--border);
+        transform: scale(1.04);
+
+        &::placeholder {
+          color: transparent;
+        }
+      }
+    }
   }
 
   &__list {
@@ -212,6 +259,28 @@
 
     &_header {
       position: relative;
+    }
+
+    &_languages {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: default;
+
+      &::before {
+        width: 6px;
+      }
+
+      &::after {
+        width: 6px;
+      }
+
+      span {
+        font-size: 12px;
+        font-weight: 600;
+      }
     }
 
     &_preview {

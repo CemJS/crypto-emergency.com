@@ -25,7 +25,8 @@ const services = [
   },
   {
     image: "exchange",
-    title: "Биржи"
+    title: "Биржи",
+    url: "/list-trade"
   },
   {
     image: "exchanges",
