@@ -1,4 +1,6 @@
 import { Cemjsx } from "cemjs-all"
+import back from '@svg/icon/prev.svg'
+import next from '@svg/icon/next.svg'
 import up_arrow from '@svg/courseLine/up_arrow.svg'
 import networking from '@svg/forum/networking.svg'
 import communication from '@svg/forum/communication.svg'
@@ -490,7 +492,7 @@ export const display = function () {
 
   return (
 
-    <div class="forum">
+    <div class="forum effect_lines">
       <section class="forum_preview">
         <div class="wrapper">
           <div class="forum_preview_about">
@@ -649,7 +651,7 @@ export const display = function () {
 
 
 
-          {/* partners tabs*/}
+{/* partners tabs*/}
           <section class="partners_section">
             <h4>Партнеры</h4>
 
@@ -688,9 +690,9 @@ export const display = function () {
 
 
 
-            {/*partners  slider */}
-            {/* next */}
-            <button ref='next' class="nextBtn"
+{/*partners  slider */}
+{/* next */}
+              <button ref='next' class ="nextBtn"
               onclick={() => {
                 let slidesNum = this.Ref.partners_content.children.length
                 let itemWidth = this.Ref.slide.offsetWidth + 10
@@ -698,30 +700,30 @@ export const display = function () {
                 if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
                   this.Static.currentSlide++;
                   console.log(this.Static.currentSlide)
-                }
+              } 
 
-                this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
-              }}
+              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+            }}
             >
               N
-            </button>
-            {/* back */}
-            <button ref='back' class="prevBtn"
+              </button>
+{/* back */}
+              <button ref='back' class ="prevBtn"
               onclick={() => {
                 let itemWidth = this.Ref.slide.offsetWidth + 10
-
+                
                 if (this.Static.currentSlide > 0) {
                   this.Static.currentSlide--;
                   console.log(this.Static.currentSlide)
-                }
+              }
 
-                this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
-              }}
+              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+            }}
             >
               P
             </button>
 
-
+            
 
             {/* partners  */}
             <div class="partners_list" ref='partners_content'>
@@ -744,7 +746,8 @@ export const display = function () {
             {/* back */}
 
           </section>
-          <div class="backgroundBlur"></div>
+          </section>
+
         </div>
       </div>
     </div>

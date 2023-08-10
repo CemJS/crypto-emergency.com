@@ -260,6 +260,7 @@
   font-weight: 500;
   border: none;
   cursor: pointer;
+  
 
   span {
     padding: 10px;
@@ -278,9 +279,7 @@
     font-size: 300%;
   }
 }
-
-.partners_section {
-  overflow: hidden;
+.buttons{
   position: relative;
 
   .prevBtn,
@@ -291,11 +290,31 @@
     border-radius: 50%;
     width: 45px;
     height: 45px;
+    background: rgba(255, 255, 255, 0.09);
+    cursor: pointer;
+    transition: 0.5s;
+    border: 1px solid transparent;
+
     
   }
   .nextBtn{
-    right: 0;
+    right: -25px;
   }
+  .prevBtn{
+    left: -25px;
+  }
+  .prevBtn:hover,
+  .nextBtn:hover{
+    background:transparent;
+    border-color: rgba(255, 255, 255, 0.09);
+    transform: scale(0.95);
+
+  }
+}
+.partners_section {
+  overflow: hidden;
+
+  
 
   h4 {
     margin: 25px 0;
@@ -305,6 +324,7 @@
 
   
   .partners_list {
+    
     gap: 10px;
     position: relative;
     display: grid;
