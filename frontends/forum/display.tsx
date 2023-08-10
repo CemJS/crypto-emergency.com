@@ -655,11 +655,11 @@ export const display = function () {
             onclick={() => {
               let slidesNum = this.Ref.partners_content.children.length
               let itemWidth = this.Ref.slide.offsetWidth + 10
-              if(this.Ref.partners_content.offsetWidth<=520){
+              if(this.Ref.partners_content.offsetWidth <= 520){
                 this.Static.maxSlidesPerShift = 2;
-              }else if(this.Ref.partners_content.offsetWidth<=736){
+              }else if(this.Ref.partners_content.offsetWidth <= 736){
                 this.Static.maxSlidesPerShift = 3;
-              }else if(this.Ref.partners_content.offsetWidth<=958){
+              }else if(this.Ref.partners_content.offsetWidth <= 958){
                 this.Static.maxSlidesPerShift = 4;
               }else{
                 this.Static.maxSlidesPerShift = 5;
