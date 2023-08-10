@@ -12,7 +12,7 @@ export const display = function () {
     return Show.bind(this)()
   }
   return (
-    <div class="page page__container">
+    <div class="page">
       <div class="questions">
         <div class="wrapper">
           <div class="questions__container">

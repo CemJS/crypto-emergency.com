@@ -129,12 +129,12 @@ const speakers = [
     visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
-    id : 14,
+    id: 14,
     photo: speaker14,
     speaker: 'Сергей Павлович',
     about_speaker: 'Люди PRO',
     // show: true,
-    visited:['CryptoЮГ2023', 'CryptoЮГ2022'] 
+    visited: ['CryptoЮГ2023', 'CryptoЮГ2022']
   },
   {
     id: 2,
@@ -499,7 +499,7 @@ export const display = function () {
         </div>
       </section>
       <div class="wrapper">
-        <div class="page page__container ">
+        <div class="page">
           <section class="about_section">
             <div class="items_about">
               {
@@ -520,7 +520,7 @@ export const display = function () {
           </section>
 
 
-{/* speakers tabs */}
+          {/* speakers tabs */}
 
           <section class="event_section">
             <h4>Спикеры</h4>
@@ -556,7 +556,7 @@ export const display = function () {
                 <div class="activeTab" ref="activeTab"></div>
               </div>
 
-{/* speakers */}
+              {/* speakers */}
 
               <div class="speakers" ref="speakersContent">
                 {
@@ -622,28 +622,26 @@ export const display = function () {
               </div>
             </div>
 
-{/* speakers show_all button */}
+            {/* speakers show_all button */}
 
             <div
               class="show_all"
               ref="button"
               onclick={() => {
 
-                if(this.Static.howMutchSpeakers == 8)
-                  {
-                    this.Static.howMutchSpeakers = speakers.length;
-                    this.Ref.buttonSpan.innerText = 'Скрыть'
-                    this.init()
-                  }
-                  else
-                  {
-                    this.Static.howMutchSpeakers = 8
-                    this.Ref.buttonSpan.textContent = 'Показать всех'
-                    this.init()
-                  }
+                if (this.Static.howMutchSpeakers == 8) {
+                  this.Static.howMutchSpeakers = speakers.length;
+                  this.Ref.buttonSpan.innerText = 'Скрыть'
+                  this.init()
+                }
+                else {
+                  this.Static.howMutchSpeakers = 8
+                  this.Ref.buttonSpan.textContent = 'Показать всех'
+                  this.init()
+                }
               }}
             >
-              <span ref ='buttonSpan' type="button">Показать всех</span>
+              <span ref='buttonSpan' type="button">Показать всех</span>
             </div>
 
           </section>
@@ -651,7 +649,7 @@ export const display = function () {
 
 
 
-{/* partners tabs*/}
+          {/* partners tabs*/}
           <section class="partners_section">
             <h4>Партнеры</h4>
 
@@ -690,9 +688,9 @@ export const display = function () {
 
 
 
-{/*partners  slider */}
-{/* next */}
-              <button ref='next' class ="nextBtn"
+            {/*partners  slider */}
+            {/* next */}
+            <button ref='next' class="nextBtn"
               onclick={() => {
                 let slidesNum = this.Ref.partners_content.children.length
                 let itemWidth = this.Ref.slide.offsetWidth + 10
@@ -700,32 +698,32 @@ export const display = function () {
                 if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
                   this.Static.currentSlide++;
                   console.log(this.Static.currentSlide)
-              } 
+                }
 
-              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
-            }}
+                this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+              }}
             >
               N
-              </button>
-{/* back */}
-              <button ref='back' class ="prevBtn"
+            </button>
+            {/* back */}
+            <button ref='back' class="prevBtn"
               onclick={() => {
                 let itemWidth = this.Ref.slide.offsetWidth + 10
-                
+
                 if (this.Static.currentSlide > 0) {
                   this.Static.currentSlide--;
                   console.log(this.Static.currentSlide)
-              }
+                }
 
-              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
-            }}
+                this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+              }}
             >
               P
             </button>
 
-            
 
-{/* partners  */}
+
+            {/* partners  */}
             <div class="partners_list" ref='partners_content'>
 
               {
@@ -733,7 +731,7 @@ export const display = function () {
                   return (
 
                     <div ref="slide" target="_blank" href={item.url} class={["partners_list_item",
-                      item.visited.includes(this.Static.partnersTabName) ? null : null ]}>
+                      item.visited.includes(this.Static.partnersTabName) ? null : null]}>
 
                       <img src={item.logo} alt="img" />
                     </div>
@@ -743,8 +741,8 @@ export const display = function () {
             </div>
 
 
-{/* back */}
-            
+            {/* back */}
+
           </section>
           <div class="backgroundBlur"></div>
         </div>

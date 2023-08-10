@@ -1,0 +1,17 @@
+.personalAffiliate {
+  &_board {
+    background: #313643;
+    box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
+    border-radius: var(--borderR);
+  }
+
+  &_program {
+    &_btns {
+      &_item {
+        border-radius: 5px;
+        background-color: var(--btn_gradient);
+      }
+    }
+
+  }
+}

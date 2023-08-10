@@ -23,7 +23,7 @@ const service = [
 
 export default function () {
   return (
-    <div class="page page__container userRules">
+    <div class="page userRules">
       <div class="wrapper">
         <section class="userRules_welcome">
           <h1 class="userRules_welcome_title">Добро пожаловать в Crypto Emergency!</h1>
@@ -167,7 +167,7 @@ export default function () {
           <h2 class="userRules_title">Обновление настоящих Условий</h2>
           <p class="userRules_text">Мы можем изменять наш Сервис и правила, и у нас может возникать необходимость внести изменения в настоящие Условия для точного отражения в них нашего Сервиса и правил. Если иное не требуется по законодательству, мы будем уведомлять вас путем размещения обновленной версии Условий на нашем сайте. Если после этого вы продолжите использовать Сервис, вы обязаны будете соблюдать обновленные Условия. Если вы не согласны с настоящими Условиями или какой-либо обновленной версией Условий, вы можете удалить свой аккаунт.</p>
         </section>
-        
+
       </div>
       <img src={cube} class="cube" />
       <img src={triangle} class="triangle" />

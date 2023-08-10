@@ -127,7 +127,7 @@ let y1 = null;
 
 export const display = function () {
   return (
-    <div class="page page__container about_page">
+    <div class="page about_page">
       <div class="about">
         <div class="about__whome whome">
           <div class="whome__inner">
