@@ -20,8 +20,18 @@ export const display = function () {
 						>Контакты</a>
 						<a class="header__menu_link"
 							href="/about"
-							onclick={this.Fn.link}
-						>О нас</a>
+							onclick={(e) => {
+								let language = "en"
+								if (this.Variable.lang._data.code == "en") {
+									language = "ru"
+								}
+								localStorage.setItem('lang', language)
+								this.Variable.lang = this.Variable.languages[language]
+								this.Variable.lang._data = { code: language }
+
+								this.Fn.link(e)
+							}}
+						>{this.Variable.lang.test}</a>
 						<a class="header__menu_link"
 							href="/news"
 							onclick={this.Fn.link}
