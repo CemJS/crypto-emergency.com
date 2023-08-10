@@ -649,7 +649,39 @@ export const display = function () {
           </section>
 
 
+          <div class="buttons">
+{/* next */}
+            <button ref='next' class ="nextBtn"
+            onclick={() => {
+              let slidesNum = this.Ref.partners_content.children.length
+              let itemWidth = this.Ref.slide.offsetWidth + 10
 
+              if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
+                this.Static.currentSlide++;
+                console.log(this.Static.currentSlide)
+            } 
+
+            this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+            }}
+            >
+              <img src={next} alt="" />
+            </button>
+{/* back */}
+            <button ref='back' class ="prevBtn"
+              onclick={() => {
+                let itemWidth = this.Ref.slide.offsetWidth + 10
+                
+                if (this.Static.currentSlide > 0) {
+                  this.Static.currentSlide--;
+                  console.log(this.Static.currentSlide)
+              }
+
+              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+              }}
+              >
+                <img src={back} alt="" />
+              </button>
+          
 
 {/* partners tabs*/}
           <section class="partners_section">
@@ -691,37 +723,7 @@ export const display = function () {
 
 
 {/*partners  slider */}
-{/* next */}
-              <button ref='next' class ="nextBtn"
-              onclick={() => {
-                let slidesNum = this.Ref.partners_content.children.length
-                let itemWidth = this.Ref.slide.offsetWidth + 10
 
-                if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
-                  this.Static.currentSlide++;
-                  console.log(this.Static.currentSlide)
-              } 
-
-              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
-            }}
-            >
-              N
-              </button>
-{/* back */}
-              <button ref='back' class ="prevBtn"
-              onclick={() => {
-                let itemWidth = this.Ref.slide.offsetWidth + 10
-                
-                if (this.Static.currentSlide > 0) {
-                  this.Static.currentSlide--;
-                  console.log(this.Static.currentSlide)
-              }
-
-              this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
-            }}
-            >
-              P
-            </button>
 
             
 
@@ -746,7 +748,7 @@ export const display = function () {
             {/* back */}
 
           </section>
-          </section>
+          </div>    
 
         </div>
       </div>
