@@ -55,6 +55,7 @@
         justify-content: center;
         align-items: center;
         transition: all .3s ease;
+        position: relative;
 
         img {
           width: 20px;
@@ -64,6 +65,28 @@
           transform: scale(1.11);
         }
       }
+    }
+  }
+
+  &_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_item {
+      background: linear-gradient(163.62deg, #C343FF -20.88%, #4368ED 91.29%);
+    }
+
+    &_item:first-child {
+      &::before {
+        content: '';
+        background: url('images/personalAffiliate/magnet.png');
+
+      }
+    }
+
+    &_item:last-child {
+      background: url('images/personalAffiliate/wallet.png');
     }
   }
 }

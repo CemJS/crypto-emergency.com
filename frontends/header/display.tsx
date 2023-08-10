@@ -10,7 +10,7 @@ export const display = function () {
 						<a class="header__logo" href="/"
 							onclick={this.Fn.link}
 						>
-							<img src="./assets/svg/header/logo.svg" alt="Логотип." />
+							<img src="/assets/svg/header/logo.svg" alt="Логотип." />
 						</a>
 						<a class="header__menu_link"
 							href="/contacts"

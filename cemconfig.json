@@ -145,6 +145,10 @@
       "front": "personalAffiliate"
     },
     {
+      "url": "/personal/2",
+      "front": "personalAffiliate"
+    },
+    {
       "url": "/personal/awards",
       "front": "personalAwards"
     },
