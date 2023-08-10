@@ -22,12 +22,7 @@ export const display = function () {
     <section class="ico">
       <div class="wrapper">
         <div class="ico_inner">
-          <div class="ico_tabs" ref="tabs"
-            onclick={() => {
-              this.cross({ records: states });
-              this.init();
-            }}
-          >
+          <div class="ico_tabs" ref="tabs">
             {
               states.map((item, index) => {
                 return (
