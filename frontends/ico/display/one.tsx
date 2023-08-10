@@ -180,15 +180,9 @@ export default function () {
                         <div
                           class="icoItem_carousel_item"
                           onclick={() => {
-                            this.Fn.initOne({
-                              name: "modalGallery", ifOpen: (front) => {
-                                setTimeout(() => {
-                                  front.clearData()
-                                }, 500);
-                              }
-                            })
-                            this.cross({ records: this.Static.record.media })
-                            this.init()
+                            let records = this.Static.record.media;
+                            let activeIndex = index;
+                            this.Fn.initOne({ name: "modalGallery", data: { records, activeIndex } })
                           }}
                         >
                           <img src={`/assets/upload/worldPress/${item.name}`} alt="Gallery photo" />
