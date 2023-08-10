@@ -121,8 +121,8 @@
       "front": "games"
     },
     {
-      "url": "/games",
-      "front": "games"
+      "url": "/voting",
+      "front": "voting"
     },
     {
       "url": "/personal",
