@@ -32,7 +32,9 @@ export const display = function () {
           <div class="personalAffiliate_info_item">
 
           </div>
-          <div class="personalAffiliate_info_item"></div>
+          <div class="personalAffiliate_info_item">
+
+          </div>
         </section>
 
         <section class="personalAffiliate_partner">
