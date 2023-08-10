@@ -655,10 +655,19 @@ export const display = function () {
             onclick={() => {
               let slidesNum = this.Ref.partners_content.children.length
               let itemWidth = this.Ref.slide.offsetWidth + 10
-
+              if(this.Ref.partners_content.offsetWidth<=520){
+                this.Static.maxSlidesPerShift = 2;
+              }else if(this.Ref.partners_content.offsetWidth<=736){
+                this.Static.maxSlidesPerShift = 3;
+              }else if(this.Ref.partners_content.offsetWidth<=958){
+                this.Static.maxSlidesPerShift = 4;
+              }else{
+                this.Static.maxSlidesPerShift = 5;
+              }
               if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
                 this.Static.currentSlide++;
                 console.log(this.Static.currentSlide)
+                console.log('=b57d25=',this.Ref.partners_content.offsetWidth)
             } 
 
             this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
@@ -681,7 +690,6 @@ export const display = function () {
               >
                 <img src={back} alt="" />
               </button>
-          
 
 {/* partners tabs*/}
           <section class="partners_section">
@@ -714,19 +722,7 @@ export const display = function () {
               }
               <div class="activeTab" ref="activeTab2"></div>
             </div> */}
-
-
-
-
-
-
-
-
 {/*partners  slider */}
-
-
-            
-
             {/* partners  */}
             <div class="partners_list" ref='partners_content'>
 
@@ -743,10 +739,6 @@ export const display = function () {
                 })
               }
             </div>
-
-
-            {/* back */}
-
           </section>
           </div>    
 
