@@ -4,14 +4,16 @@ import send from '@svg/icon/send.svg'
 
 export const display = function () {
   return (
-    <main class="personalAffiliate page">
+    <main class="personalAffiliate page effect_linesRL">
       <div class="wrapper">
+        <h1 class="general_title">Партнёрская программа</h1>
         <section class="personalAffiliate_board">
-          <h1>Партнёрская программа</h1>
           <p>Разместите ссылку в социальных сетях, поделитесь с друзьями и заработайте токены CEM с каждого заpегистрированного пользователя. Также, для самых активных участников, у нас готовится расширенная программа монетизации для авторов контента.</p>
           <div class="personalAffiliate_program">
-            <span>Реферальная ссылка</span>
-            <span class="personalAffiliate_program_link">https://crypto-emergency.com/user/Annyshka</span>
+            <div class="personalAffiliate_program_link">
+              <span>Реферальная ссылка</span>
+              <span>https://crypto-emergency.com/user/Annyshka</span>
+            </div>
             <div class="personalAffiliate_program_btns">
               <div class="personalAffiliate_program_btns_item">
                 <img src={copy} />
