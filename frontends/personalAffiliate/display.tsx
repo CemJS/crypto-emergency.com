@@ -15,9 +15,15 @@ export const display = function () {
               <span>https://crypto-emergency.com/user/Annyshka</span>
             </div>
             <div class="personalAffiliate_program_btns">
-              <div class="personalAffiliate_program_btns_item">
+              <div
+
+                class="personalAffiliate_program_btns_item"
+                onclick={() => {
+                  this.Ref.copy.classList.add('copy_success');
+                }}
+              >
                 <img src={copy} />
-                <div class="hint">
+                <div class="hint" ref='copy'>
                   <span class="hint_info">Скопировано</span>
                 </div>
               </div>
