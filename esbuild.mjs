@@ -85,6 +85,10 @@ const checkServices = async function (dir) {
                 let cemconfig = JSON.parse(fs.readFileSync(path.join(dir, file, "cemconfig.json")))
                 Object.assign(services[file], cemconfig)
             }
+            if (fs.existsSync(path.join(dir, file, "cemconfig.json"))) {
+                let cemconfig = JSON.parse(fs.readFileSync(path.join(dir, file, "cemconfig.json")))
+                Object.assign(services[file], cemconfig)
+            }
         }
     });
     return services
