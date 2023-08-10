@@ -149,7 +149,7 @@ $indent in $indents {
     content: '';
     position: fixed;
     left: -15%;
-    top: 10%;
+    top: -10%;
     background: url('svg/lines/lineBT.svg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -841,5 +841,63 @@ $indent in $indents {
   &__form {
     display: none;
     margin-top: 10px;
+  }
+}
+
+// всплывающая подсказка
+.hint {
+  transform: translate3d(0, 10px, 0) rotate3d(1, 1, 0, 25deg);
+  transition: opacity 0.3s, transform 0.3s;
+  position: absolute;
+  z-index: 999;
+  width: fit-content;
+  left: 50%;
+  margin: 0 0 20px -180px;
+  bottom: 100%;
+  text-align: left;
+  font-size: 0.765em;
+  line-height: 1.4;
+  box-shadow: -5px -5px 15px rgba(48, 54, 61, 0.2);
+  background: #2a3035;
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+  border-radius: 10px;
+  padding: 10px;
+
+
+  &::after,
+  &::before {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    content: '';
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: transparent;
+    border-top-color: #2a3035;
+    border-width: 10px;
+    margin-left: -10px;
+    clear: both;
+  }
+
+  &_info {
+    padding: 10px;
+    font-size: 16px;
+    line-height: 18px;
+
+  }
+
+  &.copy_success {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0);
   }
 }
