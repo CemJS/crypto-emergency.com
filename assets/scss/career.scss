@@ -25,7 +25,6 @@ $professionsBack: (
   background: var(--primaryBack);
   position: relative;
   overflow: hidden;
-  padding-bottom: 100px;
 
   section {
     padding-bottom: 50px;
@@ -40,7 +39,7 @@ $professionsBack: (
     left: 50%;
     width: 100%;
     height: 100%;
-    filter: drop-shadow(90px 58px 120px rgba(255, 70, 12, 0.44));
+    filter: drop-shadow(90px 58px 120px rgba(255, 70, 12, 0.44)) blur(2px);
   }
 
   &_title {
@@ -67,7 +66,9 @@ $professionsBack: (
     }
 
     &_inner {
-      max-width: 600px;
+      // max-width: 600px;
+      // max-width: 650px;
+      width: fit-content;
       position: relative;
       z-index: 1;
       text-shadow: 2px 2px 10px var(--black);
@@ -75,15 +76,30 @@ $professionsBack: (
     }
 
     &_title {
+      width: 26ch;
       font-weight: 700;
       font-size: 70px;
       margin-bottom: 30px;
       line-height: 1.2;
+      font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 4px solid var(--text_fiolet);
+      animation:
+        flashingBorder 0.75s step-end infinite,
+        printedText 5s steps(26);
+    }
+
+    &_text {
+      font-size: 36px;
+      line-height: 48px;
+      font-weight: 500;
     }
   }
 
   &_advantages {
-    padding-top: 100px;
+    // padding-top: 100px;
+    padding-top: 220px;
 
     &_inner {
       display: grid;
@@ -113,7 +129,6 @@ $professionsBack: (
       $back in $advantagesBack {
         &_circle-#{$index}::before {
           content: '';
-          // background: $back;
           background-image: $back;
           background-repeat: no-repeat;
           background-size: contain;
@@ -127,6 +142,7 @@ $professionsBack: (
         h3 {
           font-size: 18px;
           line-height: 24px;
+          padding-bottom: 10px;
         }
 
         p {
@@ -150,6 +166,15 @@ $professionsBack: (
         padding-top: 40px;
         position: relative;
         max-width: 255px;
+
+        transform: translateX(250px);
+        transition: all 1s ease;
+        opacity: 0;
+
+        &.show {
+          transform: translateX(0);
+          opacity: 1;
+        }
 
         .employment_points {
           position: absolute;
@@ -199,6 +224,21 @@ $professionsBack: (
         }
       }
 
+      .employment_item:first-child {
+        transition: all 1s ease;
+      }
+
+      .employment_item:nth-child(2) {
+        transition: all 1.5s ease;
+      }
+
+      .employment_item:nth-child(3) {
+        transition: all 2s ease;
+      }
+
+      .employment_item:nth-child(4) {
+        transition: all 2.5s ease;
+      }
     }
   }
 
@@ -269,9 +309,6 @@ $professionsBack: (
           height: 100%;
         }
       }
-
-
-
     }
   }
 
@@ -279,7 +316,6 @@ $professionsBack: (
     display: flex;
     flex-direction: column;
     gap: 25px;
-
 
     .vacancy {
       background: #2B3040;
@@ -339,17 +375,13 @@ $professionsBack: (
           border-radius: 8px;
         }
       }
-
     }
-
-
   }
 
 }
 
 @media (max-width: 1239px) {
   .career {
-    padding: 0 15px 50px 15px;
 
     section {
       padding-bottom: 30px;
@@ -357,6 +389,7 @@ $professionsBack: (
 
     &_title {
       font-size: 46px;
+      margin-bottom: 30px;
     }
 
     &::before {
@@ -375,7 +408,6 @@ $professionsBack: (
     }
 
     &_advantages {
-      padding-top: 0;
 
       &_inner {
         gap: 15px;
@@ -454,6 +486,7 @@ $professionsBack: (
     &_title {
       margin-bottom: 30px;
       font-size: 36px;
+      line-height: 48px;
     }
 
     &_preview {
@@ -490,9 +523,11 @@ $professionsBack: (
     }
 
     &_vacancies {
-      padding-bottom: 0 !important;
+      // padding-bottom: 0 !important;
 
       .vacancy {
+        padding: 15px;
+
         &_main {
           flex-direction: column;
 
@@ -569,6 +604,7 @@ $professionsBack: (
 
           h3 {
             font-size: 18px;
+            line-height: 22px;
           }
         }
       }
@@ -610,6 +646,8 @@ $professionsBack: (
     }
 
     &_vacancies {
+      padding-bottom: 20px;
+
       .vacancy {
         padding: 15px;
         position: relative;
@@ -663,9 +701,22 @@ $professionsBack: (
 }
 
 
-@keyframes fadeHover {
+@keyframes flashingBorder {
   0% {
-    opacity: 0;
-    background: var(--fioletBlue_gradient);
+    border-color: var(--text_fiolet);
+  }
+
+  50% {
+    border-color: transparent;
+  }
+
+  100% {
+    border-color: var(--text_fiolet);
+  }
+}
+
+@keyframes printedText {
+  from {
+    width: 0;
   }
 }

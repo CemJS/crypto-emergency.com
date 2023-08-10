@@ -4,14 +4,19 @@ import email from '@svg/modalMessage/icon_email.svg'
 
 
 export const display = function () {
+  console.log('=727e5f=', this.Static.body)
   return (
     <div
       class="modalWindow"
+      ref="modalWindow"
       onclick={(e) => {
         if (e.target === this.Ref.modalBody) {
           setTimeout(() => {
             this.clearData()
           }, 5)
+          this.Ref.modalWindow.classList.remove('activeModal');
+          this.Static.body.classList.remove('activeModal');
+          this.Static.body.style.overflow = 'auto';
         }
       }}
     >
@@ -23,6 +28,9 @@ export const display = function () {
               setTimeout(() => {
                 this.clearData()
               }, 5)
+              this.Ref.modalWindow.classList.remove('activeModal');
+              this.Static.body.classList.remove('activeModal');
+              this.Static.body.style.overflow = 'auto';
             }}
           >X</button>
           <header class="modalWindow_header">
@@ -36,14 +44,14 @@ export const display = function () {
                 console.log('=7ccaa8=', this.Ref.userName.value)
               }}
             >
-              <input type="text" ref="userName"></input>
+              <input type="text" ref="userName" required></input>
               <div class="modalWindow_field_labelLine">
                 <img src={user}></img>
                 <span>Ваше имя</span>
               </div>
             </div>
             <div class="modalWindow_field">
-              <input type="email" ref="userEmail"></input>
+              <input type="email" ref="userEmail" required></input>
               <div class="modalWindow_field_labelLine">
                 <img src={email}></img>
                 <span>Email</span>

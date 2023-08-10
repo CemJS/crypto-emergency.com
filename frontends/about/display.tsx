@@ -9,7 +9,6 @@ import designer from "@images/about/team2.png"
 import director from "@images/about/team3.png"
 import lines from "@svg/about/vector_3.svg"
 
-
 const arrBlockCard = [
   {
     img: folder,
@@ -54,7 +53,7 @@ const arrAccordeon = [
   },
   {
     title: "Как вывести заработанные CEM с платформы?",
-    description: "Вывести заработанные CEM на нашей платформе за проявленную активность вы можете на свой счет в любое время. На данный момент вывод средств осуществляется путем подачи заявки через администратора.",
+    description: "Вывести заработанные CEM на нашей платформе за проявленную активность вы можете на свой счет в любое время.  Автоматически в личном кабинете во вкладке «Мои активы». Минимальная сумма вывода — 10CEM.",
     hidden: true,
   },
   {
@@ -132,7 +131,6 @@ export const display = function () {
       <div class="about">
         <div class="about__whome whome">
           <div class="whome__inner">
-            {/* <img class="whome__img" src={`/assets/svg/about/vector_1.svg`} /> */}
             <h2 class="about__subtitle">Crypto Emergency</h2>
             <p>Объединяем криптоэнтузиастов всего мира на единой многофункциональной платформе Crypto Emergency, которая даст им все необходимые инструменты для общения, обучения, заработка и создания собственного контента. </p>
           </div>

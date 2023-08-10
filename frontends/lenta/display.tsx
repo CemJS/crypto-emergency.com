@@ -44,10 +44,11 @@ export const display = function () {
   if (this.Static.record) {
     return Show.bind(this)()
   }
-  console.log('=cbf168=', this.Static.records)
 
   return (
-    <section class="lenta">
+    <section class="lenta effect_lines"
+      style={window.location.pathname == "/lenta-users" ? "padding-top: 100px" : "padding-top: 0"}
+    >
       <div class="lenta__container">
         {
           this.Static.records?.map((item, i) => {
@@ -112,7 +113,6 @@ export const display = function () {
                               </div>
                             </div>
                         }
-
                       </div>
                       <div class="avatar__name">
                         <span>{item.author.nickname}</span>
@@ -135,7 +135,7 @@ export const display = function () {
                     <div class={["lenta__item_description",
                       !mediaFiles.length && item.text.length < 250 ? "lenta__item_background" : null
                     ]}>
-                      <span 
+                      <span
                         onclick={() => {
                           this.Static.record = item
                           this.init()
@@ -160,9 +160,15 @@ export const display = function () {
                                   let el = e.currentTarget
                                   el.firstElementChild.hidden = false
                                   el.parentElement.parentElement.firstElementChild.hidden = true
+
                                 }}
                               >
-                                <span hidden={true}>
+                                <span hidden={true}
+                                  onclick={() => {
+                                    this.Static.record = item
+                                    this.init()
+                                  }}
+                                >
                                   {this.Services.functions.editText(item.text, { paragraph: true, clear: true, html: true })}
                                 </span>
                                 <span
@@ -186,7 +192,12 @@ export const display = function () {
                                   // console.log('=2f10aa=',el.parentElement.parentElement.firstElementChild.hidden = true)
                                 }}
                               >
-                                <span hidden={true}>
+                                <span hidden={true}
+                                  onclick={() => {
+                                    this.Static.record = item
+                                    this.init()
+                                  }}
+                                >
                                   {this.Services.functions.editText(item.text, { paragraph: true, clear: true, html: true })}
                                 </span>
                                 <span

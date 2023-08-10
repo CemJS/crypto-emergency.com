@@ -4,16 +4,27 @@ export const loader = function () {
   this.Static.partnersTabName = 'CryptoЮГ2023';
   this.Static.partnersSlice = []
   this.Static.activeName = 'CryptoЮГ2023';
-
+  this.Static.howMutchSpeakers = 8
   this.Static.activeIndex = 0;
-  this.Static.value = 5
-  this.Static.value2="fhfhfh";
+  // this.Static.value = this.Ref.slide.offsetWidth
+ 
+  // slider
+
+  this.Static.currentSlide = 0;
+
+  // this.Static.numSlides = this.Ref.partners_content.children.length;
+  this.Static.maxSlidesPerShift = 5;
 
 
 
-  this.initAuto(["value","value2"],(val,key)=>{
-    console.log('=eb7653=',123,val,key)
-    if (val > 15){
+  this.Static.startPosition = 0
+
+
+
+
+  this.initAuto(["value", "value2"], (val, key) => {
+    console.log('=eb7653=', 123, val, key)
+    if (val > 15) {
       return false
     }
     return true

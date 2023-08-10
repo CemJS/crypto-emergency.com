@@ -1,3 +1,3 @@
 export const loader = function () {
-    this.Static.sections = document.querySelectorAll('.careerSection');
+  this.Static.modalWindow = document.querySelector('modalWindow');
 }

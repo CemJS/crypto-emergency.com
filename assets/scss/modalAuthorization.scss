@@ -112,6 +112,11 @@
             padding: 23px 21px;
             outline: none;
             color: #ffffff;
+
+						&::-webkit-outer-spin-button,
+						&::-webkit-inner-spin-button {
+							-webkit-appearance: none;
+						}
           }
         }
 

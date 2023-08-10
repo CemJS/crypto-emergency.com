@@ -10,11 +10,11 @@ const listener = {
         // console.log('=e60c81=', data, name, this, this.Ref.tabs)
     },
     "finish": function (data, name, t) {
-        // console.log('=e60c81=', data, name, t, this)
-        // console.log('=e60c81=', data, name, this, this.Ref.tabs)
         this.Static.tabWidth = this.Ref.tabsItem.offsetWidth;
-        // console.log('=a00968=', this.Static.tabWidth)
-        // this.Ref.tabsSlider.style.width = this.Ref.tabsItem.offsetWidth;
+        this.Ref.tabsSlider.style.width = `${this.Static.tabWidth}px`;
+        this.Static.cardHeight = this.Ref.card.clientHeight;
+        this.Static.cardWidth = this.Ref.card.clientWidth;
+        console.log('=8d8c5e=', this.Static.cardWidth)
     }
 }
 

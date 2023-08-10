@@ -59,6 +59,16 @@
     "ver": "1.0.0",
     "visable": true
   },
+  "pagination": {
+    "front": true,
+    "name": "courseLine",
+    "path": {
+      "js": "/assets/js/pagination.js",
+      "css": "/assets/css/pagination.css"
+    },
+    "ver": "1.0.0",
+    "visable": true
+  },
   "exchangeRates": {
     "front": true,
     "name": "exchangeRates",
@@ -119,6 +129,16 @@
     "ver": "1.0.0",
     "visable": true
   },
+  "listTrades": {
+    "front": true,
+    "name": "listTrades",
+    "path": {
+      "js": "/assets/js/listTrades.js",
+      "css": "/assets/css/listTrades.css"
+    },
+    "ver": "1.0.0",
+    "visable": true
+  },
   "mainLanguage": {
     "front": true,
     "name": "mainLanguage",
@@ -165,6 +185,26 @@
     "path": {
       "js": "/assets/js/modalMessage.js",
       "css": "/assets/css/modalMessage.css"
+    },
+    "ver": "1.0.0",
+    "visable": true
+  },
+  "modalTool": {
+    "front": true,
+    "name": "modalTool",
+    "path": {
+      "js": "/assets/js/modalTool.js",
+      "css": "/assets/css/modalTool.css"
+    },
+    "ver": "1.0.0",
+    "visable": true
+  },
+  "modalGallery": {
+    "front": true,
+    "name": "modalGallery",
+    "path": {
+      "js": "/assets/js/modalGallery.js",
+      "css": "/assets/css/modalGallery.css"
     },
     "ver": "1.0.0",
     "visable": true

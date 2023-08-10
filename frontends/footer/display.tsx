@@ -6,10 +6,14 @@ export const display = function () {
 			<div class="footer__container">
 				<div class="footer__nav">
 					<a class="footer__nav_icon footer__nav_logo" href="/"></a>
-					<a class="footer__nav_icon footer__nav_lenta" href="#"></a>
+					<a class="footer__nav_icon footer__nav_lenta" href="/lenta-users"
+						onclick={this.Fn.link}
+					></a>
 					<a class="footer__nav_icon footer__nav_users" href="#"></a>
 					<a class="footer__nav_icon footer__nav_posts" href="#"></a>
-					<a class="footer__nav_icon footer__nav_questions" href="#"></a>
+					<a class="footer__nav_icon footer__nav_questions" href="/questions"
+						onclick={this.Fn.link}
+					></a>
 					<a class="footer__nav_icon footer__nav_news" href="/news"
 						onclick={this.Fn.link}
 					></a>

@@ -3,11 +3,13 @@ import { Cemjsx } from "cemjs-all"
 const services = [
   {
     image: "lenta",
-    title: "Лента пользователей"
+    title: "Лента пользователей",
+    url: "/lenta-users"
   },
   {
     image: "question",
-    title: "Вопросы и ответы"
+    title: "Вопросы и ответы",
+    url: "/questions"
   },
   {
     image: "contentmaker",
@@ -23,11 +25,13 @@ const services = [
   },
   {
     image: "exchange",
-    title: "Биржи"
+    title: "Биржи",
+    url: "/list-trade"
   },
   {
     image: "exchanges",
-    title: "Обменники"
+    title: "Обменники",
+    url: "/list-exchange"
   },
   {
     image: "rates",
@@ -36,7 +40,8 @@ const services = [
   },
   {
     image: "ico",
-    title: "ICO рейтинг"
+    title: "ICO рейтинг",
+    url: "/list-ico"
   },
   {
     image: "startaps",

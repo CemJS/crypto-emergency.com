@@ -29,6 +29,10 @@ const fn = {
     // },
     "scrollEvents": function () {
         // const sections = 
+    },
+
+    "test": function (entries) {
+        console.log('=b1055d=', entries)
     }
 }
 

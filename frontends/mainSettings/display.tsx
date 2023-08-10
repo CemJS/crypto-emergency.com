@@ -17,18 +17,16 @@ import github from '@svg/mainSettings/github.svg'
 import tiktok from '@svg/mainSettings/tiktok.svg'
 import linkedin from '@svg/mainSettings/linkedin.svg'
 
-let socialIcon, collapseBodyShow;
-
 const sections = [
   {
     category: "Лента пользователей",
     img: lenta,
-    url: "#"
+    url: "/lenta-users"
   },
   {
     category: "Вопросы и ответы",
     img: questions,
-    url: "#"
+    url: "/questions"
   },
   {
     category: "ICO Рейтинг",
@@ -103,7 +101,7 @@ const socials = [
   }
 ]
 
-collapseBodyShow = {
+let collapseBodyShow = {
   one: false,
   two: false,
   three: false,
@@ -219,13 +217,13 @@ export const display = function () {
                   style={!collapseBodyShow.one ? null : "max-height: 200px"}
                 >
                   <div class="accordion__body">
-                    <a class="accordion__link" href="/about" onclick={this.Fn.Link}>
+                    <a class="accordion__link" href="/about" onclick={this.Fn.link}>
                       О нас
                     </a>
-                    <a class="accordion__link" href="/career" onclick={this.Fn.Link}>
+                    <a class="accordion__link" href="/career" onclick={this.Fn.link}>
                       Карьера
                     </a>
-                    <a class="accordion__link">
+                    <a class="accordion__link" href="/assets/docs/LitePaperRu.pdf">
                       Lite Paper
                     </a>
                   </div>
@@ -309,10 +307,18 @@ export const display = function () {
                   style={!collapseBodyShow.four ? null : "max-height: 200px"}
                 >
                   <div class="accordion__body">
-                    <a class="accordion__link">
+                    <a 
+                      class="accordion__link"
+                      target="_blank"
+                      href="https://cemblockchain.com/"
+                    >
                       CEM Blockchain
                     </a>
-                    <a class="accordion__link">
+                    <a 
+                      class="accordion__link"
+                      target="_blank"
+                      href="https://cemscan.com/"
+                    >
                       CEM Explorer
                     </a>
                   </div>

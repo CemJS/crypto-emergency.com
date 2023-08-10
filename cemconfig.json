@@ -1,132 +1,176 @@
 {
   "ver": "1.0.0",
   "port": 3000,
-  "api": "http://5.44.40.229:33333/api/events/",
+  "api": "http://127.0.0.1:33333/api/events/",
   "pages": [
+    {
+      "all": true,
+      "front": "header"
+    },
     {
       "url": "/",
       "front": [
-        "header",
         "courseLine",
         "banners",
-        "lenta",
-        "footer"
-      ]
-    },
-    {
-      "url": "/exchange-rates",
-      "front": [
-        "header",
-        "exchangeRates",
-        "footer"
-      ]
-    },
-    {
-      "url": "/list-exchange",
-      "front": [
-        "header",
-        "listExchange",
-        "footer"
-      ]
-    },
-    {
-      "url": "/list-trade",
-      "front": [
-        "header",
-        "listTrade",
-        "footer"
+        "lenta"
       ]
     },
     {
       "url": "/contacts",
-      "front": [
-        "header",
-        "contacts",
-        "footer"
-      ]
+      "front": "contacts"
     },
     {
       "url": "/about",
-      "front": [
-        "header",
-        "about",
-        "footer"
-      ]
+      "front": "about"
     },
     {
-      "url": "/forum",
-      "front": [
-        "header",
-        "forum",
-        "footer"
-      ]
+      "url": "/career",
+      "front": "career"
     },
     {
-      "url": "/partners",
+      "url": "/communities",
+      "front": "communities"
+    },
+    {
+      "url": "/university",
+      "front": "university"
+    },
+    {
+      "url": "/events",
+      "front": "events"
+    },
+    {
+      "url": "/chats",
+      "front": "chats"
+    },
+    {
+      "url": "/lenta-users",
+      "front": "lenta"
+    },
+    {
+      "url": "/list-ico",
       "front": [
-        "header",
-        "partners",
-        "footer"
+        "categoryLine",
+        "ico"
       ]
     },
     {
       "url": "/list-startaps",
       "front": [
-        "header",
         "categoryLine",
-        "startaps",
-        "footer"
-      ]
-    },
-    {
-      "url": "/list-ico",
-      "front": [
-        "header",
-        "categoryLine",
-        "ico",
-        "footer"
+        "startaps"
       ]
     },
     {
       "url": "/news",
       "front": [
-        "header",
         "categoryLine",
-        "news",
-        "footer"
+        "news"
       ]
     },
     {
-      "url": "/career",
-      "front": [
-        "header",
-        "career",
-        "footer"
-      ]
+      "url": "/questions",
+      "front": "questions"
     },
     {
-      "url": "/forum",
-      "front": [
-        "header",
-        "forum",
-        "footer"
-      ]
+      "url": "/users",
+      "front": "users"
     },
     {
-      "url": "/error",
-      "front": [
-        "header",
-        "error",
-        "footer"
-      ]
+      "url": "/affiliate",
+      "front": "affiliate"
     },
     {
       "regex": "/user-",
-      "front": [
-        "header",
-        "rules",
-        "footer"
-      ]
+      "front": "rules"
+    },
+    {
+      "url": "/list-trade",
+      "front": "listTrade"
+    },
+    {
+      "url": "/list-exchange",
+      "front": "listExchange"
+    },
+    {
+      "url": "/exchange-rates",
+      "front": "exchangeRates"
+    },
+    {
+      "url": "/error",
+      "front": "error"
+    },
+    {
+      "url": "/forum",
+      "front": "forum"
+    },
+    {
+      "url": "/partners",
+      "front": "partners"
+    },
+    {
+      "url": "/recovery-password",
+      "front": "recoveryPassword"
+    },
+    {
+      "url": "/social-networks",
+      "front": "socialNetworks"
+    },
+    {
+      "url": "/games",
+      "front": "games"
+    },
+    {
+      "url": "/voting",
+      "front": "voting"
+    },
+    {
+      "url": "/personal",
+      "front": "personal"
+    },
+    {
+      "url": "/personal/notes",
+      "front": "personalNotes"
+    },
+    {
+      "url": "/personal/calendar",
+      "front": "personalСalendar"
+    },
+    {
+      "url": "/personal/planning",
+      "front": "personalPlanning"
+    },
+    {
+      "url": "/personal/affiliate",
+      "front": "personalAffiliate"
+    },
+    {
+      "url": "/personal/awards",
+      "front": "personalAwards"
+    },
+    {
+      "url": "/personal/chats",
+      "front": "personalChats"
+    },
+    {
+      "url": "/personal/notify",
+      "front": "personalNotify"
+    },
+    {
+      "url": "/personal/posts",
+      "front": "personalPosts"
+    },
+    {
+      "url": "/personal/settings",
+      "front": "personalSettings"
+    },
+    {
+      "url": "/personal/wallet",
+      "front": "personalWallet"
+    },
+    {
+      "all": true,
+      "front": "footer"
     }
   ],
   "hook": {

@@ -60,6 +60,10 @@ const options = {
     ],
 }
 
+if (fs.existsSync(path.resolve(`assets/scss/preloader.scss`))) {
+    options.entryPoints.push({ in: path.resolve(`assets/scss/preloader.scss`), out: path.resolve(options.outdir, "css", "preloader") })
+}
+
 const checkServices = async function (dir) {
     if (!fs.existsSync(dir)) {
         return {}

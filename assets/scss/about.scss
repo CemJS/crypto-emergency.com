@@ -16,22 +16,7 @@ $roadmapBack: (
   4: url('svg/about/turn-left_5.svg'),
   5: url('svg/about/turn-right_6.svg'),
   6: url('svg/about/turn-left_7.svg'),
-); // .about_page {
-//   position: relative;
-
-
-//   &::before {
-//     position: absolute;
-//     bottom: 0;
-//     right: 0;
-//     left: auto;
-//     content: '';
-//     background: url('svg/about/vector_3.svg');
-//     background-repeat: no-repeat;
-//     height: 100%;
-//     width: 100%;
-//   }
-// }
+);
 
 .about {
   background: #232733;
@@ -49,31 +34,9 @@ $roadmapBack: (
     width: 100%;
   }
 
-  // &::after {
-  //   position: absolute;
-  //   bottom: 0;
-  //   right: 0;
-  //   left: auto;
-  //   content: '';
-  //   background: url('svg/about/vector_3.svg');
-  //   background-repeat: no-repeat;
-  //   height: 100%;
-  //   width: 100%;
-  // }
-
-
   &__container {
     max-width: 1240px;
     margin: 0px auto;
-    padding-bottom: 100px;
-    // position: relative;
-
-    // &::after {
-    //   position: absolute;
-    //   content: '';
-    //   background: url('svg/about/vector_1.svg');
-    // }
-
   }
 
   &__subtitle {
@@ -728,6 +691,24 @@ $back in $roadmapBack {
 }
 
 @media(max-width: 767px) {
+  .about {
+    .goal {
+      &__title {
+        margin-bottom: 25px;
+      }
+    }
+
+    .team {
+      &__title {
+        margin-top: 0;
+      }
+
+      &__item {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   .roadmap {
     padding: 0 15px;
   }
