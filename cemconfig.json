@@ -16,22 +16,6 @@
       ]
     },
     {
-      "url": "/lenta-users",
-      "front": "lenta"
-    },
-    {
-      "url": "/exchange-rates",
-      "front": "exchangeRates"
-    },
-    {
-      "url": "/list-exchange",
-      "front": "listExchange"
-    },
-    {
-      "url": "/list-trade",
-      "front": "listTrade"
-    },
-    {
       "url": "/contacts",
       "front": "contacts"
     },
@@ -40,29 +24,41 @@
       "front": "about"
     },
     {
-      "url": "/forum",
-      "front": "forum"
+      "url": "/career",
+      "front": "career"
     },
     {
-      "url": "/partners",
-      "front": "partners"
+      "url": "/communities",
+      "front": "communities"
     },
     {
-      "url": "/social-networks",
-      "front": "socialNetworks"
+      "url": "/university",
+      "front": "university"
     },
     {
-      "url": "/list-startaps",
-      "front": [
-        "categoryLine",
-        "startaps"
-      ]
+      "url": "/events",
+      "front": "events"
+    },
+    {
+      "url": "/chats",
+      "front": "chats"
+    },
+    {
+      "url": "/lenta-users",
+      "front": "lenta"
     },
     {
       "url": "/list-ico",
       "front": [
         "categoryLine",
         "ico"
+      ]
+    },
+    {
+      "url": "/list-startaps",
+      "front": [
+        "categoryLine",
+        "startaps"
       ]
     },
     {
@@ -73,20 +69,104 @@
       ]
     },
     {
-      "url": "/career",
-      "front": "career"
+      "url": "/questions",
+      "front": "questions"
+    },
+    {
+      "url": "/users",
+      "front": "users"
+    },
+    {
+      "url": "/affiliate",
+      "front": "affiliate"
+    },
+    {
+      "regex": "/user-",
+      "front": "rules"
+    },
+    {
+      "url": "/list-trade",
+      "front": "listTrade"
+    },
+    {
+      "url": "/list-exchange",
+      "front": "listExchange"
+    },
+    {
+      "url": "/exchange-rates",
+      "front": "exchangeRates"
     },
     {
       "url": "/error",
       "front": "error"
     },
     {
-      "url": "/questions",
-      "front": "questions"
+      "url": "/forum",
+      "front": "forum"
     },
     {
-      "regex": "/user-",
-      "front": "rules"
+      "url": "/partners",
+      "front": "partners"
+    },
+    {
+      "url": "/recovery-password",
+      "front": "recoveryPassword"
+    },
+    {
+      "url": "/social-networks",
+      "front": "socialNetworks"
+    },
+    {
+      "url": "/games",
+      "front": "games"
+    },
+    {
+      "url": "/games",
+      "front": "games"
+    },
+    {
+      "url": "/personal",
+      "front": "personal"
+    },
+    {
+      "url": "/personal/notes",
+      "front": "personalNotes"
+    },
+    {
+      "url": "/personal/calendar",
+      "front": "personalСalendar"
+    },
+    {
+      "url": "/personal/planning",
+      "front": "personalPlanning"
+    },
+    {
+      "url": "/personal/affiliate",
+      "front": "personalAffiliate"
+    },
+    {
+      "url": "/personal/awards",
+      "front": "personalAwards"
+    },
+    {
+      "url": "/personal/chats",
+      "front": "personalChats"
+    },
+    {
+      "url": "/personal/notify",
+      "front": "personalNotify"
+    },
+    {
+      "url": "/personal/posts",
+      "front": "personalPosts"
+    },
+    {
+      "url": "/personal/settings",
+      "front": "personalSettings"
+    },
+    {
+      "url": "/personal/wallet",
+      "front": "personalWallet"
     },
     {
       "all": true,
