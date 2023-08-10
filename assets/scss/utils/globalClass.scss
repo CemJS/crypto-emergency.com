@@ -233,6 +233,11 @@ $indent in $indents {
   text-transform: uppercase;
 }
 
+.text{
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 500;
+}
 // text elements
 
 // different buttons
@@ -283,43 +288,8 @@ $indent in $indents {
   &_disable {
     background: #808080;
     cursor: default;
-
   }
 }
-
-// .btn_gradient {
-//   z-index: 2;
-//   background-color: transparent;
-//   background-image: var(--btn_gradient);
-//   background-size: 100% 2px;
-//   background-position: 0 100%, 0 0;
-//   background-repeat: no-repeat;
-//   background-clip: border-box;
-
-//   &:before,
-//   &:after {
-//     content: '';
-//     position: absolute;
-//     z-index: -1;
-//     left: 0;
-//     top: 0;
-//     bottom: 0;
-//     width: 21px;
-//     border: 2px solid #2C66B8;
-//     border-right: none;
-//     border-radius: var(--borderR) 0 0 var(--borderR);
-//   }
-
-//   &:after {
-//     border: 2px solid #8859EC;
-//     border-left: none;
-//     left: auto;
-//     right: 0;
-//     border-radius: 0 var(--borderR) var(--borderR) 0;
-//   }
-// }
-
-
 
 // different buttons
 
@@ -499,6 +469,7 @@ $indent in $indents {
 
   &_row {
     display: grid;
+    align-items: center;
 
     th,
     td {
@@ -522,7 +493,9 @@ $indent in $indents {
   }
 
   &_rating,
-  &_btn {
+  &_btn,
+  &_soon,
+  &_center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -544,6 +517,24 @@ $indent in $indents {
   &_trades {
     &_row {
       grid-template-columns: 40px 40px 1fr 150px 1fr 1fr;
+    }
+  }
+
+  &_partner{
+    .table_body{
+
+      .table_partner_row{
+        display: grid;
+        grid-template-columns: 80px 1fr 0.5fr 0.5fr 0.5fr;
+      }
+    }
+    &_row{
+      cursor: pointer;
+      transition: all .3s ease;
+      &:hover{
+        transform: scale(0.98);
+
+      }
     }
   }
 
@@ -852,7 +843,7 @@ $indent in $indents {
   z-index: 999;
   width: fit-content;
   left: 50%;
-  margin: 0 0 20px -180px;
+  margin: 0 0 15px -78px;
   bottom: 100%;
   text-align: left;
   font-size: 0.765em;
@@ -900,4 +891,48 @@ $indent in $indents {
     opacity: 1;
     transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0);
   }
+}
+
+.avatar{
+  position: relative;
+  height: 50px;
+  width: 50px;
+  display: block;
+
+  &_user{
+    height: 50px;
+    width: 50px;
+    display: block;
+  }
+
+  img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &_info{
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    border: 2px solid var(--border);
+    border-radius: var(--ellipse);
+  }
+
+  &_level{
+    font-size: 8px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // &_status{
+  //   width: 8px;
+  //   height: 8px;
+  //   background: var(--green);
+  //   border-radius: var(--ellipse);
+  // }
 }
