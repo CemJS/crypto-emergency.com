@@ -9,13 +9,14 @@ export const loader = function () {
         this.init()
     });
 
-    let eventSource1 = this.eventSource(`Answers?uuid=${this.Variable.myInfo.uuid}`)
+    // console.log('=d1dfc7=', this)
+    // let eventSource1 = this.eventSource(`Answers?uuid=${this.Variable.myInfo.uuid}&id=1`)
 
-    eventSource1.addEventListener('message', ({ data }) => {
-        let records = JSON.parse(data)
-        console.log('=641d61=', records)
-        this.Static.records1 = records
-        this.init()
-    });
+    // eventSource1.addEventListener('message', ({ data }) => {
+    //     let records = JSON.parse(data)
+    //     console.log('=641d61=', records)
+    //     this.Static.records1 = records
+    //     this.init()
+    // });
 
 }

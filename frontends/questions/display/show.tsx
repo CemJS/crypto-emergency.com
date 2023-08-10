@@ -7,6 +7,19 @@ import views from "@svg/news/views.svg"
 import comments from "@svg/news/comments.svg"
 
 export default function () {
+
+  // console.log('=f229cd=', this._ListsEventSource, `Answers?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.record._id}`)
+  if (this._ListsEventSource.length == 1) {
+    let eventSource1 = this.eventSource(`Answers?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.record._id}`)
+
+    eventSource1.addEventListener('message', ({ data }) => {
+      let records = JSON.parse(data)
+      console.log('=641d61=', records)
+      this.Static.records1 = records
+      this.init()
+    });
+  }
+
   console.log('=57c87c=', this.Static.records1)
   let item = this.Static.record
   return (
