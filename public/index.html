@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>CemJS FrameWork (Root)</title>
+    <title>Crypto Emergency</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/assets/css/preloader.css">
     <link rel="stylesheet" href="/assets/css/root.css">
@@ -11,6 +11,19 @@
 
 <body>
     <div id="app"></div>
+    <div class="preloader_wrap">
+        <div id="preloader" class="preloader">
+            <div class="preloader_spinner">
+                <div class="preloader_spinner_ring"></div>
+                <div class="preloader_spinner_ring"></div>
+                <div class="preloader_spinner_ring"></div>
+                <div class="preloader_percent" ref="percent">0%</div>
+            </div>
+            <div class="preloader_progressBar">
+                <div id="progress" class="preloader_progress"></div>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     import("/assets/js/root.js").then(start => start.default())
