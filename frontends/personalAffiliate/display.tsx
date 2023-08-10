@@ -17,6 +17,9 @@ export const display = function () {
             <div class="personalAffiliate_program_btns">
               <div class="personalAffiliate_program_btns_item">
                 <img src={copy} />
+                <div class="hint">
+                  <span class="hint_info">Скопировано</span>
+                </div>
               </div>
               <div class="personalAffiliate_program_btns_item">
                 <img src={send} />
