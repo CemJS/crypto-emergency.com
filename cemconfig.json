@@ -2,6 +2,7 @@
   "ver": "1.0.0",
   "port": 3000,
   "api": "http://127.0.0.1:33333/api/events/",
+  "err404": "error",
   "pages": [
     {
       "all": true,
@@ -97,10 +98,6 @@
       "front": "exchangeRates"
     },
     {
-      "url": "/error",
-      "front": "error"
-    },
-    {
       "url": "/forum",
       "front": "forum"
     },
@@ -142,10 +139,6 @@
     },
     {
       "url": "/personal/affiliate",
-      "front": "personalAffiliate"
-    },
-    {
-      "url": "/personal/2",
       "front": "personalAffiliate"
     },
     {
