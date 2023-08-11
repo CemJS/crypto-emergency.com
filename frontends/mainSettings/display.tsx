@@ -253,7 +253,7 @@ export const display = function () {
                     >
                       Контакты
                     </a>
-                    <a class="accordion__link">
+                    <a class="accordion__link" href="/personal/affiliate" onclick={this.Fn.link}>
                       Партнерская программа
                     </a>
                   </div>
@@ -307,14 +307,14 @@ export const display = function () {
                   style={!collapseBodyShow.four ? null : "max-height: 200px"}
                 >
                   <div class="accordion__body">
-                    <a 
+                    <a
                       class="accordion__link"
                       target="_blank"
                       href="https://cemblockchain.com/"
                     >
                       CEM Blockchain
                     </a>
-                    <a 
+                    <a
                       class="accordion__link"
                       target="_blank"
                       href="https://cemscan.com/"

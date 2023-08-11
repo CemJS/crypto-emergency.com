@@ -1,0 +1,63 @@
+.personal {
+  &_header {
+    position: relative;
+    background: var(--board_back);
+    box-shadow: var(--board_shadow);
+    border-radius: var(--borderR);
+
+    &_cover {
+      position: relative;
+      overflow: hidden;
+      height: 350px;
+      isolation: isolate;
+      border-radius: var(--borderR);
+
+      &_wrap {
+        position: relative;
+        height: 100%;
+      }
+
+      &_img {
+        // height: 300px;
+        height: 100%;
+        background-position: bottom center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 3;
+        background-image: url('images/personal/back.png');
+      }
+    }
+
+    &_info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: #61616452;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: var(--borderR);
+        box-shadow: var(--board_shadow);
+      }
+
+      &_wrap {
+        position: relative;
+        padding: 25px;
+
+      }
+    }
+  }
+}
