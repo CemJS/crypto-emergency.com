@@ -1,16 +1,13 @@
 .personalAffiliate {
 
-  section{
+  section {
     margin-bottom: 30px;
   }
 
   &_board {
-    // background: #313643;
-    // box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
     border-radius: var(--borderR);
     padding: 25px;
     position: relative;
-    max-width: 1000px;
     margin: 0 auto;
 
     &::before {
@@ -22,18 +19,14 @@
       left: 0;
       bottom: 0;
       position: absolute;
-      // background: var(--btn_gradient);
-      // opacity: .2;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--border);
       border-radius: var(--borderR);
-      // box-shadow: 0 8px 32px 0 rgba(143, 142, 142, 0.37);
       box-shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
-      // z-index: -1;
     }
 
-    &_inner{
+    &_inner {
       position: relative;
     }
   }
@@ -82,14 +75,14 @@
     justify-content: space-around;
     align-items: center;
 
-    &_title{
+    &_title {
       font-size: 36px;
       line-height: 32px;
       font-weight: 700;
       margin-bottom: 20px;
     }
 
-    &_text{
+    &_text {
       font-size: 18px;
       line-height: 26px;
       font-weight: 500;
@@ -107,13 +100,13 @@
       justify-content: center;
       align-items: center;
 
-      div{
+      div {
         position: relative;
         padding: 25px;
         width: 100%;
       }
 
-      &::before{
+      &::before {
         content: '';
         position: absolute;
         top: 0;
@@ -134,7 +127,7 @@
     }
 
     &_item:last-child {
-      &::before{
+      &::before {
         background-size: 100%;
         background: url('images/personalAffiliate/wallet.png');
       }
@@ -142,15 +135,15 @@
   }
 }
 
-@media (max-width: 885px){
-  .personalAffiliate{
-    &_info{
+@media (max-width: 885px) {
+  .personalAffiliate {
+    &_info {
       gap: 25px;
 
-      &_item{
+      &_item {
         width: 100%;
 
-        &::before{
+        &::before {
           transform: translateX(20px);
         }
       }

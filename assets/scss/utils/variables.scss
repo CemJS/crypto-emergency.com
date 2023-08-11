@@ -22,6 +22,8 @@
   // background
   --back_page: #232733;
   --back_opacity: rgba(0, 0, 0, 0.3);
+  --board_back: rgba(255, 255, 255, 0.09);
+  --board_shadow: 0px 5px 44px 0px rgba(29, 33, 45, 0.8);
 
   // gradient
   --main_gradient: linear-gradient(56.57deg, #2973ff 0%, #8846d3 45.56%, #ff22ac 65.28%);
@@ -44,7 +46,7 @@
   --borderR: 15px;
   --ellipse: 50%;
 
-  --tabItemIco: 415px;
+
   --base_font: 'Montserrat', sans-serif;
 }
 

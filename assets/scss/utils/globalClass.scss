@@ -233,11 +233,12 @@ $indent in $indents {
   text-transform: uppercase;
 }
 
-.text{
+.text {
   font-size: 18px;
   line-height: 26px;
   font-weight: 500;
 }
+
 // text elements
 
 // different buttons
@@ -520,18 +521,20 @@ $indent in $indents {
     }
   }
 
-  &_partner{
-    .table_body{
+  &_partner {
+    .table_body {
 
-      .table_partner_row{
+      .table_partner_row {
         display: grid;
         grid-template-columns: 80px 1fr 0.5fr 0.5fr 0.5fr;
       }
     }
-    &_row{
+
+    &_row {
       cursor: pointer;
       transition: all .3s ease;
-      &:hover{
+
+      &:hover {
         transform: scale(0.98);
 
       }
@@ -893,26 +896,26 @@ $indent in $indents {
   }
 }
 
-.avatar{
+.avatar {
   position: relative;
   height: 50px;
   width: 50px;
   display: block;
 
-  &_user{
+  &_user {
     height: 50px;
     width: 50px;
     display: block;
   }
 
-  img{
+  img {
     width: 100%;
     object-fit: cover;
     height: 100%;
     border-radius: 50%;
   }
 
-  &_info{
+  &_info {
     position: absolute;
     bottom: -10px;
     right: -10px;
@@ -920,7 +923,7 @@ $indent in $indents {
     border-radius: var(--ellipse);
   }
 
-  &_level{
+  &_level {
     font-size: 8px;
     height: 20px;
     width: 20px;
