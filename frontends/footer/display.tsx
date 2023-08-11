@@ -9,7 +9,9 @@ export const display = function () {
 					<a class="footer__nav_icon footer__nav_lenta" href="/lenta-users"
 						onclick={this.Fn.link}
 					></a>
-					<a class="footer__nav_icon footer__nav_users" href="#"></a>
+					<a class="footer__nav_icon footer__nav_users" href="/users"
+						onclick={this.Fn.link}
+					></a>
 					<a class="footer__nav_icon footer__nav_posts" href="#"></a>
 					<a class="footer__nav_icon footer__nav_questions" href="/questions"
 						onclick={this.Fn.link}
