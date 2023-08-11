@@ -80,6 +80,14 @@ h1 {
     font-size: calc(1.375rem + 1.5vw);
 }
 
+h3 {
+    font-size: calc(1.3rem + .6vw);
+
+    @media (min-width: 1200px) {
+        font-size: 1.75rem;
+    }
+}
+
 ul {
     padding: 0;
     margin: 0;

@@ -56,7 +56,7 @@ const sections = [
   {
     category: "Крипто университет",
     img: university,
-    url: "#"
+    url: "/university"
   },
   {
     category: "Эксперты",
