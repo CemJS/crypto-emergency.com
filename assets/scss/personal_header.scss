@@ -1,4 +1,23 @@
 .personal {
+
+  &_tools {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &_img {
+      width: 35px;
+      height: 35px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: var(--ellipse);
+      }
+    }
+  }
+
   &_header {
     position: relative;
     background: var(--board_back);
@@ -56,6 +75,9 @@
       &_wrap {
         position: relative;
         padding: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
       }
     }
