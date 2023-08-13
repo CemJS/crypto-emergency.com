@@ -940,54 +940,39 @@ $indent in $indents {
   // }
 }
 
-#heart {
-  fill: red;
-  stroke: red;
-  stroke-width: 0;
-  animation: heart-animation 0.9s infinite;
+// #heart {
+//   fill: red;
+//   stroke: red;
+//   stroke-width: 0;
+//   animation: heart-animation 0.9s infinite;
 
-}
+// }
+
+
 
 @keyframes heart-animation {
-  // 10% {
-  //   fill: red;
-  //   stroke: red;
-  //   stroke-width: 5;
-  // }
 
-  // 25% {
-  //   fill: red;
-  //   stroke: red;
-  //   stroke-width: 20;
-  // }
-
-  // 100% {
+  // 0% {
   //   fill: red;
   //   stroke: red;
   //   stroke-width: 0;
   // }
 
-  0% {
-    fill: red;
-    stroke: red;
-    stroke-width: 0;
-  }
+  // 45% {
+  //   stroke: red;
+  //   fill: red;
+  //   stroke-width: 10;
+  // }
 
-  45% {
-    stroke: red;
-    fill: red;
-    stroke-width: 10;
-  }
+  // 50% {
+  //   stroke: red;
+  //   fill: red;
+  //   stroke-width: 15;
+  // }
 
-  50% {
-    stroke: red;
-    fill: red;
-    stroke-width: 15;
-  }
-
-  100% {
-    stroke: red;
-    stroke-width: 0;
-    fill: red;
-  }
+  // 100% {
+  //   stroke: red;
+  //   stroke-width: 0;
+  //   fill: red;
+  // }
 }
