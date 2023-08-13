@@ -10,6 +10,23 @@
     position: relative;
     margin: 0 auto;
 
+    svg, rect{
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      fill: transparent;
+    }
+
+    rect{
+      stroke: var(--summer_sky);
+      stroke-opacity: .5;
+      stroke-width: 3px;
+      stroke-dasharray: 600;
+      animation: animate 5s linear infinite;
+    }
+
     &::before {
       content: '';
       width: 100%;
@@ -148,5 +165,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes animate{
+  0%{
+    stroke-dashoffset: 1000;
+  }
+  100%{
+    stroke-dashoffset: 0;
   }
 }

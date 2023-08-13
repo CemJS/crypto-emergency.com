@@ -10,6 +10,9 @@ export const display = function () {
       <div class="wrapper">
         <h1 class="general_title">Партнёрская программа</h1>
         <section class="personalAffiliate_board">
+          <svg>
+            <rect rx="15" />
+          </svg>
           <div class="personalAffiliate_board_inner">
             <p class="text">Разместите ссылку в социальных сетях, поделитесь с друзьями и заработайте токены CEM с каждого заpегистрированного пользователя. Также, для самых активных участников, у нас готовится расширенная программа монетизации для авторов контента.</p>
             <div class="personalAffiliate_program">
