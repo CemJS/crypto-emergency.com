@@ -4,7 +4,7 @@ export const loader = function () {
 
     eventSource.addEventListener('message', ({ data }) => {
         let records = JSON.parse(data)
-        // console.log('=641d61=', records)
+        console.log('=641d61=', records)
         this.Static.records = records
         this.init()
     });
