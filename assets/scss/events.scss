@@ -180,7 +180,7 @@
             .item_footer{
                 display: flex;
                 justify-content: space-between;
-                align-items: end;
+                align-items: center;
 
                 .location,
                 .date{
@@ -237,19 +237,62 @@
 
 
 
+
+@media(max-width:905px){   
+    .events_section{ 
+        &_filters{
+            gap: 15px;
+        } 
+        &_list{
+            &_item{   
+                .item_header{
+                    display: flex;
+                    flex-direction: column;
+                    .content{
+                        margin:0;
+                    }
+                }
+                .item_footer{
+                    
+                    gap: 23px;
+                    display: grid;
+                    grid-template-areas:
+                    'location date '
+                    'button button';
+                    .location{
+                        grid-area: location;
+                        span{
+                            font-size: 20px
+                        }
+                    }
+                    .date{
+                        grid-area: date;   
+                        span{
+                            font-size: 20px
+                        }
+                    }
+                    .buy_btn{
+                        grid-area: button;
+                        border-radius: 8px;
+                    }
+                }
+            }   
+        }
+    }
+}    
 @media(max-width:768px){   
     .events_section{  
         &_filters{
             display: grid;
+            gap: 12px;
             grid-template-columns:none;
             grid-template-areas: 'underSearchArea underSearchArea underSearchArea';
-    
+            
             .search_area{
                 grid-area: underSearchArea;
             }
         }
         &_list{
-
 
             &_item{
                 display: flex;
@@ -288,44 +331,4 @@
             }
         }
     }
-}
-@media(max-width:905px){   
-    .events_section{  
-        &_list{
-            &_item{   
-                .item_header{
-                    display: flex;
-                    flex-direction: column;
-                    .content{
-                        margin:0;
-                    }
-                }
-                .item_footer{
-                    
-                    gap: 23px;
-                    display: grid;
-                    grid-template-areas:
-                    'location date '
-                    'button button';
-                    .location{
-                        grid-area: location;
-                        span{
-                            font-size: 20px
-                        }
-                    }
-                    .date{
-                        grid-area: date;   
-                        span{
-                            font-size: 20px
-                        }
-                    }
-                    .buy_btn{
-                        grid-area: button;
-                        border-radius: 8px;
-                    }
-                }
-            }   
-        }
-    }
 }    
-    

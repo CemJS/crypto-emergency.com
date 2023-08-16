@@ -5,11 +5,46 @@ import seach_magnifier from "@svg/events/seach_magnifier.svg"
 import selector_arrow from "@svg/events/selector_arrow.svg"
 
 
+let likeDBArray = [
+  {
+    tiltle: 'Some Title',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, nemo?',
+    country: 'Россия',
+    date: '12.12.2023'
 
+  },
+  {
+    tiltle: 'Some Title',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, nemo?',
+    country: 'Беларусь',
+    date: '18.09.2023'
+
+  },
+]
 
 export const display = function () {
   return (
-    <div class="page events">
+    <div class="page events"
+    onclick={(e) => {
+      if(this.Ref.country_area !== e.target &&  this.Ref.country_search_field !== e.target &&  this.Ref.countrySelector_arrow !== e.target){
+        this.Ref.countries_dropdown.classList.remove("visible")
+        // this.Ref.event_list.classList.remove("shadow")
+        this.Ref.countrySelector_arrow.classList.remove("rotate")
+        this.Ref.magnifier.classList.remove("visible")
+      }
+
+      if(this.Ref.category_area !== e.target &&  this.Ref.country_search_field !== e.target){
+
+        this.Ref.category_dropdown.classList.remove("visible")
+        this.Ref.event_list.classList.remove("shadow")
+        this.Ref.categorySelector_arrow.classList.remove("rotate")
+      }
+      console.log(e.target)
+      
+
+    }}
+    
+    >
       <div class="wrapper">
         <h1>Мероприятия</h1>
         <section class="banners_section">
@@ -28,21 +63,21 @@ export const display = function () {
               </button >
             </div>
 
-            <div ref="country" class="country_area">    
-              <button class="filter_country" /* country_filter */
+            <div  class="country_area">    
+              <button class="filter_country" ref="country_area"
               onclick={(e) => {
-                this.Ref.countries_dropdown.classList.toggle("visible")
-                this.Ref.event_list.classList.toggle("shadow")
-                this.Ref.countrySelector_arrow.classList.toggle("rotate")
-                this.Ref.magnifier.classList.toggle("visible")
+                this.Ref.countries_dropdown.classList.add("visible")
+                this.Ref.event_list.classList.add("shadow")
+                this.Ref.countrySelector_arrow.classList.add("rotate")
+                this.Ref.magnifier.classList.add("visible")
 
               }}
               >
                 <img src={seach_magnifier} alt="magnifier" ref='magnifier' class="filter_country_magnifier" />
-                <input type="search" name="input" size='9' placeholder="Страна" ref='country_search_field'></input>
+                <input type="search" name="input" size='9' placeholder="Страна" ref='country_search_field'/>
                 <img src={selector_arrow} alt="selector_arrow" ref="countrySelector_arrow"
                 onclick={(e) => {
-                  // this.Ref.countries_dropdown.classList.remove("visible")
+                  // this.Ref.countries_dropdown.classList.add("visible")
                 }}
                 />
               </button>
@@ -53,21 +88,25 @@ export const display = function () {
                   this.Ref.country_search_field.value = e.target.innerText
                 }}
                 >
-                  <li class="dropdown_list-item" data-value="rus">Россия</li>
-                  <li class="dropdown_list-item" data-value="bel">Беларусь</li>
-                  <li class="dropdown_list-item" data-value="bolg">Болгария</li>
+                   {
+                    likeDBArray.map((item, index) => {
+                      return (
+                        <li class="dropdown_list-item" ref='drop_item' data-value="rus">{item.country}</li>
+                      )
+                })
+              }
                 </ul>
               </div>
             </div>
 
 
 
-            <div class="category_area">
-              <button class="filter_category"  /* category_filter */
+            <div class="category_area" >
+              <button class="filter_category"  ref="category_area"
               onclick={(e) => {
-                this.Ref.category_dropdown.classList.toggle("visible")
-                this.Ref.event_list.classList.toggle("shadow")
-                this.Ref.categorySelector_arrow.classList.toggle("rotate")
+                this.Ref.category_dropdown.classList.add("visible")
+                this.Ref.event_list.classList.add("shadow")
+                this.Ref.categorySelector_arrow.classList.add("rotate")
               }}
               >
                 <span ref='choosen_category'>Категория</span>
@@ -79,9 +118,9 @@ export const display = function () {
                   this.Ref.choosen_category.innerText = e.target.innerText
                 }}
                 >
-                  <li class="dropdown_list-item" data-value="rus">IT</li>
-                  <li class="dropdown_list-item" data-value="turk">Crypto</li>
-                  <li class="dropdown_list-item" data-value="eng">что-то еще</li>
+                  <li class="dropdown_list-item" data-value="">IT</li>
+                  <li class="dropdown_list-item" data-value="">Crypto</li>
+                  <li class="dropdown_list-item" data-value="">что-то еще</li>
                 </ul>
               </div>
             </div>
@@ -92,7 +131,7 @@ export const display = function () {
               <button class="search"
               >
                 <img src={seach_magnifier} alt="magnifier" />
-                <input type="search" name="input" value="Поиск" ref='search_field'
+                <input type="search" name="input" size='25' value="Поиск" ref='search_field'
                 onfocus={() => {
                   if (this.Ref.search_field.value === 'Поиск') {
                     this.Ref.search_field.value = ''; 

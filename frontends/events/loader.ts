@@ -9,5 +9,5 @@ export const loader = function () {
         this.init()
     });
 
-let activeDropdownItem = 'Страна'
+
 }
