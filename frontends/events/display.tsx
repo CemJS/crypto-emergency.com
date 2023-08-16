@@ -28,25 +28,22 @@ export const display = function () {
               </button >
             </div>
 
-
-            <div ref="country">
-              <button class="filter_country" 
+            <div ref="country">    
+              <button class="filter_country" /* country_filter */
               onclick={(e) => {
                 this.Ref.countries_dropdown.classList.toggle("visible")
                 this.Ref.event_list.classList.toggle("shadow")
                 this.Ref.countrySelector_arrow.classList.toggle("rotate")
               }}
               >
-                
-                <span ref="filter_country">Страна</span>
+                <span ref="choosen_country">Страна</span>
                 <img src={selector_arrow} alt="C" ref="countrySelector_arrow"/>
               </button>
               <div class="countries_dropdown" ref="countries_dropdown"
               >
                 <ul class="countries_dropdown_list" ref="countries_dropdown_list"
                 onclick={(e) => {
-                  this.Ref.filter_country.innerText = e.target.innerText
-                  
+                  this.Ref.choosen_country.innerText = e.target.innerText
                 }}
                 >
                   <li class="dropdown_list-item" data-value="rus">Россия</li>
@@ -57,19 +54,24 @@ export const display = function () {
             </div>
 
 
-            <div>
-              <button class="filter_category"
-              onclick={() => {
-                this.Ref.category_dropdown.classList.toggle("visible")
 
-                
+            <div>
+              <button class="filter_category"  /* category_filter */
+              onclick={(e) => {
+                this.Ref.category_dropdown.classList.toggle("visible")
+                this.Ref.event_list.classList.toggle("shadow")
+                this.Ref.categorySelector_arrow.classList.toggle("rotate")
               }}
               >
-                <span>Категория</span>
-                <img src={selector_arrow} alt="C" />
+                <span ref='choosen_category'>Категория</span>
+                <img src={selector_arrow} alt="C" ref='categorySelector_arrow' />
               </button>
               <div class="category_dropdown" ref="category_dropdown">
-                <ul class="dropdown_list">
+                <ul class="category_dropdown_list" ref='category_dropdown_list'
+                onclick={(e) => {
+                  this.Ref.choosen_category.innerText = e.target.innerText
+                }}
+                >
                   <li class="dropdown_list-item" data-value="rus">IT</li>
                   <li class="dropdown_list-item" data-value="turk">Crypto</li>
                   <li class="dropdown_list-item" data-value="eng">что-то еще</li>
@@ -80,9 +82,23 @@ export const display = function () {
             
 
             <div>
-              <button class="search">
+              <button class="search"
+              
+              >
                 <img src={seach_magnifier} alt="C" />
-                <span>Поиск</span>
+                <input type="search" name="input" value="Поиск" ref='search_field'
+                onfocus={() => {
+                  if (this.Ref.search_field.value === 'Поиск') {
+                    this.Ref.search_field.value = ''; 
+                    
+                  }
+                  }}
+                onblur={() => {
+                  if (this.Ref.search_field.value === '') {
+                    this.Ref.search_field.value = 'Поиск'; 
+                  }
+                  }}
+                />
               </button>
             </div>
           </div>
