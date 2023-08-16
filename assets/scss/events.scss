@@ -10,7 +10,6 @@
         line-height: normal;
     }
 }
-
 .events_section{
 
     &_filters{
@@ -69,14 +68,37 @@
             }
             
         }
-
-
-
-        .countries_dropdown,.category_dropdown{
+        .countries_dropdown,.category_dropdown,.filter_country_magnifier{
             display: none;
         }
         .visible{
             display: block;
+        }
+
+        .filter_country{
+            input{
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                color: #B3B7C4;  
+                background: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+                appearance: none;
+            }
+            input:focus {
+                outline: none;
+                border-bottom: 1px solid #474C5A;
+            }
+            input::placeholder{
+                color: #B3B7C4; 
+                opacity: 1;
+            }
+            img{
+                width: 15px;
+            }
         }
         .search{
             display: flex;
@@ -84,6 +106,9 @@
             gap: 9px;
             align-items: center;
             padding: 12px;
+            img{
+                width: 20px;
+            }
             input{
                 font-size: 16px;
                 font-style: normal;
@@ -115,17 +140,19 @@
 
 
         &_item{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
             background-color: #3B3F49;
             padding: 16px;
-            border-radius: 8px;
+            border-radius: 20px;
+            min-height: 189px;
 
             .item_header{
                 display: flex;
                 padding-bottom: 10px;
                 .picture{
-                    padding: 33px;
                     border-radius: 50%;
-                    background-color: #4F5669;
                 }
                 .content{
                     display: flex;
@@ -173,14 +200,12 @@
                     font-weight: 600;
                 }
                 button{
-                    display: inline-flex;
+                    max-height: 40px ;
                     padding: 10px 24px;
-                    justify-content: center;
-                    align-items: center;
                     border-radius: 4px;
                     background: linear-gradient(45deg, #5B6CE2 0%, #7A57CC 48.97%, #9148BC 100%);
                     color: #FFF;
-                    text-align: right;
+                    text-align: center;
                     font-family: Montserrat;
                     font-size: 16px;
                     font-style: normal;
@@ -210,3 +235,97 @@
     transition: all 0.3s ;
 }
 
+
+
+@media(max-width:768px){   
+    .events_section{  
+        &_filters{
+            display: grid;
+            grid-template-columns:none;
+            grid-template-areas: 'underSearchArea underSearchArea underSearchArea';
+    
+            .search_area{
+                grid-area: underSearchArea;
+            }
+        }
+        &_list{
+
+
+            &_item{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 417px;   
+                padding: 20px;
+                .item_header{
+                    display: flex;
+                    flex-direction: column;
+                }
+                .item_footer{
+                    gap: 23px;
+                    display: grid;
+                    grid-template-areas:
+                    'location date '
+                    'button button';
+                    .location{
+                        grid-area: location;
+                        span{
+                            font-size: 20px
+                        }
+                    }
+                    .date{
+                        grid-area: date;   
+                        span{
+                            font-size: 20px
+                        }
+                    }
+                    .buy_btn{
+                        grid-area: button;
+                    }
+
+                }
+
+            }
+        }
+    }
+}
+@media(max-width:905px){   
+    .events_section{  
+        &_list{
+            &_item{   
+                .item_header{
+                    display: flex;
+                    flex-direction: column;
+                    .content{
+                        margin:0;
+                    }
+                }
+                .item_footer{
+                    
+                    gap: 23px;
+                    display: grid;
+                    grid-template-areas:
+                    'location date '
+                    'button button';
+                    .location{
+                        grid-area: location;
+                        span{
+                            font-size: 20px
+                        }
+                    }
+                    .date{
+                        grid-area: date;   
+                        span{
+                            font-size: 20px
+                        }
+                    }
+                    .buy_btn{
+                        grid-area: button;
+                        border-radius: 8px;
+                    }
+                }
+            }   
+        }
+    }
+}    
+    

@@ -21,29 +21,36 @@ export const display = function () {
         <section class="events_section">
           <div class="events_section_filters">
 
-            <div>
+            <div class="date_area">
               <button class="filter_date">
                 <span>Дата</span>
                 <img src={selector_arrow} alt="C"  />
               </button >
             </div>
 
-            <div ref="country">    
+            <div ref="country" class="country_area">    
               <button class="filter_country" /* country_filter */
               onclick={(e) => {
                 this.Ref.countries_dropdown.classList.toggle("visible")
                 this.Ref.event_list.classList.toggle("shadow")
                 this.Ref.countrySelector_arrow.classList.toggle("rotate")
+                this.Ref.magnifier.classList.toggle("visible")
+
               }}
               >
-                <span ref="choosen_country">Страна</span>
-                <img src={selector_arrow} alt="C" ref="countrySelector_arrow"/>
+                <img src={seach_magnifier} alt="magnifier" ref='magnifier' class="filter_country_magnifier" />
+                <input type="search" name="input" size='9' placeholder="Страна" ref='country_search_field'></input>
+                <img src={selector_arrow} alt="selector_arrow" ref="countrySelector_arrow"
+                onclick={(e) => {
+                  // this.Ref.countries_dropdown.classList.remove("visible")
+                }}
+                />
               </button>
               <div class="countries_dropdown" ref="countries_dropdown"
               >
                 <ul class="countries_dropdown_list" ref="countries_dropdown_list"
                 onclick={(e) => {
-                  this.Ref.choosen_country.innerText = e.target.innerText
+                  this.Ref.country_search_field.value = e.target.innerText
                 }}
                 >
                   <li class="dropdown_list-item" data-value="rus">Россия</li>
@@ -55,7 +62,7 @@ export const display = function () {
 
 
 
-            <div>
+            <div class="category_area">
               <button class="filter_category"  /* category_filter */
               onclick={(e) => {
                 this.Ref.category_dropdown.classList.toggle("visible")
@@ -79,18 +86,16 @@ export const display = function () {
               </div>
             </div>
 
-            
 
-            <div>
+
+            <div class='search_area'>
               <button class="search"
-              
               >
-                <img src={seach_magnifier} alt="C" />
+                <img src={seach_magnifier} alt="magnifier" />
                 <input type="search" name="input" value="Поиск" ref='search_field'
                 onfocus={() => {
                   if (this.Ref.search_field.value === 'Поиск') {
                     this.Ref.search_field.value = ''; 
-                    
                   }
                   }}
                 onblur={() => {
@@ -117,12 +122,11 @@ export const display = function () {
                   <img src={map_point} alt="L" />
                   <span>Russia</span>
                 </div>
-                <button>Купить билет</button>
+                <button class='buy_btn'>Купить билет</button>
                 <div class='date'>
                   <img src={calendar} alt="C" />
                   <span>12.12.2023</span>
                 </div>
-                
               </div>
             </div>
             <div class="events_section_list_item">
@@ -135,10 +139,14 @@ export const display = function () {
               </div>
               <div class="item_footer">
                 <div class="location">
-                  Russia
+                  <img src={map_point} alt="L" />
+                  <span>Russia</span>
                 </div>
-                <button>Купить билет</button>
-                <span>12.12.2023</span>
+                <button class='buy_btn'>Купить билет</button>
+                <div class='date'>
+                  <img src={calendar} alt="C" />
+                  <span>12.09.2023</span>
+                </div>
               </div>
             </div>
              
