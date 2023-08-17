@@ -5,6 +5,12 @@ const listener = {
     "finish": function (data, name, t) {
         // console.log('=e60c81=', data, name, t, this)
     },
+    "keydownAny": function (e) {
+        console.log('=e4aacc=', "keydown")
+    },
+    "keyupAny": function (e) {
+        console.log('=e4aacc=', "keyup")
+    },
     "clickAny": function (e) {
         console.log('=cca0b8=', e.target)
         if (!this.Ref.country_area.contains(e.target) && this.Ref.category_area.contains(e.target) && this.Static.countrySelectorStatus == 'open') {

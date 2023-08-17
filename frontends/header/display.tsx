@@ -2,7 +2,7 @@ import { Cemjsx } from "cemjs-all"
 import logo from '@svg/logo.svg'
 
 export const display = function () {
-	console.log('=b56cd5=', this.Variable.DataUrl)
+	// console.log('=b56cd5=', this.Variable.DataUrl)
 
 	return (
 		<header class="header">

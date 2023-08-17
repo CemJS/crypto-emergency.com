@@ -184,6 +184,11 @@
         "url": "/assets/upload",
         "host": "crypto-emergency.com",
         "port": "80"
+      },
+      {
+        "url": "/api/audio",
+        "host": "127.0.0.1",
+        "port": "33333"
       }
     ]
   },
