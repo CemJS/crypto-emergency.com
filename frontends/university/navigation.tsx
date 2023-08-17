@@ -1,17 +1,25 @@
 import { Cemjsx } from "cemjs-all"
-// import About from "./pages/about"
+import Course from "./display/Course"
+import Main from "./display/Main"
+// import Show from "./display/Show"
 
 
 
 export default function () {
-  switch (this.Static.page) {
-    case "about":
-      // return <About />
+  console.log('=8ccc9d=', this.Variable.DataUrl)
+
+  if (this.Variable.DataUrl.length == 1) {
+    return <Main />
+  }
+
+  switch (this.Variable.DataUrl[1]) {
+    case "course":
+      return <Course />
       break;
 
-    case "contacts":
-      // return <Contacts />
-      break;
+    // case "show":
+    //   return <Show />
+    //   break;
 
     default:
       return <div></div>
