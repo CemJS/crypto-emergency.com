@@ -170,6 +170,10 @@
       "front": "personalWallet"
     },
     {
+      "url": "/testVoice",
+      "front": "testVoice"
+    },
+    {
       "all": true,
       "front": "footer"
     }
