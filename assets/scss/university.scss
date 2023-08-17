@@ -1,0 +1,121 @@
+.university {
+
+  .wrapper {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+
+    &_title {
+      display: flex;
+
+      img {
+        width: 30px;
+        margin-right: 10px;
+      }
+    }
+
+    &_courses {
+      padding: 8px 20px;
+    }
+  }
+
+  &__slogan {
+    display: flex;
+    margin: 30px auto;
+    width: 67%;
+
+    h3 {
+      text-align: center;
+    }
+  }
+
+  &__category {
+    display: grid;
+    grid: repeat(3, minmax(400px, 1fr))/repeat(3, minmax(180px, 1fr));
+    gap: 20px;
+
+    @media (max-width: 1260px) {
+      grid: repeat(3, minmax(340px, 1fr))/repeat(3, minmax(180px, 1fr));
+    }
+  }
+
+  & .university-category {
+
+
+    &__item {
+      position: relative;
+      padding: 15px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #ffffff;
+
+      .subtitle {
+        display: none;
+      }
+
+      .description {
+        position: relative;
+        z-index: 2;
+        margin: 0;
+        display: none;
+
+        @media (max-width: 1260px) {
+          font-size: 14px;
+        }
+      }
+
+      &:hover {
+
+        .subtitle {
+          display: block;
+        }
+
+        .description {
+          display: block;
+        }
+      }
+
+      &_title {
+        position: relative;
+        z-index: 2;
+        font-size: 28px;
+        font-weight: 600;
+
+        p {
+          width: 80%;
+          margin: 0;
+          margin-top: 10px;
+          font-size: 14px;
+          font-weight: 400;
+
+          @media (max-width: 1260px) {
+            font-size: 14px;
+          }
+        }
+      }
+
+      &_image {
+        opacity: 0.6;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

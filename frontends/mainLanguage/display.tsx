@@ -2,6 +2,14 @@ import { Cemjsx } from "cemjs-all"
 
 const language = [
   {
+    "lang": "Russian",
+    "lang_orig": "Русский",
+  },
+  {
+    "lang": "English",
+    "lang_orig": "English",
+  },
+  {
     "lang": "China",
     "lang_orig": "俄语",
   },
@@ -13,10 +21,7 @@ const language = [
     "lang": "Greek",
     "lang_orig": "Ελληνικά",
   },
-  {
-    "lang": "English",
-    "lang_orig": "English",
-  },
+
   {
     "lang": "Spanish",
     "lang_orig": "Español",
@@ -53,10 +58,7 @@ const language = [
     "lang": "Portuguese",
     "lang_orig": "Português",
   },
-  {
-    "lang": "Russian",
-    "lang_orig": "Русский",
-  },
+
   {
     "lang": "Turkish",
     "lang_orig": "Türkçe",
@@ -70,7 +72,7 @@ const language = [
 export const display = function () {
   return (
     <div class="modal modal_open">
-      <div class="modal__black" 
+      <div class="modal__black"
         onclick={() => {
           setTimeout(() => {
             this.clearData()

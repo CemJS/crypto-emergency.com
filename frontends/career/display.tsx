@@ -72,7 +72,7 @@ const professions = [
 
 export const display = function () {
   return (
-    <div class="page page__container">
+    <div class="page">
       <div class="career">
         <div class="wrapper">
           <section class="career_preview">

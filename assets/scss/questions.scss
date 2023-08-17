@@ -375,6 +375,9 @@
       justify-content: space-between;
       font-size: 14px;
 
+      border-bottom: 1px solid;
+      border-color: var(--border_answer);
+
       span {
         display: flex;
       }
@@ -388,6 +391,12 @@
           height: 18px;
         }
       }
+    }
+
+    &__answers {
+      max-width: 850px;
+      margin: 0 auto;
+      margin-top: 40px;
     }
   }
 }

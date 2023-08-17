@@ -3,7 +3,7 @@ import donat from '@svg/contacts/donation.svg'
 
 export const display = function () {
   return (
-    <div class="page page__container" style="padding-bottom: 0">
+    <div class="page" style="padding-bottom: 0">
       <div class="contacts">
         <div class="contacts__container">
           <h2 class="contacts__title">Контакты</h2>

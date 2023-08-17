@@ -81,6 +81,7 @@ export {
 }
 
 export const loader = async function (Variable) {
+  // console.log('=ca1022=', this)
   if (this.Variable) {
     Variable = this.Variable
   }
