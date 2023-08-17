@@ -10,6 +10,11 @@ export const display = function () {
 
           this.Services.micrecorder.start.bind(this)()
         }}>Начать запись</button>
+      <button class='header__auth_sign'
+        onclick={(e) => {
+
+          this.Services.micrecorder.startImg.bind(this)()
+        }}>Начать запись для картинки</button>
       <br></br>
 
       <button class='header__auth_sign'

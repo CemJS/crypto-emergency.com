@@ -20,7 +20,7 @@ const goSpeck = function (text) {
 
     utterance.voice = synth.getVoices()[0];
     utterance.pitch = 8.1;  // пониже
-    // utterance.rate = 1.9;   // побыстрее
+    utterance.rate = 1.4;   // побыстрее
     // utterance.volume = 0.9; // потише
     synth.speak(utterance);
 
@@ -156,8 +156,40 @@ export const start = async function () {
     });
 }
 
+
+export const startImg = async function () {
+    textT = ""
+    window.speechSynthesis.cancel();
+    let tmp = this
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recorder = new MediaRecorder(stream, {
+        mimeType: "audio/webm",
+    });
+    audioBlobs = []
+    recorder.start();
+    recorder.addEventListener("dataavailable", async (event) => {
+        audioBlobs.push(event.data);
+    });
+
+    recorder.addEventListener("stop", async (event) => {
+        let form = new FormData();
+        form.append('file', audioBlobs[0]);
+
+        fetch('/api/audioImg', {
+            method: 'POST',
+            body: form
+        })
+            .then(async (res) => {
+                let text = await res.text()
+                console.log('=dea62a=', text)
+                // tmp.init()
+            })
+    });
+}
+
 export const stop = async function () {
     recorder.stop();
 }
+
 
 
