@@ -8,7 +8,29 @@ const textTonum = function (text) {
 
 }
 
+
+const goSpeck = function (text) {
+    console.log('=56e459 goSpeck=', text)
+    var synth = window.speechSynthesis;
+
+    // console.log('=98bf9d=', synth.getVoices())
+
+    const utterance = new SpeechSynthesisUtterance(text);
+
+
+    utterance.voice = synth.getVoices()[0];
+    utterance.pitch = 8.1;  // пониже
+    // utterance.rate = 1.9;   // побыстрее
+    // utterance.volume = 0.9; // потише
+    synth.speak(utterance);
+
+    // utterance.pitch = 5.1;  // пониже
+    // utterance.rate = 1.3;   // побыстрее
+    // utterance.volume = 0.9; // потише
+    // window.speechSynthesis.speak(utterance);
+}
 async function readAllChunks(readableStream, tmp) {
+    let numDot = 1
     const reader = readableStream.getReader();
     const chunks = [];
 
@@ -18,12 +40,20 @@ async function readAllChunks(readableStream, tmp) {
         if (done) {
             return chunks;
         }
-        console.log('=5dc994=', new TextDecoder().decode(value))
+        // console.log('=5dc994=', new TextDecoder().decode(value))
         textT += new TextDecoder().decode(value)
         let tm = textT.split("===>")
         tmp.Static.textAudio = tm[0]
         tmp.Static.textAnswer = tm[1]
         tmp.init()
+        // let tmpSpeak = tmp.Static.textAnswer.split(".")
+        let tmpSpeak = tmp.Static.textAnswer.replace(/\.\s+/g, '.|').replace(/\?\s/g, '?|').replace(/\!\s/g, '!|').split("|")
+        // console.log('=52a699=', tmpSpeak)
+        if (tmpSpeak.length > numDot) {
+            goSpeck(tmpSpeak[numDot - 1])
+            numDot++
+
+        }
         // chunks.push(value);
     }
 }
@@ -43,6 +73,7 @@ export const activate = async function () {
 export const start = async function () {
     // if (!stream) {
     textT = ""
+    window.speechSynthesis.cancel();
     let tmp = this
     stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     recorder = new MediaRecorder(stream, {
@@ -66,6 +97,12 @@ export const start = async function () {
     recorder.addEventListener("stop", async (event) => {
         // console.log('=c39f03=', "stop")
         // console.log('=7cab16=', audioBlobs)
+        // const utterance = new SpeechSynthesisUtterance("Я уже обрабатываю твой запрос!");
+        // utterance.pitch = 2.1;  // пониже
+
+        // utterance.rate = 2.6;   // побыстрее
+        // utterance.volume = 0.9; // потише
+        // window.speechSynthesis.speak(utterance);
 
         let form = new FormData();
         form.append('file', audioBlobs[0]);
@@ -89,6 +126,14 @@ export const start = async function () {
                 //     chunks.push(value);
                 // }
                 console.log(await readAllChunks(res.body, tmp));
+                let tmpSpeak = tmp.Static.textAnswer.replace(/\.\s+/g, '.|').replace(/\?\s/g, '?|').replace(/\!\s/g, '!|').split("|")
+
+                goSpeck(tmpSpeak[tmpSpeak.length - 1])
+                // const utterance = new SpeechSynthesisUtterance(tmp.Static.textAnswer);
+                // utterance.pitch = 2.1;  // пониже
+                // utterance.rate = 2.6;   // побыстрее
+                // utterance.volume = 0.9; // потише
+                // window.speechSynthesis.speak(utterance);
                 // let text = await res.text()
                 // console.log('=e6067b=', text)
                 // let tm = text.split("===>")
