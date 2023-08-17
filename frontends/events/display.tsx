@@ -25,32 +25,6 @@ let likeDBArray = [
 export const display = function () {
   return (
     <div class="page events"
-    onclick={(e) => {
-      if(!this.Ref.country_area.contains(e.target) && this.Static.countrySelectorStatus == 'open'){
-        console.log('=267306=','вне страны')
-        this.Static.countrySelectorStatus = 'close'
-        this.Ref.countries_dropdown.classList.remove("visible")
-        this.Ref.event_list.classList.remove("shadow")
-        this.Ref.countrySelector_arrow.classList.remove("rotate")
-        this.Ref.magnifier.classList.remove("visible")
-      }else if(!this.Ref.category_area.contains(e.target) && this.Static.catergorySelectorStatus == 'close' && this.Static.countrySelectorStatus == 'open'){
-        console.log('=38d66b=','на страну вне категории')
-      }
-
-
-      // клик вне селектора
-      if(!this.Ref.category_area.contains(e.target) && this.Static.catergorySelectorStatus == 'open'){
-        console.log('=267306=','вне категории')
-        this.Static.catergorySelectorStatus = 'close'
-        this.Ref.category_dropdown.classList.remove("visible")
-        this.Ref.event_list.classList.remove("shadow")
-        this.Ref.categorySelector_arrow.classList.remove("rotate")
-      }
-      
-      
-
-    }}
-    
     >
       <div class="wrapper">
         <h1>Мероприятия</h1>
