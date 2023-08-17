@@ -1,5 +1,7 @@
 export const loader = function () {
 
+  console.log('=83639e=', this.Variable)
+
   let eventSource = this.eventSource(`UniverCategories?uuid=${this.Variable.myInfo.uuid}`)
 
   eventSource.addEventListener('message', ({ data }) => {

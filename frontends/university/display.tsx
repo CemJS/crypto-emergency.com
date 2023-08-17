@@ -1,10 +1,17 @@
 import { Cemjsx } from "cemjs-all"
+
 import logo from '@svg/university/logo.svg'
 import test from '@images/university/test.jpeg'
 import reviews from '@images/university/reviews.jpeg'
 import soon from '@images/university/soon.png'
 
+
+import Navigation from "./navigation"
+
 export const display = function () {
+
+  console.log('=83639e=', this.Variable)
+
   return (
     <div class="page">
       <div class="university">
@@ -60,6 +67,11 @@ export const display = function () {
           </div>
         </div>
       </div>
+
+      <div>
+        <Navigation />
+      </div>
+
     </div>
   )
 }
