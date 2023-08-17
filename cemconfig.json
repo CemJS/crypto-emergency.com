@@ -33,7 +33,7 @@
       "front": "communities"
     },
     {
-      "url": "/university",
+      "regex": "/university",
       "front": "university"
     },
     {
