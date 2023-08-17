@@ -4,11 +4,10 @@ import logo from '@svg/university/logo.svg'
 import test from '@images/university/test.jpeg'
 import reviews from '@images/university/reviews.jpeg'
 import soon from '@images/university/soon.png'
-
+import Course from './Course'
 
 
 export default function () {
-
   return (
     <div class="university">
       <div class="wrapper">
@@ -21,7 +20,6 @@ export default function () {
             <a href="/university/course" class="university__header_courses btn btn_gradient"
               onclick={(e) => {
                 this.Static.page = "course"
-
                 this.Fn.link(e)
               }}
             >
@@ -35,7 +33,13 @@ export default function () {
             {
               this.Static.records?.map((item) => {
                 return (
-                  <a class="university-category__item">
+                  <a href="/university/course" class="university-category__item"
+                    onclick={(e) => {
+                      this.Static.categoryCurrent = item.name
+                      this.Static.page = "course"
+                      this.Fn.link(e)
+                    }}
+                  >
                     <div class="university-category__item_title">
                       {item.name}
                       <p class="subtitle">{item.title}</p>

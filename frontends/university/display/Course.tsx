@@ -3,15 +3,24 @@ import logo from '@svg/university/logo.svg'
 import arrow from '@svg/university/arrow.svg'
 
 export default function () {
-  console.log('=2e3086=', this.Static.recordsCourses)
+  let listCourses = this.Static.recordsCourses
+
+  console.log('=2e3086=', listCourses)
+
+
   return (
     <div class="courses">
       <div class="wrapper">
         <div class="university__header">
-          <div class="university__header_title">
+          <a href="/university" class="university__header_title"
+            onclick={(e) => {
+              this.Static.page = "main"
+              this.Fn.link(e)
+            }}
+          >
             <img src={logo} />
             <p>Крипто университет</p>
-          </div>
+          </a>
         </div>
         <div class="courses__filter">
           <div class="courses__filter_container">
@@ -39,7 +48,13 @@ export default function () {
                     {
                       this.Static.category.map((item) => {
                         return (
-                          <li class="courses__category_item">
+                          <li class="courses__category_item"
+                            onclick={() => {
+                              listCourses = this.Static.recordsCourses.filter((el) => el.category.includes(item.name))
+                              console.log('=e364b3=', listCourses)
+                              this.init()
+                            }}
+                          >
                             {item.name}
                           </li>
                         )
@@ -90,90 +105,92 @@ export default function () {
         </div>
         <div class="courses__cards">
         {
-          this.Static.recordsCourses.map((item) => {
-            return (
-              <li class="card card_courses">
-                <a
-                  class="card__link card__link_background"
-                >
-                  <div class="card__title card__title_courses">
-                    {item.name}
-                  </div>
-                  <div class="card__description card__description_courses">
-                    {item.description}
-                  </div>
-                  <div class="card__container card__container_row card__container_indent_course">
-                    <div class="card__cost">
-                      {item.cost != undefined || null
-                        ?
-                        <span>{item.cost}
-                          {item.currency == "rub"
-                            ?
-                            <span class="card__cost_size"> ₽</span>
-                            :
-                            item.currency == "usd"
-                              ?
-                              <span class="card__cost_size"> $</span>
-                              :
-                              null
-                          }
-                        </span>
-                        :
-                        null
-                      }
-
+          listCourses?.map((item) => {
+            if (item.category.includes(this.Static.categoryCurrent)) {
+              return (
+                <li class="card card_courses">
+                  <a
+                    class="card__link card__link_background"
+                  >
+                    <div class="card__title card__title_courses">
+                      {item.name}
                     </div>
-                    {
-                      item.duration != undefined
-                        ?
-                        <div class="card__container card__container_row">
-                          <div class="card__duration">
-                            <span>{item.duration}</span>
+                    <div class="card__description card__description_courses">
+                      {item.description}
+                    </div>
+                    <div class="card__container card__container_row card__container_indent_course">
+                      <div class="card__cost">
+                        {item.cost != undefined || null
+                          ?
+                          <span>{item.cost}
+                            {item.currency == "rub"
+                              ?
+                              <span class="card__cost_size"> ₽</span>
+                              :
+                              item.currency == "usd"
+                                ?
+                                <span class="card__cost_size"> $</span>
+                                :
+                                null
+                            }
+                          </span>
+                          :
+                          null
+                        }
+  
+                      </div>
+                      {
+                        item.duration != undefined
+                          ?
+                          <div class="card__container card__container_row">
+                            <div class="card__duration">
+                              <span>{item.duration}</span>
+                            </div>
+                            <div class="card__duration-text">
+                              <span class="card__duration-text_size">
+                                {
+                                  item.timeCount == "month"
+                                    ?
+                                    "Месяца"
+                                    :
+                                    "Дней"
+                                }
+                              </span>
+                              <span class="card__duration-text_color">Срок обучения</span>
+                            </div>
                           </div>
-                          <div class="card__duration-text">
-                            <span class="card__duration-text_size">
-                              {
-                                item.timeCount == "month"
-                                  ?
-                                  "Месяца"
-                                  :
-                                  "Дней"
-                              }
-                            </span>
-                            <span class="card__duration-text_color">Срок обучения</span>
-                          </div>
-                        </div>
-                        :
-                        null
-                    }
-
-                  </div>
-                  <a class="card__more card__more_indent_course">
-                    <span>
-                      Больше информации
-                    </span>
+                          :
+                          null
+                      }
+  
+                    </div>
+                    <a class="card__more card__more_indent_course">
+                      <span>
+                        Больше информации
+                      </span>
+                    </a>
+                    <div class="card__category">
+                      {
+                        item.category.map((item) => {
+                          return (
+                            <span>{item}</span>
+                          )
+                        })
+                      }
+                    </div>
+                    <div class="card__icon">
+                      {
+                        item.icon
+                          ?
+                          <img src={`/assets/upload/worldPress/${item.icon}`} />
+                          :
+                          null
+                      }
+                    </div>
                   </a>
-                  <div class="card__category">
-                    {
-                      item.category.map((item) => {
-                        return (
-                          <span>{item}</span>
-                        )
-                      })
-                    }
-                  </div>
-                  <div class="card__icon">
-                    {
-                      item.icon
-                        ?
-                        <img src={`/assets/upload/worldPress/${item.icon}`} />
-                        :
-                        null
-                    }
-                  </div>
-                </a>
-              </li>
-            )
+                </li>
+              )
+            }
           })
         }
         </div>

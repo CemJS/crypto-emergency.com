@@ -50,6 +50,8 @@ export const loader = function () {
     },
   ]
 
+  this.Static.categoryCurrent = ""
+
   this.Static.categoryStatus = "close"
   this.Static.costStatus = "close"
 
