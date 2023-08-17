@@ -1,5 +1,8 @@
 import { Cemjsx } from "cemjs-all"
 import logo from '@svg/university/logo.svg'
+import test from '@images/university/test.jpeg'
+import reviews from '@images/university/reviews.jpeg'
+import soon from '@images/university/soon.png'
 
 export const display = function () {
   return (
@@ -38,13 +41,21 @@ export const display = function () {
             <div class="university__test">
               <div class="university__test_container">
                 <div class="university__test_title">
-                Узнай, какая профессия наиболее подходит именно тебе, с помощью нашего теста на профориентацию
+                  Узнай, какая профессия наиболее подходит именно тебе, с помощью нашего теста на профориентацию
                 </div>
-                <img src="" />
+                <img class="university__test_background" src={test} alt="Фон." />
                 <div class="university__test_button">
-                  
+                  <span>Пройти бесплатно</span>
                 </div>
+                <img class="university__test_soon" src={soon} alt="Скоро." />
               </div>
+            </div>
+            <div class="university__reviews">
+              <div class="university__reviews_title">Отзывы</div>
+              <p class="university__reviews_soon">
+                <span>Отзывы ещё не оставлены</span>
+              </p>
+              <img src="" alt="Фон." />
             </div>
           </div>
         </div>
