@@ -45,7 +45,9 @@ export const start = async function () {
     textT = ""
     let tmp = this
     stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    recorder = new MediaRecorder(stream);
+    recorder = new MediaRecorder(stream, {
+        mimeType: "audio/webm",
+    });
     // }
     console.log('=8a7d7a=', "start")
     audioBlobs = []
