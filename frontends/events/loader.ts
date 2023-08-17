@@ -10,4 +10,6 @@ export const loader = function () {
     });
 
 
+    this.Static.catergorySelectorStatus = 'close'
+    this.Static.countrySelectorStatus = 'close'
 }

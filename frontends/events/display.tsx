@@ -26,20 +26,27 @@ export const display = function () {
   return (
     <div class="page events"
     onclick={(e) => {
-      if(this.Ref.country_area !== e.target &&  this.Ref.country_search_field !== e.target &&  this.Ref.countrySelector_arrow !== e.target){
+      if(!this.Ref.country_area.contains(e.target) && this.Static.countrySelectorStatus == 'open'){
+        console.log('=267306=','вне страны')
+        this.Static.countrySelectorStatus = 'close'
         this.Ref.countries_dropdown.classList.remove("visible")
-        // this.Ref.event_list.classList.remove("shadow")
+        this.Ref.event_list.classList.remove("shadow")
         this.Ref.countrySelector_arrow.classList.remove("rotate")
         this.Ref.magnifier.classList.remove("visible")
+      }else if(!this.Ref.category_area.contains(e.target) && this.Static.catergorySelectorStatus == 'close' && this.Static.countrySelectorStatus == 'open'){
+        console.log('=38d66b=','на страну вне категории')
       }
 
-      if(this.Ref.category_area !== e.target &&  this.Ref.country_search_field !== e.target){
 
+      // клик вне селектора
+      if(!this.Ref.category_area.contains(e.target) && this.Static.catergorySelectorStatus == 'open'){
+        console.log('=267306=','вне категории')
+        this.Static.catergorySelectorStatus = 'close'
         this.Ref.category_dropdown.classList.remove("visible")
         this.Ref.event_list.classList.remove("shadow")
         this.Ref.categorySelector_arrow.classList.remove("rotate")
       }
-      console.log(e.target)
+      
       
 
     }}
@@ -66,19 +73,26 @@ export const display = function () {
             <div  class="country_area">    
               <button class="filter_country" ref="country_area"
               onclick={(e) => {
-                this.Ref.countries_dropdown.classList.add("visible")
-                this.Ref.event_list.classList.add("shadow")
-                this.Ref.countrySelector_arrow.classList.add("rotate")
-                this.Ref.magnifier.classList.add("visible")
-
+                if(this.Static.countrySelectorStatus == 'close'){
+                  console.log('=1af3f3=','Кнопка страна открыть')
+                  this.Static.countrySelectorStatus = 'open'
+                  this.Ref.countries_dropdown.classList.add("visible")
+                  this.Ref.event_list.classList.add("shadow")
+                  this.Ref.countrySelector_arrow.classList.add("rotate")
+                  this.Ref.magnifier.classList.add("visible")
+                }else if(this.Static.countrySelectorStatus == 'open'){
+                  console.log('=5c9ad6=','Кнопка страна закрыть')
+                  this.Static.countrySelectorStatus = 'close'
+                  this.Ref.countries_dropdown.classList.remove("visible")
+                  this.Ref.event_list.classList.remove("shadow")
+                  this.Ref.countrySelector_arrow.classList.remove("rotate")
+                  this.Ref.magnifier.classList.remove("visible")
+                }
               }}
               >
                 <img src={seach_magnifier} alt="magnifier" ref='magnifier' class="filter_country_magnifier" />
                 <input type="search" name="input" size='9' placeholder="Страна" ref='country_search_field'/>
                 <img src={selector_arrow} alt="selector_arrow" ref="countrySelector_arrow"
-                onclick={(e) => {
-                  // this.Ref.countries_dropdown.classList.add("visible")
-                }}
                 />
               </button>
               <div class="countries_dropdown" ref="countries_dropdown"
@@ -101,12 +115,21 @@ export const display = function () {
 
 
 
-            <div class="category_area" >
+            <div class="category_area" ref='div_area'>
               <button class="filter_category"  ref="category_area"
               onclick={(e) => {
-                this.Ref.category_dropdown.classList.add("visible")
-                this.Ref.event_list.classList.add("shadow")
-                this.Ref.categorySelector_arrow.classList.add("rotate")
+                if(this.Static.catergorySelectorStatus == 'close'){
+                  this.Static.catergorySelectorStatus = 'open'
+                  this.Ref.category_dropdown.classList.add("visible")
+                  this.Ref.event_list.classList.add("shadow")
+                  this.Ref.categorySelector_arrow.classList.add("rotate")
+                }else if(this.Static.catergorySelectorStatus == 'open' ){
+                  this.Static.catergorySelectorStatus = 'close'
+                  this.Ref.category_dropdown.classList.remove("visible")
+                  this.Ref.event_list.classList.remove("shadow")
+                  this.Ref.categorySelector_arrow.classList.remove("rotate")
+                }
+                
               }}
               >
                 <span ref='choosen_category'>Категория</span>
