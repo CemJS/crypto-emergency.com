@@ -10,7 +10,7 @@ import Navigation from "./navigation"
 
 export const display = function () {
 
-  console.log('=83639e=', this.Variable)
+  console.log('=83639e=', this.Variable.DataUrl)
 
   return (
     <div class="page">
@@ -45,24 +45,24 @@ export const display = function () {
                 })
               }
             </div>
-            <div class="university__test">
-              <div class="university__test_container">
-                <div class="university__test_title">
+            <div class="university__section university-test">
+              <div class="university-test__container">
+                <div class="university-test__title">
                   Узнай, какая профессия наиболее подходит именно тебе, с помощью нашего теста на профориентацию
                 </div>
-                <img class="university__test_background" src={test} alt="Фон." />
-                <div class="university__test_button">
+                <img class="university-test__background" src={test} alt="Фон." />
+                <div class="university-test__button">
                   <span>Пройти бесплатно</span>
                 </div>
-                <img class="university__test_soon" src={soon} alt="Скоро." />
+                <img class="university-test__soon" src={soon} alt="Скоро." />
               </div>
             </div>
-            <div class="university__reviews">
-              <div class="university__reviews_title">Отзывы</div>
-              <p class="university__reviews_soon">
+            <div class="university__section university-reviews">
+              <div class="university-reviews__title">Отзывы</div>
+              <p class="university-reviews__soon">
                 <span>Отзывы ещё не оставлены</span>
               </p>
-              <img src="" alt="Фон." />
+              <img class="university-reviews__background" src={reviews} alt="Фон." />
             </div>
           </div>
         </div>
