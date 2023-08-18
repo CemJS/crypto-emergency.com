@@ -54,14 +54,12 @@ export const display = function () {
                   this.Ref.countries_dropdown.classList.add("visible")
                   this.Ref.event_list.classList.add("shadow")
                   this.Ref.countrySelector_arrow.classList.add("rotate")
-                  // this.Ref.magnifier.classList.add("visible")
                 }else if(this.Static.countrySelectorStatus == 'open' && !this.Ref.country_search_field.contains(e.target)){
-                  console.log('=5c9ad6=','Кнопка страна закрыть')
                   this.Static.countrySelectorStatus = 'close'
                   this.Ref.countries_dropdown.classList.remove("visible")
                   this.Ref.event_list.classList.remove("shadow")
                   this.Ref.countrySelector_arrow.classList.remove("rotate")
-                  // this.Ref.magnifier.classList.remove("visible")
+                  console.log('=3f4ec1=',this.Ref.country_search_field.value)
                 }
               }}
               >
@@ -75,9 +73,9 @@ export const display = function () {
                 <ul class="countries_dropdown_list" ref="countries_dropdown_list"
                 onclick={(e) => {
                   this.Ref.country_search_field.value = e.target.innerText
-                  
                   this.Static.ChoosenCountry = `${e.target.innerText}`
-                  console.log('=61ee1c=', this.Static.ChoosenCountry, this.Static.filtredRecords)
+                  this.Static.filtredRecords = this.Static.records.filter((record) => record.country == this.Static.ChoosenCountry )
+                  this.init()
                 }}
                 >
                    {
