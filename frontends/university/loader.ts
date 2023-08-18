@@ -52,10 +52,17 @@ export const loader = function () {
     },
   ]
 
-  this.Static.categoryCurrent = ""
+  this.Static.categoryCurrent = "Все"
+  this.Static.costCurrent = "Стоимость"
 
   this.Static.categoryStatus = "close"
   this.Static.costStatus = "close"
+
+  this.Static.makeFilter = {
+    cat: "",
+    cost: "",
+    search: ""
+  }
 
   this.fn("addEvent", {})
 

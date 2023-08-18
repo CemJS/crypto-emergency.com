@@ -1,11 +1,17 @@
 const fn = {
-  "addEvent": function ({ cat, cost }) {
+  "addEvent": function ({ cat, cost, search }) {
     let url = `UniverCourses?uuid=${this.Variable.myInfo.uuid}`
-    if (cat) {
+
+    if (cat && cost) {
       url += `&cat=${cat}`
-    }
-    if (cost) {
       url += `&cost=${cost}`
+    } else {
+      if (cat) {
+        url += `&cat=${cat}`
+      }
+      if (cost) {
+        url += `&cost=${cost}`
+      }
     }
     
     let eventSourceCourses
@@ -19,7 +25,6 @@ const fn = {
       let records = JSON.parse(data)
       this.Static.recordsCourses = records
       this.Static.listCourses = this.Static.recordsCourses
-      console.log('=1d7656=',this.Static.recordsCourses)
       this.init()
     });
   }

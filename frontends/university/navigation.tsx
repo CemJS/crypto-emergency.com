@@ -6,7 +6,7 @@ import Main from "./display/Main"
 
 
 export default function () {
-  console.log('=8ccc9d=', this.Variable.DataUrl)
+  // console.log('=8ccc9d=', this.Variable.DataUrl)
 
   if (this.Variable.DataUrl.length == 1) {
     return <Main />

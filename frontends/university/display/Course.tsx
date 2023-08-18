@@ -2,10 +2,11 @@ import { Cemjsx } from "cemjs-all"
 import logo from '@svg/university/logo.svg'
 import arrow from '@svg/university/arrow.svg'
 
+let insert
+
 export default function () {
 
-  console.log('=2e3086=', this.Static.listCourses)
-
+  // console.log('=2e3086=', this.Static.listCourses)
 
   return (
     <div class="courses">
@@ -24,7 +25,7 @@ export default function () {
         <div class="courses__filter">
           <div class="courses__filter_container">
             <div class="courses__select">
-              <div class="courses__select_default"
+              <div class="courses__select_default" ref="categoryButton"
                 onclick={(e) => {
                   if (this.Static.categoryStatus == 'close') {
                     this.Static.categoryStatus = 'open'
@@ -37,7 +38,7 @@ export default function () {
                   }
                 }}
               >
-                <span>Все</span>
+                <span>{this.Static.categoryCurrent}</span>
                 <img src={arrow} ref="categoryArrow" />
 
               </div>
@@ -49,10 +50,17 @@ export default function () {
                         return (
                           <li class="courses__category_item"
                             onclick={() => {
-                              this.fn("addEvent", { cat: item.name })
+                              if (item.name != "Все") {
+                                this.Static.makeFilter.cat = item.name
+                              } else {
+                                this.Static.makeFilter.cat = ""
+                              }
+                              insert = this.Static.makeFilter
+                              this.fn("addEvent", insert)
                               this.Static.categoryStatus = 'close'
                               this.Ref.category.classList.remove("visible")
                               this.Ref.categoryArrow.classList.remove("rotate")
+                              this.Static.categoryCurrent = item.name
                               this.init()
                             }}
                           >
@@ -66,7 +74,7 @@ export default function () {
               </div>
             </div>
             <div class="courses__select">
-              <div class="courses__select_default"
+              <div class="courses__select_default" ref="costButton"
                 onclick={(e) => {
                   if (this.Static.costStatus == 'close') {
                     this.Static.costStatus = 'open'
@@ -79,7 +87,7 @@ export default function () {
                   }
                 }}
               >
-                <span>Стоимость</span>
+                <span>{this.Static.costCurrent}</span>
                 <img src={arrow} ref="costArrow" />
               </div>
               <div class="courses__cost" ref="cost">
@@ -90,10 +98,13 @@ export default function () {
                         return (
                           <li class="courses__cost_item"
                             onclick={() => {
-                              this.fn("addEvent", { cost: item.name })
+                              this.Static.makeFilter.cost = item.name
+                              insert = this.Static.makeFilter
+                              this.fn("addEvent", insert)
                               this.Static.costStatus = 'close'
                               this.Ref.cost.classList.remove("visible")
                               this.Ref.costArrow.classList.remove("rotate")
+                              this.Static.costCurrent = item.cost
                               this.init()
                             }}
                           >
@@ -108,7 +119,15 @@ export default function () {
             </div>
           </div>
           <div class="courses__search">
-            <input type="text" placeholder="Поиск" />
+            <input type="text" placeholder="Поиск"
+              oninput={(e) => {
+                this.Static.listCourses = this.Static.recordsCourses.filter((el) => {
+                if (el.name.toLowerCase().includes(e.target.value.toLowerCase())) {
+                  return true
+                }})
+                this.init()
+              }}
+            />
           </div>
 
         </div>
@@ -173,7 +192,11 @@ export default function () {
                       }
 
                     </div>
-                    <a class="card__more card__more_indent_course">
+                    <a class="card__more card__more_indent_course"
+                      onclick={() => {
+                        
+                      }}
+                    >
                       <span>
                         Больше информации
                       </span>
