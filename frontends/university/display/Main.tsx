@@ -36,7 +36,8 @@ export default function () {
                   <a href="/university/course" class="university-category__item"
                     onclick={(e) => {
                       this.fn("addEvent", { cat: item.name })
-                      this.Static.page = "course"
+                      this.Static.categoryCurrent = item.name
+                      // this.Static.page = "course"
                       this.Fn.link(e)
                     }}
                   >

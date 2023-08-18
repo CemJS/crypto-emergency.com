@@ -2,12 +2,9 @@ import { Cemjsx } from "cemjs-all"
 import logo from '@svg/university/logo.svg'
 import arrow from '@svg/university/arrow.svg'
 
-let insert
 
 export default function () {
-
   // console.log('=2e3086=', this.Static.listCourses)
-
   return (
     <div class="courses">
       <div class="wrapper">
@@ -40,7 +37,6 @@ export default function () {
               >
                 <span>{this.Static.categoryCurrent}</span>
                 <img src={arrow} ref="categoryArrow" />
-
               </div>
               <div class="courses__category" ref="category">
                 {
@@ -55,8 +51,7 @@ export default function () {
                               } else {
                                 this.Static.makeFilter.cat = ""
                               }
-                              insert = this.Static.makeFilter
-                              this.fn("addEvent", insert)
+                              this.fn("addEvent", this.Static.makeFilter)
                               this.Static.categoryStatus = 'close'
                               this.Ref.category.classList.remove("visible")
                               this.Ref.categoryArrow.classList.remove("rotate")
@@ -99,8 +94,7 @@ export default function () {
                           <li class="courses__cost_item"
                             onclick={() => {
                               this.Static.makeFilter.cost = item.name
-                              insert = this.Static.makeFilter
-                              this.fn("addEvent", insert)
+                              this.fn("addEvent", this.Static.makeFilter)
                               this.Static.costStatus = 'close'
                               this.Ref.cost.classList.remove("visible")
                               this.Ref.costArrow.classList.remove("rotate")
@@ -121,10 +115,9 @@ export default function () {
           <div class="courses__search">
             <input type="text" placeholder="Поиск"
               oninput={(e) => {
-                this.Static.listCourses = this.Static.recordsCourses.filter((el) => {
-                if (el.name.toLowerCase().includes(e.target.value.toLowerCase())) {
-                  return true
-                }})
+                this.Static.listCourses = this.Static.recordsCourses.filter((el) =>
+                  el.name.toLowerCase().includes(e.target.value.toLowerCase())
+                )
                 this.init()
               }}
             />
@@ -134,7 +127,6 @@ export default function () {
         <div class="courses__cards">
           {
             this.Static.listCourses?.map((item) => {
-              // if (item.category.includes(this.Static.categoryCurrent)) {
               return (
                 <li class="card card_courses">
                   <a
@@ -192,9 +184,10 @@ export default function () {
                       }
 
                     </div>
-                    <a class="card__more card__more_indent_course"
-                      onclick={() => {
-                        
+                    <a href={`/university/course/${item._id}`} class="card__more card__more_indent_course"
+                      onclick={(e) => {
+                        this.Static.course = item
+                        this.Fn.link(e)
                       }}
                     >
                       <span>
@@ -222,7 +215,6 @@ export default function () {
                   </a>
                 </li>
               )
-              // }
             })
           }
         </div>

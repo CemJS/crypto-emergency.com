@@ -5,15 +5,16 @@ const fn = {
     if (cat && cost) {
       url += `&cat=${cat}`
       url += `&cost=${cost}`
-    } else {
-      if (cat) {
-        url += `&cat=${cat}`
-      }
-      if (cost) {
-        url += `&cost=${cost}`
-      }
     }
     
+    if (cat) {
+      url += `&cat=${cat}`
+    }
+    if (cost) {
+      url += `&cost=${cost}`
+    }
+
+
     let eventSourceCourses
 
     if (this._ListsEventSource.length) {

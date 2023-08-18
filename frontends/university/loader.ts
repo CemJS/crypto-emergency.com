@@ -1,7 +1,5 @@
 export const loader = function () {
 
-  // this.Static.
-
   this.Static.category = [
     {
       name: "Все",
@@ -52,6 +50,34 @@ export const loader = function () {
     },
   ]
 
+  this.Static.Accordeon = [
+    {
+      title: "Подойдёт ли мне эта профессия?",
+      description: "Для тех, кто сомневается, мы спроектировали бесплатную часть, которая поможет получить ответ на этот вопрос. Если вы убедитесь, что выбранная профессия вам не подходит, — это тоже положительный результат.",
+      hidden: true,
+    },
+    {
+      title: "Можно ли обучиться профессии за 5 месяцев?",
+      description: "Да, программа рассчитана на это. Но многое зависит и от вас — чтобы пройти курс до конца, нужно уделять учёбе достаточно времени: читать теорию, практиковаться в тренажёре и делать учебные проекты.",
+      hidden: true,
+    },
+    {
+      title: "Что делать, если я не справлюсь с нагрузкой?",
+      description: "Если вам понадобится сделать паузу в учёбе или уделить больше времени закреплению материала, напишите своему куратору.",
+      hidden: true,
+    },
+    {
+      title: "Смогу ли я найти работу после обучения?",
+      description: "Гарантий нет, но мы верим, что сможете. Мы составляли программу курса, отталкиваясь от современных требований работодателей и обязанностей, которые указаны в вакансиях продакт-менеджеров. Рынок требует, чтобы вы умели делать что-то на практике, а не просто обладали набором знаний. Поэтому мы научим вас не только владеть всеми необходимыми инструментами по управлению продуктами, но и применять их на практике.",
+      hidden: true,
+    },
+    {
+      title: "Если не понравится, я могу вернуть деньги?",
+      description: "Да, причём в любой момент. Если обучение в потоке уже началось, придётся оплатить прошедшие дни — но мы вернём деньги за оставшееся время обучения.",
+      hidden: true,
+    },
+  ];
+
   this.Static.categoryCurrent = "Все"
   this.Static.costCurrent = "Стоимость"
 
@@ -60,8 +86,7 @@ export const loader = function () {
 
   this.Static.makeFilter = {
     cat: "",
-    cost: "",
-    search: ""
+    cost: ""
   }
 
   this.fn("addEvent", {})
@@ -73,15 +98,5 @@ export const loader = function () {
     this.Static.records = records
     this.init()
   });
-
-  // let eventSourceCourses = this.eventSource(`UniverCourses?uuid=${this.Variable.myInfo.uuid}`)
-
-  // eventSourceCourses.addEventListener('message', ({ data }) => {
-  //   let records = JSON.parse(data)
-  //   this.Static.recordsCourses = records
-  //   this.Static.listCourses = this.Static.recordsCourses
-
-  //   this.init()
-  // });
 
 }
