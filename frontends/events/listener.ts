@@ -9,7 +9,7 @@ const listener = {
         // console.log('=e4aacc=', "keyup")
     },
     "clickAny": function (e) {
-        if(this.Ref.country_search_field.value == ''){
+        if(this.Ref.country_search_field.value == '' && this.Ref.choosen_category == 'Категория'){
             this.Static.filtredRecords = this.Static.records
           }
           this.init()

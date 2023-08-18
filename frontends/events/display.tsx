@@ -4,24 +4,6 @@ import map_point from "@svg/events/map_point.png"
 import seach_magnifier from "@svg/events/seach_magnifier.svg"
 import selector_arrow from "@svg/events/selector_arrow.svg"
 
-
-let likeDBArray = [
-  {
-    title: 'Some Title',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, nemo?',
-    country: 'Россия',
-    date: '12.12.2023'
-
-  },
-  {
-    title: 'Some Title',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, nemo?',
-    country: 'Беларусь',
-    date: '18.09.2023'
-
-  },
-]
-
 export const display = function () {
   
   return (
@@ -73,18 +55,17 @@ export const display = function () {
                 <ul class="countries_dropdown_list" ref="countries_dropdown_list"
                 onclick={(e) => {
                   this.Ref.country_search_field.value = e.target.innerText
-                  this.Static.ChoosenCountry = `${e.target.innerText}`
-                  this.Static.filtredRecords = this.Static.records.filter((record) => record.country == this.Static.ChoosenCountry )
+                  this.Static.filtredRecords = this.Static.records.filter((record) => record.country == `${e.target.innerText}` )
                   this.init()
                 }}
                 >
-                   {
+                  {
                     this.Static.uniqueCountriesArray.map((item, index) => {
                       return (
                         <li class="dropdown_list-item" ref='drop_item' data-value="rus">{item}</li>
                       )
-                })
-              }
+                    })
+                  }
                 </ul>
               </div>
             </div>
@@ -112,11 +93,18 @@ export const display = function () {
                 <ul class="category_dropdown_list" ref='category_dropdown_list'
                 onclick={(e) => {
                   this.Ref.choosen_category.innerText = e.target.innerText
+                  this.Static.filtredRecords = this.Static.records.filter((record) => record.category == `${e.target.innerText}` )
+                  this.init()
+                  console.log('=75dbcb=',this.Static.filtredRecords)
                 }}
                 >
-                  <li class="dropdown_list-item" data-value="">IT</li>
-                  <li class="dropdown_list-item" data-value="">Crypto</li>
-                  <li class="dropdown_list-item" data-value="">что-то еще</li>
+                 {
+                    this.Static.uniqueCategoriesArray.map((item, index) => {
+                      return (
+                        <li class="dropdown_list-item" data-value="">{item}</li>
+                      )
+                    })
+                  }
                 </ul>
               </div>
             </div>
@@ -130,7 +118,15 @@ export const display = function () {
               }}
               >
                 <img src={seach_magnifier} alt="magnifier" />
-                <input type="search" name="input" ref='search_field' placeholder="Поиск"/>
+                <input type="search" name="input" ref='search_field' placeholder="Поиск"
+                 oninput={(e) => {
+                  this.Static.filtredRecords = this.Static.records.filter((item) => {
+                  if (item.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+                    return true
+                  }})
+                  this.init()
+                }}
+                />
               </button>
             </div>
           </div>
