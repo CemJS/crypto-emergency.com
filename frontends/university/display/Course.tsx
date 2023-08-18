@@ -3,9 +3,8 @@ import logo from '@svg/university/logo.svg'
 import arrow from '@svg/university/arrow.svg'
 
 export default function () {
-  let listCourses = this.Static.recordsCourses
 
-  console.log('=2e3086=', listCourses)
+  console.log('=2e3086=', this.Static.listCourses)
 
 
   return (
@@ -50,8 +49,10 @@ export default function () {
                         return (
                           <li class="courses__category_item"
                             onclick={() => {
-                              listCourses = this.Static.recordsCourses.filter((el) => el.category.includes(item.name))
-                              console.log('=e364b3=', listCourses)
+                              this.fn("addEvent", { cat: item.name })
+                              this.Static.categoryStatus = 'close'
+                              this.Ref.category.classList.remove("visible")
+                              this.Ref.categoryArrow.classList.remove("rotate")
                               this.init()
                             }}
                           >
@@ -87,7 +88,15 @@ export default function () {
                     {
                       this.Static.costCourses.map((item) => {
                         return (
-                          <li class="courses__cost_item">
+                          <li class="courses__cost_item"
+                            onclick={() => {
+                              this.fn("addEvent", { cost: item.name })
+                              this.Static.costStatus = 'close'
+                              this.Ref.cost.classList.remove("visible")
+                              this.Ref.costArrow.classList.remove("rotate")
+                              this.init()
+                            }}
+                          >
                             {item.cost}
                           </li>
                         )
@@ -104,9 +113,9 @@ export default function () {
 
         </div>
         <div class="courses__cards">
-        {
-          listCourses?.map((item) => {
-            if (item.category.includes(this.Static.categoryCurrent)) {
+          {
+            this.Static.listCourses?.map((item) => {
+              // if (item.category.includes(this.Static.categoryCurrent)) {
               return (
                 <li class="card card_courses">
                   <a
@@ -137,7 +146,7 @@ export default function () {
                           :
                           null
                         }
-  
+
                       </div>
                       {
                         item.duration != undefined
@@ -162,7 +171,7 @@ export default function () {
                           :
                           null
                       }
-  
+
                     </div>
                     <a class="card__more card__more_indent_course">
                       <span>
@@ -190,11 +199,11 @@ export default function () {
                   </a>
                 </li>
               )
-            }
-          })
-        }
+              // }
+            })
+          }
         </div>
-        
+
       </div>
     </div>
   )

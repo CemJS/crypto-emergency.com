@@ -1,5 +1,7 @@
 export const loader = function () {
 
+  // this.Static.
+
   this.Static.category = [
     {
       name: "Все",
@@ -55,6 +57,8 @@ export const loader = function () {
   this.Static.categoryStatus = "close"
   this.Static.costStatus = "close"
 
+  this.fn("addEvent", {})
+
   let eventSource = this.eventSource(`UniverCategories?uuid=${this.Variable.myInfo.uuid}`)
 
   eventSource.addEventListener('message', ({ data }) => {
@@ -63,11 +67,14 @@ export const loader = function () {
     this.init()
   });
 
-  let eventSourceCourses = this.eventSource(`UniverCourses?uuid=${this.Variable.myInfo.uuid}`)
+  // let eventSourceCourses = this.eventSource(`UniverCourses?uuid=${this.Variable.myInfo.uuid}`)
 
-  eventSourceCourses.addEventListener('message', ({ data }) => {
-    let records = JSON.parse(data)
-    this.Static.recordsCourses = records
-    this.init()
-  });
+  // eventSourceCourses.addEventListener('message', ({ data }) => {
+  //   let records = JSON.parse(data)
+  //   this.Static.recordsCourses = records
+  //   this.Static.listCourses = this.Static.recordsCourses
+
+  //   this.init()
+  // });
+
 }
