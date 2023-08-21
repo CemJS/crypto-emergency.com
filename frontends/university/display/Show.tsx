@@ -17,14 +17,13 @@ import vk from '@svg/mainSettings/vk.svg'
 let item;
 
 export default function () {
-  if (this.Static.course) {
-    item = this.Static.course
-  } else {
-    this.Static.makeFilter.id = this.Variable.DataUrl[2]
-    this.fn("addEvent", this.Static.makeFilter)
-    item = this.Static.course
-  }
 
+  // console.log('=f7e4d3=', this.Static.recordsCourses[0])
+
+  if (!this.Static.recordsCourses || !this.Static.recordsCourses.length) {
+    return <div></div>
+  }
+  item = this.Static.recordsCourses[0]
   console.log('=f7e4d3=', item)
 
   return (
@@ -175,7 +174,7 @@ export default function () {
                         <div class="course-footer__social">
                           {
                             item.social?.map((item) => {
-                              console.log('=cf3e42=',item)
+                              // console.log('=cf3e42=', item)
                               return (
                                 <div class="course-footer__social_item">
                                   <a

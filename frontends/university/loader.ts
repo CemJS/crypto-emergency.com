@@ -90,7 +90,12 @@ export const loader = function () {
     id: ""
   }
 
-  this.fn("addEvent", {})
+  if (this.Variable.DataUrl[2]) {
+    this.Static.makeFilter.id = this.Variable.DataUrl[2]
+  }
+  this.fn("addEvent", this.Static.makeFilter)
+
+  // this.fn("addEvent", {})
 
   let eventSource = this.eventSource(`UniverCategories?uuid=${this.Variable.myInfo.uuid}`)
 

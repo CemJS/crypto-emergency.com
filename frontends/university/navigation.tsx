@@ -14,12 +14,12 @@ export default function () {
 
   if (this.Variable.DataUrl[1] == "course") {
     return <Course />
-  } 
+  }
 
   if (this.Variable.DataUrl.length == 1) {
     return <Main />
   }
 
-  
+
 }
 

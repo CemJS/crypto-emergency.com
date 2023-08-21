@@ -6,7 +6,7 @@ const fn = {
       url += `&cat=${cat}`
       url += `&cost=${cost}`
     }
-    
+
     if (cat) {
       url += `&cat=${cat}`
     }
@@ -14,7 +14,7 @@ const fn = {
       url += `&cost=${cost}`
     }
 
-    if(id) {
+    if (id) {
       url += `&id=${id}`
     }
 
@@ -25,9 +25,13 @@ const fn = {
     } else {
       eventSourceCourses = this.eventSource(url)
     }
+
     eventSourceCourses.addEventListener('message', ({ data }) => {
       let records = JSON.parse(data)
+      console.log('=721582=', records)
+
       this.Static.recordsCourses = records
+      this.Static.listCourses = this.Static.recordsCourses
       this.init()
     });
   }
