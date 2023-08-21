@@ -1,10 +1,32 @@
 import { Cemjsx } from "cemjs-all"
 import reviews from '@images/university/reviews.jpeg'
 import arrow from '@svg/about/select_arrow.svg'
+import telegram from '@svg/mainSettings/telegram.svg'
+import youtube from '@svg/mainSettings/youtube.svg'
+import twitter from '@svg/mainSettings/twitter.svg'
+import discord from '@svg/mainSettings/discord.svg'
+import github from '@svg/mainSettings/github.svg'
+import tiktok from '@svg/mainSettings/tiktok.svg'
+import linkedin from '@svg/mainSettings/linkedin.svg'
+import emergency from '@svg/mainSettings/emergency.svg'
+import facebook from '@svg/mainSettings/facebook.svg'
+import instagram from '@svg/mainSettings/instagram.svg'
+import twitch from '@svg/mainSettings/twitch.svg'
+import vk from '@svg/mainSettings/vk.svg'
+
+let item;
 
 export default function () {
-  console.log('=f7e4d3=', this.Static.data)
-  let item = this.Static.course
+  if (this.Static.course) {
+    item = this.Static.course
+  } else {
+    this.Static.makeFilter.id = this.Variable.DataUrl[2]
+    this.fn("addEvent", this.Static.makeFilter)
+    item = this.Static.course
+  }
+
+  console.log('=f7e4d3=', item)
+
   return (
     <div class="course">
       <div class="wrapper">
@@ -153,6 +175,7 @@ export default function () {
                         <div class="course-footer__social">
                           {
                             item.social?.map((item) => {
+                              console.log('=cf3e42=',item)
                               return (
                                 <div class="course-footer__social_item">
                                   <a
@@ -160,9 +183,9 @@ export default function () {
                                     target="_blank"
                                     class="course-footer__social_link"
                                   >
-                                    {/* <img
-                                      src={svg[`${item.channel}-icon`]}
-                                    /> */}
+                                    <img
+                                      src={`/assets/svg/mainSettings/${item.channel}.svg`}
+                                    />
                                   </a>
                                 </div>
                               )

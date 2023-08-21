@@ -86,7 +86,8 @@ export const loader = function () {
 
   this.Static.makeFilter = {
     cat: "",
-    cost: ""
+    cost: "",
+    id: ""
   }
 
   this.fn("addEvent", {})
