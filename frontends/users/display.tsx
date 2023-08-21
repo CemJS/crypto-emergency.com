@@ -13,6 +13,34 @@ export const display = function () {
             <h1>Пользователи</h1>
             <div class="users__filter">
 
+              <div class="users__search">
+                <input type="text" placeholder="Найти друзей"
+                  oninput={(e) => {
+                    this.Static.makeFilter.nickname = e.target.value
+                    console.log('=43f505=',this.Static.makeFilter)
+                    this.fn("addEvent", this.Static.makeFilter)
+                  }}
+                />
+              </div>
+
+              <input type="checkbox"
+                onclick={(e) => {
+                  console.log('=8e1898=', e.target.checked)
+                }}
+              />
+
+              <input type="checkbox"
+                onclick={(e) => {
+                  console.log('=8e1898=', e.target.checked)
+                }}
+              />
+
+              <input type="checkbox"
+                onclick={(e) => {
+                  console.log('=8e1898=', e.target.checked)
+                }}
+              />
+
             </div>
             <div class="users__list">
               {
