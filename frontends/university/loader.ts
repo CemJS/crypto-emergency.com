@@ -104,5 +104,4 @@ export const loader = function () {
     this.Static.records = records
     this.init()
   });
-
 }

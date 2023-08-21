@@ -1,30 +1,17 @@
 import { Cemjsx } from "cemjs-all"
 import reviews from '@images/university/reviews.jpeg'
 import arrow from '@svg/about/select_arrow.svg'
-import telegram from '@svg/mainSettings/telegram.svg'
-import youtube from '@svg/mainSettings/youtube.svg'
-import twitter from '@svg/mainSettings/twitter.svg'
-import discord from '@svg/mainSettings/discord.svg'
-import github from '@svg/mainSettings/github.svg'
-import tiktok from '@svg/mainSettings/tiktok.svg'
-import linkedin from '@svg/mainSettings/linkedin.svg'
-import emergency from '@svg/mainSettings/emergency.svg'
-import facebook from '@svg/mainSettings/facebook.svg'
-import instagram from '@svg/mainSettings/instagram.svg'
-import twitch from '@svg/mainSettings/twitch.svg'
-import vk from '@svg/mainSettings/vk.svg'
 
 let item;
 
 export default function () {
 
-  // console.log('=f7e4d3=', this.Static.recordsCourses[0])
 
   if (!this.Static.recordsCourses || !this.Static.recordsCourses.length) {
     return <div></div>
+  } else {
+    item = this.Static.recordsCourses[0]
   }
-  item = this.Static.recordsCourses[0]
-  console.log('=f7e4d3=', item)
 
   return (
     <div class="course">
@@ -32,7 +19,7 @@ export default function () {
         <div class="course__container">
           <div class="course-header">
             <img class="course-header__background"
-              src={`/assets/upload/worldPress/${item.cover}`}
+              src={`/assets/upload/worldPress/${item?.cover}`}
             />
             <div class="course-header__container">
               <div class="course-header__title">

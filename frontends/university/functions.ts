@@ -28,7 +28,6 @@ const fn = {
 
     eventSourceCourses.addEventListener('message', ({ data }) => {
       let records = JSON.parse(data)
-      console.log('=721582=', records)
 
       this.Static.recordsCourses = records
       this.Static.listCourses = this.Static.recordsCourses
