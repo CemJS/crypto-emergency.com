@@ -10,8 +10,28 @@
         line-height: normal;
     }
 }
-.events_section{
+.banners_section{
+    .slider-container{
+        display: flex;
+        height: 140px;
+        gap: 30px;
+        div{
+            height: 100%;
+            min-width: 288px;
+        }    
+        div img{
+            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
 
+            vertical-align: middle;
+            border-radius: 5px;
+        }
+    }
+    
+}
+.events_section{
+    margin-top: 60px;
     &_filters{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 2fr;
@@ -151,6 +171,19 @@
             padding: 16px;
             border-radius: 20px;
             min-height: 189px;
+            position: relative;
+
+            .category-events{
+                position: absolute;
+                top: 13px;
+                right: 15px;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 14px;
+                background: var(--fioletBlue_gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
             .item_header{
                 display: flex;
@@ -170,6 +203,7 @@
                         font-style: normal;
                         font-weight: 700;
                         line-height: 120%;
+                        cursor: pointer;
                     }
                     p{
                         color: #FFF;
@@ -216,6 +250,7 @@
                     font-style: normal;
                     font-weight: 600;
                     line-height: 120%;
+                    cursor: pointer;
                 }
             }
         }
@@ -240,10 +275,11 @@
     transition: all 0.3s ;
 }
 
+   
 
 
 
-@media(max-width:905px){   
+@media(max-width:933px){   
     .events_section{ 
         &_filters{
             gap: 15px;
@@ -326,13 +362,13 @@
                     .location{
                         grid-area: location;
                         span{
-                            font-size: 20px
+                            font-size: 15px
                         }
                     }
                     .date{
                         grid-area: date;   
                         span{
-                            font-size: 20px
+                            font-size: 15px
                         }
                     }
                     .buy_btn{
@@ -380,6 +416,28 @@
 
 }
 
+@media(max-width:585px){
+    .events_section{ 
+        &_list{
+
+            &_item{ 
+                .item_footer{
+                    gap: 15px;
+                    .location{
+                        span{
+                            font-size: 13px
+                        }
+                    }
+                    .date{  
+                        span{
+                            font-size: 13px
+                        }
+                    }
+                }
+            }   
+        }
+    }
+}
 
 
 @media(max-width:545px){  

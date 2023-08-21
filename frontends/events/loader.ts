@@ -1,16 +1,10 @@
 export const loader = function () {
+  this.fn("addEvent", {})
 
-    let eventSource = this.eventSource(`Events?uuid=${this.Variable.myInfo.uuid}`)
-
-    eventSource.addEventListener('message', ({ data }) => {
-        let records = JSON.parse(data)
-        // console.log('=641d61=', records)
-        this.Static.records = records
-        // console.log('=typeof=', this.Static.records)
-        this.init()
-    });
-
-
+  this.Static.makeFilter = {
+    cat: "",
+    country: ""
+  }
 
     class myClass {
       arr: string[];
@@ -40,14 +34,15 @@ export const loader = function () {
 
     }
     this.Static.classObject = new myClass(this.Static.records)
+    this.Static.uniqueCountries =  this.Static.classObject.getUniqueArrayByField('country')
 
-    
 
     //   Переменные состояния выпадающих списков
     this.Static.catergorySelectorStatus = 'close'
     this.Static.countrySelectorStatus = 'close'
 
-    // выбранное значение страны
+    // Переменные для поисков
+    this.Static.seachCountries = this.Static.uniqueCountries
     this.Static.filtredRecords = this.Static.records
     
     

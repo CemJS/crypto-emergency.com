@@ -56,9 +56,7 @@ const listener = {
             this.Ref.categorySelector_arrow.classList.remove("rotate")
             
         } 
-    }
-
-    
+    },
 }
 
 export { listener }

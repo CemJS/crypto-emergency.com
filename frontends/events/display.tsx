@@ -3,6 +3,7 @@ import calendar from "@svg/events/calendar.png"
 import map_point from "@svg/events/map_point.png"
 import seach_magnifier from "@svg/events/seach_magnifier.svg"
 import selector_arrow from "@svg/events/selector_arrow.svg"
+import test from "@images/events/test.jpg"
 
 export const display = function () {
   
@@ -12,10 +13,20 @@ export const display = function () {
       <div class="wrapper">
         <h1>Мероприятия</h1>
         <section class="banners_section">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div class = 'slider-container'>
+            <div>
+              <img src={test} alt=""/>
+            </div>
+            <div><img src={test} alt=""/></div>
+            <div><img src={test} alt=""/></div>
+            <div><img src={test} alt=""/></div>
+            <div><img src={test} alt=""/></div>
+            <div><img src={test} alt=""/></div>
+            <div><img src={test} alt=""/></div>
+            <div><img src={test} alt=""/></div>
+            <div><img src={test} alt=""/></div>
+          </div>
+          
         </section>
         <section class="events_section">
           <div class="events_section_filters">
@@ -47,11 +58,14 @@ export const display = function () {
                 {/* <img src={seach_magnifier} alt="magnifier" ref='magnifier' class="filter_country_magnifier" /> */}
                 <input type="search" name="input" placeholder="Страна" ref='country_search_field'
                 oninput={(e) => {
-                  console.log('=f81bac=',this.Static.classObject.getUniqueArrayByField('country'))
-                  this.Static.filtredRecords = this.Static.records.filter((item) => {
-                  if (item.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+                  this.Static.seachCountries = this.Static.uniqueCountries.filter((item) => {
+                  if (item.toLowerCase().includes(e.target.value.toLowerCase())) {
+                    this.Ref.countries_dropdown.classList.add("visible")
                     return true
-                  }})
+                  }else{
+                    this.Ref.countries_dropdown.classList.remove("visible")
+                  }
+                })
                   this.init()
                 }}
                 />
@@ -62,18 +76,21 @@ export const display = function () {
               >
                 <ul class="countries_dropdown_list" ref="countries_dropdown_list"
                 onclick={(e) => {
-                  this.Ref.country_search_field.value = e.target.innerText
-                  if(e.target.innerText == 'Все страны'){
-                    this.Static.filtredRecords = this.Static.records
-                  }else {
-                    this.Static.filtredRecords = this.Static.records.filter((record) => record.country == `${e.target.innerText}` )
+                  if (e.target.innerText == "Все страны") {
+                    this.Static.makeFilter.country = ""
+                    this.Ref.country_search_field.value = ""
+                  } else {
+                    this.Ref.country_search_field.value = e.target.innerText
+                    this.Static.makeFilter.country = e.target.innerText
                   }
+                  
+                  this.fn("addEvent", this.Static.makeFilter)
                   
                   this.init()
                 }}
                 >
                   {
-                    this.Static.classObject.getUniqueArrayByField('country').map((item, index) => {
+                   this.Static.seachCountries.map((item, index) => {
                       return (
                         <li class="dropdown_list-item" ref='drop_item' data-value="rus">{item}</li>
                       )
@@ -105,12 +122,15 @@ export const display = function () {
               <div class="category_dropdown" ref="category_dropdown">
                 <ul class="category_dropdown_list" ref='category_dropdown_list'
                 onclick={(e) => {
-                  this.Ref.choosen_category.innerText = e.target.innerText
-                  if(e.target.innerText == 'Все категории'){
-                    this.Static.filtredRecords = this.Static.records
-                  }else {
-                    this.Static.filtredRecords = this.Static.records.filter((record) => record.category == `${e.target.innerText}` )
+                  if (e.target.innerText == "Все категории") {
+                    this.Static.makeFilter.cat = ""
+                    this.Ref.choosen_category.innerText = 'Категория'
+                  } else {
+                    this.Ref.choosen_category.innerText = e.target.innerText
+                    this.Static.makeFilter.cat = e.target.innerText
                   }
+                  
+                  this.fn("addEvent", this.Static.makeFilter)
 
                   
                   this.init()
@@ -152,10 +172,13 @@ export const display = function () {
             
           <div class="events_section_list" ref="event_list">
           {
-            this.Static.filtredRecords.map((item, index)=>{
+            this.Static.records.map((item, index)=>{
               
               return(
                 <div class="events_section_list_item">
+                  <div class='category-events'>
+                    <span>{item.category}</span>
+                  </div>
               <div class="item_header">
                 <div class="picture"><img src="" alt="img" /></div>
                 <div class="content">
