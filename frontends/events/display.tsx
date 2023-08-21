@@ -41,12 +41,20 @@ export const display = function () {
                   this.Ref.countries_dropdown.classList.remove("visible")
                   this.Ref.event_list.classList.remove("shadow")
                   this.Ref.countrySelector_arrow.classList.remove("rotate")
-                  console.log('=3f4ec1=',this.Ref.country_search_field.value)
                 }
               }}
               >
                 {/* <img src={seach_magnifier} alt="magnifier" ref='magnifier' class="filter_country_magnifier" /> */}
-                <input type="search" name="input" placeholder="Страна" ref='country_search_field'/>
+                <input type="search" name="input" placeholder="Страна" ref='country_search_field'
+                oninput={(e) => {
+                  console.log('=f81bac=',this.Static.classObject.getUniqueArrayByField('country'))
+                  this.Static.filtredRecords = this.Static.records.filter((item) => {
+                  if (item.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+                    return true
+                  }})
+                  this.init()
+                }}
+                />
                 <img src={selector_arrow} alt="selector_arrow" ref="countrySelector_arrow"
                 />
               </button>
@@ -55,12 +63,17 @@ export const display = function () {
                 <ul class="countries_dropdown_list" ref="countries_dropdown_list"
                 onclick={(e) => {
                   this.Ref.country_search_field.value = e.target.innerText
-                  this.Static.filtredRecords = this.Static.records.filter((record) => record.country == `${e.target.innerText}` )
+                  if(e.target.innerText == 'Все страны'){
+                    this.Static.filtredRecords = this.Static.records
+                  }else {
+                    this.Static.filtredRecords = this.Static.records.filter((record) => record.country == `${e.target.innerText}` )
+                  }
+                  
                   this.init()
                 }}
                 >
                   {
-                    this.Static.uniqueCountriesArray.map((item, index) => {
+                    this.Static.classObject.getUniqueArrayByField('country').map((item, index) => {
                       return (
                         <li class="dropdown_list-item" ref='drop_item' data-value="rus">{item}</li>
                       )
@@ -93,13 +106,19 @@ export const display = function () {
                 <ul class="category_dropdown_list" ref='category_dropdown_list'
                 onclick={(e) => {
                   this.Ref.choosen_category.innerText = e.target.innerText
-                  this.Static.filtredRecords = this.Static.records.filter((record) => record.category == `${e.target.innerText}` )
+                  if(e.target.innerText == 'Все категории'){
+                    this.Static.filtredRecords = this.Static.records
+                  }else {
+                    this.Static.filtredRecords = this.Static.records.filter((record) => record.category == `${e.target.innerText}` )
+                  }
+
+                  
                   this.init()
                   console.log('=75dbcb=',this.Static.filtredRecords)
                 }}
                 >
                  {
-                    this.Static.uniqueCategoriesArray.map((item, index) => {
+                    this.Static.classObject.getUniqueArrayByField('category').map((item, index) => {
                       return (
                         <li class="dropdown_list-item" data-value="">{item}</li>
                       )

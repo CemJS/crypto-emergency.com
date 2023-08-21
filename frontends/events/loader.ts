@@ -6,34 +6,42 @@ export const loader = function () {
         let records = JSON.parse(data)
         // console.log('=641d61=', records)
         this.Static.records = records
+        // console.log('=typeof=', this.Static.records)
         this.init()
     });
 
-    // Отбор уникальных значений по указаному полю в массиве  для фильтра 
-    function getUniqueArray(arr, field) {
-      const uniqueArray = new Set();
-      arr.forEach(item => {
-        uniqueArray.add(item[field]);
-      });
-      return Array.from(uniqueArray);
+
+
+    class myClass {
+      arr: string[];
+      field: string
+      item: string
+     
+      constructor(recordsArray: string[]) {
+        this.arr = recordsArray;
+      }
+
+      getUniqueArrayByField(field: string) { 
+        const uniqueSet = new Set(); 
+        
+        this.arr.forEach(item => {
+          uniqueSet.add(item[field]);
+        });
+        const uniqueArray =  Array.from(uniqueSet)
+
+        if(field == 'country'){
+          uniqueArray.unshift('Все страны')
+        }else if(field == 'category'){
+          uniqueArray.unshift('Все категории')
+        }
+        
+        return uniqueArray
+       }
+
     }
+    this.Static.classObject = new myClass(this.Static.records)
 
-    // function selectedFilters(){
-    //   this.Static.selectedCountry = ""
-    //   this.Static.selectedCategory = this.Ref.choosen_category.innerText
-
-    //   this.Static.filtredArrayByCountryAndCategory = 'Это будет вызов функции-фильтра'
-    // }
-
-
-    // Отбор уникальных стран для фильтра 
-    this.Static.uniqueCountriesArray = getUniqueArray(this.Static.records, 'country')
-    console.log('=7d4f98=',this.Static.uniqueCountriesArray)
-    // Отбор уникальных категорий для фильтра
-    this.Static.uniqueCategoriesArray = getUniqueArray(this.Static.records, 'category')
-    console.log('=7d4f98=',this.Static.uniqueCategoriesArray)
-
-
+    
 
     //   Переменные состояния выпадающих списков
     this.Static.catergorySelectorStatus = 'close'
