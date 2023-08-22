@@ -5,7 +5,8 @@ export const loader = function () {
     cat: "",
     country: ""
   }
-
+  this.Static.currentSlide = 0
+  this.Static.maxSlidesPerShift = 4
     class myClass {
       arr: string[];
       field: string

@@ -17,8 +17,6 @@ export const loader = function () {
 
 
 
-  this.Static.startPosition = 0
-
 
 
 

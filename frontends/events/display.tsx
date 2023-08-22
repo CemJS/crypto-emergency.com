@@ -4,7 +4,9 @@ import map_point from "@svg/events/map_point.png"
 import seach_magnifier from "@svg/events/seach_magnifier.svg"
 import selector_arrow from "@svg/events/selector_arrow.svg"
 import test from "@images/events/test.jpg"
-
+import test2 from "@images/events/test2.png"
+import back from '@svg/icon/prev.svg'
+import next from '@svg/icon/next.svg'
 export const display = function () {
   
   return (
@@ -12,22 +14,90 @@ export const display = function () {
     >
       <div class="wrapper">
         <h1>Мероприятия</h1>
-        <section class="banners_section">
-          <div class = 'slider-container'>
-            <div>
-              <img src={test} alt=""/>
+        {/* next */}
+        <div class = 'buttonsEvents'>
+          <button ref='next' class ="nextBtnEvents"
+            onclick={() => {
+              let gap;
+              let slidesNum = this.Ref.slider_container.children.length 
+              
+              
+              // console.log('=sliderWidth=',sliderWidth)
+              if(this.Ref.banners_section.offsetWidth <= 545){
+                this.Static.maxSlidesPerShift = 1;
+                gap = 19
+
+              }else if(this.Ref.banners_section.offsetWidth <= 800){
+                this.Static.maxSlidesPerShift = 2;
+                gap = 19
+              }else if(this.Ref.banners_section.offsetWidth <= 960){
+                this.Static.maxSlidesPerShift = 3;
+                gap = 16
+              }else{
+                this.Static.maxSlidesPerShift = 4;
+                gap = 16
+              }
+              let itemWidth = this.Ref.slide.offsetWidth + gap
+              if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
+                this.Static.currentSlide++;
+                this.Ref.slider_container.scrollLeft += this.Static.currentSlide * itemWidth;
+                console.log(this.Ref.banners_section.offsetWidth)
+                console.log('=itemWidth=',itemWidth)
+                // console.log('=banners_section=',this.Ref.banners_section.offsetWidth)
+                
+            } 
+
+            this.Ref.slider_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+            console.log('=Ref.slider_container.style.style=',this.Ref.slider_container.style.gap) 
+            }}
+            >
+              <img src={next} alt="" />
+          </button>
+          <button ref='back' class ="prevBtnEvents"
+            onclick={() => {
+              let gap;
+              
+              if(this.Ref.banners_section.offsetWidth <= 545){
+                gap = 19
+              }else if(this.Ref.banners_section.offsetWidth <= 768){
+                gap = 19
+              }else if(this.Ref.banners_section.offsetWidth <= 933){
+                this.Static.maxSlidesPerShift = 3;
+                gap = 16
+              }else{
+                this.Static.maxSlidesPerShift = 4;
+                gap = 16
+              }
+              
+              if (this.Static.currentSlide > 0) {
+                this.Static.currentSlide--;
+                console.log(this.Static.currentSlide)
+            }
+            let itemWidth = this.Ref.slide.offsetWidth + gap
+            this.Ref.slider_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+            }}
+            >
+              <img src={back} alt="" />
+          </button>
+        
+          <section class="banners_section" ref ='banners_section'>
+            <div class = 'slider-container' ref='slider_container'>
+              <div>
+                <img src={test} alt=""/>
+              </div>
+              <div ref = 'slide'><img src={test2} alt=""/></div>
+              <div ref = 'slide'><img src={test} alt=""/></div>
+              <div ref = 'slide'><img src={test2} alt=""/></div>
+              <div ref = 'slide'><img src={test} alt=""/></div>
+              <div ref = 'slide'><img src={test} alt=""/></div>
+              <div ref = 'slide'><img src={test} alt=""/></div>
+              <div ref = 'slide'><img src={test} alt=""/></div>
+              <div ref = 'slide'><img src={test2} alt=""/></div>
+              
             </div>
-            <div><img src={test} alt=""/></div>
-            <div><img src={test} alt=""/></div>
-            <div><img src={test} alt=""/></div>
-            <div><img src={test} alt=""/></div>
-            <div><img src={test} alt=""/></div>
-            <div><img src={test} alt=""/></div>
-            <div><img src={test} alt=""/></div>
-            <div><img src={test} alt=""/></div>
-          </div>
-          
-        </section>
+            
+          </section>
+        </div>
         <section class="events_section">
           <div class="events_section_filters">
 
@@ -176,11 +246,22 @@ export const display = function () {
               
               return(
                 <div class="events_section_list_item">
-                  <div class='category-events'>
-                    <span>{item.category}</span>
-                  </div>
+                  
               <div class="item_header">
-                <div class="picture"><img src="" alt="img" /></div>
+                <div class="picture">
+                  <div class='category-events'>
+                    {item.category}
+                  </div>
+                  <img src={test} alt="img"/>
+                  <div class="location">
+                    <img src={map_point} alt="L" />
+                    <span>{item.country}</span>
+                  </div>
+                  <div class='date'>
+                    <img src={calendar} alt="C" />
+                    <span>{this.Services.functions.dateFormat(item.date, 'event')}</span>
+                  </div>
+                </div>
                 <div class="content">
                   <h4>{item.title}</h4>
                   <p>{item.description}</p>
@@ -191,11 +272,12 @@ export const display = function () {
                   <img src={map_point} alt="L" />
                   <span>{item.country}</span>
                 </div>
-                <button class='buy_btn'>Купить билет</button>
                 <div class='date'>
                   <img src={calendar} alt="C" />
                   <span>{this.Services.functions.dateFormat(item.date, 'event')}</span>
                 </div>
+                <button class='buy_btn'>Купить билет</button>
+                
               </div>
             </div>
             
