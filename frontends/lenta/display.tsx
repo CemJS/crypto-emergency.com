@@ -87,7 +87,7 @@ export const display = function () {
                           }
                         />
                         <img class="avatar__frame"
-                          src={item.author.frame?.name
+                          src={item.author.frame?.name  && item.author.frame?.name != "default.svg"
                             ?
                             `/assets/images/lenta/${item.author.frame?.name}`
                             :

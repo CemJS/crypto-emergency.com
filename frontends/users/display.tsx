@@ -17,29 +17,42 @@ export const display = function () {
                 <input type="text" placeholder="Найти друзей"
                   oninput={(e) => {
                     this.Static.makeFilter.nickname = e.target.value
-                    console.log('=43f505=',this.Static.makeFilter)
                     this.fn("addEvent", this.Static.makeFilter)
                   }}
                 />
               </div>
 
-              <input type="checkbox"
-                onclick={(e) => {
-                  console.log('=8e1898=', e.target.checked)
-                }}
-              />
+              <div class="users__checkbox">
+                <div class="checkbox">
+                  <input type="checkbox"
+                    onclick={(e) => {
+                      this.Static.makeFilter.basic = e.target.checked
+                      this.fn("addEvent", this.Static.makeFilter)
+                    }}
+                  />
+                  <label htmlFor="">Пользователи</label>
+                </div>
 
-              <input type="checkbox"
-                onclick={(e) => {
-                  console.log('=8e1898=', e.target.checked)
-                }}
-              />
+                <div class="checkbox">
+                  <input type="checkbox"
+                    onclick={(e) => {
+                      this.Static.makeFilter.creator = e.target.checked
+                      this.fn("addEvent", this.Static.makeFilter)
+                    }}
+                  />
+                  <label htmlFor="">Создатели контента</label>
+                </div>
 
-              <input type="checkbox"
-                onclick={(e) => {
-                  console.log('=8e1898=', e.target.checked)
-                }}
-              />
+                <div class="checkbox">
+                  <input type="checkbox"
+                    onclick={(e) => {
+                      this.Static.makeFilter.expert = e.target.checked
+                      this.fn("addEvent", this.Static.makeFilter)
+                    }}
+                  />
+                  <label htmlFor="">Эксперты</label>
+                </div>
+              </div>
 
             </div>
             <div class="users__list">
@@ -59,7 +72,7 @@ export const display = function () {
                               }
                             />
                             <img class="avatar__frame"
-                              src={item.frame?.name
+                              src={item.frame?.name && item.frame?.name != "default.svg"
                                 ?
                                 `/assets/images/lenta/${item.frame?.name}`
                                 :

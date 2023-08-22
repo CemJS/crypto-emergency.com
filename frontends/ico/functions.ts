@@ -1,11 +1,16 @@
 
 
 const fn = {
-    "addEvent": function ({ cat }) {
+    "addEvent": function ({ cat, active }) {
         let url = `Ico?uuid=${this.Variable.myInfo.uuid}`
         if (cat) {
             url += `&cat=${cat}`
         }
+
+        if (active) {
+            url += `&active=${active}`
+        }
+
         let eventSource
 
         // if (this.Ref.icoList) {

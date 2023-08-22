@@ -15,6 +15,7 @@ const states = [
 ]
 
 export const display = function () {
+  console.log('=aab54f=',new Date())
   if (this.Static.record) {
     return One.bind(this)()
   }
@@ -30,6 +31,8 @@ export const display = function () {
                     ref="tabsItem"
                     class={["ico_tabs_item", this.Static.activeIndex == index ? "ico_tabs_item_active" : null]}
                     onclick={() => {
+                      this.Static.makeFilter.active = item.name
+                      this.fn("addEvent", this.Static.makeFilter)
                       this.Static.activeIndex = index;
                       this.Ref.tabsSlider.style.left = `${this.Ref.tabsItem.offsetWidth * this.Static.activeIndex}px`;
                       this.Ref.icoList.classList.add('animated');
@@ -49,7 +52,7 @@ export const display = function () {
 
           <div class="ico_list" ref="icoList">
             {
-              this.Static.records.map((item, index) => {
+              this.Static.records?.map((item, index) => {
                 return (
                   <div class="ico_list_item" onclick={() => {
                     this.Static.record = item;

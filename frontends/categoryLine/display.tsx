@@ -93,27 +93,6 @@ export const display = function () {
             )
           })
           }
-          <li class={"category-item"}>
-            <span>Все</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example1</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example2</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example4</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example5</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example4</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example5</span>
-          </li>
         </ul>
       </div>
     )

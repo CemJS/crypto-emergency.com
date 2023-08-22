@@ -1,6 +1,9 @@
 const fn = {
-  "addEvent": function ({ nickname, basic, expert, creator }) {
+  "addEvent": function ({ nickname, basic, creator, expert }) {
+    console.log('=9862f1=',basic, creator, expert)
     let url = `Users?uuid=${this.Variable.myInfo.uuid}`
+
+    
 
     if (nickname) {
       url += `&nickname=${nickname}`
@@ -10,12 +13,12 @@ const fn = {
       url += `&basic=${basic}`
     }
 
-    if (expert) {
-      url += `&expert=${expert}`
-    }
-
     if (creator) {
       url += `&creator=${creator}`
+    }
+
+    if (expert) {
+      url += `&expert=${expert}`
     }
 
     let eventSource
@@ -28,6 +31,7 @@ const fn = {
 
     eventSource.addEventListener('message', ({ data }) => {
       let records = JSON.parse(data)
+      console.log('=a22d36=',records)
       this.Static.records = records
       this.init()
     });
