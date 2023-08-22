@@ -69,7 +69,7 @@ export default function () {
             <div class="lenta__comment_field">
               <textarea rows="1"
                 oninput={(e) => {
-                  console.log('=a533d5=',e.target.value)
+                  console.log('=a533d5=', e.target.value)
                   this.Static.data.text = e.target.value
                 }}
               ></textarea>
@@ -78,8 +78,11 @@ export default function () {
               onclick={() => {
                 let data = {
                   uuid: this.Variable.myInfo.uuid,
-                  action: "add",
-                  data: this.Static.data
+                  action: "update",
+                  data: {
+                    id: this.Static.record._id,
+                    title: this.Static.data.text
+                  }
                 }
                 fetch(`/api/events/News?uuid=${this.Variable.myInfo.uuid}`, {
                   method: "POST",
