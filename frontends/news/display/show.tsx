@@ -17,33 +17,33 @@ export default function () {
   return (
     <div class="news-show">
       <div class="back">
-          <div class="back_arrow">
-            <img
-              src={back}
-              onclick={() => {
-                delete this.Static.record
-                this.init()
-              }}
-            >
-            </img>
-          </div>
-          <div
-            class="tool"
+        <div class="back_arrow">
+          <img
+            src={back}
             onclick={() => {
-              this.Fn.initOne({
-                name: "modalTool", ifOpen: (front) => {
-                  setTimeout(() => {
-                    front.clearData()
-                  }, 500);
-                }
-              })
+              delete this.Static.record
+              this.init()
             }}
           >
-            <span class="tool_item"></span>
-            <span class="tool_item"></span>
-            <span class="tool_item"></span>
-          </div>
+          </img>
         </div>
+        <div
+          class="tool"
+          onclick={() => {
+            this.Fn.initOne({
+              name: "modalTool", ifOpen: (front) => {
+                setTimeout(() => {
+                  front.clearData()
+                }, 500);
+              }
+            })
+          }}
+        >
+          <span class="tool_item"></span>
+          <span class="tool_item"></span>
+          <span class="tool_item"></span>
+        </div>
+      </div>
       <h1>{item.title}</h1>
       <section class="news-show__container">
         <div class="news-show__img">
@@ -67,9 +67,27 @@ export default function () {
 
           <div class="lenta__comment">
             <div class="lenta__comment_field">
-              <textarea rows="1"></textarea>
+              <textarea rows="1"
+                oninput={(e) => {
+                  console.log('=a533d5=',e.target.value)
+                  this.Static.data.text = e.target.value
+                }}
+              ></textarea>
             </div>
-            <button class="lenta__comment_button">
+            <button class="lenta__comment_button"
+              onclick={() => {
+                let data = {
+                  uuid: this.Variable.myInfo.uuid,
+                  action: "add",
+                  data: this.Static.data
+                }
+                fetch(`/api/events/News?uuid=${this.Variable.myInfo.uuid}`, {
+                  method: "POST",
+                  headers: { "content-type": "application/json" },
+                  body: JSON.stringify(data),
+                })
+              }}
+            >
               <img src={sendMessage} />
             </button>
           </div>
@@ -233,7 +251,6 @@ export default function () {
               null
           }
         </div>
-
       </section>
     </div>
   )

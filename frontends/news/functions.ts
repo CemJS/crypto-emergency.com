@@ -1,7 +1,7 @@
 const fn = {
   "addEvent": function ({ cat }) {
     let url = `News?uuid=${this.Variable.myInfo.uuid}&lang=ru`
-    if (cat) {
+    if (cat && cat != "Все") {
       url += `&cat=${cat}`
     }
     let eventSource
