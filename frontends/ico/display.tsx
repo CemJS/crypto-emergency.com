@@ -15,7 +15,6 @@ const states = [
 ]
 
 export const display = function () {
-  console.log('=aab54f=',new Date())
   if (this.Static.record) {
     return One.bind(this)()
   }

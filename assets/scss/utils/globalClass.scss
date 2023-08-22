@@ -485,6 +485,11 @@ $indent in $indents {
 
   }
 
+  &_graph {
+    display: flex;
+    justify-content: center;
+  }
+
   &_index,
   &_name,
   &_coins,

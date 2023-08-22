@@ -2,8 +2,15 @@
 
 const fn = {
     "addEvent": function ({ cat, active }) {
+        console.log('=b95b75=',cat, active)
         let url = `Ico?uuid=${this.Variable.myInfo.uuid}`
-        if (cat) {
+
+        if (cat && active) {
+            url += `&cat=${cat}`
+            url += `&active=${active}`
+        }
+
+        if (cat && cat != "Все") {
             url += `&cat=${cat}`
         }
 

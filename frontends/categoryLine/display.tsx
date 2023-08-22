@@ -82,9 +82,9 @@ export const display = function () {
                 draggable="false"
                 onclick={() => {
                   this.cross({ event: "press", name: item.name })
-                  this.Static.icoList.classList.add('animated');
+                  this.Static.icoList?.classList.add('animated');
                   setTimeout(() => {
-                    this.Static.icoList.classList.remove('animated');
+                    this.Static.icoList?.classList.remove('animated');
                   }, 500)
                   this.init()
                 }}>
