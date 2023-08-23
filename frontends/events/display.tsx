@@ -22,7 +22,6 @@ export const display = function () {
               let slidesNum = this.Ref.slider_container.children.length 
               
               
-              // console.log('=sliderWidth=',sliderWidth)
               if(this.Ref.banners_section.offsetWidth <= 545){
                 this.Static.maxSlidesPerShift = 1;
                 gap = 19
@@ -41,14 +40,9 @@ export const display = function () {
               if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
                 this.Static.currentSlide++;
                 this.Ref.slider_container.scrollLeft += this.Static.currentSlide * itemWidth;
-                console.log(this.Ref.banners_section.offsetWidth)
-                console.log('=itemWidth=',itemWidth)
-                // console.log('=banners_section=',this.Ref.banners_section.offsetWidth)
-                
             } 
 
             this.Ref.slider_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
-            console.log('=Ref.slider_container.style.style=',this.Ref.slider_container.style.gap) 
             }}
             >
               <img src={next} alt="" />
@@ -71,7 +65,6 @@ export const display = function () {
               
               if (this.Static.currentSlide > 0) {
                 this.Static.currentSlide--;
-                console.log(this.Static.currentSlide)
             }
             let itemWidth = this.Ref.slide.offsetWidth + gap
             this.Ref.slider_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
@@ -128,7 +121,7 @@ export const display = function () {
                 {/* <img src={seach_magnifier} alt="magnifier" ref='magnifier' class="filter_country_magnifier" /> */}
                 <input type="search" name="input" placeholder="Страна" ref='country_search_field'
                 oninput={(e) => {
-                  this.Static.seachCountries = this.Static.uniqueCountries.filter((item) => {
+                  this.Static.searchCountries = this.Static.uniqueCountries.filter((item) => {
                   if (item.toLowerCase().includes(e.target.value.toLowerCase())) {
                     this.Ref.countries_dropdown.classList.add("visible")
                     return true
@@ -160,7 +153,7 @@ export const display = function () {
                 }}
                 >
                   {
-                   this.Static.seachCountries.map((item, index) => {
+                   this.Static.searchCountries.map((item, index) => {
                       return (
                         <li class="dropdown_list-item" ref='drop_item' data-value="rus">{item}</li>
                       )
@@ -204,11 +197,10 @@ export const display = function () {
 
                   
                   this.init()
-                  console.log('=75dbcb=',this.Static.filtredRecords)
                 }}
                 >
                  {
-                    this.Static.classObject.getUniqueArrayByField('category').map((item, index) => {
+                    this.Static.uniqueCategories.map((item, index) => {
                       return (
                         <li class="dropdown_list-item" data-value="">{item}</li>
                       )
@@ -241,8 +233,58 @@ export const display = function () {
           </div>
             
           <div class="events_section_list" ref="event_list">
+                {/* {
+                  this.Static.records
+                  ?
+                  this.Static.records.map((item, index)=>{
+              
+                    return(
+                      <div class="events_section_list_item">
+                        
+                    <div class="item_header">
+                      <div class="picture">
+                        <div class='category-events'>
+                          {item.category}
+                        </div>
+                        <img src={test} alt="img"/>
+                        <div class="location">
+                          <img src={map_point} alt="L" />
+                          <span>{item.country}</span>
+                        </div>
+                        <div class='date'>
+                          <img src={calendar} alt="C" />
+                          <span>{this.Services.functions.dateFormat(item.date, 'event')}</span>
+                        </div>
+                      </div>
+                      <div class="content">
+                        <h4>{item.title}</h4>
+                        <p>{item.description}</p>
+                      </div>
+                    </div>
+                    <div class="item_footer">
+                      <div class="location">
+                        <img src={map_point} alt="L" />
+                        <span>{item.country}</span>
+                      </div>
+                      <div class='date'>
+                        <img src={calendar} alt="C" />
+                        <span>{this.Services.functions.dateFormat(item.date, 'event')}</span>
+                      </div>
+                      <button class='buy_btn'>Купить билет</button>
+                      
+                    </div>
+                  </div>
+                  
+                  )
+                })
+                  :
+<div>нет</div>
+
+                } */}
+
+
           {
-            this.Static.records.map((item, index)=>{
+            (this.Static.filtredRecords || []).map((item, index)=>{
               
               return(
                 <div class="events_section_list_item">
@@ -286,6 +328,10 @@ export const display = function () {
           }
             
           </div>
+        </section>
+        <section class ='map_section'>
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A62ee2ecd2ced487e68361142a1a2f66ad2aacb959575639bbd688f5881477488&amp;width=100%25&amp;height=619&amp;lang=ru_RU&amp;scroll=true"></script>
+
         </section>
       </div>
     </div>

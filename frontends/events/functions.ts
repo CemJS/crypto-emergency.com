@@ -13,7 +13,6 @@ const fn = {
 
     "addEvent": function ({ cat, country }) {
         let url = `Events?uuid=${this.Variable.myInfo.uuid}`
-        console.log('=2b56ba=',cat, country)
 
         if (cat && country) {
             url += `&cat=${cat}`
@@ -37,8 +36,12 @@ const fn = {
 
         eventSource.addEventListener('message', ({ data }) => {
             let records = JSON.parse(data)
-            console.log('=641d61=', records)
+            console.log('=records=', records)
             this.Static.records = records
+            this.Static.filtredRecords = this.Static.records        
+    this.Static.uniqueCountries =  this.Static.classObject.getUniqueArrayByField('country')
+    this.Static.uniqueCategories = this.Static.classObject.getUniqueArrayByField('category')
+    this.Static.filtredRecords = this.Static.records
             this.init()
         });
     }

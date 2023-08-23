@@ -1,4 +1,5 @@
 export const loader = function () {
+
   this.fn("addEvent", {})
 
   this.Static.makeFilter = {
@@ -18,10 +19,11 @@ export const loader = function () {
 
       getUniqueArrayByField(field: string) { 
         const uniqueSet = new Set(); 
-        
+        if(this.arr){
         this.arr.forEach(item => {
           uniqueSet.add(item[field]);
         });
+      }
         const uniqueArray =  Array.from(uniqueSet)
 
         if(field == 'country'){
@@ -37,14 +39,14 @@ export const loader = function () {
     this.Static.classObject = new myClass(this.Static.records)
     this.Static.uniqueCountries =  this.Static.classObject.getUniqueArrayByField('country')
 
-
     //   Переменные состояния выпадающих списков
     this.Static.catergorySelectorStatus = 'close'
     this.Static.countrySelectorStatus = 'close'
 
     // Переменные для поисков
-    this.Static.seachCountries = this.Static.uniqueCountries
+    this.Static.searchCountries = this.Static.uniqueCountries
     this.Static.filtredRecords = this.Static.records
+    
     
     
 

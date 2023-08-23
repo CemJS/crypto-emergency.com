@@ -68,6 +68,7 @@
 }
 .events_section{
     margin-top: 60px;
+    margin-bottom: 80px;
     &_filters{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 2fr;
@@ -345,8 +346,15 @@
         top: 0;
     }
     }
-}
 
+
+}
+.map_section{
+    iframe{
+        border-radius: 20px;
+    }
+    
+}
 .rotate{
     transform: rotate(-180deg);
     transition: all 0.3s ;
@@ -534,6 +542,11 @@
                     }
                 }
             }   
+        }
+    }
+    .map_section{
+        iframe{
+            height: 320px;
         }
     }
 }
