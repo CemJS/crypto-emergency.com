@@ -617,3 +617,245 @@
         }
     }
 }
+
+
+
+
+.event .wrapper{
+    .section_about{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        padding: 10px;
+        grid-template-areas: 'picture_button text_about';
+        
+        
+        .picture_button{
+            grid-area: picture_button;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            text-align: left;
+            height: 100%;
+            button{
+                text-align: center;
+                max-height: 56px ;
+                border-radius: 4px;
+                padding: 16px 36px;
+                background: linear-gradient(45deg, #5B6CE2 0%, #7A57CC 48.97%, #9148BC 100%);
+                color: #FFF;
+                text-align: center;
+                font-family: Montserrat;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 120%;
+                cursor: pointer;
+                width: 50%;
+            }
+            .picture{
+                width: 100%;
+                height: 80%;
+                position: relative;
+                .location{
+                    position: absolute;
+                    bottom: 102px;
+                    right: 30px;
+                    color: #FFF;
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 120%; /* 24px */
+                }
+                .date{
+                    position: absolute;
+                    bottom: 30px;
+                    right: 30px;
+                    color: #FFF;
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-size: 60px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 120%; /* 72px */
+                    letter-spacing: 3px
+                }
+                img{
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                    vertical-align: middle;
+                    border-radius: 12px;
+                }
+            }
+        }
+        .text_about{
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            border-radius: 12px;
+            background: linear-gradient(138deg, #3C4252 0%, #232733 100%);
+
+            .title{
+                color: #FFF;
+                font-family: Montserrat;
+                font-size: 42px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 120%; /* 48px */
+                margin-bottom: 32px;
+            }
+            .description {
+                p{
+                margin-bottom: 20px;
+                }
+                p:last-child{
+                    margin-bottom: 0px;
+                }
+            }
+            
+            
+        }    
+        
+    }
+    .section_gallery{
+        h1{
+            color: #FFF;
+            text-align: center;
+            font-family: Montserrat;
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-top: 92px;
+            margin-bottom: 60px;
+        }
+        .gallery-container{
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: calc((100% / 4) - 12px);
+            gap: 16px;
+            overflow: hidden;
+            transition: all 0.4s linear;
+            div{
+                height: 100%;
+    
+            }    
+            div img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                vertical-align: middle;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+
+@media(max-width:952px){
+    .event .wrapper .section_about{
+        .picture_button{
+        }
+        .text_about{
+            padding: 33px;
+            .title{
+                font-size: 35px;
+              
+            }
+
+        }
+    }
+}
+@media(max-width:803px){
+    .event .wrapper .section_about{
+        gap: 40px;
+        grid-template-columns:auto;
+        grid-template-areas: 'text_about' 
+                                'picture_button';
+        .picture_button{
+            grid-area: picture_button;
+            button{
+                width: 100%;
+            }
+            
+        }
+        .text_about{
+            padding: 0px;
+            background: none;
+            grid-area: text_about;
+            .title{
+                font-size: 42px;
+              
+            }
+
+        }
+    }
+    .event .wrapper  .section_gallery{
+        .gallery-container{
+            grid-auto-columns: calc(50% - 8px);
+            // grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(2, 189px);
+        }
+    }
+}
+@media(max-width:550px){
+    .event .wrapper .section_about{
+        .picture_button{
+            .picture{
+                .location{
+                    bottom: 62px;
+                    right: 16px;
+                    font-size: 14px;
+                }
+                .date{
+                    bottom: 12px;
+                    right: 16px;
+                    font-size: 40px;
+                }
+            }
+            button{
+                max-height: 88px;
+                border-radius: 4px;
+            }
+        }
+        .text_about{
+            .title{
+                font-size: 30px;
+              
+            }
+
+        }
+    }
+}
+@media(max-width:426px){
+    .event .wrapper .section_about{
+        .picture_button{
+            .picture{
+                .location{
+                    bottom: 63px;
+                    right: 17px;
+                    font-size: 16px;
+                }
+                .date{
+                    bottom: 13px;
+                    right: 17px;
+                    font-size: 42px;
+                }
+            }
+            button{
+                max-height: 88px;
+                border-radius: 4px;
+            }
+        }
+        .text_about{
+            .title{
+                font-size: 30px;
+              
+            }
+
+        }
+    }
+}

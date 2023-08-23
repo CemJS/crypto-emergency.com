@@ -51,6 +51,8 @@ const dateFormat = function (data, type) {
       return moment(data).format("D MMMM");
     case "event":
       return moment(data).format("DD.MM.YYYY");
+      case "eventddmm":
+      return moment(data).format("DD.MM");
     case "chattime":
       let secondsBefore = Math.round(
         (Number(moment().format("x")) - Number(moment(data).format("x"))) / 1000

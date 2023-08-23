@@ -37,7 +37,7 @@
       "front": "university"
     },
     {
-      "url": "/events",
+      "regex": "/events",
       "front": "events"
     },
     {
@@ -85,6 +85,7 @@
       "regex": "/user-",
       "front": "rules"
     },
+   
     {
       "url": "/list-trade",
       "front": "listTrade"
