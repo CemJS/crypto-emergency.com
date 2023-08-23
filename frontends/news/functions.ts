@@ -17,6 +17,20 @@ const fn = {
       console.log('=57054c=', this.Static.records)
       this.init()
     });
+
+    eventSource.addEventListener('update', ({ data }) => {
+      let records = JSON.parse(data)
+      this.Static.recordsUpdate = records
+      console.log('=57054c=', this.Static.recordsUpdate)
+      this.init()
+    });
+
+    eventSource.addEventListener('insert', ({ data }) => {
+      // let records = JSON.parse(data)
+      // this.Static.recordsUpdate = records
+      console.log('=57054c=', data)
+      this.init()
+    });
   }
 }
 

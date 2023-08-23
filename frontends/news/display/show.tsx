@@ -11,9 +11,15 @@ import sendMessage from "@svg/lenta/send_message.svg"
 import avatarDefault from "@images/lenta/avatar_default.png"
 import back from '@svg/icon/prev.svg'
 
+let item
+
 export default function () {
   console.log('=57c87c=', this.Static.record)
-  let item = this.Static.record
+  if (this.Static.recordsUpdate) {
+    item = this.Static.recordsUpdate
+  } else {
+    item = this.Static.record
+  }
   return (
     <div class="news-show">
       <div class="back">
@@ -54,7 +60,7 @@ export default function () {
         <div class="news-show__statistic">
           <span>
             <img src={views} alt="Просмотры." />
-            {item.statistic.view}
+            {item.statistic?.view}
           </span>
           <span>
             <img src={comments} alt="Комментарии." />
@@ -78,10 +84,9 @@ export default function () {
               onclick={() => {
                 let data = {
                   uuid: this.Variable.myInfo.uuid,
-                  action: "update",
+                  action: "insert",
                   data: {
-                    id: this.Static.record._id,
-                    title: this.Static.data.text
+                    text: this.Static.data.text
                   }
                 }
                 fetch(`/api/events/News?uuid=${this.Variable.myInfo.uuid}`, {
@@ -165,7 +170,7 @@ export default function () {
                             </div>
                           </div>
                           {
-                            comment.comments.map((comm) => {
+                            comment.comments?.map((comm) => {
                               return (
                                 <div class="user-comment__item" style="margin: 0 10px">
                                   <a class="user-comment__avatar avatar" href="">
