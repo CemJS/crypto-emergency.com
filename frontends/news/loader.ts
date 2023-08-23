@@ -4,6 +4,7 @@ export const loader = function () {
     this.Static.data = {
         text: "",
         table: "news",
-        newsId: ""
+        newsId: "",
+        author: ""
     }
 }

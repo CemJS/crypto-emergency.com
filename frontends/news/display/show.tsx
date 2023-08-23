@@ -14,13 +14,13 @@ import back from '@svg/icon/prev.svg'
 let item
 
 export default function () {
-  console.log('=57c87c=', this.Static.record)
+  console.log('=57c87c=', this.Variable.myInfo._id)
   if (this.Static.recordsUpdate) {
     item = this.Static.recordsUpdate
   } else {
     item = this.Static.record
   }
-  this.Static.data.newsId = item._id
+
   return (
     <div class="news-show">
       <div class="back">
@@ -83,6 +83,8 @@ export default function () {
             </div>
             <button class="lenta__comment_button"
               onclick={() => {
+                this.Static.data.newsId = item._id
+                this.Static.data.author = this.Variable.myInfo._id
                 let data = {
                   uuid: this.Variable.myInfo.uuid,
                   action: "insert",
@@ -159,9 +161,41 @@ export default function () {
                             </div>
                             <div class="user-comment__statistic comment-statistic">
                               <div class="comment-statistic__rating">
-                                <img src={dislike} />
+                                <img src={dislike} 
+                                  onclick={() => {
+                                    let data = {
+                                      uuid: this.Variable.myInfo.uuid,
+                                      action: "update",
+                                      data: {
+                                        rating: -1,
+                                        id: comment._id
+                                      }
+                                    }
+                                    fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                      method: "POST",
+                                      headers: { "content-type": "application/json" },
+                                      body: JSON.stringify(data),
+                                    })
+                                  }}
+                                />
                                 <span>{comment.rating}</span>
-                                <img src={like} />
+                                <img src={like}
+                                  onclick={() => {
+                                    let data = {
+                                      uuid: this.Variable.myInfo.uuid,
+                                      action: "update",
+                                      data: {
+                                        rating: 1,
+                                        id: comment._id
+                                      }
+                                    }
+                                    fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                      method: "POST",
+                                      headers: { "content-type": "application/json" },
+                                      body: JSON.stringify(data),
+                                    })
+                                  }}
+                                />
                               </div>
                               <div class="user-comment__settings">
                                 <img src={points} />
