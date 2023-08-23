@@ -20,6 +20,7 @@ export default function () {
   } else {
     item = this.Static.record
   }
+  this.Static.data.newsId = item._id
   return (
     <div class="news-show">
       <div class="back">
@@ -75,7 +76,7 @@ export default function () {
             <div class="lenta__comment_field">
               <textarea rows="1"
                 oninput={(e) => {
-                  console.log('=a533d5=', e.target.value)
+                  console.log('=a533d5=', this.Static.data)
                   this.Static.data.text = e.target.value
                 }}
               ></textarea>
@@ -85,11 +86,9 @@ export default function () {
                 let data = {
                   uuid: this.Variable.myInfo.uuid,
                   action: "insert",
-                  data: {
-                    text: this.Static.data.text
-                  }
+                  data: this.Static.data
                 }
-                fetch(`/api/events/News?uuid=${this.Variable.myInfo.uuid}`, {
+                fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
                   method: "POST",
                   headers: { "content-type": "application/json" },
                   body: JSON.stringify(data),
