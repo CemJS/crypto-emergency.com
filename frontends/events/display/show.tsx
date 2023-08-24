@@ -7,13 +7,18 @@ import test from "@images/events/test.jpg"
 import test2 from "@images/events/test2.png"
 import back from '@svg/icon/prev.svg'
 import next from '@svg/icon/next.svg'
+import nav_arrow from "@svg/events/show/nav_arrow.svg"
 
 export default function () {
 //   console.log('=showPage=',this.Static.record)
   
       return (
-        <div class="page event">
+        <div class="event">
             <div class="wrapper">
+                <div class='returnBtn'>
+                    <img src={nav_arrow} alt="" />
+                    <span>Назад</span>
+                </div>
             <section class = 'section_about'>
                 <div class ='picture_button'>
                     <div class = 'picture'>
@@ -38,34 +43,14 @@ export default function () {
                 <button ref='next' class ="nextBtnEvents"
                     onclick={() => {
                     let gap = 16
-                    let columnsNum = Math.ceil(this.Ref.gallery_container.children.length/2 )
-                    
-                    
-                    // if(this.Ref.banners_section.offsetWidth <= 545){
-                    //     this.Static.maxSlidesPerShift = 1;
-                    //     gap = 19
-
-                    // }else
-                    if(this.Ref.banners_section.offsetWidth <= 800){
-                        this.Static.maxSlidesPerShift = 2;
-                        gap = 19
-                    }else if(this.Ref.banners_section.offsetWidth <= 952){
-                        this.Static.maxSlidesPerShift = 3;
-                        gap = 16
-                    }else{
-                        this.Static.maxSlidesPerShift = 4;
-                        gap = 16
-                    }
-    
+                    let slidesNum = this.Ref.gallery_container.children.length
                     let itemWidth = this.Ref.gallery_container_slide.offsetWidth + gap
-                    if (this.Static.currentSlide < columnsNum - 2) {
-                        this.Static.currentSlide++;
-                        this.Ref.gallery_container.scrollLeft += this.Static.currentSlide * itemWidth ;
+                    let maxWidth =  slidesNum * itemWidth
+                    if (this.Ref.gallery_container.scrollLeft < maxWidth) {
+                        this.Ref.gallery_container.scrollLeft += itemWidth ;
                     } 
-                    console.log('=slidesNum=',columnsNum)
+                    console.log('=slidesNum=',maxWidth)
                     console.log('=itemWidth=',itemWidth)
-                    console.log('=this.Static.currentSlide=',this.Static.currentSlide)
-                    this.Ref.gallery_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
                     }}
 
 
@@ -76,24 +61,11 @@ export default function () {
                 <button ref='back' class ="prevBtnEvents"
                     onclick={() => {
                     let gap = 16
-                    
-                    // if(this.Ref.banners_section.offsetWidth <= 545){
-                    //     gap = 19
-                    // }else if(this.Ref.banners_section.offsetWidth <= 768){
-                    //     gap = 19
-                    // }else if(this.Ref.banners_section.offsetWidth <= 933){
-                    //     this.Static.maxSlidesPerShift = 3;
-                    //     gap = 16
-                    // }else{
-                    //     this.Static.maxSlidesPerShift = 4;
-                    //     gap = 16
-                    // }
-                    
-                    if (this.Static.currentSlide > 0) {
-                        this.Static.currentSlide--;
-                    }
                     let itemWidth = this.Ref.gallery_container_slide.offsetWidth + gap
-                    this.Ref.gallery_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+                    
+                    if (this.Ref.gallery_container.scrollLeft > 0) {
+                        this.Ref.gallery_container.scrollLeft -= itemWidth ;
+                    } 
                     }}
                 >
                     <img src={back} alt="" />
@@ -114,7 +86,7 @@ export default function () {
                     // console.log('=ab8faf=',e.pageX - this.Static.startX)
                     e.preventDefault();
                     this.Ref.gallery_container.scrollLeft = this.Static.startScrollLeft - (e.pageX - this.Static.startX);
-                    console.log('=scrollLeft=',e.pageX - this.Static.startX)
+                    console.log('=scrollLeft=',this.Ref.gallery_container.scrollLeft)
                   }}
 
                   onmouseup={() => {

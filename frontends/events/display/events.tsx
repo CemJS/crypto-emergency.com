@@ -10,7 +10,7 @@ import next from '@svg/icon/next.svg'
 export default function () {
 
   return (
-    <div class="page events">
+    <div class="events">
       <div class="wrapper">
         <h1>Мероприятия</h1>
         {/* next */}
@@ -36,12 +36,11 @@ export default function () {
                 gap = 16
               }
               let itemWidth = this.Ref.slide.offsetWidth + gap
-              if (this.Static.currentSlide < slidesNum - this.Static.maxSlidesPerShift) {
-                this.Static.currentSlide++;
-                this.Ref.slider_container.scrollLeft += this.Static.currentSlide * itemWidth;
-            } 
-
-            this.Ref.slider_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+              let maxWidth =  slidesNum * itemWidth
+              if (this.Ref.slider_container.scrollLeft < maxWidth) {
+                  this.Ref.slider_container.scrollLeft += itemWidth;
+                 
+              } 
             }}
             >
               <img src={next} alt="" />
@@ -61,19 +60,37 @@ export default function () {
                 this.Static.maxSlidesPerShift = 4;
                 gap = 16
               }
-              
-              if (this.Static.currentSlide > 0) {
-                this.Static.currentSlide--;
-            }
-            let itemWidth = this.Ref.slide.offsetWidth + gap
-            this.Ref.slider_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+
+
+              let itemWidth = this.Ref.slide.offsetWidth + gap
+              if (this.Ref.slider_container.scrollLeft > 0) {
+                this.Ref.slider_container.scrollLeft -= itemWidth ;
+            } 
             }}
             >
               <img src={back} alt="" />
           </button>
         
           <section class="banners_section" ref ='banners_section'>
-            <div class = 'slider-container' ref='slider_container'>
+            <div class = 'slider-container' ref='slider_container'
+            onmousedown={(e) => {
+              this.Static.isDragging = true;
+              this.Static.startX = e.pageX;
+              this.Static.startScrollLeft = this.Ref.slider_container.scrollLeft
+            }}
+
+            onmousemove={(e) => {
+              if (!this.Static.isDragging) return;
+              // console.log('=ab8faf=',e.pageX - this.Static.startX)
+              e.preventDefault();
+              this.Ref.slider_container.scrollLeft = this.Static.startScrollLeft - (e.pageX - this.Static.startX);
+              console.log('=scrollLeft=',this.Ref.slider_container.scrollLeft)
+            }}
+
+            onmouseup={() => {
+              this.Static.isDragging = false;
+            }}
+            >
               <div>
                 <img src={test} alt="" onclick={()=>{
                   this.Static.record = this.Static.filtredRecords[0]

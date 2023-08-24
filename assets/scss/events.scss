@@ -1,6 +1,12 @@
 @import 'utils/variables.scss';
 
+.events{
+    padding-top: 80px;
+
+}
+
 .events .wrapper{
+    
     .buttonsEvents{
         position: relative;
       
@@ -35,7 +41,7 @@
     }
 
     h1{
-        margin: 80px 0 60px 0;
+        margin: 0 0 60px 0;
         text-align: center;
         font-family: Montserrat;
         font-size: 64px;
@@ -50,8 +56,11 @@
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: calc((100% / 4) - 12px);
+        grid-template-rows: 198px;
         gap: 16px;
         transition: all 0.4s linear;
+        scroll-behavior: smooth;
+        overflow-x: scroll;
         div{
             height: 100%;
 
@@ -62,8 +71,15 @@
             height: 100%;
             vertical-align: middle;
             border-radius: 5px;
-        }
+        }  
     }
+    .slider-container::-webkit-scrollbar { width: 0; }
+
+    /* ie 10+ */
+    .slider-container { -ms-overflow-style: none; }
+
+    /* фф (свойство больше не работает, других способов тоже нет)*/
+    .slider-container { overflow: -moz-scrollbars-none; }
 
     
 }
@@ -424,6 +440,10 @@
     }
 }    
 @media(max-width:800px){  
+    .events{
+        padding-top: 60px;
+    
+    }
     .banners_section{
         .slider-container{
             grid-auto-columns: calc((100% / 2) - 10px);
@@ -436,6 +456,8 @@
         }
     }
     .events_section{  
+        margin-top: 24px;
+        margin-bottom: 33px;
         &_filters{
             display: grid;
             gap: 12px;
@@ -447,7 +469,7 @@
             }
         }
         &_list{
-
+            margin-top: 30px;
             &_item{
                 display: flex;
                 flex-direction: column;
@@ -554,6 +576,10 @@
 
 
 @media(max-width:545px){  
+    .events{
+        padding-top: 40px;
+    
+    }
     .banners_section{
         .slider-container{
             grid-auto-columns: (100%);
@@ -622,7 +648,31 @@
 
 
 
+.event{
+    padding-top: 40px;
+
+}
 .event .wrapper{
+    .returnBtn{
+        display: flex;
+        gap:12px;
+        align-items: center;
+        justify-content: start;
+        margin-bottom: 40px;
+        cursor: pointer;
+        img{
+            width: 6.25px;
+            height: 10.5px;
+        }
+        span{
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 26px
+        }
+    }
     .section_about{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -769,13 +819,14 @@
         .slider-hidden{
             overflow: hidden;
             .gallery-container{
-                overflow: hidden;
                 overflow-x: scroll;
                 display: grid;
                 grid-auto-flow: column;
                 grid-auto-columns: calc((100% / 4) - 12px);
+                grid-template-rows: 156px;
                 gap: 16px;
                 transition: all 0.4s linear;
+                scroll-behavior: smooth;
                 div{
                     height: 100%;
                 }    
@@ -796,7 +847,7 @@
             /* фф (свойство больше не работает, других способов тоже нет)*/
             .gallery-container { overflow: -moz-scrollbars-none; }
                         
-                    }
+        }
         
     }
 }
@@ -853,16 +904,22 @@
 
         }
     }
-    // .event .wrapper  .section_gallery .slider-hidden{
-
-    //     .gallery-container{
-    //         grid-auto-columns: calc(50% - 8px);
-    //         // grid-template-columns: repeat(6, 1fr);
-    //         grid-template-rows: repeat(2, 189px);
-    //     }
-    // }
+    .event .wrapper  {
+    
+        .section_gallery{
+            h1{
+                margin-top: 40px;
+                font-size: 26px;
+                margin-bottom: 40px;
+            }
+        }
+    }
 }
 @media(max-width:550px){
+    .event{
+        padding-top: 20px;
+    
+    }
     .event .wrapper .section_about{
         .picture_button{
             .picture{
@@ -891,7 +948,7 @@
         }
     }
 }
-@media(max-width:426px){
+@media(max-width:456px){
     .event .wrapper .section_about{
         .picture_button{
             .picture{
@@ -913,10 +970,34 @@
         }
         .text_about{
             .title{
-                font-size: 30px;
+                font-size: 26px;
+                margin-bottom: 20px;
               
+            }
+            p{
+                font-size: 14px;
             }
 
         }
+    }
+    
+    .event .wrapper  {
+    
+        .section_gallery{
+        h1{
+            margin-top: 40px;
+            font-size: 26px;
+            margin-bottom: 24px;
+        }
+            .slider-hidden{
+
+            .gallery-container{
+                grid-auto-columns: calc(100%);
+                // grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: 156px;
+                }
+            }
+        }
+
     }
 }
