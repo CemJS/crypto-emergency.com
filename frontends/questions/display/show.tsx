@@ -28,77 +28,107 @@ export default function () {
   let item = this.Static.record
   let answers = this.Static.recordsAnswer
   return (
-    <div class="questions-show">
-      <div class="wrapper">
-        <div class="questions-show__container">
-          <div class="questions__user">
-            <a class="avatar" href="#">
-              <div class="avatar__icon">
-                <img class="avatar__photo"
-                  src={item.author.avatar?.name
-                    ?
-                    `/assets/upload/avatar/${item.author.avatar?.name}`
-                    :
-                    avatarDefault
-                  }
-                />
-                <img class="avatar__frame"
-                  src={item.author.frame?.name
-                    ?
-                    `/assets/images/lenta/${item.author.frame?.name}`
-                    :
-                    frameDefault
-                  }
-                />
-                {
-                  item.author.status?.team
-                    ?
-                    <img class="avatar__team"
-                      src={item.author.status?.team
-                        ?
-                        teamLogo
-                        :
-                        null
-                      }
-                    />
-                    :
-                    <div>
-                      <div class="avatar__level">
-                        <img src={leveGray} />
-                        <span>{item.author.statistic.level}</span>
+    <div>
+      <div class="questions-show">
+        <div class="wrapper">
+          <div class="questions-show__container">
+            <div class="questions__user">
+              <a class="avatar" href="#">
+                <div class="avatar__icon">
+                  <img class="avatar__photo"
+                    src={item.author.avatar?.name
+                      ?
+                      `/assets/upload/avatar/${item.author.avatar?.name}`
+                      :
+                      avatarDefault
+                    }
+                  />
+                  <img class="avatar__frame"
+                    src={item.author.frame?.name
+                      ?
+                      `/assets/images/lenta/${item.author.frame?.name}`
+                      :
+                      frameDefault
+                    }
+                  />
+                  {
+                    item.author.status?.team
+                      ?
+                      <img class="avatar__team"
+                        src={item.author.status?.team
+                          ?
+                          teamLogo
+                          :
+                          null
+                        }
+                      />
+                      :
+                      <div>
+                        <div class="avatar__level">
+                          <img src={leveGray} />
+                          <span>{item.author.statistic.level}</span>
+                        </div>
                       </div>
-                    </div>
-                }
-              </div>
-              <div class="avatar__name">
-                <span>{item.author.nickname}</span>
-              </div>
-            </a>
+                  }
+                </div>
+                <div class="avatar__name">
+                  <span>{item.author.nickname}</span>
+                </div>
+              </a>
+            </div>
+            <p class="questions-show__title">{item.title}</p>
+            <p class="questions-show__description">{item.text}</p>
+            <div class="questions__item_statistic questions-show__statistic">
+              <span>
+                <img src={comments} alt="Комментарии." />
+                {item.statistic.answer}
+              </span>
+              <span class="questions-show__statistic_view">
+                <img src={views} alt="Просмотры." />
+                {item.statistic.view}
+              </span>
+              <span>{this.Services.functions.dateFormat(item.showDate, "now")}</span>
+            </div>
           </div>
-          <p class="questions-show__title">{item.title}</p>
-          <p class="questions-show__description">{item.text}</p>
-          <div class="questions__item_statistic questions-show__statistic">
-            <span>
-              <img src={comments} alt="Комментарии." />
-              {item.statistic.answer}
-            </span>
-            <span class="questions-show__statistic_view">
-              <img src={views} alt="Просмотры." />
-              {item.statistic.view}
-            </span>
-            <span>{this.Services.functions.dateFormat(item.showDate, "now")}</span>
-          </div>
-        </div>
 
-        {
-            answers?.length > 0
-              ?
-              <div class="user-comment questions-show__answers">
-                <div class="user-comment__list">
+          <div class="user-comment questions-show__answers">
+            <div class="answer">
+              <textarea class="answer__field" cols="20" rows="10"
+                oninput={(e) => {
+                  this.Static.text = e.target.value
+                }}
+              ></textarea>
+              <button class="answer__button" type="button">
+                <span class="btn btn_gradient"
+                  onclick={() => {
+                    let data = {
+                      uuid: this.Variable.myInfo.uuid,
+                      action: "insert",
+                      data: {
+                        questionId: item._id,
+                        author: this.Variable.myInfo._id,
+                        text: this.Static.text,
+                      }
+                    }
+                    fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
+                      method: "POST",
+                      headers: { "content-type": "application/json" },
+                      body: JSON.stringify(data),
+                    })
+                  }}
+                >Отправить</span>
+              </button>
+            </div>
+
+            {
+              answers?.length > 0
+                ?
+
+                <div class="user-comment__list questions-show__list" ref="answerList">
                   {
                     answers?.map((answer) => {
                       return (
-                        <div>
+                        <div class="questions-show__item">
                           <div class="user-comment__item">
                             <a class="user-comment__avatar avatar" href="">
                               <div class="avatar__icon">
@@ -150,13 +180,95 @@ export default function () {
                             </div>
                             <div class="user-comment__statistic comment-statistic">
                               <div class="comment-statistic__rating">
-                                <img src={dislike} />
+                                <img src={dislike}
+                                  onclick={() => {
+                                    let data = {
+                                      uuid: this.Variable.myInfo.uuid,
+                                      action: "update",
+                                      data: {
+                                        author: this.Variable.myInfo._id,
+                                        rating: -1,
+                                        type: "minus",
+                                        id: answer._id
+                                      }
+                                    }
+                                    fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
+                                      method: "POST",
+                                      headers: { "content-type": "application/json" },
+                                      body: JSON.stringify(data),
+                                    })
+                                  }}
+                                />
                                 <span>{answer.statistic.rating}</span>
-                                <img src={like} />
+                                <img src={like}
+                                  onclick={() => {
+                                    let data = {
+                                      uuid: this.Variable.myInfo.uuid,
+                                      action: "update",
+                                      data: {
+                                        author: this.Variable.myInfo._id,
+                                        rating: 1,
+                                        type: "plus",
+                                        id: answer._id
+                                      }
+                                    }
+                                    fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
+                                      method: "POST",
+                                      headers: { "content-type": "application/json" },
+                                      body: JSON.stringify(data),
+                                    })
+                                  }}
+                                />
                               </div>
+                              <span class="user-comment__answer"
+                                onclick={(e) => {
+                                  let elemr = this.Ref.answerList.childNodes
+                                  for (let i = 0; i < elemr.length; i++) {
+                                    for (let y = 0; y < elemr[i].childNodes.length; y++) {
+                                      elemr[i].childNodes[y].lastChild.style = "display: none"
+                                    }
+                                  }
+
+                                  let el = e.currentTarget
+                                  el.parentElement.parentElement.lastChild.style = "display: flex"
+                                  el.parentElement.parentElement.lastChild.firstChild.firstChild.focus()
+                                }}
+                              >Ответить</span>
                               <div class="user-comment__settings">
                                 <img src={points} />
                               </div>
+                            </div>
+                            <div class="lenta__comment user-comment__form">
+                              <div class="lenta__comment_field">
+                                <textarea rows="1" data-max-height="200" data-scroll-last="48"
+                                  oninput={(e) => {
+                                    this.Static.textCom = e.target.value
+                                  }}
+                                ></textarea>
+                              </div>
+                              <button class="lenta__comment_button"
+                                onclick={() => {
+                                  let data = {
+                                    uuid: this.Variable.myInfo.uuid,
+                                    action: "insert",
+                                    data: {
+                                      newsId: item._id,
+                                      id: answer._id,
+                                      author: this.Variable.myInfo._id,
+                                      table: "news",
+                                      text: this.Static.textCom,
+                                      collection: "Comments"
+                                    }
+                                  }
+                                  fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                    method: "POST",
+                                    headers: { "content-type": "application/json" },
+                                    body: JSON.stringify(data),
+                                  })
+                                }}
+                              >
+                                <img src={sendMessage} />
+                              </button>
                             </div>
                           </div>
                           {
@@ -174,7 +286,7 @@ export default function () {
                                         }
                                       />
                                       <img class="avatar__frame"
-                                        src={ comm.author.frame?.name && comm.author.frame?.name != "default.svg"
+                                        src={comm.author.frame?.name && comm.author.frame?.name != "default.svg"
                                           ?
                                           `/assets/images/lenta/${comm.author.frame?.name}`
                                           :
@@ -244,12 +356,16 @@ export default function () {
                     })
                   }
                 </div>
-              </div>
-              :
-              null
-          }
 
+                :
+                null
+            }
+
+          </div>
+
+        </div>
       </div>
     </div>
+
   )
 }

@@ -393,10 +393,55 @@
       }
     }
 
+    & .user-comment__form {
+      display: none;
+      margin-top: 10px;
+    }
+
     &__answers {
       max-width: 850px;
       margin: 0 auto;
       margin-top: 40px;
+
+      & .answer {
+        &__field {
+          width: 100%;
+          padding: 20px;
+          font-size: 16px;
+          background: #313543;
+          color: var(--white);
+          resize: none;
+          border: 0;
+          border-radius: 15px;
+          
+
+          &:focus {
+            outline: 0;
+          }
+        }
+
+        &__button {
+          width: 100%;
+          margin: 40px 0;
+          background: transparent;
+          color: var(--white);
+
+          span {
+            padding: 15px 60px;
+          }
+        }
+      }
+    }
+
+    &__list {
+      background: transparent;
+      border: 0;
+    }
+
+    &__item {
+      margin-bottom: 15px;
+      background: #313643;
+      border-radius: 15px;
     }
   }
 }

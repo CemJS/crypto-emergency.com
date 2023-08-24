@@ -1,10 +1,6 @@
 export const loader = function () {
     this.fn("addEvent", {})
 
-    this.Static.data = {
-        text: "",
-        table: "news",
-        newsId: "",
-        author: ""
-    }
+    this.Static.text = ""
+    this.Static.textCom = ""
 }

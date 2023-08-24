@@ -189,84 +189,86 @@ export default function () {
           item.comments.length > 0
             ?
             <div class="user-comment">
-              <div class="user-comment__list">
+              <div class="user-comment__list" ref="commentList">
                 {
                   item.comments?.map((comment) => {
                     return (
-                      <div>
-                        <div class="user-comment__item">
-                          <a class="user-comment__avatar avatar" href="">
-                            <div class="avatar__icon">
-                              <img class="avatar__photo"
-                                src={comment.author.avatar?.name
-                                  ?
-                                  `/assets/upload/avatar/${comment.author.avatar?.name}`
-                                  :
-                                  { avatarDefault }
-                                }
-                              />
-                              <img class="avatar__frame"
-                                src={comment.author.frame?.name
-                                  ?
-                                  `/assets/images/lenta/${comment.author.frame?.name}`
-                                  :
-                                  frameDefault
-                                }
-                              />
-                              {
-                                comment.author.status?.team
-                                  ?
-                                  <img class="avatar__team"
-                                    src={comment.author.status?.team
-                                      ?
-                                      teamLogo
-                                      :
-                                      null
-                                    }
-                                  />
-                                  :
-                                  <div>
-                                    <div class="avatar__level">
-                                      <img src={leveGray} />
-                                      <span>{comment.author.statistic.level}</span>
-                                    </div>
-                                  </div>
+                      <div class="user-comment__item">
+                        <a class="user-comment__avatar avatar" href="">
+                          <div class="avatar__icon">
+                            <img class="avatar__photo"
+                              src={comment.author.avatar?.name
+                                ?
+                                `/assets/upload/avatar/${comment.author.avatar?.name}`
+                                :
+                                { avatarDefault }
                               }
-                            </div>
-                            <div class="user-comment__avatar_info">
-                              <div class="user-comment__avatar_name">{comment.author.nickname}</div>
-                              <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comment.showdate, "time")}</span>
-                            </div>
-                          </a>
-                          <div class="user-comment__body">
-                            <span>
-                              {this.Services.functions.editText(comment.text, { paragraph: true, clear: true, html: true })}
-                            </span>
+                            />
+                            <img class="avatar__frame"
+                              src={comment.author.frame?.name
+                                ?
+                                `/assets/images/lenta/${comment.author.frame?.name}`
+                                :
+                                frameDefault
+                              }
+                            />
+                            {
+                              comment.author.status?.team
+                                ?
+                                <img class="avatar__team"
+                                  src={comment.author.status?.team
+                                    ?
+                                    teamLogo
+                                    :
+                                    null
+                                  }
+                                />
+                                :
+                                <div>
+                                  <div class="avatar__level">
+                                    <img src={leveGray} />
+                                    <span>{comment.author.statistic.level}</span>
+                                  </div>
+                                </div>
+                            }
                           </div>
-                          <div class="user-comment__statistic comment-statistic">
-                            <div class="comment-statistic__rating">
-                              <img src={dislike} />
-                              <span>{comment.rating}</span>
-                              <img src={like} />
-                            </div>
-                            <span class="user-comment__answer"
-                              onclick={(e) => {
-                                let el = e.currentTarget
-                                el.parentElement.parentElement.lastChild.style = "display: flex"
-                              }}
-                            >Ответить</span>
-                            <div class="user-comment__settings">
-                              <img src={points} />
-                            </div>
+                          <div class="user-comment__avatar_info">
+                            <div class="user-comment__avatar_name">{comment.author.nickname}</div>
+                            <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comment.showdate, "time")}</span>
                           </div>
-                          <div class="lenta__comment user-comment__form">
-                            <div class="lenta__comment_field">
-                              <textarea rows="1" data-max-height="200" data-scroll-last="48"></textarea>
-                            </div>
-                            <button class="lenta__comment_button">
-                              <img src={sendMessage} />
-                            </button>
+                        </a>
+                        <div class="user-comment__body">
+                          <span>
+                            {this.Services.functions.editText(comment.text, { paragraph: true, clear: true, html: true })}
+                          </span>
+                        </div>
+                        <div class="user-comment__statistic comment-statistic">
+                          <div class="comment-statistic__rating">
+                            <img src={dislike} />
+                            <span>{comment.rating}</span>
+                            <img src={like} />
                           </div>
+                          <span class="user-comment__answer"
+                            onclick={(e) => {
+                              this.Ref.commentList.childNodes.forEach((item) => {
+                                item.lastChild.style = "display: none"
+                              })
+
+                              let el = e.currentTarget
+                              el.parentElement.parentElement.lastChild.style = "display: flex"
+                            }}
+                          >Ответить</span>
+                          <div class="user-comment__settings">
+                            <img src={points} />
+                          </div>
+                        </div>
+                        <div class="lenta__comment user-comment__form">
+                          <div class="lenta__comment_field">
+                            <textarea rows="1" data-max-height="200" data-scroll-last="48"></textarea>
+                          </div>
+                          <button class="lenta__comment_button">
+                            <img src={sendMessage} />
+                          </button>
                         </div>
                         {
                           comment.comments.map((comm) => {
