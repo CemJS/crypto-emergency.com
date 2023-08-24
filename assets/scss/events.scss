@@ -7,7 +7,8 @@
         .prevBtnEvents,
         .nextBtnEvents{
           position: absolute;
-          top:40%;
+          top:50%;
+          transform: translateY(-50%);
           z-index: 3;
           border-radius: 50%;
           width: 45px;
@@ -28,7 +29,7 @@
         .nextBtnEvents:hover{
           background:transparent;
           border-color: rgba(255, 255, 255, 0.09);
-          transform: scale(0.95);
+          transform: scale(0.95) translateY(-50%);
       
         }
     }
@@ -721,6 +722,39 @@
         
     }
     .section_gallery{
+        .buttonsEvents{
+            position: relative;
+          
+            .prevBtnEvents,
+            .nextBtnEvents{
+              position: absolute;
+              transform:translateY(-50%);
+              top:50%;
+              z-index: 3;
+              border-radius: 50%;
+              width: 45px;
+              height: 45px;
+              background: rgba(255, 255, 255, 0.09);
+              cursor: pointer;
+              transition: 0.5s;
+              border: 1px solid transparent;
+              
+            }
+            .nextBtnEvents{
+              right: -10px;
+            }
+            .prevBtnEvents{
+              left: -10px;
+            }
+            .prevBtnEvents:hover,
+            .nextBtnEvents:hover{
+              background:transparent;
+              border-color: rgba(255, 255, 255, 0.09);
+              top:50%;
+              transform: scale(0.95) translateY(-50%);
+          
+            }
+        }
         h1{
             color: #FFF;
             text-align: center;
@@ -732,25 +766,38 @@
             margin-top: 92px;
             margin-bottom: 60px;
         }
-        .gallery-container{
-            display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: calc((100% / 4) - 12px);
-            gap: 16px;
+        .slider-hidden{
             overflow: hidden;
-            transition: all 0.4s linear;
-            div{
-                height: 100%;
-    
-            }    
-            div img{
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-                vertical-align: middle;
-                border-radius: 5px;
+            .gallery-container{
+                overflow: hidden;
+                overflow-x: scroll;
+                display: grid;
+                grid-auto-flow: column;
+                grid-auto-columns: calc((100% / 4) - 12px);
+                gap: 16px;
+                transition: all 0.4s linear;
+                div{
+                    height: 100%;
+                }    
+                div img{
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                    vertical-align: middle;
+                    border-radius: 5px;
+                }
             }
-        }
+            /* хром, сафари */
+            .gallery-container::-webkit-scrollbar { width: 0; }
+
+            /* ie 10+ */
+            .gallery-container { -ms-overflow-style: none; }
+
+            /* фф (свойство больше не работает, других способов тоже нет)*/
+            .gallery-container { overflow: -moz-scrollbars-none; }
+                        
+                    }
+        
     }
 }
 
@@ -768,6 +815,19 @@
 
         }
     }
+    .event .wrapper  .section_gallery{
+        .slider-hidden{
+            // margin-right: -16px;
+        .gallery-container{
+            grid-auto-columns: calc(50% - 8px);
+            grid-template-rows: repeat(2, 189px);
+            
+            // div:last-child {
+            //     // margin-right: -16px; /* Половина от column-gap */
+            //   }
+        }
+    }
+}
 }
 @media(max-width:803px){
     .event .wrapper .section_about{
@@ -793,13 +853,14 @@
 
         }
     }
-    .event .wrapper  .section_gallery{
-        .gallery-container{
-            grid-auto-columns: calc(50% - 8px);
-            // grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(2, 189px);
-        }
-    }
+    // .event .wrapper  .section_gallery .slider-hidden{
+
+    //     .gallery-container{
+    //         grid-auto-columns: calc(50% - 8px);
+    //         // grid-template-columns: repeat(6, 1fr);
+    //         grid-template-rows: repeat(2, 189px);
+    //     }
+    // }
 }
 @media(max-width:550px){
     .event .wrapper .section_about{

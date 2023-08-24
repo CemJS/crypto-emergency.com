@@ -9,7 +9,7 @@ import back from '@svg/icon/prev.svg'
 import next from '@svg/icon/next.svg'
 
 export default function () {
-  console.log('=a93c3b=',this.Static.record)
+//   console.log('=showPage=',this.Static.record)
   
       return (
         <div class="page event">
@@ -34,21 +34,135 @@ export default function () {
             </section>
             <section class = 'section_gallery'>
                 <h1>Галерея</h1>
-                <div class='gallery-container'>
-                    <div><img src={test2} alt="" /></div>
-                    <div><img src={test} alt="" /></div>
-                    <div><img src={test2} alt="" /></div>
-                    <div><img src={test} alt="" /></div>
-                    <div><img src={test2} alt="" /></div>
-                    <div><img src={test} alt="" /></div>
-                    <div><img src={test2} alt="" /></div>
-                    <div><img src={test} alt="" /></div>
-                    <div><img src={test2} alt="" /></div>
-                    <div><img src={test} alt="" /></div>
-                    <div><img src={test2} alt="" /></div>
-                    <div><img src={test} alt="" /></div>
+                <div class = 'buttonsEvents'>
+                <button ref='next' class ="nextBtnEvents"
+                    onclick={() => {
+                    let gap = 16
+                    let columnsNum = Math.ceil(this.Ref.gallery_container.children.length/2 )
                     
-          
+                    
+                    // if(this.Ref.banners_section.offsetWidth <= 545){
+                    //     this.Static.maxSlidesPerShift = 1;
+                    //     gap = 19
+
+                    // }else
+                    if(this.Ref.banners_section.offsetWidth <= 800){
+                        this.Static.maxSlidesPerShift = 2;
+                        gap = 19
+                    }else if(this.Ref.banners_section.offsetWidth <= 952){
+                        this.Static.maxSlidesPerShift = 3;
+                        gap = 16
+                    }else{
+                        this.Static.maxSlidesPerShift = 4;
+                        gap = 16
+                    }
+    
+                    let itemWidth = this.Ref.gallery_container_slide.offsetWidth + gap
+                    if (this.Static.currentSlide < columnsNum - 2) {
+                        this.Static.currentSlide++;
+                        this.Ref.gallery_container.scrollLeft += this.Static.currentSlide * itemWidth ;
+                    } 
+                    console.log('=slidesNum=',columnsNum)
+                    console.log('=itemWidth=',itemWidth)
+                    console.log('=this.Static.currentSlide=',this.Static.currentSlide)
+                    this.Ref.gallery_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+                    }}
+
+
+                    
+                >
+                    <img src={next} alt="" />
+                </button>
+                <button ref='back' class ="prevBtnEvents"
+                    onclick={() => {
+                    let gap = 16
+                    
+                    // if(this.Ref.banners_section.offsetWidth <= 545){
+                    //     gap = 19
+                    // }else if(this.Ref.banners_section.offsetWidth <= 768){
+                    //     gap = 19
+                    // }else if(this.Ref.banners_section.offsetWidth <= 933){
+                    //     this.Static.maxSlidesPerShift = 3;
+                    //     gap = 16
+                    // }else{
+                    //     this.Static.maxSlidesPerShift = 4;
+                    //     gap = 16
+                    // }
+                    
+                    if (this.Static.currentSlide > 0) {
+                        this.Static.currentSlide--;
+                    }
+                    let itemWidth = this.Ref.gallery_container_slide.offsetWidth + gap
+                    this.Ref.gallery_container.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
+                    }}
+                >
+                    <img src={back} alt="" />
+                </button>
+                <div class='slider-hidden'>
+                <div class='gallery-container' ref='gallery_container'
+                
+                    
+                
+                onmousedown={(e) => {
+                    this.Static.isDragging = true;
+                    this.Static.startX = e.pageX;
+                    this.Static.startScrollLeft = this.Ref.gallery_container.scrollLeft
+                  }}
+
+                  onmousemove={(e) => {
+                    if (!this.Static.isDragging) return;
+                    // console.log('=ab8faf=',e.pageX - this.Static.startX)
+                    e.preventDefault();
+                    this.Ref.gallery_container.scrollLeft = this.Static.startScrollLeft - (e.pageX - this.Static.startX);
+                    console.log('=scrollLeft=',e.pageX - this.Static.startX)
+                  }}
+
+                  onmouseup={() => {
+                    this.Static.isDragging = false;
+                  }}
+
+                //   ontouchstart={(e) => {
+                //     console.log('=d004e1=', e)
+                //     const firstTouch = e.touches[0];
+                //     this.Static.x1 = firstTouch.clientX;
+                //     this.Static.y1 = firstTouch.clientY;
+                //   }}
+
+                //   ontouchmove={(e) => {
+                //     if (!this.Static.x1 || !this.Static.y1) return false;
+                //     let x2 = e.touches[0].clientX;
+                //     let y2 = e.touches[0].clientY;
+                //     let xDiff = x2 - this.Static.x1;
+                //     let yDiff = y2 - this.Static.y1;
+
+                //     if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                //       if (xDiff > 0) {
+                //         this.Ref.gallery_container.scrollLeft -= this.Ref.gallery_container_slide.offsetWidth + 15;
+                //       }
+                //       else {
+                //         this.Ref.gallery_container.scrollLeft += this.Ref.gallery_container_slide.offsetWidth + 15;
+                //       }
+                //     }
+                //     this.Static.x1 = null;
+                //     this.Static.y1 = null;
+                //   }}
+                
+                >
+                    <div ref='gallery_container_slide'><img src={test2} alt="" /></div>
+                    <div><img src={test} alt="" /></div>
+                    <div><img src={test} alt="" /></div>
+                    <div><img src={test} alt="" /></div>
+                    <div><img src={test2} alt="" /></div>
+                    <div><img src={test} alt="" /></div>
+                    <div><img src={test2} alt="" /></div>
+                    <div><img src={test} alt="" /></div>
+                    <div><img src={test2} alt="" /></div>
+                    <div><img src={test} alt="" /></div>
+                    <div><img src={test2} alt="" /></div>
+                    <div><img src={test} alt="" /></div>
+                    <div><img src={test} alt="" /></div>
+                </div>
+                </div>
                 </div>
             </section>
             </div>

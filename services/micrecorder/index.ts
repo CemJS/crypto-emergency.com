@@ -61,7 +61,7 @@ async function readAllChunks(readableStream, tmp) {
 export const loader = async function (Variable) {
     // console.log('=8a7d7a=', "micrecorder")
     let text = "t"
-    console.log('=50e907=', text.charCodeAt(0))
+    // console.log('=50e907=', text.charCodeAt(0))
 }
 
 export const activate = async function () {

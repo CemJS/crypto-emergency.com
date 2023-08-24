@@ -36,7 +36,7 @@ const fn = {
 
         eventSource.addEventListener('message', ({ data }) => {
             let records = JSON.parse(data)
-            console.log('=records=', records)
+            // console.log('=records=', records)
             this.Static.records = records
             this.Static.filtredRecords = this.Static.records        
     this.Static.uniqueCountries =  this.Static.classObject.getUniqueArrayByField('country')

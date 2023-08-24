@@ -33,8 +33,7 @@ export const loader = function () {
         }
         
         return uniqueArray
-       }
-
+      }
     }
     this.Static.classObject = new myClass(this.Static.records)
     this.Static.uniqueCountries =  this.Static.classObject.getUniqueArrayByField('country')
@@ -47,8 +46,13 @@ export const loader = function () {
     this.Static.searchCountries = this.Static.uniqueCountries
     this.Static.filtredRecords = this.Static.records
     
-    
-    
+    // Слайдер onmouse
+    this.Static.isDragging = false;
+    this.Static.startX
+    this.Static.startScrollLeft
+    this.Static.x1 = null;
+    this.Static.y1 = null;
+
 
 }
 
