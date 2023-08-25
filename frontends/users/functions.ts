@@ -1,9 +1,6 @@
 const fn = {
   "addEvent": function ({ nickname, basic, creator, expert }) {
-    console.log('=9862f1=',basic, creator, expert)
     let url = `Users?uuid=${this.Variable.myInfo.uuid}`
-
-    
 
     if (nickname) {
       url += `&nickname=${nickname}`
@@ -29,10 +26,13 @@ const fn = {
       eventSource = this.eventSource(url)
     }
 
-    eventSource.addEventListener('message', ({ data }) => {
-      let records = JSON.parse(data)
-      console.log('=a22d36=',records)
-      this.Static.records = records
+    eventSource.addEventListener('add', ({ data }) => {
+      console.log('=d691ec=',data)
+      if (!this.Static.records) {
+        this.Static.records = []
+      }
+      let record = JSON.parse(data)
+      this.Static.records.push(record)
       this.init()
     });
   }
