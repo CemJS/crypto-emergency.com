@@ -16,12 +16,21 @@ export default function () {
   if (this._ListsEventSource.length == 1) {
     let eventSource1 = this.eventSource(`Answers?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.record._id}`)
 
-    eventSource1.addEventListener('message', ({ data }) => {
-      let records = JSON.parse(data)
-      console.log('=641d61=', records)
-      this.Static.recordsAnswer = records
+    eventSource1.addEventListener('add', ({ data }) => {
+      if (!this.Static.records) {
+        this.Static.records = []
+      }
+      let record = JSON.parse(data)
+      this.Static.records.push(record)
       this.init()
     });
+
+    // eventSource1.addEventListener('message', ({ data }) => {
+    //   let records = JSON.parse(data)
+    //   console.log('=641d61=', records)
+    //   this.Static.recordsAnswer = records
+    //   this.init()
+    // });
   }
 
   console.log('=57c87c=', this.Static.recordsAnswer)

@@ -2,8 +2,6 @@ const fn = {
   "addEvent": function ({ cat, cost, id }) {
     let url = `UniverCourses?uuid=${this.Variable.myInfo.uuid}`
 
-    console.log('=9835cc=', cat, cost, id)
-
     if (cat && cost) {
       url += `&cat=${cat}`
       url += `&cost=${cost}`
@@ -29,7 +27,6 @@ const fn = {
     }
 
     eventSourceCourses.addEventListener('add', ({ data }) => {
-      console.log('=1562ce=',data)
       if (!this.Static.recordsCourses) {
         this.Static.recordsCourses = []
       }

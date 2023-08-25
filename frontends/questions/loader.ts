@@ -4,10 +4,12 @@ export const loader = function () {
 
     let eventSource = this.eventSource(`Questions?uuid=${this.Variable.myInfo.uuid}&lang=ru`)
 
-    eventSource.addEventListener('message', ({ data }) => {
-        let records = JSON.parse(data)
-        console.log('=641d61=', records)
-        this.Static.records = records
+    eventSource.addEventListener('add', ({ data }) => {
+        if (!this.Static.records) {
+            this.Static.records = []
+        }
+        let record = JSON.parse(data)
+        this.Static.records.push(record)
         this.init()
     });
 
