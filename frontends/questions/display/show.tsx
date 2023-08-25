@@ -177,6 +177,20 @@ export default function () {
                               <span>
                                 {this.Services.functions.editText(answer.text, { paragraph: true, clear: true, html: true })}
                               </span>
+                              <div class="user-comment__answer questions-show__tell"
+                                onclick={(e) => {
+                                  let elemr = this.Ref.answerList.childNodes
+                                  for (let i = 0; i < elemr.length; i++) {
+                                    for (let y = 0; y < elemr[i].childNodes.length; y++) {
+                                      elemr[i].childNodes[y].lastChild.style = "display: none"
+                                    }
+                                  }
+
+                                  let el = e.currentTarget
+                                  el.parentElement.parentElement.lastChild.style = "display: flex"
+                                  el.parentElement.parentElement.lastChild.firstChild.firstChild.focus()
+                                }}
+                              >Ответить</div>
                             </div>
                             <div class="user-comment__statistic comment-statistic">
                               <div class="comment-statistic__rating">
@@ -220,20 +234,6 @@ export default function () {
                                   }}
                                 />
                               </div>
-                              <span class="user-comment__answer"
-                                onclick={(e) => {
-                                  let elemr = this.Ref.answerList.childNodes
-                                  for (let i = 0; i < elemr.length; i++) {
-                                    for (let y = 0; y < elemr[i].childNodes.length; y++) {
-                                      elemr[i].childNodes[y].lastChild.style = "display: none"
-                                    }
-                                  }
-
-                                  let el = e.currentTarget
-                                  el.parentElement.parentElement.lastChild.style = "display: flex"
-                                  el.parentElement.parentElement.lastChild.firstChild.firstChild.focus()
-                                }}
-                              >Ответить</span>
                               <div class="user-comment__settings">
                                 <img src={points} />
                               </div>
@@ -252,12 +252,12 @@ export default function () {
                                     uuid: this.Variable.myInfo.uuid,
                                     action: "insert",
                                     data: {
-                                      newsId: item._id,
+                                      itemId: answer._id,
                                       id: answer._id,
                                       author: this.Variable.myInfo._id,
-                                      table: "news",
+                                      table: "answers",
                                       text: this.Static.textCom,
-                                      collection: "Comments"
+                                      collection: "Answers"
                                     }
                                   }
                                   fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {

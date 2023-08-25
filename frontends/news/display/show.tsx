@@ -87,7 +87,7 @@ export default function () {
                   uuid: this.Variable.myInfo.uuid,
                   action: "insert",
                   data: {
-                    newsId: item._id,
+                    itemId: item._id,
                     author: this.Variable.myInfo._id,
                     table: "news",
                     text: this.Static.text,
@@ -237,7 +237,7 @@ export default function () {
                                     uuid: this.Variable.myInfo.uuid,
                                     action: "insert",
                                     data: {
-                                      newsId: item._id,
+                                      itemId: item._id,
                                       id: comment._id,
                                       author: this.Variable.myInfo._id,
                                       table: "news",
