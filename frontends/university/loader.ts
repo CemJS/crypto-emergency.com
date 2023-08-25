@@ -99,9 +99,12 @@ export const loader = function () {
 
   let eventSource = this.eventSource(`UniverCategories?uuid=${this.Variable.myInfo.uuid}`)
 
-  eventSource.addEventListener('message', ({ data }) => {
-    let records = JSON.parse(data)
-    this.Static.records = records
+  eventSource.addEventListener('add', ({ data }) => {
+    if (!this.Static.records) {
+      this.Static.records = []
+    }
+    let record = JSON.parse(data)
+    this.Static.records.push(record)
     this.init()
   });
 }

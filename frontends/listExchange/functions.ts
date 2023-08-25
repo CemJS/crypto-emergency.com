@@ -19,7 +19,6 @@ const fn = {
         }
         
         eventSource.addEventListener('add', ({ data }) => {
-            console.log('=13a2b9=',data)
             if (!this.Static.records) {
                 this.Static.records = []
             }
