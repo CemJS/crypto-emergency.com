@@ -84,8 +84,14 @@ export default function () {
             <button class="lenta__comment_button"
               onclick={() => {
                 let data = {
-                  uuid: this.Variable.myInfo.uuid,
                   action: "insert",
+                  insert: {
+                    // author: this.Variable.myInfo._id,
+                    author: "a5d5f7cf-d826-4891-8c73-907e03c9080f",
+                    text: this.Static.text,
+                    table: "news",
+                    tableID: item._id,
+                  },
                   data: {
                     itemId: item._id,
                     author: this.Variable.myInfo._id,
