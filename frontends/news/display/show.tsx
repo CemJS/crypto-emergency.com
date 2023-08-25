@@ -84,21 +84,12 @@ export default function () {
             <button class="lenta__comment_button"
               onclick={() => {
                 let data = {
-                  action: "insert",
-                  insert: {
-                    // author: this.Variable.myInfo._id,
-                    author: "a5d5f7cf-d826-4891-8c73-907e03c9080f",
-                    text: this.Static.text,
-                    table: "news",
-                    tableID: item._id,
-                  },
-                  data: {
-                    itemId: item._id,
-                    author: this.Variable.myInfo._id,
-                    table: "news",
-                    text: this.Static.text,
-                    collection: "News"
-                  }
+                  _action: "insert",
+                  // author: this.Variable.myInfo._id,
+                  author: "64e87da32c40e768553f5947",
+                  text: this.Static.text,
+                  table: "News",
+                  tableID: item._id,
                 }
                 fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
                   method: "POST",
