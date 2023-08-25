@@ -20,7 +20,7 @@ import lineB from '@svg/lines/linesB.svg'
 
 
 export const display = function () {
-  // console.log('=86c197=', this.Static.paginated)
+  console.log('=86c197=', this.Static.records)
   return (
     <section class="listExchange effect_lines pt_80">
       <div class="wrapper">
@@ -51,7 +51,7 @@ export const display = function () {
               </tr>
             </thead>
             <tbody class="table_body listExchange_table_body">
-              {
+              {/* {
                 this.Static.paginated.map((item, index) => {
                   return (
                     <tr class="table_row listExchange_table_row">
@@ -79,7 +79,7 @@ export const display = function () {
                     </tr>
                   )
                 })
-              }
+              } */}
             </tbody>
           </table>
           <div class="listExchange_pagination mt_25">
