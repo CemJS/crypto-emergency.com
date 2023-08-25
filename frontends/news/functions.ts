@@ -1,5 +1,6 @@
 const fn = {
   "addEvent": function ({ cat }) {
+    this.Static.records = []
     let url = `News?uuid=${this.Variable.myInfo.uuid}&lang=ru`
     if (cat && cat != "Все") {
       url += `&cat=${cat}`
@@ -22,6 +23,15 @@ const fn = {
       let records = JSON.parse(data)
       this.Static.recordsUpdate = records
       console.log('=57054c=', this.Static.recordsUpdate)
+      this.init()
+    });
+
+    eventSource.addEventListener('add', ({ data }) => {
+      if (!this.Static.records) {
+        this.Static.records = []
+      }
+      let record = JSON.parse(data)
+      this.Static.records.push(record)
       this.init()
     });
 

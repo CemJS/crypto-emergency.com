@@ -7,6 +7,14 @@ export const loader = function () {
     this.Static.records = records
     this.init()
   });
+  eventSource.addEventListener('add', ({ data }) => {
+    if (!this.Static.records) {
+      this.Static.records = []
+    }
+    let record = JSON.parse(data)
+    this.Static.records.push(record)
+    this.init()
+  });
 
   eventSource.addEventListener('update', ({ data }) => {
     let record = JSON.parse(data)
