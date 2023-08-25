@@ -105,7 +105,7 @@ export default function () {
             </button>
           </div>
 
-          {
+          {/* {
             item.comments.length > 0
               ?
               <div class="user-comment">
@@ -387,7 +387,7 @@ export default function () {
               </div>
               :
               null
-          }
+          } */}
         </div>
       </section>
     </div>
