@@ -39,7 +39,7 @@ export default function () {
             </section>
             <section class = 'section_gallery'>
                 <h1>Галерея</h1>
-                <div class = 'buttonsEvents'>
+                <div class = 'buttonsShow'>
                 <button ref='next' class ="nextBtnEvents"
                     onclick={() => {
                     let gap = 16

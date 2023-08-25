@@ -35,12 +35,16 @@ export const loader = function () {
         return uniqueArray
       }
     }
+
+
+    
     this.Static.classObject = new myClass(this.Static.records)
     this.Static.uniqueCountries =  this.Static.classObject.getUniqueArrayByField('country')
 
     //   Переменные состояния выпадающих списков
     this.Static.catergorySelectorStatus = 'close'
     this.Static.countrySelectorStatus = 'close'
+    this.Static.calendarDropdownStatus = 'close'
 
     // Переменные для поисков
     this.Static.searchCountries = this.Static.uniqueCountries
@@ -52,7 +56,35 @@ export const loader = function () {
     this.Static.startScrollLeft
     this.Static.x1 = null;
     this.Static.y1 = null;
+    
 
 
-}
+    // КАЛЕНДАРЬ
+
+
+    this.Static.date = new Date()
+    console.log('=bcd8e5=',this.Static.date)
+    this.Static.currentMonth = this.Static.date.getMonth()
+    this.Static.currentYear = this.Static.date.getFullYear()
+    // Создаем объект Date для текущей даты и времени
+    // let date = new Date(),
+    // currYear = date.getFullYear(),
+    // currMonth = date.getMonth();
+
+    // this.Static.currentMonth = currMonth
+    // this.Static.currentYear = currYear
+
+    // let date = new Date(2023,12)
+    // console.log('=date=',date)
+
+
+    this.Static.months = [
+      "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+      "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+    ];
+
+    this.Static.liTag = ""
+
+  }
+
 

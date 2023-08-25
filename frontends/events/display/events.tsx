@@ -113,12 +113,83 @@ export default function () {
           <div class="events_section_filters">
 
             <div class="date_area">
-              <button class="filter_date">
+              <button class="filter_date" 
+                onclick={() => {
+                  if(this.Static.calendarDropdownStatus == 'close'){
+
+                    this.Static.calendarDropdownStatus = 'open'
+                    this.Ref.calendarDropdown.classList.add("visible")
+                    this.Ref.event_list.classList.add("shadow")
+                    this.Ref.calendarDropdown_arrow.classList.add("rotate")
+
+                    this.fn('calendarRender')
+                    this.Ref.days.innerHTML = this.Static.liTag 
+                    this.Static.liTag = ''
+                    this.Ref.current_date.innerText = this.Static.currentDate
+                  }else if(this.Static.calendarDropdownStatus == 'open' ){
+                    this.Static.calendarDropdownStatus = 'close'
+
+                    this.Ref.calendarDropdown.classList.remove("visible")
+                    this.Ref.event_list.classList.remove("shadow")
+                    this.Ref.calendarDropdown_arrow.classList.remove("rotate")
+                  }
+                }}
+              >
                 <span>Дата</span>
-                <img src={selector_arrow} alt="C"  />
+                <img src={selector_arrow} alt="C" ref = 'calendarDropdown_arrow' />
               </button >
+            
+            <div class="calendar" ref ='calendarDropdown'>
+            <div class='cal_header'>
+              <div class='icons'
+              onclick={() => {
+                
+                
+                this.Static.liTag = ''
+                this.Static.currentMonth--
+                this.fn('calendarRender')
+                this.Ref.days.innerHTML = this.Static.liTag 
+                this.Ref.current_date.innerText = this.Static.currentDate
+                this.init()
+              }}
+              >
+                <img src={back} alt="" id="prev" class="material-symbols-rounded" />
+              </div>
+              <p class="current-date" ref ='current_date'></p>
+              <div class="icons"
+              onclick={() => {
+                this.Static.liTag = ''
+                this.Static.currentMonth++
+                this.fn('calendarRender')
+                this.Ref.days.innerHTML = this.Static.liTag 
+                this.Ref.current_date.innerText = this.Static.currentDate
+                this.init()
+                // this.Static.liTag = ''
+                // this.Static.currentMonth++
+                // this.fn('calendarRender')
+                // this.Ref.days.innerHTML = this.Static.liTag 
+                // this.Ref.current_date.innerText = this.Static.currentDate
+                // this.init()
+
+              }}
+              >
+                <img src={next} alt="" id="next" class="material-symbols-rounded" />
+              </div>
             </div>
-              
+              <ul class="weeks">
+                <li>Пн</li>
+                <li>Вт</li>
+                <li>Ср</li>
+                <li>Чт</li>
+                <li>Пт</li>
+                <li>Сб</li>
+                <li>Вс</li>
+              </ul>
+              <ul class="days" ref='days'>
+                
+              </ul>
+            </div>
+            </div>
             <div  class="country_area">    
               <button class="filter_country" ref="country_area"
               onclick={(e) => {

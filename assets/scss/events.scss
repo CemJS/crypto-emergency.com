@@ -51,6 +51,7 @@
     }
 }
 .banners_section{
+    height: 198px;
     overflow: hidden;
     .slider-container{
         display: grid;
@@ -88,7 +89,7 @@
     margin-bottom: 80px;
     &_filters{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 2fr;
+        grid-template-columns: 1fr 1fr 1fr 1.75fr;
         gap: 16px;
         align-items: center;
 
@@ -116,7 +117,8 @@
                     color: #B3B7C4; 
                 }
             }
-            ul{
+            .countries_dropdown_list,
+            .category_dropdown_list{
                 position: absolute;
                 width: 100%;
                 background: #313643;
@@ -143,12 +145,123 @@
             }
             
         }
-        .countries_dropdown,.category_dropdown,.filter_country_magnifier{
+        .countries_dropdown,.category_dropdown,.filter_country_magnifier, .calendar{
             display: none;
         }
         .visible{
             display: block;
         }
+// календарь start
+        .calendar .cal_header{
+            display: flex;
+            align-items: center;
+            padding: 7px 0px 10px;
+            justify-content: space-between;
+            .current-date {
+                color: #FFF;
+                font-family: Montserrat;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                }
+        }
+        .cal_header .icons {
+        display: flex; 
+
+        img {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            color: #878787;
+            text-align: center;
+            line-height: 38px;
+            font-size: 1.9rem;
+            user-select: none;
+            border-radius: 4px;
+            }
+            // img:last-child {
+            //     margin-right: -10px;
+            // }
+            img:hover {
+                background: #757A89;
+            } 
+        }
+        .calendar {
+            position: absolute;
+            padding: 7px;
+            border-radius: 10px;
+            border: 1.5px solid #474C5A;
+            background: #313643;
+            z-index: 1;
+
+            ul {
+
+                display: flex;
+                flex-wrap: wrap;
+                list-style: none;
+                text-align: center;
+                }
+            li {
+                color: #FFFFFF;
+                width: calc(100% / 7);
+                font-size: 14px
+                }
+            .days {
+                margin-bottom: 10px;
+                }
+        }
+
+        .calendar .weeks li {
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            cursor: default;
+        }
+        .calendar .days{
+            li {
+                z-index: 1;
+                cursor: pointer;
+                position: relative;
+                margin-top: 15px;
+                }
+            li.inactive {
+                color: #757A89
+            }
+                li.today {
+            color: #fff;
+            }
+            
+            li::before {
+                position: absolute;
+                content: "";
+                left: 50%;
+                top: 50%;
+                width: 31px;
+                height: 31px;
+                z-index: -1;
+                border-radius: 4px;
+                transform: translate(-50%, -50%);
+            }
+            li.today::before {
+                background: #9148BC;
+            }
+            li.choosen::before{
+                border: 1px solid coral;
+                border-radius: 4px;
+            }
+            li:not(.today):hover::before {
+                border-radius: 4px;
+                border: 2px solid  coral;;
+                opacity: 0.5;
+            }
+        } 
+// календарь stop
+
+
 
         .filter_country{
             input{
@@ -772,7 +885,7 @@
         
     }
     .section_gallery{
-        .buttonsEvents{
+        .buttonsShow{
             position: relative;
           
             .prevBtnEvents,
@@ -817,6 +930,7 @@
             margin-bottom: 60px;
         }
         .slider-hidden{
+            height: 156px;
             overflow: hidden;
             .gallery-container{
                 overflow-x: scroll;
