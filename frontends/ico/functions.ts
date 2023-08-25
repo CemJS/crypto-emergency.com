@@ -2,21 +2,21 @@
 
 const fn = {
     "addEvent": function ({ cat, active }) {
-        console.log('=b95b75=',cat, active)
+        console.log('=b95b75=', cat, active)
         let url = `Ico?uuid=${this.Variable.myInfo.uuid}`
 
-        if (cat && active) {
-            url += `&cat=${cat}`
-            url += `&active=${active}`
-        }
+        // if (cat && active) {
+        //     url += `&cat=${cat}`
+        //     url += `&active=${active}`
+        // }
 
         if (cat && cat != "Все") {
             url += `&cat=${cat}`
         }
 
-        if (active) {
-            url += `&active=${active}`
-        }
+        // if (active) {
+        //     url += `&active=${active}`
+        // }
 
         let eventSource
 
@@ -32,9 +32,12 @@ const fn = {
         } else {
             eventSource = this.eventSource(url)
         }
-        eventSource.addEventListener('message', ({ data }) => {
-            let records = JSON.parse(data)
-            this.Static.records = records
+        eventSource.addEventListener('add', ({ data }) => {
+            if (!this.Static.records) {
+                this.Static.records = []
+            }
+            let record = JSON.parse(data)
+            this.Static.records.push(record)
             this.init()
         });
     }
