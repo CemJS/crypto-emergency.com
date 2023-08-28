@@ -8,6 +8,8 @@ import test2 from "@images/events/test2.png"
 import back from '@svg/icon/prev.svg'
 import next from '@svg/icon/next.svg'
 export default function () {
+  // console.log('=records внутри html=',this.Static.records)
+
 
   return (
     <div class="events">
@@ -84,7 +86,7 @@ export default function () {
               // console.log('=ab8faf=',e.pageX - this.Static.startX)
               e.preventDefault();
               this.Ref.slider_container.scrollLeft = this.Static.startScrollLeft - (e.pageX - this.Static.startX);
-              console.log('=scrollLeft=',this.Ref.slider_container.scrollLeft)
+              // console.log('=scrollLeft=',this.Ref.slider_container.scrollLeft)
             }}
 
             onmouseup={() => {
@@ -113,8 +115,8 @@ export default function () {
           <div class="events_section_filters">
 
             <div class="date_area">
-              <button class="filter_date" 
-                onclick={() => {
+              <button class="filter_date" ref = 'date_area'
+                onclick={(e) => {
                   if(this.Static.calendarDropdownStatus == 'close'){
 
                     this.Static.calendarDropdownStatus = 'open'
@@ -140,7 +142,7 @@ export default function () {
               </button >
             
             <div class="calendar" ref ='calendarDropdown'>
-            <div class='cal_header'>
+            <div class='cal_header' >
               <div class='icons'
               onclick={() => {
                 
@@ -164,12 +166,7 @@ export default function () {
                 this.Ref.days.innerHTML = this.Static.liTag 
                 this.Ref.current_date.innerText = this.Static.currentDate
                 this.init()
-                // this.Static.liTag = ''
-                // this.Static.currentMonth++
-                // this.fn('calendarRender')
-                // this.Ref.days.innerHTML = this.Static.liTag 
-                // this.Ref.current_date.innerText = this.Static.currentDate
-                // this.init()
+
 
               }}
               >
@@ -194,6 +191,9 @@ export default function () {
               <button class="filter_country" ref="country_area"
               onclick={(e) => {
                 if(this.Static.countrySelectorStatus == 'close'){
+                  this.fn("getUniqueArrayByField",this.Static.records, 'country' )
+                  
+                  this.Static.searchCountries = this.Static.uniqueCountries
                   this.Static.countrySelectorStatus = 'open'
                   this.Ref.country_search_field.focus();
                   this.Ref.countries_dropdown.classList.add("visible")
@@ -210,12 +210,18 @@ export default function () {
                 <input type="search" name="input" placeholder="Страна" ref='country_search_field'
                 oninput={(e) => {
                   this.Static.searchCountries = this.Static.uniqueCountries.filter((item) => {
+                    
                   if (item.toLowerCase().includes(e.target.value.toLowerCase())) {
+                    // console.log('=item=',item)
                     this.Ref.countries_dropdown.classList.add("visible")
+                    // console.log('=searchCountries=',this.Static.searchCountries, this.Static.uniqueCountries)
+                    // this.init()
                     return true
                   }else{
+                    // console.log('=723725=',"Переменная")
                     this.Ref.countries_dropdown.classList.remove("visible")
                   }
+
                 })
                   this.init()
                 }}
@@ -240,8 +246,9 @@ export default function () {
                 >
                   {
                    this.Static.searchCountries.map((item, index) => {
+                    // console.log('=91d82b=', this.Static.searchCountries[index])
                       return (
-                        <li class="dropdown_list-item" ref='drop_item' data-value="rus">{item}</li>
+                        <li class="dropdown_list-item" ref='drop_item' >{this.Static.searchCountries[index]}</li>
                       )
                     })
                   }
@@ -251,13 +258,14 @@ export default function () {
             <div class="category_area" ref='div_area'>
               <button class="filter_category"  ref="category_area"
               onclick={(e) => {
-                if(this.Static.catergorySelectorStatus == 'close'){
-                  this.Static.catergorySelectorStatus = 'open'
+                if(this.Static.categorySelectorStatus == 'close'){
+                  this.fn("getUniqueArrayByField",this.Static.records, 'category' )
+                  this.Static.categorySelectorStatus = 'open'
                   this.Ref.category_dropdown.classList.add("visible")
                   this.Ref.event_list.classList.add("shadow")
                   this.Ref.categorySelector_arrow.classList.add("rotate")
-                }else if(this.Static.catergorySelectorStatus == 'open' ){
-                  this.Static.catergorySelectorStatus = 'close'
+                }else if(this.Static.categorySelectorStatus == 'open' ){
+                  this.Static.categorySelectorStatus = 'close'
                   this.Ref.category_dropdown.classList.remove("visible")
                   this.Ref.event_list.classList.remove("shadow")
                   this.Ref.categorySelector_arrow.classList.remove("rotate")
@@ -276,6 +284,7 @@ export default function () {
                     this.Ref.choosen_category.innerText = 'Категория'
                   } else {
                     this.Ref.choosen_category.innerText = e.target.innerText
+                    // console.log('=3e0d37=',e.target.innerText)
                     this.Static.makeFilter.cat = e.target.innerText
                   }
                   
@@ -377,9 +386,9 @@ export default function () {
                   
               <div class="item_header">
                 <div class="picture">
-                  {/* <div class='category-events'>
+                  <div class='category-events'>
                     {item.category}
-                  </div> */}
+                  </div>
                   <img src={test} alt="img"/>
                   <div class="location">
                     <img src={map_point} alt="L" />

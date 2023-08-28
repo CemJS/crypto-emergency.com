@@ -9,37 +9,51 @@ const listener = {
         // console.log('=e4aacc=', "keyup")
     },
     "clickAny": function (e) {
-        if(this.Ref.country_search_field.value == '' && this.Ref.choosen_category == 'Категория'){
-            this.Static.filtredRecords = this.Static.records
-          }
+        // if(this.Ref.country_search_field.value == '' && this.Ref.choosen_category == 'Категория'){
+        //     this.Static.filtredRecords = this.Static.records
+        //   }
           this.init()
-        if (!this.Ref.country_area.contains(e.target) && this.Ref.category_area.contains(e.target) && this.Static.countrySelectorStatus == 'open') {
-            // клик вне страны, но внутри категории закрывает выпадающий список страны,оставляет тень
-            this.Static.countrySelectorStatus = 'close'
-            this.Ref.countries_dropdown.classList.remove("visible")
-            this.Ref.countrySelector_arrow.classList.remove("rotate")
-            // this.Ref.magnifier.classList.remove("visible")
-        } else if (!this.Ref.country_area.contains(e.target) && !this.Ref.category_area.contains(e.target) && this.Static.countrySelectorStatus == 'open') {
-            // клик вне страны, и категории
-            this.Static.countrySelectorStatus = 'close'
-            this.Ref.countries_dropdown.classList.remove("visible")
-            this.Ref.event_list.classList.remove("shadow")
-            this.Ref.countrySelector_arrow.classList.remove("rotate")
-            // this.Ref.magnifier.classList.remove("visible")
-        }
 
-        if (!this.Ref.category_area.contains(e.target) && this.Ref.country_area.contains(e.target) && this.Static.catergorySelectorStatus == 'open') {
-            // клик вне категори,но внутри стран закрывает выпадающий список ,оставляет тень
+        //COUNTRY
+        if (!this.Ref.country_area.contains(e.target)  && this.Static.countrySelectorStatus == 'open' && this.Ref.category_area.contains(e.target) || this.Ref.date_area.contains(e.target)) {
+            // клик вне страны, но внутри категории или даты закрывает выпадающий список страны,оставляет тень
+            this.Static.countrySelectorStatus = 'close'
+            this.Ref.countries_dropdown.classList.remove("visible")
+            this.Ref.countrySelector_arrow.classList.remove("rotate")
+        } else if (!this.Ref.country_area.contains(e.target) && !this.Ref.category_area.contains(e.target) && this.Static.countrySelectorStatus == 'open') {
+            // клик вне страны, и категории и даты
+            this.Static.countrySelectorStatus = 'close'
+            this.Ref.countries_dropdown.classList.remove("visible")
+            this.Ref.event_list.classList.remove("shadow")
+            this.Ref.countrySelector_arrow.classList.remove("rotate")
+        }
+        // CATEGORY
+        if (!this.Ref.category_area.contains(e.target)  && this.Static.categorySelectorStatus == 'open' && this.Ref.country_area.contains(e.target) || this.Ref.date_area.contains(e.target)) {
+            // клик вне категори,но внутри стран или даты закрывает выпадающий список ,оставляет тень
             // console.log('=267306=', 'вне категории но внутри стран')
-            this.Static.catergorySelectorStatus = 'close'
+            this.Static.categorySelectorStatus = 'close'
             this.Ref.category_dropdown.classList.remove("visible")
             this.Ref.categorySelector_arrow.classList.remove("rotate")
-        } else if (!this.Ref.category_area.contains(e.target) && this.Static.catergorySelectorStatus == 'open') {
-            // клик вне категории и стран 
-            this.Static.catergorySelectorStatus = 'close'
+        } else if (!this.Ref.category_area.contains(e.target) && this.Static.categorySelectorStatus == 'open') {
+            // клик вне категории и стран и даты
+            this.Static.categorySelectorStatus = 'close'
             this.Ref.category_dropdown.classList.remove("visible")
             this.Ref.event_list.classList.remove("shadow")
             this.Ref.categorySelector_arrow.classList.remove("rotate")
+        }
+        //DATE
+        if (!this.Ref.date_area.contains(e.target) && this.Static.calendarDropdownStatus == 'open'  && this.Ref.country_area.contains(e.target) || this.Ref.category_area.contains(e.target)) {
+            // клик вне ДАТЫ,но внутри стран или категории закрывает выпадающий список ,оставляет тень
+            this.Static.calendarDropdownStatus = 'close'
+            this.Ref.calendarDropdown.classList.remove("visible")
+            this.Ref.calendarDropdown_arrow.classList.remove("rotate")
+        } else if (!this.Ref.date_area.contains(e.target) && !this.Static.calendarDropdown.contains(e.target) && this.Static.calendarDropdownStatus == 'open') {
+            // клик вне категории и стран и даты и date dropdown
+            console.log('=38e0b6=',"вне всего")
+            this.Static.calendarDropdownStatus = 'close'
+            this.Ref.calendarDropdown.classList.remove("visible")
+            this.Ref.event_list.classList.remove("shadow")
+            this.Ref.calendarDropdown_arrow.classList.remove("rotate")
         }
     },
     "keydownAny": function (e){
@@ -49,7 +63,6 @@ const listener = {
             this.Ref.countries_dropdown.classList.remove("visible")
             this.Ref.event_list.classList.remove("shadow")
             this.Ref.countrySelector_arrow.classList.remove("rotate")
-            // this.Ref.magnifier.classList.remove("visible")
             // CATEGORY
             this.Static.catergorySelectorStatus = 'close'
             this.Ref.category_dropdown.classList.remove("visible")

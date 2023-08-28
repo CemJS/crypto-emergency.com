@@ -4,6 +4,7 @@ const fn = {
 
   "addEvent": function ({ cat, country }) {
     let url = `Events?uuid=${this.Variable.myInfo.uuid}`
+    this.Static.records = []
 
     if (cat && country) {
       url += `&cat=${cat}`
@@ -30,28 +31,17 @@ const fn = {
       if (!this.Static.records) {
         this.Static.records = []
       }
+      
+      // console.log('=da1821=',data)
       let record = JSON.parse(data)
       this.Static.records.push(record)
-      this.Static.filtredRecords = this.Static.records
-      this.Static.uniqueCountries = this.Static.classObject.getUniqueArrayByField('country')
-      this.Static.uniqueCategories = this.Static.classObject.getUniqueArrayByField('category')
-      this.Static.filtredRecords = this.Static.records
+      // this.Static.filtredRecords = this.Static.records
+      // this.Static.filtredRecords = this.Static.records
+
       this.init()
     });
-
-    // eventSource.addEventListener('message', ({ data }) => {
-    //   let records = JSON.parse(data)
-    //   // console.log('=records=', records)
-    //   this.Static.records = records
-    //   this.Static.filtredRecords = this.Static.records
-    //   this.Static.uniqueCountries = this.Static.classObject.getUniqueArrayByField('country')
-    //   this.Static.uniqueCategories = this.Static.classObject.getUniqueArrayByField('category')
-    //   this.Static.filtredRecords = this.Static.records
-    //   this.init()
-    // });
   },
   "calendarRender": function () {
-
     console.log('=currentMonth=', this.Static.currentMonth)
     // ПЕРВЫЙ ДЕНЬ НЕДЕЛИ  ТЕКУЩЕГО месяца
     let firstDayofMonth = new Date(this.Static.currentYear, this.Static.currentMonth, 1).getDay();
@@ -61,42 +51,39 @@ const fn = {
     let lastDayofMonth = new Date(this.Static.currentYear, this.Static.currentMonth, lastDateofMonth).getDay();
     //последний день предыдущего месяца
     let lastDateofLastMonth = new Date(this.Static.currentYear, this.Static.currentMonth, 0).getDate();
-    console.log('=firstDayofMonth=', 'функция вызывается')
-    // Строка для хранения элементов списка дней.
-    // let liTag = "";
+    console.log('=calendarRender=', 'функция вызывается')
 
-    //  дни ПРЕДЫДУЩЕГО месяца в текущем. 
-    //  Число итераций = номер дня недели текущего месяца(firstDayofMonth), где 0 - воскресенье
-    for (let i = firstDayofMonth - 1; i > 0; i--) {
-      this.Static.liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+    // Дозаполнение пустых ячеек из предыдущего месяца
+    if (firstDayofMonth > 1) {
+      for (let i = firstDayofMonth - 1; i > 0; i--) {
+        this.Static.liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+      }
+    } else if (firstDayofMonth === 0) {
+      // Добавление 6 дополнительных ячеек, если первый день - воскресенье
+      for (let i = 1; i <= 6; i++) {
+        this.Static.liTag += `<li class="inactive">${lastDateofLastMonth - 6 + i}</li>`;
+      }
     }
-
-    // Дни текущего месяца
-    // Число итераций = количесвто дней в месяце(lastDateofMonth)
+    // Дни текущего месяца. Число итераций = количесвто дней в месяце(lastDateofMonth)
     for (let i = 1; i <= lastDateofMonth; i++) {
-      // Определение, является ли текущий день сегодняшним,чтобы добавить ему класс today
-      let isToday =
+      let isToday = // Определение, является ли текущий день сегодняшним,чтобы добавить ему класс today
         i === this.Static.date.getDate() &&
           this.Static.currentMonth === new Date().getMonth() &&
           this.Static.currentYear === new Date().getFullYear()
           ? "today"
           : "";
-
       // Добавляем  элемент списка дней после проверки на 'isToday' 
       this.Static.liTag += `<li class="${isToday}">${i}</li>`;
     }
-
     // дни следующего месяца в текущем
-    // число итераций = номеру дня недели последней недели месяца
-    // for (let i = lastDayofMonth; i < 6; i++) {
-    //   this.Static.liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`; //   Вторник = 2;  2 - 2 + 1 = 1; 3-2+1=2 b и тд, пока < 6 
-    // }
-    for (let i = lastDayofMonth + 1; i < 7; i++) {
-      this.Static.liTag += `<li class="inactive">${i - lastDayofMonth}</li>`;
+    if (lastDayofMonth > 0) {
+      for (let i = 1; i <= 7 - lastDayofMonth; i++) {
+        this.Static.liTag += `<li class="inactive">${i}</li>`;
+      }
     }
-
-    // Обновляем текст текущей даты
+    // Обновляем текст текущей даты при смене месяца и года 
     this.Static.currentDate = `${this.Static.months[this.Static.currentMonth]} ${this.Static.currentYear}`;
+
     if (this.Static.currentMonth < 0 || this.Static.currentMonth > 11) {
       this.Static.date = new Date(this.Static.currentYear, this.Static.currentMonth);
       this.Static.currentMonth = this.Static.date.getMonth();
@@ -105,7 +92,27 @@ const fn = {
     } else {
       this.Static.date = new Date();
     }
-    // return this.Static.liTag
+  },
+  "getUniqueArrayByField": function (Arr, field) {
+    // console.log('=внутри getUniqueArrayByField=', Arr)
+    const uniqueSet = new Set(); 
+        if(Arr){
+          
+          Arr.forEach(item => {
+          uniqueSet.add(item[field]);
+        });
+      }
+        const uniqueArray =  Array.from(uniqueSet)
+
+        if(field == 'country'){
+          uniqueArray.unshift('Все страны')
+          this.Static.uniqueCountries = uniqueArray
+        }else if(field == 'category'){
+          uniqueArray.unshift('Все категории')
+          this.Static.uniqueCategories = uniqueArray
+        }
+        
+        
   }
 }
 
