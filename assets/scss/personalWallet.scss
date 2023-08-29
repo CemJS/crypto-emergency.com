@@ -1,2 +1,118 @@
 @import 'utils/variables.scss';
 
+.personalWallet{
+    .cards-container{
+        margin-top: 35px;
+        .card{
+            position: relative;
+            max-width: 420px;
+            height: 226px;
+            background: #7A5BE4;
+            background-color: slateblue;
+            background-size: cover;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            padding: 40px 60px 40px 30px;
+            background-image: url('images/personalWallet/card.png');
+            .balance{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 40px;
+                p{
+                    font-weight: 500;
+                    font-size: 15px;
+                    line-height: 100%;
+                    margin-bottom: 12px;  
+                }
+                &_total{
+                    display: flex;
+                    gap: 10px;
+                    p{
+                        font-weight: 600;
+                        font-size: 36px;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                    }
+                    
+                }
+
+            }
+            .card_footer{
+                display: flex;
+                justify-content: space-between;
+                .balance_usd{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    .currency{
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 100%;
+                        margin-bottom: 7px;
+                    }
+                    .balance{
+                        font-weight: 600;
+                        font-size: 20px;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                    }
+                }
+                .actual_rate{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    .title{
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 100%;
+                        margin-bottom: 7px;
+                    }
+                    .amount{
+                        font-weight: 600;
+                        font-size: 20px;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .crem_logo{
+                position: absolute;
+                top:10px;
+                right: 10px;
+                width:130px;
+                // height: 100%;
+                vertical-align: middle;
+                border-radius: 20px;
+
+            }
+        }
+    }
+
+    .table_bonus{
+        text-align: center;
+	    vertical-align: middle;
+        &_head{
+            .table_bonus_row{
+                justify-content: center;
+                align-items: center;
+               border-bottom: 1px solid #8991a8;
+               color: #8991a8;
+               font-size: 13px;
+               font-weight: 500;
+            }
+        }
+        &_body{
+            .table_bonus_row{
+                border-bottom: 1px solid #8991a8;
+                td{
+                    padding: 15px 0px;
+                    justify-content: center;
+                    align-items: center;
+                    .bonus_type{
+                        width: 35px;
+                    }
+                }
+            }
+        }
+    }
+}

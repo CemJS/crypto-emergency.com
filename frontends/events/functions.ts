@@ -25,19 +25,19 @@ const fn = {
     } else {
       eventSource = this.eventSource(url)
     }
+    this.Static.countRecords++
 
 
     eventSource.addEventListener('add', ({ data }) => {
       if (!this.Static.records) {
         this.Static.records = []
       }
-      
-      // console.log('=da1821=',data)
       let record = JSON.parse(data)
       this.Static.records.push(record)
-      // this.Static.filtredRecords = this.Static.records
-      // this.Static.filtredRecords = this.Static.records
-
+      this.Static.filtredRecords = this.Static.records
+      if (this.Static.countRecords == 0) {
+        this.Static.allCountries = this.Static.records
+      }
       this.init()
     });
   },
@@ -51,7 +51,6 @@ const fn = {
     let lastDayofMonth = new Date(this.Static.currentYear, this.Static.currentMonth, lastDateofMonth).getDay();
     //последний день предыдущего месяца
     let lastDateofLastMonth = new Date(this.Static.currentYear, this.Static.currentMonth, 0).getDate();
-    console.log('=calendarRender=', 'функция вызывается')
 
     // Дозаполнение пустых ячеек из предыдущего месяца
     if (firstDayofMonth > 1) {
@@ -70,19 +69,27 @@ const fn = {
         i === this.Static.date.getDate() &&
           this.Static.currentMonth === new Date().getMonth() &&
           this.Static.currentYear === new Date().getFullYear()
-          ? "today"
+          ? "today "
           : "";
       // Добавляем  элемент списка дней после проверки на 'isToday' 
-      this.Static.liTag += `<li class="${isToday}">${i}</li>`;
+      
+        // isToday += " choosen";
+        let isChoosen =
+          i === this.Static.selectedDate.getDate() &&
+          this.Static.currentMonth === this.Static.selectedDate.getMonth() &&
+          this.Static.currentYear === this.Static.selectedDate.getFullYear()
+          ? "choosen"
+          : "";
+      this.Static.liTag += `<li class="${isToday }${isChoosen}">${i}</li>`;
     }
-    // дни следующего месяца в текущем
-    if (lastDayofMonth > 0) {
-      for (let i = 1; i <= 7 - lastDayofMonth; i++) {
-        this.Static.liTag += `<li class="inactive">${i}</li>`;
-      }
+      // дни следующего месяца в текущем
+      if (lastDayofMonth > 0) {
+        for (let i = 1; i <= 7 - lastDayofMonth; i++) {
+          this.Static.liTag += `<li class="inactive">${i}</li>`;
+        }
     }
     // Обновляем текст текущей даты при смене месяца и года 
-    this.Static.currentDate = `${this.Static.months[this.Static.currentMonth]} ${this.Static.currentYear}`;
+      this.Static.currentDate = `${this.Static.months[this.Static.currentMonth]} ${this.Static.currentYear}`;
 
     if (this.Static.currentMonth < 0 || this.Static.currentMonth > 11) {
       this.Static.date = new Date(this.Static.currentYear, this.Static.currentMonth);
@@ -92,12 +99,11 @@ const fn = {
     } else {
       this.Static.date = new Date();
     }
+    this.Ref.days.innerHTML = this.Static.liTag 
   },
   "getUniqueArrayByField": function (Arr, field) {
-    // console.log('=внутри getUniqueArrayByField=', Arr)
     const uniqueSet = new Set(); 
         if(Arr){
-          
           Arr.forEach(item => {
           uniqueSet.add(item[field]);
         });

@@ -80,17 +80,53 @@ export default function () {
               this.Static.startX = e.pageX;
               this.Static.startScrollLeft = this.Ref.slider_container.scrollLeft
             }}
-
             onmousemove={(e) => {
               if (!this.Static.isDragging) return;
-              // console.log('=ab8faf=',e.pageX - this.Static.startX)
               e.preventDefault();
               this.Ref.slider_container.scrollLeft = this.Static.startScrollLeft - (e.pageX - this.Static.startX);
-              // console.log('=scrollLeft=',this.Ref.slider_container.scrollLeft)
             }}
-
             onmouseup={() => {
               this.Static.isDragging = false;
+            }}
+            ontouchstart={(e) => {
+              console.log('=d004e1=', e)
+              const firstTouch = e.touches[0];
+              this.Static.x1 = firstTouch.clientX;
+              this.Static.y1 = firstTouch.clientY;
+            }}
+
+            ontouchmove={(e) => {
+              if (!this.Static.x1 || !this.Static.y1) return false;
+              let x2 = e.touches[0].clientX;
+              let y2 = e.touches[0].clientY;
+              let xDiff = x2 - this.Static.x1;
+              let yDiff = y2 - this.Static.y1;
+              let gap;
+              if(this.Ref.banners_section.offsetWidth <= 545){
+                this.Static.maxSlidesPerShift = 1;
+                gap = 19
+
+              }else if(this.Ref.banners_section.offsetWidth <= 800){
+                this.Static.maxSlidesPerShift = 2;
+                gap = 19
+              }else if(this.Ref.banners_section.offsetWidth <= 960){
+                this.Static.maxSlidesPerShift = 3;
+                gap = 16
+              }else{
+                this.Static.maxSlidesPerShift = 4;
+                gap = 16
+              }
+              let itemWidth = this.Ref.slide.offsetWidth + gap
+              if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                if (xDiff > 0) {
+                  this.Ref.slider_container.scrollLeft -= itemWidth;
+                }
+                else {
+                  this.Ref.slider_container.scrollLeft += itemWidth;
+                }
+              }
+              this.Static.x1 = null;
+              this.Static.y1 = null;
             }}
             >
               <div>
@@ -118,26 +154,28 @@ export default function () {
               <button class="filter_date" ref = 'date_area'
                 onclick={(e) => {
                   if(this.Static.calendarDropdownStatus == 'close'){
-
+                    console.log('=this.Static.choosenDate=',this.Static.choosenDate)
                     this.Static.calendarDropdownStatus = 'open'
                     this.Ref.calendarDropdown.classList.add("visible")
                     this.Ref.event_list.classList.add("shadow")
                     this.Ref.calendarDropdown_arrow.classList.add("rotate")
-
                     this.fn('calendarRender')
-                    this.Ref.days.innerHTML = this.Static.liTag 
                     this.Static.liTag = ''
                     this.Ref.current_date.innerText = this.Static.currentDate
-                  }else if(this.Static.calendarDropdownStatus == 'open' ){
-                    this.Static.calendarDropdownStatus = 'close'
+                    // console.log('=06479f=',this.Ref.days)
 
+                  }else if(this.Static.calendarDropdownStatus == 'open' ){
+                    console.log('=this.Static.choosenDate=',this.Static.choosenDate)
+                    this.Static.liTag = ''
+                    this.Static.currentMonth = this.Static.date.getMonth()
+                    this.Static.calendarDropdownStatus = 'close'
                     this.Ref.calendarDropdown.classList.remove("visible")
                     this.Ref.event_list.classList.remove("shadow")
                     this.Ref.calendarDropdown_arrow.classList.remove("rotate")
                   }
                 }}
               >
-                <span>Дата</span>
+                <span ref ='date_text'>Дата</span>
                 <img src={selector_arrow} alt="C" ref = 'calendarDropdown_arrow' />
               </button >
             
@@ -145,12 +183,9 @@ export default function () {
             <div class='cal_header' >
               <div class='icons'
               onclick={() => {
-                
-                
                 this.Static.liTag = ''
                 this.Static.currentMonth--
                 this.fn('calendarRender')
-                this.Ref.days.innerHTML = this.Static.liTag 
                 this.Ref.current_date.innerText = this.Static.currentDate
                 this.init()
               }}
@@ -160,14 +195,13 @@ export default function () {
               <p class="current-date" ref ='current_date'></p>
               <div class="icons"
               onclick={() => {
+                
                 this.Static.liTag = ''
                 this.Static.currentMonth++
                 this.fn('calendarRender')
-                this.Ref.days.innerHTML = this.Static.liTag 
                 this.Ref.current_date.innerText = this.Static.currentDate
                 this.init()
-
-
+                
               }}
               >
                 <img src={next} alt="" id="next" class="material-symbols-rounded" />
@@ -182,7 +216,29 @@ export default function () {
                 <li>Сб</li>
                 <li>Вс</li>
               </ul>
-              <ul class="days" ref='days'>
+              <ul class="days" ref='days'
+              onclick={(e) => {
+                if (e.target.tagName === 'LI') {
+                  const utcDate = new Date(Date.UTC(this.Static.currentYear, this.Static.currentMonth, e.target.innerText),)
+                  this.Ref.date_text.innerText = (utcDate.toLocaleDateString('ru-RU'))
+                  if (this.Static.choosenDate) {
+                    // console.log('=574d1f=','видит что переменная не пустая')
+                    this.Static.choosenDate.classList.remove("choosen");
+                  }
+                  // Добавляем класс choosen к текущей выбранной дате
+                  e.target.classList.add("choosen");
+                  // Обновляем ссылку на текущий выбранный элемент
+                  this.Static.choosenDate = e.target;
+                  this.Static.selectedDate = new Date(this.Static.currentYear, this.Static.currentMonth,  e.target.innerText)
+                }else{
+                  console.log('=14b6e2=','клик не по дате')
+                }
+                // console.log('=target=',e.target.innerText, this.Static.currentMonth)
+                
+
+               
+              }}
+              >
                 
               </ul>
             </div>
@@ -191,7 +247,7 @@ export default function () {
               <button class="filter_country" ref="country_area"
               onclick={(e) => {
                 if(this.Static.countrySelectorStatus == 'close'){
-                  this.fn("getUniqueArrayByField",this.Static.records, 'country' )
+                  this.fn("getUniqueArrayByField",this.Static.allCountries, 'country' )
                   
                   this.Static.searchCountries = this.Static.uniqueCountries
                   this.Static.countrySelectorStatus = 'open'
@@ -209,17 +265,13 @@ export default function () {
               >
                 <input type="search" name="input" placeholder="Страна" ref='country_search_field'
                 oninput={(e) => {
+                  
                   this.Static.searchCountries = this.Static.uniqueCountries.filter((item) => {
                     
                   if (item.toLowerCase().includes(e.target.value.toLowerCase())) {
-                    // console.log('=item=',item)
                     this.Ref.countries_dropdown.classList.add("visible")
-                    // console.log('=searchCountries=',this.Static.searchCountries, this.Static.uniqueCountries)
-                    // this.init()
+
                     return true
-                  }else{
-                    // console.log('=723725=',"Переменная")
-                    this.Ref.countries_dropdown.classList.remove("visible")
                   }
 
                 })
@@ -246,7 +298,6 @@ export default function () {
                 >
                   {
                    this.Static.searchCountries.map((item, index) => {
-                    // console.log('=91d82b=', this.Static.searchCountries[index])
                       return (
                         <li class="dropdown_list-item" ref='drop_item' >{this.Static.searchCountries[index]}</li>
                       )
@@ -328,56 +379,6 @@ export default function () {
           </div>
             
           <div class="events_section_list" ref="event_list">
-                {/* {
-                  this.Static.records
-                  ?
-                  this.Static.records.map((item, index)=>{
-              
-                    return(
-                      <div class="events_section_list_item">
-                        
-                    <div class="item_header">
-                      <div class="picture">
-                        <div class='category-events'>
-                          {item.category}
-                        </div>
-                        <img src={test} alt="img"/>
-                        <div class="location">
-                          <img src={map_point} alt="L" />
-                          <span>{item.country}</span>
-                        </div>
-                        <div class='date'>
-                          <img src={calendar} alt="C" />
-                          <span>{this.Services.functions.dateFormat(item.date, 'event')}</span>
-                        </div>
-                      </div>
-                      <div class="content">
-                        <h4>{item.title}</h4>
-                        <p>{item.description}</p>
-                      </div>
-                    </div>
-                    <div class="item_footer">
-                      <div class="location">
-                        <img src={map_point} alt="L" />
-                        <span>{item.country}</span>
-                      </div>
-                      <div class='date'>
-                        <img src={calendar} alt="C" />
-                        <span>{this.Services.functions.dateFormat(item.date, 'event')}</span>
-                      </div>
-                      <button class='buy_btn'>Купить билет</button>
-                      
-                    </div>
-                  </div>
-                  
-                  )
-                })
-                  :
-<div>На это место можно поставить лоадер пока не подтянулись данные</div>
-
-                } */}
-
-
           {
             (this.Static.filtredRecords || []).map((item, index)=>{
               

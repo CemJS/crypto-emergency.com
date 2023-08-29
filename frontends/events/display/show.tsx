@@ -17,7 +17,10 @@ export default function () {
             <div class="wrapper">
                 <div class='returnBtn'>
                     <img src={nav_arrow} alt="" />
+                    <a href="/events" onclick={this.Fn.link}
+                    >
                     <span>Назад</span>
+                    </a>
                 </div>
             <section class = 'section_about'>
                 <div class ='picture_button'>
@@ -72,9 +75,6 @@ export default function () {
                 </button>
                 <div class='slider-hidden'>
                 <div class='gallery-container' ref='gallery_container'
-                
-                    
-                
                 onmousedown={(e) => {
                     this.Static.isDragging = true;
                     this.Static.startX = e.pageX;
@@ -93,31 +93,32 @@ export default function () {
                     this.Static.isDragging = false;
                   }}
 
-                //   ontouchstart={(e) => {
-                //     console.log('=d004e1=', e)
-                //     const firstTouch = e.touches[0];
-                //     this.Static.x1 = firstTouch.clientX;
-                //     this.Static.y1 = firstTouch.clientY;
-                //   }}
+                  ontouchstart={(e) => {
+                    console.log('=d004e1=', e)
+                    const firstTouch = e.touches[0];
+                    this.Static.x1 = firstTouch.clientX;
+                    this.Static.y1 = firstTouch.clientY;
+                  }}
 
-                //   ontouchmove={(e) => {
-                //     if (!this.Static.x1 || !this.Static.y1) return false;
-                //     let x2 = e.touches[0].clientX;
-                //     let y2 = e.touches[0].clientY;
-                //     let xDiff = x2 - this.Static.x1;
-                //     let yDiff = y2 - this.Static.y1;
+                  ontouchmove={(e) => {
+                    if (!this.Static.x1 || !this.Static.y1) return false;
+                    let x2 = e.touches[0].clientX;
+                    let y2 = e.touches[0].clientY;
+                    let xDiff = x2 - this.Static.x1;
+                    let yDiff = y2 - this.Static.y1;
+                    console.log('=cb2f82=',xDiff)
 
-                //     if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                //       if (xDiff > 0) {
-                //         this.Ref.gallery_container.scrollLeft -= this.Ref.gallery_container_slide.offsetWidth + 15;
-                //       }
-                //       else {
-                //         this.Ref.gallery_container.scrollLeft += this.Ref.gallery_container_slide.offsetWidth + 15;
-                //       }
-                //     }
-                //     this.Static.x1 = null;
-                //     this.Static.y1 = null;
-                //   }}
+                    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                      if (xDiff > -5) {
+                        this.Ref.gallery_container.scrollLeft -= this.Ref.gallery_container_slide.offsetWidth + 16;
+                      }
+                      else if (xDiff > 5) {
+                        this.Ref.gallery_container.scrollLeft += this.Ref.gallery_container_slide.offsetWidth + 16;
+                      }
+                    }
+                    this.Static.x1 = null;
+                    this.Static.y1 = null;
+                  }}
                 
                 >
                     <div ref='gallery_container_slide'><img src={test2} alt="" /></div>

@@ -250,12 +250,12 @@
                 background: #9148BC;
             }
             li.choosen::before{
-                border: 1px solid coral;
+                border: 1px solid #9148BC;
                 border-radius: 4px;
             }
-            li:not(.today):hover::before {
+            li:not(.today):not(.choosen):hover::before {
                 border-radius: 4px;
-                border: 2px solid  coral;;
+                border: 2px solid #B4B4B4;
                 opacity: 0.5;
             }
         } 
@@ -982,14 +982,11 @@
     }
     .event .wrapper  .section_gallery{
         .slider-hidden{
-            // margin-right: -16px;
+            height:auto;
         .gallery-container{
             grid-auto-columns: calc(50% - 8px);
             grid-template-rows: repeat(2, 189px);
             
-            // div:last-child {
-            //     // margin-right: -16px; /* Половина от column-gap */
-            //   }
         }
     }
 }
