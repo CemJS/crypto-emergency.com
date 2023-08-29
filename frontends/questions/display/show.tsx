@@ -12,16 +12,16 @@ import comments from "@svg/news/comments.svg"
 
 export default function () {
 
-  // console.log('=f229cd=', this._ListsEventSource, `Answers?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.record._id}`)
   if (this._ListsEventSource.length == 1) {
     let eventSource1 = this.eventSource(`Answers?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.record._id}`)
 
     eventSource1.addEventListener('add', ({ data }) => {
-      if (!this.Static.records) {
-        this.Static.records = []
+      if (!this.Static.recordsAnswer) {
+        this.Static.recordsAnswer = []
       }
       let record = JSON.parse(data)
-      this.Static.records.push(record)
+      this.Static.recordsAnswer.push(record)
+      console.log('=469608=', this.Static.recordsAnswer)
       this.init()
     });
 
@@ -111,13 +111,12 @@ export default function () {
                 <span class="btn btn_gradient"
                   onclick={() => {
                     let data = {
-                      uuid: this.Variable.myInfo.uuid,
-                      action: "insert",
-                      data: {
-                        questionId: item._id,
-                        author: this.Variable.myInfo._id,
-                        text: this.Static.text,
-                      }
+                      _action: "insert",
+                      author: "64e87da32c40e768553f5947",
+                      text: this.Static.text,
+                      questionId: item._id,
+                      table: "Questions",
+                      tableID: item._id,
                     }
                     fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
                       method: "POST",
@@ -206,14 +205,11 @@ export default function () {
                                 <img src={dislike}
                                   onclick={() => {
                                     let data = {
-                                      uuid: this.Variable.myInfo.uuid,
-                                      action: "update",
-                                      data: {
-                                        author: this.Variable.myInfo._id,
-                                        rating: -1,
-                                        type: "minus",
-                                        id: answer._id
-                                      }
+                                      _action: "update",
+                                      author: this.Variable.myInfo._id,
+                                      rating: -1,
+                                      type: "minus",
+                                      answerId: answer._id
                                     }
                                     fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
                                       method: "POST",
@@ -226,14 +222,11 @@ export default function () {
                                 <img src={like}
                                   onclick={() => {
                                     let data = {
-                                      uuid: this.Variable.myInfo.uuid,
-                                      action: "update",
-                                      data: {
-                                        author: this.Variable.myInfo._id,
-                                        rating: 1,
-                                        type: "plus",
-                                        id: answer._id
-                                      }
+                                      _action: "update",
+                                      author: this.Variable.myInfo._id,
+                                      rating: 1,
+                                      type: "minus",
+                                      answerId: answer._id
                                     }
                                     fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
                                       method: "POST",
@@ -281,84 +274,84 @@ export default function () {
                             </div>
                           </div>
                           {
-                            answer.comments.map((comm) => {
-                              return (
-                                <div class="user-comment__item" style="margin: 0 10px">
-                                  <a class="user-comment__avatar avatar" href="">
-                                    <div class="avatar__icon">
-                                      <img class="avatar__photo"
-                                        src={comm.author.avatar?.name
-                                          ?
-                                          `/assets/upload/avatar/${comm.author.avatar?.name}`
-                                          :
-                                          { avatarDefault }
-                                        }
-                                      />
-                                      <img class="avatar__frame"
-                                        src={comm.author.frame?.name && comm.author.frame?.name != "default.svg"
-                                          ?
-                                          `/assets/images/lenta/${comm.author.frame?.name}`
-                                          :
-                                          frameDefault
-                                        }
-                                      />
-                                      {
-                                        comm.author.status?.team
-                                          ?
-                                          <img class="avatar__team"
-                                            src={comm.author.status?.team
-                                              ?
-                                              teamLogo
-                                              :
-                                              null
-                                            }
-                                          />
-                                          :
-                                          <div>
-                                            <div class="avatar__level">
-                                              <img src={leveGray} />
-                                              <span>{comm.author.statistic.level}</span>
-                                            </div>
-                                          </div>
-                                      }
-                                    </div>
-                                    <div class="user-comment__avatar_info">
-                                      <div class="user-comment__avatar_name">{comm.author.nickname}</div>
-                                      <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comm.showdate, "time")}</span>
-                                    </div>
-                                  </a>
-                                  <div class="user-comment__body">
-                                    <span>
-                                      {this.Services.functions.editText(comm.text, { paragraph: true, clear: true, html: true })}
-                                    </span>
-                                  </div>
-                                  <div class="user-comment__statistic comment-statistic">
-                                    <div class="comment-statistic__rating">
-                                      <img src={dislike} />
-                                      <span>{comm.rating}</span>
-                                      <img src={like} />
-                                    </div>
-                                    <span class="user-comment__answer"
-                                      onclick={(e) => {
-                                        let el = e.currentTarget
-                                        el.parentElement.parentElement.lastChild.style = "display: flex"
-                                      }}
-                                    >Ответить</span>
-                                    <div class="user-comment__settings">
-                                      <img src={points} />
-                                    </div>
-                                  </div>
-                                  <div class="lenta__comment user-comment__form">
-                                    <div class="lenta__comment_field">
-                                      <textarea rows="1" data-max-height="200" data-scroll-last="48"></textarea>
-                                    </div>
-                                    <button class="lenta__comment_button">
-                                      <img src={sendMessage} />
-                                    </button>
-                                  </div>
-                                </div>
-                              )
-                            })
+                            // answer.comments.map((comm) => {
+                            //   return (
+                            //     <div class="user-comment__item" style="margin: 0 10px">
+                            //       <a class="user-comment__avatar avatar" href="">
+                            //         <div class="avatar__icon">
+                            //           <img class="avatar__photo"
+                            //             src={comm.author.avatar?.name
+                            //               ?
+                            //               `/assets/upload/avatar/${comm.author.avatar?.name}`
+                            //               :
+                            //               { avatarDefault }
+                            //             }
+                            //           />
+                            //           <img class="avatar__frame"
+                            //             src={comm.author.frame?.name && comm.author.frame?.name != "default.svg"
+                            //               ?
+                            //               `/assets/images/lenta/${comm.author.frame?.name}`
+                            //               :
+                            //               frameDefault
+                            //             }
+                            //           />
+                            //           {
+                            //             comm.author.status?.team
+                            //               ?
+                            //               <img class="avatar__team"
+                            //                 src={comm.author.status?.team
+                            //                   ?
+                            //                   teamLogo
+                            //                   :
+                            //                   null
+                            //                 }
+                            //               />
+                            //               :
+                            //               <div>
+                            //                 <div class="avatar__level">
+                            //                   <img src={leveGray} />
+                            //                   <span>{comm.author.statistic.level}</span>
+                            //                 </div>
+                            //               </div>
+                            //           }
+                            //         </div>
+                            //         <div class="user-comment__avatar_info">
+                            //           <div class="user-comment__avatar_name">{comm.author.nickname}</div>
+                            //           <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comm.showdate, "time")}</span>
+                            //         </div>
+                            //       </a>
+                            //       <div class="user-comment__body">
+                            //         <span>
+                            //           {this.Services.functions.editText(comm.text, { paragraph: true, clear: true, html: true })}
+                            //         </span>
+                            //       </div>
+                            //       <div class="user-comment__statistic comment-statistic">
+                            //         <div class="comment-statistic__rating">
+                            //           <img src={dislike} />
+                            //           <span>{comm.rating}</span>
+                            //           <img src={like} />
+                            //         </div>
+                            //         <span class="user-comment__answer"
+                            //           onclick={(e) => {
+                            //             let el = e.currentTarget
+                            //             el.parentElement.parentElement.lastChild.style = "display: flex"
+                            //           }}
+                            //         >Ответить</span>
+                            //         <div class="user-comment__settings">
+                            //           <img src={points} />
+                            //         </div>
+                            //       </div>
+                            //       <div class="lenta__comment user-comment__form">
+                            //         <div class="lenta__comment_field">
+                            //           <textarea rows="1" data-max-height="200" data-scroll-last="48"></textarea>
+                            //         </div>
+                            //         <button class="lenta__comment_button">
+                            //           <img src={sendMessage} />
+                            //         </button>
+                            //       </div>
+                            //     </div>
+                            //   )
+                            // })
                           }
                         </div>
                       )
