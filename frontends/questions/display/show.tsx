@@ -33,7 +33,6 @@ export default function () {
     // });
   }
 
-  console.log('=57c87c=', this.Static.recordsAnswer)
   let item = this.Static.record
   let answers = this.Static.recordsAnswer
   return (
@@ -112,7 +111,7 @@ export default function () {
                   onclick={() => {
                     let data = {
                       _action: "insert",
-                      author: "64e87da32c40e768553f5947",
+                      author: "63c7f6063be93e984c962b75",
                       text: this.Static.text,
                       questionId: item._id,
                       table: "Questions",
@@ -206,7 +205,7 @@ export default function () {
                                   onclick={() => {
                                     let data = {
                                       _action: "update",
-                                      author: this.Variable.myInfo._id,
+                                      author: "63c7f6063be93e984c962b75",
                                       rating: -1,
                                       type: "minus",
                                       answerId: answer._id
@@ -223,7 +222,7 @@ export default function () {
                                   onclick={() => {
                                     let data = {
                                       _action: "update",
-                                      author: this.Variable.myInfo._id,
+                                      author: "63c7f6063be93e984c962b75",
                                       rating: 1,
                                       type: "minus",
                                       answerId: answer._id
