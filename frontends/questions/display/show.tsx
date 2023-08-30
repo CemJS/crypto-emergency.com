@@ -224,7 +224,7 @@ export default function () {
                                       _action: "update",
                                       author: "63c7f6063be93e984c962b75",
                                       rating: 1,
-                                      type: "minus",
+                                      type: "plus",
                                       answerId: answer._id
                                     }
                                     fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
@@ -250,22 +250,30 @@ export default function () {
                               <button class="lenta__comment_button"
                                 onclick={() => {
                                   let data = {
-                                    uuid: this.Variable.myInfo.uuid,
-                                    action: "insert",
-                                    data: {
-                                      itemId: answer._id,
-                                      id: answer._id,
-                                      author: this.Variable.myInfo._id,
-                                      table: "answers",
-                                      text: this.Static.textCom,
-                                      collection: "Answers"
-                                    }
+                                    _action: "insert",
+                                    // author: this.Variable.myInfo._id,
+                                    author: "64e87da32c40e768553f5947",
+                                    text: this.Static.textCom,
+                                    table: "Answers",
+                                    tableID: answer._id,
                                   }
                                   fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
                                     method: "POST",
                                     headers: { "content-type": "application/json" },
                                     body: JSON.stringify(data),
                                   })
+                                  // let data = {
+                                  //   uuid: this.Variable.myInfo.uuid,
+                                  //   action: "insert",
+                                  //   data: {
+                                  //     itemId: answer._id,
+                                  //     id: answer._id,
+                                  //     author: this.Variable.myInfo._id,
+                                  //     table: "answers",
+                                  //     text: this.Static.textCom,
+                                  //     collection: "Answers"
+                                  //   }
+                                  // }
                                 }}
                               >
                                 <img src={sendMessage} />

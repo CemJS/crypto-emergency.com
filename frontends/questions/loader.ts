@@ -1,6 +1,7 @@
 export const loader = function () {
 
     this.Static.text = ""
+    this.Static.textCom = ""
 
     let eventSource = this.eventSource(`Questions?uuid=${this.Variable.myInfo.uuid}&lang=ru`)
 

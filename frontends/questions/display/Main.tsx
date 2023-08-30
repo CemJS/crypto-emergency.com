@@ -8,6 +8,7 @@ import comments from "@svg/news/comments.svg"
 // import Show from './display/show'
 
 export default function () {
+  console.log('=a5992d=',this.Static.records)
 
   return (
     <div class="page">
@@ -17,11 +18,22 @@ export default function () {
             <h4>Последние вопросы</h4>
             <p class="questions__description">Задавайте свои вопросы, получайте грамотные и понятные ответы на родном языке, совершенно бесплатно.</p>
             <div class="questions__ask">
+              <div class="questions__search">
+                <input type="text" placeholder="Поиск по вопросам" />
+              </div>
+              <button
+                onclick={() => {
+                  this.Fn.initOne({
+                    name: "modalQuestion", ifOpen: (front) => {
+                      setTimeout(() => {
+                        front.clearData()
+                      }, 500);
+                    }
+                  })
+                }}
+              >задать вопрос</button>
+            </div>
 
-            </div>
-            <div class="questions__search">
-              <input type="text" placeholder="Поиск по вопросам" />
-            </div>
             <div class="questions__list">
               {
                 this.Static.records?.map((item) => {
@@ -77,10 +89,10 @@ export default function () {
                       <div class={["questions__item_preview",
                         item.title.length < 15 && item.text ? "questions__item_preview_row" : null
                       ]}
-                        // onclick={() => {
-                        //   this.Static.record = item
-                        //   this.init()
-                        // }}
+                      // onclick={() => {
+                      //   this.Static.record = item
+                      //   this.init()
+                      // }}
                       >
                         <span>{this.Services.functions.sliceString(item.title)}</span>
                         {
