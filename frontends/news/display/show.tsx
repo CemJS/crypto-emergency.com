@@ -14,11 +14,26 @@ import back from '@svg/icon/prev.svg'
 let item
 
 export default function () {
-  console.log('=57c87c=', this.Static.record)
+  console.log('=57c87c=', this._ListsEventSource.length)
   if (this.Static.recordsUpdate) {
     item = this.Static.recordsUpdate
   } else {
     item = this.Static.record
+  }
+
+  if (this._ListsEventSource.length == 1) {
+    let eventSource1 = this.eventSource(`Comments?uuid=${this.Variable.myInfo.uuid}&id=${item._id}`)
+
+    eventSource1.addEventListener('add', ({ data }) => {
+      console.log('=5b55af=',data)
+      if (!this.Static.recordsComments) {
+        this.Static.recordsComments = []
+      }
+      let record = JSON.parse(data)
+      this.Static.recordsComments.push(record)
+      console.log('=469608=', this.Static.recordsComments)
+      this.init()
+    });
   }
 
   return (
@@ -86,7 +101,7 @@ export default function () {
                 let data = {
                   _action: "insert",
                   // author: this.Variable.myInfo._id,
-                  author: "64e87da32c40e768553f5947",
+                  author: "63c7f6063be93e984c962b75",
                   text: this.Static.text,
                   table: "News",
                   tableID: item._id,

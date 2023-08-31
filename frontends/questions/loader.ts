@@ -2,6 +2,8 @@ export const loader = function () {
 
     this.Static.text = ""
     this.Static.textCom = ""
+    this.Static.recordsComments = []
+    this.Static.showComments = "Показать комментарии"
 
     let eventSource = this.eventSource(`Questions?uuid=${this.Variable.myInfo.uuid}&lang=ru`)
 

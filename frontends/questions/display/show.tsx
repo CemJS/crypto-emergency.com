@@ -21,17 +21,25 @@ export default function () {
       }
       let record = JSON.parse(data)
       this.Static.recordsAnswer.push(record)
-      console.log('=469608=', this.Static.recordsAnswer)
+      // console.log('=469608=', this.Static.recordsAnswer)
       this.init()
     });
-
-    // eventSource1.addEventListener('message', ({ data }) => {
-    //   let records = JSON.parse(data)
-    //   console.log('=641d61=', records)
-    //   this.Static.recordsAnswer = records
-    //   this.init()
-    // });
   }
+  this.Static.recordsAnswer?.forEach((item, i) => {
+    if (this._ListsEventSource.length == 2 + i) {
+      let eventSource2 = this.eventSource(`Comments?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.recordsAnswer[i]._id}`)
+
+      eventSource2.addEventListener('add', ({ data }) => {
+        if (!this.Static.recordsComments) {
+          this.Static.recordsComments = []
+        }
+        let record = JSON.parse(data)
+        this.Static.recordsComments.push(record)
+        // console.log('=Comments=', this.Static.recordsComments)
+        this.init()
+      });
+    }
+  });
 
   let item = this.Static.record
   let answers = this.Static.recordsAnswer
@@ -189,16 +197,69 @@ export default function () {
                                   let elemr = this.Ref.answerList.childNodes
                                   for (let i = 0; i < elemr.length; i++) {
                                     for (let y = 0; y < elemr[i].childNodes.length; y++) {
-                                      elemr[i].childNodes[y].lastChild.style = "display: none"
+                                      if (elemr[i].childNodes[y].firstChild?.nextSibling?.nextSibling) {
+                                        elemr[i].childNodes[y].firstChild.nextSibling.nextSibling.style = "display: none"
+                                      }
                                     }
                                   }
 
                                   let el = e.currentTarget
-                                  el.parentElement.parentElement.lastChild.style = "display: flex"
-                                  el.parentElement.parentElement.lastChild.firstChild.firstChild.focus()
+                                  el.parentElement.nextSibling.style = "display: flex"
+                                  el.parentElement.nextSibling.firstChild.firstChild.focus()
                                 }}
                               >Ответить</div>
                             </div>
+                            <div class="lenta__comment user-comment__form">
+                              <div class="lenta__comment_field">
+                                <textarea rows="1" data-max-height="200" data-scroll-last="48"
+                                  oninput={(e) => {
+                                    this.Static.textCom = e.target.value
+                                  }}
+                                ></textarea>
+                              </div>
+                              <button class="lenta__comment_button"
+                                onclick={() => {
+                                  let data = {
+                                    _action: "insert",
+                                    // author: this.Variable.myInfo._id,
+                                    author: "63c7f6063be93e984c962b75",
+                                    text: this.Static.textCom,
+                                    table: "Answers",
+                                    tableID: answer._id,
+                                  }
+                                  fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                    method: "POST",
+                                    headers: { "content-type": "application/json" },
+                                    body: JSON.stringify(data),
+                                  })
+                                }}
+                              >
+                                <img src={sendMessage} />
+                              </button>
+                            </div>
+                            {
+                              answer.statistic.comments > 0
+                                ?
+                                <div class="answer__comments">
+                                  <button
+                                    onclick={(e) => {
+                                      let el = e.currentTarget
+                                      let elemComments = el.parentElement.parentElement.parentElement.lastChild
+
+                                      if (elemComments.style.display == "none") {
+                                        this.Static.showComments = "Скрыть комментарии"
+                                        elemComments.style = "display: block"
+                                      } else {
+                                        this.Static.showComments = "Показать комментарии"
+                                        elemComments.style = "display: none"
+                                      }
+                                      this.init()
+                                    }}
+                                  >{`${this.Static.showComments} (${answer.statistic.comments})`}</button>
+                                </div>
+                                :
+                                null
+                            }
                             <div class="user-comment__statistic comment-statistic">
                               <div class="comment-statistic__rating">
                                 <img src={dislike}
@@ -235,131 +296,131 @@ export default function () {
                                   }}
                                 />
                               </div>
-                              <div class="user-comment__settings">
-                                <img src={points} />
-                              </div>
-                            </div>
-                            <div class="lenta__comment user-comment__form">
-                              <div class="lenta__comment_field">
-                                <textarea rows="1" data-max-height="200" data-scroll-last="48"
-                                  oninput={(e) => {
-                                    this.Static.textCom = e.target.value
-                                  }}
-                                ></textarea>
-                              </div>
-                              <button class="lenta__comment_button"
+                              <div class="user-comment__settings"
                                 onclick={() => {
+                                  console.log('=ee090b=', answer._id)
                                   let data = {
-                                    _action: "insert",
-                                    // author: this.Variable.myInfo._id,
-                                    author: "64e87da32c40e768553f5947",
-                                    text: this.Static.textCom,
-                                    table: "Answers",
-                                    tableID: answer._id,
+                                    _action: "remove",
+                                    id: answer._id,
+                                    table: "Questions",
+                                    tableID: item._id,
+                                    rating: -1,
                                   }
-                                  fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                  fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
                                     method: "POST",
                                     headers: { "content-type": "application/json" },
                                     body: JSON.stringify(data),
                                   })
-                                  // let data = {
-                                  //   uuid: this.Variable.myInfo.uuid,
-                                  //   action: "insert",
-                                  //   data: {
-                                  //     itemId: answer._id,
-                                  //     id: answer._id,
-                                  //     author: this.Variable.myInfo._id,
-                                  //     table: "answers",
-                                  //     text: this.Static.textCom,
-                                  //     collection: "Answers"
-                                  //   }
-                                  // }
                                 }}
                               >
-                                <img src={sendMessage} />
-                              </button>
+                                <img src={points} />
+                              </div>
                             </div>
+
                           </div>
-                          {
-                            // answer.comments.map((comm) => {
-                            //   return (
-                            //     <div class="user-comment__item" style="margin: 0 10px">
-                            //       <a class="user-comment__avatar avatar" href="">
-                            //         <div class="avatar__icon">
-                            //           <img class="avatar__photo"
-                            //             src={comm.author.avatar?.name
-                            //               ?
-                            //               `/assets/upload/avatar/${comm.author.avatar?.name}`
-                            //               :
-                            //               { avatarDefault }
-                            //             }
-                            //           />
-                            //           <img class="avatar__frame"
-                            //             src={comm.author.frame?.name && comm.author.frame?.name != "default.svg"
-                            //               ?
-                            //               `/assets/images/lenta/${comm.author.frame?.name}`
-                            //               :
-                            //               frameDefault
-                            //             }
-                            //           />
-                            //           {
-                            //             comm.author.status?.team
-                            //               ?
-                            //               <img class="avatar__team"
-                            //                 src={comm.author.status?.team
-                            //                   ?
-                            //                   teamLogo
-                            //                   :
-                            //                   null
-                            //                 }
-                            //               />
-                            //               :
-                            //               <div>
-                            //                 <div class="avatar__level">
-                            //                   <img src={leveGray} />
-                            //                   <span>{comm.author.statistic.level}</span>
-                            //                 </div>
-                            //               </div>
-                            //           }
-                            //         </div>
-                            //         <div class="user-comment__avatar_info">
-                            //           <div class="user-comment__avatar_name">{comm.author.nickname}</div>
-                            //           <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comm.showdate, "time")}</span>
-                            //         </div>
-                            //       </a>
-                            //       <div class="user-comment__body">
-                            //         <span>
-                            //           {this.Services.functions.editText(comm.text, { paragraph: true, clear: true, html: true })}
-                            //         </span>
-                            //       </div>
-                            //       <div class="user-comment__statistic comment-statistic">
-                            //         <div class="comment-statistic__rating">
-                            //           <img src={dislike} />
-                            //           <span>{comm.rating}</span>
-                            //           <img src={like} />
-                            //         </div>
-                            //         <span class="user-comment__answer"
-                            //           onclick={(e) => {
-                            //             let el = e.currentTarget
-                            //             el.parentElement.parentElement.lastChild.style = "display: flex"
-                            //           }}
-                            //         >Ответить</span>
-                            //         <div class="user-comment__settings">
-                            //           <img src={points} />
-                            //         </div>
-                            //       </div>
-                            //       <div class="lenta__comment user-comment__form">
-                            //         <div class="lenta__comment_field">
-                            //           <textarea rows="1" data-max-height="200" data-scroll-last="48"></textarea>
-                            //         </div>
-                            //         <button class="lenta__comment_button">
-                            //           <img src={sendMessage} />
-                            //         </button>
-                            //       </div>
-                            //     </div>
-                            //   )
-                            // })
-                          }
+                          <div class="questions-show__comments"
+                            style="display: none"
+                          >
+                            {
+                              this.Static.recordsComments.map((comm) => {
+                                if (comm.tableID != answer._id) {
+                                  return
+                                }
+                                return (
+                                  <div class="user-comment__item" style="margin: 0 10px">
+                                    <a class="user-comment__avatar avatar" href="">
+                                      <div class="avatar__icon">
+                                        <img class="avatar__photo"
+                                          src={comm.author.avatar?.name
+                                            ?
+                                            `/assets/upload/avatar/${comm.author.avatar?.name}`
+                                            :
+                                            { avatarDefault }
+                                          }
+                                        />
+                                        <img class="avatar__frame"
+                                          src={comm.author.frame?.name && comm.author.frame?.name != "default.svg"
+                                            ?
+                                            `/assets/images/lenta/${comm.author.frame?.name}`
+                                            :
+                                            frameDefault
+                                          }
+                                        />
+                                        {
+                                          comm.author.status?.team
+                                            ?
+                                            <img class="avatar__team"
+                                              src={comm.author.status?.team
+                                                ?
+                                                teamLogo
+                                                :
+                                                null
+                                              }
+                                            />
+                                            :
+                                            <div>
+                                              <div class="avatar__level">
+                                                <img src={leveGray} />
+                                                <span>{comm.author.statistic.level}</span>
+                                              </div>
+                                            </div>
+                                        }
+                                      </div>
+                                      <div class="user-comment__avatar_info">
+                                        <div class="user-comment__avatar_name">{comm.author.nickname}</div>
+                                        <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comm.showdate, "time")}</span>
+                                      </div>
+                                    </a>
+                                    <div class="user-comment__body">
+                                      <span>
+                                        {this.Services.functions.editText(comm.text, { paragraph: true, clear: true, html: true })}
+                                      </span>
+                                    </div>
+                                    <div class="user-comment__statistic comment-statistic">
+                                      <div class="comment-statistic__rating">
+                                        <img src={dislike} />
+                                        <span>{comm.rating}</span>
+                                        <img src={like} />
+                                      </div>
+                                      <span class="user-comment__answer"
+                                        onclick={(e) => {
+                                          let el = e.currentTarget
+                                          el.parentElement.parentElement.lastChild.style = "display: flex"
+                                        }}
+                                      >Ответить</span>
+                                      <div class="user-comment__settings"
+                                        onclick={() => {
+                                          let data = {
+                                            _action: "remove",
+                                            id: comm._id,
+                                            table: "Answer",
+                                            tableID: answer._id,
+                                            rating: -1,
+                                          }
+                                          fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                            method: "POST",
+                                            headers: { "content-type": "application/json" },
+                                            body: JSON.stringify(data),
+                                          })
+                                        }}
+                                      >
+                                        <img src={points} />
+                                      </div>
+                                    </div>
+                                    <div class="lenta__comment user-comment__form">
+                                      <div class="lenta__comment_field">
+                                        <textarea rows="1" data-max-height="200" data-scroll-last="48"></textarea>
+                                      </div>
+                                      <button class="lenta__comment_button">
+                                        <img src={sendMessage} />
+                                      </button>
+                                    </div>
+                                  </div>
+                                )
+                              })
+                            }
+                          </div>
+
                         </div>
                       )
                     })
