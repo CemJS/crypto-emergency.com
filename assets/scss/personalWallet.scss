@@ -1,8 +1,43 @@
 @import 'utils/variables.scss';
 
 .personalWallet{
+   
+    .head{
+        position: relative;
+        .returnBtn{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap:12px;
+            align-items: center;
+            justify-content: start;
+            margin-bottom: 40px;
+            cursor: pointer;
+            img{
+                width: 6.25px;
+                height: 10.5px;
+            }
+            span{
+                color: #FFF;
+                font-family: Montserrat;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px
+            }
+        }
+        h1{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+    }
+    
     .cards-container{
-        margin-top: 35px;
+        
+        margin-top: 25px;
         .card{
             position: relative;
             max-width: 420px;
@@ -10,19 +45,20 @@
             background: #7A5BE4;
             background-color: slateblue;
             background-size: cover;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-radius: 20px;
             padding: 40px 60px 40px 30px;
             background-image: url('images/personalWallet/card.png');
             .balance{
+                
                 display: flex;
                 flex-direction: column;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
                 p{
                     font-weight: 500;
                     font-size: 15px;
                     line-height: 100%;
-                    margin-bottom: 12px;  
+                    margin-bottom: 10px;  
                 }
                 &_total{
                     display: flex;
@@ -32,8 +68,7 @@
                         font-size: 36px;
                         line-height: 100%;
                         margin-bottom: 0;
-                    }
-                    
+                    } 
                 }
 
             }
@@ -75,6 +110,28 @@
                     }
                 }
             }
+            .exchange_button{
+                margin-top: 5px;    
+                background: linear-gradient(45deg, #5B6CE2 0%, #7A57CC 48.97%, #9148BC 100%);
+                color: white;
+                padding: 10px 10px ;  
+                max-width: 100px;
+                border-radius: 8px;
+                cursor: pointer;
+                
+            }
+            .info_content{
+                padding: 5px 5px;
+                right: 10px; 
+                bottom: -10px;
+                transform: translateY(-50%);
+                position: absolute;
+                border-radius: 8px;
+                text-align: center;
+                font-size: 8px;
+                font-weight: 600;
+                color: #a8d7e0; /* Цвет текста */
+            }
             .crem_logo{
                 position: absolute;
                 top:10px;
@@ -89,24 +146,41 @@
     }
 
     .table_bonus{
+        border-collapse: collapse;
+
         text-align: center;
 	    vertical-align: middle;
+
+       
+
         &_head{
+            
             .table_bonus_row{
-                justify-content: center;
-                align-items: center;
+
                border-bottom: 1px solid #8991a8;
                color: #8991a8;
                font-size: 13px;
                font-weight: 500;
+
+               th{
+                padding: 10px 15px;
+               }
+               
+
             }
+            
         }
         &_body{
             .table_bonus_row{
                 border-bottom: 1px solid #8991a8;
+                
+               &_first{
+                text-align: left;
+               }
+
                 td{
                     padding: 15px 0px;
-                    justify-content: center;
+                    align-items: center;
                     align-items: center;
                     .bonus_type{
                         width: 35px;
@@ -114,5 +188,69 @@
                 }
             }
         }
+        &_row{
+            &_start{
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 17px;
+            }
+        }
+
+        .more_button{
+            margin-top: 5px;    
+            background: linear-gradient(45deg, #5B6CE2 0%, #7A57CC 48.97%, #9148BC 100%);
+            color: white;
+            padding: 10px 10px ;  
+            max-width: 100px;
+            border-radius: 8px;
+            cursor: pointer;
+            
+        }
     }
+    h1 {
+        margin-top: 0;
+      }
+      
+      .hidden {
+        display: none;
+      }
+      .test-container {
+        position: relative;
+        padding: 1rem 1rem 3rem;
+        min-height: 800px;
+        
+      }
+      .pagination-container {
+        width: calc(100% - 2rem);
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        padding: 1rem 0;
+        justify-content: center;
+        background-color: rgb(201, 184, 170);
+      }
+      
+      .pagination-number,
+      .pagination-button{
+        font-size: 1.1rem;
+        background-color: transparent;
+        border: none;
+        margin: 0.25rem 0.25rem;
+        cursor: pointer;
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: .2rem;
+      }
+      
+      .pagination-number:hover,
+      .pagination-button:not(.disabled):hover {
+        background: #fff;
+      }
+      
+      .pagination-number.active {
+        color: #fff;
+        background: #0085b6;
+      }
 }

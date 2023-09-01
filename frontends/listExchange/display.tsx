@@ -52,7 +52,7 @@ export const display = function () {
             </thead>
             <tbody class="table_body listExchange_table_body">
               {/* {
-                this.Static.paginated.map((item, index) => {
+                this.Static.records.map((item, index) => {
                   return (
                     <tr class="table_row listExchange_table_row">
                       <td class="listExchange_favourites">
