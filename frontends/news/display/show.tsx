@@ -11,21 +11,20 @@ import sendMessage from "@svg/lenta/send_message.svg"
 import avatarDefault from "@images/lenta/avatar_default.png"
 import back from '@svg/icon/prev.svg'
 
-let item
+let item, eventSource1
 
 export default function () {
-  console.log('=57c87c=', this._ListsEventSource.length)
+  console.log('=SHOW=', this._ListsEventSource)
   if (this.Static.recordsUpdate) {
     item = this.Static.recordsUpdate
   } else {
-    item = this.Static.record
+    item = this.Static.recordsShow
   }
 
   if (this._ListsEventSource.length == 1) {
-    let eventSource1 = this.eventSource(`Comments?uuid=${this.Variable.myInfo.uuid}&id=${item._id}`)
+    eventSource1 = this.eventSource(`Comments?uuid=${this.Variable.myInfo.uuid}&id=${item._id}`)
 
     eventSource1.addEventListener('add', ({ data }) => {
-      console.log('=5b55af=',data)
       if (!this.Static.recordsComments) {
         this.Static.recordsComments = []
       }
@@ -39,16 +38,16 @@ export default function () {
   return (
     <div class="news-show">
       <div class="back">
-        <div class="back_arrow">
+        <a href="/news" class="back_arrow"
+          onclick={(e) => {
+            this.Static.page = "main"
+            this.Fn.link(e)
+          }}
+        >
           <img
-            src={back}
-            onclick={() => {
-              delete this.Static.record
-              this.init()
-            }}
-          >
+            src={back}>
           </img>
-        </div>
+        </a>
         <div
           class="tool"
           onclick={() => {
@@ -57,7 +56,8 @@ export default function () {
                 setTimeout(() => {
                   front.clearData()
                 }, 500);
-              }
+              },
+              data: { data: "page" },
             })
           }}
         >
@@ -117,13 +117,13 @@ export default function () {
             </button>
           </div>
 
-          {/* {
-            item.comments.length > 0
+          {
+            this.Static.recordsComments?.length > 0
               ?
               <div class="user-comment">
                 <div class="user-comment__list" ref="commentList">
                   {
-                    item.comments?.map((comment) => {
+                    this.Static.recordsComments?.map((comment) => {
                       return (
                         <div>
                           <div class="user-comment__item">
@@ -180,14 +180,11 @@ export default function () {
                                 <img src={dislike}
                                   onclick={() => {
                                     let data = {
-                                      uuid: this.Variable.myInfo.uuid,
-                                      action: "update",
-                                      data: {
-                                        author: this.Variable.myInfo._id,
-                                        rating: -1,
-                                        type: "minus",
-                                        id: comment._id
-                                      }
+                                      _action: "update",
+                                      author: "63c7f6063be93e984c962b75",
+                                      rating: -1,
+                                      type: "minus",
+                                      id: comment._id
                                     }
                                     fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
                                       method: "POST",
@@ -200,14 +197,11 @@ export default function () {
                                 <img src={like}
                                   onclick={() => {
                                     let data = {
-                                      uuid: this.Variable.myInfo.uuid,
-                                      action: "update",
-                                      data: {
-                                        author: this.Variable.myInfo._id,
-                                        rating: 1,
-                                        type: "plus",
-                                        id: comment._id
-                                      }
+                                      _action: "update",
+                                      author: "63c7f6063be93e984c962b75",
+                                      rating: 1,
+                                      type: "plus",
+                                      id: comment._id
                                     }
                                     fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
                                       method: "POST",
@@ -231,7 +225,22 @@ export default function () {
                                   el.parentElement.parentElement.lastChild.firstChild.firstChild.focus()
                                 }}
                               >Ответить</span>
-                              <div class="user-comment__settings">
+                              <div class="user-comment__settings"
+                                onclick={() => {
+                                  this.Fn.initOne({
+                                    name: "modalTool", ifOpen: (front) => {
+                                      setTimeout(() => {
+                                        front.clearData()
+                                      }, 500);
+                                    },
+                                    data: {data: {
+                                      page: "comments",
+                                      id: comment._id,
+                                      collection: "Comments"
+                                    }},
+                                  })
+                                }}
+                              >
                                 <img src={points} />
                               </div>
                             </div>
@@ -268,7 +277,7 @@ export default function () {
                               </button>
                             </div>
                           </div>
-                          {
+                          {/* {
                             comment.comments?.map((comm, index) => {
                               return (
                                 <div class="user-comment__item" style="margin: 0 10px">
@@ -389,7 +398,7 @@ export default function () {
                                 </div>
                               )
                             })
-                          }
+                          } */}
                         </div>
 
                       )
@@ -399,7 +408,7 @@ export default function () {
               </div>
               :
               null
-          } */}
+          }
         </div>
       </section>
     </div>

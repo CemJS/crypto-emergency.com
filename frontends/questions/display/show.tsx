@@ -13,7 +13,7 @@ import comments from "@svg/news/comments.svg"
 export default function () {
 
   if (this._ListsEventSource.length == 1) {
-    let eventSource1 = this.eventSource(`Answers?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.record._id}`)
+    let eventSource1 = this.eventSource(`Answers?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.recordsShow._id}`)
 
     eventSource1.addEventListener('add', ({ data }) => {
       if (!this.Static.recordsAnswer) {
@@ -41,7 +41,7 @@ export default function () {
     }
   });
 
-  let item = this.Static.record
+  let item = this.Static.recordsShow
   let answers = this.Static.recordsAnswer
   return (
     <div>
@@ -298,19 +298,31 @@ export default function () {
                               </div>
                               <div class="user-comment__settings"
                                 onclick={() => {
-                                  console.log('=ee090b=', answer._id)
-                                  let data = {
-                                    _action: "remove",
-                                    id: answer._id,
-                                    table: "Questions",
-                                    tableID: item._id,
-                                    rating: -1,
-                                  }
-                                  fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
-                                    method: "POST",
-                                    headers: { "content-type": "application/json" },
-                                    body: JSON.stringify(data),
+                                  this.Fn.initOne({
+                                    name: "modalTool", ifOpen: (front) => {
+                                      setTimeout(() => {
+                                        front.clearData()
+                                      }, 500);
+                                    },
+                                    data: {data: {
+                                      page: "comments",
+                                      id: answer._id,
+                                      collection: "Answers"
+                                    }},
                                   })
+                                  // console.log('=ee090b=', answer._id)
+                                  // let data = {
+                                  //   _action: "remove",
+                                  //   id: answer._id,
+                                  //   table: "Questions",
+                                  //   tableID: item._id,
+                                  //   rating: -1,
+                                  // }
+                                  // fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
+                                  //   method: "POST",
+                                  //   headers: { "content-type": "application/json" },
+                                  //   body: JSON.stringify(data),
+                                  // })
                                 }}
                               >
                                 <img src={points} />
@@ -378,9 +390,39 @@ export default function () {
                                     </div>
                                     <div class="user-comment__statistic comment-statistic">
                                       <div class="comment-statistic__rating">
-                                        <img src={dislike} />
+                                        <img src={dislike}
+                                          onclick={() => {
+                                            let data = {
+                                              _action: "update",
+                                              author: "63c7f6063be93e984c962b75",
+                                              rating: -1,
+                                              type: "minus",
+                                              id: comm._id
+                                            }
+                                            fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                              method: "POST",
+                                              headers: { "content-type": "application/json" },
+                                              body: JSON.stringify(data),
+                                            })
+                                          }}
+                                        />
                                         <span>{comm.rating}</span>
-                                        <img src={like} />
+                                        <img src={like}
+                                          onclick={() => {
+                                            let data = {
+                                              _action: "update",
+                                              author: "63c7f6063be93e984c962b75",
+                                              rating: 1,
+                                              type: "plus",
+                                              id: comm._id
+                                            }
+                                            fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                              method: "POST",
+                                              headers: { "content-type": "application/json" },
+                                              body: JSON.stringify(data),
+                                            })
+                                          }}
+                                        />
                                       </div>
                                       <span class="user-comment__answer"
                                         onclick={(e) => {
@@ -390,18 +432,30 @@ export default function () {
                                       >Ответить</span>
                                       <div class="user-comment__settings"
                                         onclick={() => {
-                                          let data = {
-                                            _action: "remove",
-                                            id: comm._id,
-                                            table: "Answer",
-                                            tableID: answer._id,
-                                            rating: -1,
-                                          }
-                                          fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
-                                            method: "POST",
-                                            headers: { "content-type": "application/json" },
-                                            body: JSON.stringify(data),
+                                          this.Fn.initOne({
+                                            name: "modalTool", ifOpen: (front) => {
+                                              setTimeout(() => {
+                                                front.clearData()
+                                              }, 500);
+                                            },
+                                            data: {data: {
+                                              page: "comments",
+                                              id: comm._id,
+                                              collection: "Comments"
+                                            }},
                                           })
+                                          // let data = {
+                                          //   _action: "remove",
+                                          //   id: comm._id,
+                                          //   table: "Answer",
+                                          //   tableID: answer._id,
+                                          //   rating: -1,
+                                          // }
+                                          // fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                          //   method: "POST",
+                                          //   headers: { "content-type": "application/json" },
+                                          //   body: JSON.stringify(data),
+                                          // })
                                         }}
                                       >
                                         <img src={points} />

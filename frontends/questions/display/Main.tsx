@@ -40,7 +40,7 @@ export default function () {
                   return (
                     <div class="questions__item">
                       <div class="questions__item_header questions__user">
-                        <a class="avatar" href="#">
+                        <div class="avatar">
                           <div class="avatar__icon">
                             <img class="avatar__photo"
                               src={item.author.avatar?.name
@@ -81,7 +81,7 @@ export default function () {
                           <div class="avatar__name">
                             <span>{item.author.nickname}</span>
                           </div>
-                        </a>
+                        </div>
                         <div class="questions__item_languages btn btn_gradient">
                           <span>Русский</span>
                         </div>
@@ -117,7 +117,7 @@ export default function () {
                       <div class="questions__item_footer">
                         <a href={`/questions/${item._id}`} class="btn btn_gradient"
                           onclick={(e) => {
-                            this.Static.record = item
+                            this.Static.recordsShow = item
                             this.Fn.link(e)
                             this.init()
                           }}
