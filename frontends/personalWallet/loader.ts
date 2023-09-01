@@ -111,6 +111,7 @@ export const loader = function () {
             status: 'done'
         },
     ]
+    
     this.Static.paginationLimit = 10;
     this.Static.pageCount = Math.ceil(this.Static.data.length / this.Static.paginationLimit);
     // this.Static.currentPage = 1;

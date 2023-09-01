@@ -5,7 +5,7 @@ import done from "@images/personalWallet/done.svg"
 import nav_arrow from "@svg/events/show/nav_arrow.svg"
 
 export const display = function () {
-  console.log('=6d0a88=',this.Static.limitArray)
+  console.log('=display=',this.Static.limitArray)
   // this.fn('getPaginationNumbers');
         this.fn('setCurrentPage',1);
         

@@ -21,18 +21,15 @@ const fn = {
     
     let prevRange = (pageNum - 1) * this.Static.paginationLimit;
     let currRange = pageNum * this.Static.paginationLimit;
-    console.log('=69d159=',this.Static.data)
+    // console.log('=69d159=',this.Static.data)
+    this.Static.limitArray = []
     this.Static.data.forEach((item, index) => {
-    
       if (index >= prevRange && index < currRange) {
         // console.log('=9c68e1=',item)
         this.Static.limitArray.push(item)
       }
-      // this.Ref.elementContainer.innerHTML =  this.Static.liTag
-      // console.log('=this.Static.limitArray=',this.Static.limitArray)
-  });
- 
-  // this.init()
+    });
+
   console.log('=c43e24=',this.Static.limitArray)
   },
 }
