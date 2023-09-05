@@ -5,7 +5,7 @@ import done from "@images/personalWallet/done.svg"
 import nav_arrow from "@svg/events/show/nav_arrow.svg"
 
 export const display = function () {
-  console.log('=display=', this.Static.limitArray)
+  // console.log('=display=', this.Static.limitArray)
 
   // this.fn('finish');
   return (
@@ -93,7 +93,20 @@ export const display = function () {
               {
                 this.Static.Pages.slice(0, 2).map((item, index) => {
                   return (
-                    <button class="pagination-number" page-index="1" aria-label="Page 2" >{item}</button>
+                    <button class="pagination-number" page-index="1" aria-label="Page 2" 
+                    onclick ={(e)=>{
+                      this.Static.currentPage = e.target.innerText
+                      this.fn('setCurrentPage', Number(this.Static.currentPage));
+                      console.log('=TwocurrentPage=',this.Static.currentPage)
+                      if(this.Static.currentPage < 3){
+                        this.Ref.first_two.classList.add('hidden')
+                        this.Static.Begin = 0
+                        this.Static.End = 5
+                      }
+                      this.init()
+                    }}
+                    >
+                    {item}</button>
                   )
                 })
                 
@@ -105,26 +118,19 @@ export const display = function () {
               {
                 this.Static.Pages.slice(this.Static.Begin, this.Static.End).map((item, index) => {
                   return (
-                    <button class="pagination-number" page-index="1" aria-label="Page 2"
+                    <button class={item.class} ref = "pagination_number"
                       onclick={(e) => {
                         this.Static.currentPage = e.target.innerText
-
-                        if (e.target.innerText == this.Static.End) {
-                          this.Ref.first_two.classList.remove('hidden')
-                          this.Ref.first_two_dots.classList.remove('hidden')
-                          this.Static.Begin += 2
-                          this.Static.End += 2
-                          this.init()
-                          console.log('=63044a=', e.target.innerText)
-                        }else if(this.Static.End-1){
-                          console.log('=7bbcbe=','Переменная')
-                          this.Static.Begin += 1
-                          this.Static.End += 1
-                          this.init()
-                        }
+                        this.fn('setCurrentPage', Number(this.Static.currentPage));
+                        console.log('=716b08=',this.Ref.pagination_number)
+                        this.Ref.pagination_number.classList.remove('active')
+                        e.target.classList.add('active')
+                        console.log('=index=',item.class)
+                        this.init()
+                        
 
                       }}
-                    >{item}</button>
+                    >{item.number}</button>
 
                   )
                 })
@@ -133,7 +139,20 @@ export const display = function () {
               {
                 this.Static.Pages.slice(-2).map((item, index) => {
                   return (
-                    <button class="pagination-number" >{item}</button>
+                    <button class="pagination-number" ref='two_last'
+                    onclick ={(e)=>{
+                      this.Static.currentPage = e.target.innerText
+                      this.fn('setCurrentPage', Number(this.Static.currentPage));
+                      console.log('=TwoLAstcurrentPage=',this.Static.currentPage)
+                      if(this.Static.currentPage < 3){
+                        this.Ref.first_two.classList.add('hidden')
+                        this.Static.Begin = 0
+                        this.Static.End = 5
+                      }
+                      this.init()
+                    }}
+                    >
+                      {item}</button>
 
                   )
                 })

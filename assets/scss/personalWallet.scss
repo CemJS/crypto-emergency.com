@@ -219,6 +219,7 @@
         position: relative;
         padding: 1rem 1rem 3rem;
         min-height: 800px;
+        margin-bottom: 50px;
         
       }
       .pagination-container {
@@ -226,7 +227,8 @@
         display: flex;
         align-items: center;
         position: absolute;
-        bottom: 0;
+        bottom: -32px;
+        // margin-bottom: 50px;
         padding: 1rem 0;
         justify-content: center;
         background-color: rgb(201, 184, 170);

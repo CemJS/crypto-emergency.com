@@ -104,35 +104,35 @@ export const loader = function () {
             status: 'done'
         },
         {
-            type: 'Awards2',
+            type: 'Awards15',
             date: '2023-07-20',
             transaction: 'Bonus',
             sum: '0,5',
             status: 'done'
         },
         {
-            type: 'Awards3',
+            type: 'Awards16',
             date: '2023-07-20',
             transaction: 'Bonus',
             sum: '0,5',
             status: 'done'
         },
         {
-            type: 'Awards4',
+            type: 'Awards17',
             date: '2023-07-20',
             transaction: 'Bonus',
             sum: '0,5',
             status: 'done'
         },
         {
-            type: 'Awards5',
+            type: 'Awards18',
             date: '2023-07-20',
             transaction: 'Bonus',
             sum: '0,5',
             status: 'done'
         },
         {
-            type: 'Awards6',
+            type: 'Awards22',
             date: '2023-07-20',
             transaction: 'Bonus',
             sum: '0,5',
@@ -209,7 +209,7 @@ export const loader = function () {
             status: 'done'
         },
         {
-            type: 'Awards4',
+            type: 'Awards3333',
             date: '2023-07-20',
             transaction: 'Bonus',
             sum: '0,5',
@@ -5749,14 +5749,17 @@ export const loader = function () {
     
     this.Static.paginationLimit = 10;
     this.Static.pageCount = Math.ceil(this.Static.data.length / this.Static.paginationLimit);
+
+
     this.Static.Begin = 0
     this.Static.End = 5
-
+    this.Static.CurrentPage = 1
     this.Static.Pages = []
     for (let i = 1; i <= this.Static.pageCount; i++) {
-        this.Static.Pages.push(i)
+
+        this.Static.Pages.push({number:i,class:'pagination-number'})
     }
-    this.Static.limitArray = []
+    // this.Static.limitArray = []
     this.Static.test = 1
 
   this.fn('setCurrentPage',1);
