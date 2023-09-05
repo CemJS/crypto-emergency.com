@@ -57,6 +57,14 @@ export const loader = function () {
     ];
     this.Static.liTag = ""
 
+    this.Static.arrDayOfMonth = []
+
+    this.Static.arr35 = []
+    for (let i = 1; i <= 35; i++) {
+      this.Static.arr35.push(1)
+      this.Static.arrDayOfMonth.push(1)
+    }
+
   }
 
 

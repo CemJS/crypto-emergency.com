@@ -74,6 +74,7 @@ const fn = {
       // Добавляем  элемент списка дней после проверки на 'isToday' 
       
         // isToday += " choosen";
+
         let isChoosen =
           i === this.Static.selectedDate.getDate() &&
           this.Static.currentMonth === this.Static.selectedDate.getMonth() &&
@@ -100,6 +101,73 @@ const fn = {
       this.Static.date = new Date();
     }
     this.Ref.days.innerHTML = this.Static.liTag 
+  },
+  "dayOfMonth": function () {
+    let arrDays = []
+    let firstDayofMonth = new Date(this.Static.currentYear, this.Static.currentMonth, 1).getDay();
+    let lastDateofMonth = new Date(this.Static.currentYear, this.Static.currentMonth + 1, 0).getDate();
+    let lastDayofMonth = new Date(this.Static.currentYear, this.Static.currentMonth, lastDateofMonth).getDay();
+    let lastDateofLastMonth = new Date(this.Static.currentYear, this.Static.currentMonth, 0).getDate();
+
+    if (firstDayofMonth > 1) {
+      for (let i = firstDayofMonth - 1; i > 0; i--) {
+        arrDays.push({day:lastDateofLastMonth - i + 1,class:"inactive"})
+      }
+    } else if (firstDayofMonth === 0) {
+      for (let i = 1; i <= 6; i++) {
+         arrDays.push({day:lastDateofLastMonth - 6 + i,class:"inactive"})
+      }
+    }
+    
+    for (let i = 1; i <= lastDateofMonth; i++) {
+      arrDays.push({day:i,class:""})
+
+     
+
+      // let isToday = // Определение, является ли текущий день сегодняшним,чтобы добавить ему класс today
+      //   i === this.Static.date.getDate() &&
+      //     this.Static.currentMonth === new Date().getMonth() &&
+      //     this.Static.currentYear === new Date().getFullYear()
+      //     ? "today "
+      //     : "";
+      // Добавляем  элемент списка дней после проверки на 'isToday' 
+      
+        // isToday += " choosen";
+        if (i === this.Static.selectedDate.getDate() && this.Static.currentMonth === this.Static.selectedDate.getMonth() && this.Static.currentYear === this.Static.selectedDate.getFullYear()){
+          arrDays[arrDays.length - 1].class = "choosen "
+        }
+
+        if (i === this.Static.date.getDate() && this.Static.currentMonth === new Date().getMonth() && this.Static.currentYear === new Date().getFullYear()){
+          arrDays[arrDays.length - 1].class += "today"
+        }
+
+      //   let isChoosen =
+      //     i === this.Static.selectedDate.getDate() &&
+      //     this.Static.currentMonth === this.Static.selectedDate.getMonth() &&
+      //     this.Static.currentYear === this.Static.selectedDate.getFullYear()
+      //     ? "choosen"
+      //     : "";
+      // this.Static.liTag += `<li class="${isToday }${isChoosen}">${i}</li>`;
+    }
+      // дни следующего месяца в текущем
+      if (lastDayofMonth > 0) {
+        for (let i = 1; i <= 7 - lastDayofMonth; i++) {
+      arrDays.push({day:i,class:"inactive"})
+        }
+    }
+    // Обновляем текст текущей даты при смене месяца и года 
+      this.Static.currentDate = `${this.Static.months[this.Static.currentMonth]} ${this.Static.currentYear}`;
+
+    if (this.Static.currentMonth < 0 || this.Static.currentMonth > 11) {
+      this.Static.date = new Date(this.Static.currentYear, this.Static.currentMonth);
+      this.Static.currentMonth = this.Static.date.getMonth();
+      this.Static.currentDate = `${this.Static.months[this.Static.currentMonth]} ${this.Static.currentYear}`;
+      this.Static.currentYear = this.Static.date.getFullYear();
+    } else {
+      this.Static.date = new Date();
+    }
+    
+    this.Static.arrDayOfMonth = arrDays
   },
   "getUniqueArrayByField": function (Arr, field) {
     const uniqueSet = new Set(); 
