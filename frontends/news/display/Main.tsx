@@ -4,7 +4,7 @@ import comments from "@svg/news/comments.svg"
 
 export default function () {
 
-  console.log('=MAIN=', this._ListsEventSource)
+  // console.log('=MAIN=', this._ListsEventSource)
   return (
     <section class="news">
       <div class="wrapper">

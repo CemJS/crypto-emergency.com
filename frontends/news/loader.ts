@@ -3,4 +3,5 @@ export const loader = function () {
 
     this.Static.text = ""
     this.Static.textCom = ""
+    this.Static.recordsCommentsInner = []
 }
