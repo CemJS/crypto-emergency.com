@@ -10,7 +10,7 @@ import next from '@svg/icon/next.svg'
 export default function () {
   // console.log('=records внутри html=',this.Static.records)
 
-console.log('=4f42f7=',this.Static.arrDayOfMonth)
+  // console.log('=4f42f7=', this.Static.arrDayOfMonth)
   return (
     <div class="events">
       <div class="wrapper">
@@ -161,13 +161,13 @@ console.log('=4f42f7=',this.Static.arrDayOfMonth)
                     this.Ref.calendarDropdown_arrow.classList.add("rotate")
                     // this.fn('calendarRender')
                     this.fn('dayOfMonth')
-                    this.Static.liTag = ''
+                    // this.Static.liTag = ''
                     this.Ref.current_date.innerText = this.Static.currentDate
                     // console.log('=06479f=',this.Ref.days)
 
                   } else if (this.Static.calendarDropdownStatus == 'open') {
                     console.log('=this.Static.choosenDate=', this.Static.choosenDate)
-                    this.Static.liTag = ''
+                    // this.Static.liTag = ''
                     this.Static.currentMonth = this.Static.date.getMonth()
                     this.Static.calendarDropdownStatus = 'close'
                     this.Ref.calendarDropdown.classList.remove("visible")
@@ -184,7 +184,7 @@ console.log('=4f42f7=',this.Static.arrDayOfMonth)
                 <div class='cal_header' >
                   <div class='icons'
                     onclick={() => {
-                      this.Static.liTag = ''
+                      // this.Static.liTag = ''
                       this.Static.currentMonth--
                       // this.fn('calendarRender')
                       this.fn('dayOfMonth')
@@ -199,9 +199,7 @@ console.log('=4f42f7=',this.Static.arrDayOfMonth)
                   <div class="icons"
                     onclick={() => {
 
-                      this.Static.liTag = ''
                       this.Static.currentMonth++
-                      // this.fn('calendarRender')
                       this.fn('dayOfMonth')
                       this.Ref.current_date.innerText = this.Static.currentDate
                       this.init()
@@ -226,16 +224,37 @@ console.log('=4f42f7=',this.Static.arrDayOfMonth)
                       return (
                         <li class={item.class}
                           onclick={(e) => {
-                            const utcDate = new Date(Date.UTC(this.Static.currentYear, this.Static.currentMonth, e.target.innerText),)
-                            this.Ref.date_text.innerText = (utcDate.toLocaleDateString('ru-RU'))
-                            if (this.Static.choosenDate) {
-                              this.Static.choosenDate.classList.remove("choosen");
+                            console.log('=f4dcd5=',this.Static.currentMonth)
+                            if (item.class.includes('current ')) {
+                              const utcDate = new Date(Date.UTC(this.Static.currentYear, this.Static.currentMonth, e.target.innerText),)
+                              this.Ref.date_text.innerText = (utcDate.toLocaleDateString('ru-RU'))
+                              if (this.Static.choosenDate) {
+                                this.Static.choosenDate.classList.remove("choosen");
+                              }
+                              // this.Static.arrDayOfMonth.forEach(element => {
+                              //   element.class = 'pagination-number '
+                              // });
+                              this.Static.arrDayOfMonth[index].class += "choosen"
+                              this.Static.choosenDate = e.target;
+                              this.Static.selectedDate = new Date(this.Static.currentYear, this.Static.currentMonth, e.target.innerText)
+                              console.log('=1d362e=', this.Static.selectedDate)
+                            } else if (item.class.includes('previous ')) {
+                              console.log('=3c0cd2=', 'Переменная')
+                              this.Static.currentMonth--
+                              this.fn('dayOfMonth')
+                              this.Ref.current_date.innerText = this.Static.currentDate
+                              this.init()
+                            }else if (item.class.includes('nextmonth ')) {
+                              console.log('=3c0cd2=', 'Переменная')
+                              this.Static.currentMonth++
+                              console.log('=d7ff31=',e.target)
+                              this.fn('dayOfMonth')
+                              // this.Ref.current_date.innerText = this.Static.currentDate
+                              this.init()
                             }
-                            this.Static.arrDayOfMonth[index].class="choosen"
-                            this.Static.choosenDate = e.target;
-                            this.Static.selectedDate = new Date(this.Static.currentYear, this.Static.currentMonth, e.target.innerText)
-                            console.log('=1d362e=', this.Static.selectedDate)
-                          
+
+
+
                           }}>{item.day}</li>
                       )
 
