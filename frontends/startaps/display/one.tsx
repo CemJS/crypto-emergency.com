@@ -94,7 +94,7 @@ export default function () {
         </section>
 
         {
-          this.Static.record.roadMap.length ?
+          this.Static.record.roadMap?.length ?
             <section class="startap_roadmap">
               <h2 class="general_title">Дорожная карта</h2>
               {

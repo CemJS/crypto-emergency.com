@@ -75,7 +75,9 @@ export default function () {
                   front.clearData()
                 }, 500);
               },
-              data: { data: "page" },
+              data: { data: {
+                page: "page"
+              }},
             })
           }}
         >
@@ -109,7 +111,6 @@ export default function () {
             <div class="lenta__comment_field">
               <textarea rows="1"
                 oninput={(e) => {
-                  console.log('=a533d5=', this.Static.data)
                   this.Static.text = e.target.value
                 }}
               ></textarea>

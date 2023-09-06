@@ -41,6 +41,9 @@ export const display = function () {
                       Пожаловаться на ответ
                     </li>
                     <li class="tool_list_item red">
+                      Пожаловаться на пользователя
+                    </li>
+                    <li class="tool_list_item red">
                       В черный список
                     </li>
                     <li class="tool_list_item red"
@@ -48,9 +51,9 @@ export const display = function () {
                         let data = {
                           _action: "remove",
                           id: this.Static.data.id,
-                          // table: "Questions",
-                          // tableID: item._id,
-                          // rating: -1,
+                          table: this.Static.data.table,
+                          tableID: this.Static.data.tableID,
+                          rating: this.Static.data.rating,
                         }
                         fetch(`/api/events/${this.Static.data.collection}?uuid=${this.Variable.myInfo.uuid}`, {
                           method: "POST",
@@ -67,7 +70,34 @@ export const display = function () {
                     </li>
                   </ul>
                   :
-                  null
+                  this.Static.data.page == "post"
+                    ?
+                    <ul class="tool_list">
+                      <li class="tool_list_item">
+                        Поделиться
+                      </li>
+                      <li class="tool_list_item">
+                        Подписаться
+                      </li>
+                      <li class="tool_list_item red">
+                        Пожаловаться на пост
+                      </li>
+                      <li class="tool_list_item red">
+                        Пожаловаться на пользователя
+                      </li>
+                      <li class="tool_list_item red">
+                        В черный список
+                      </li>
+                      <li class="tool_list_item red"
+                        onclick={() => {
+                          
+                        }}
+                      >
+                        Удалить
+                      </li>
+                    </ul>
+                    :
+                    null
             }
 
 
