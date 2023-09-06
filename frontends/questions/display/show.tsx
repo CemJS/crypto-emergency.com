@@ -21,10 +21,12 @@ export default function () {
       }
       let record = JSON.parse(data)
       this.Static.recordsAnswer.push(record)
-      // console.log('=469608=', this.Static.recordsAnswer)
+
       this.init()
     });
   }
+
+
   this.Static.recordsAnswer?.forEach((item, i) => {
     if (this._ListsEventSource.length == 2 + i) {
       let eventSource2 = this.eventSource(`Comments?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.recordsAnswer[i]._id}`)
@@ -35,11 +37,30 @@ export default function () {
         }
         let record = JSON.parse(data)
         this.Static.recordsComments.push(record)
-        // console.log('=Comments=', this.Static.recordsComments)
+        this.Static.eventLength = this._ListsEventSource.length
+
+        console.log('=Comments=', this.Static.recordsComments)
         this.init()
       });
     }
   });
+
+  this.Static.recordsComments.forEach((item, i) => {
+    if (this._ListsEventSource.length == this.Static.eventLength + i) {
+
+      let eventSource3 = this.eventSource(`Comments?uuid=${this.Variable.myInfo.uuid}&idComm=${this.Static.recordsComments[i]._id}`)
+
+      eventSource3.addEventListener('add', ({ data }) => {
+        if (!this.Static.recordsCommentsInner) {
+          this.Static.recordsCommentsInner = []
+        }
+        let record = JSON.parse(data)
+        this.Static.recordsCommentsInner.push(record)
+        console.log('=Comments1=', this.Static.recordsCommentsInner)
+      });
+      console.log('=0220f2=', this._ListsEventSource.length)
+    }
+  })
 
   let item = this.Static.recordsShow
   let answers = this.Static.recordsAnswer
@@ -52,26 +73,26 @@ export default function () {
               <a class="avatar" href="#">
                 <div class="avatar__icon">
                   <img class="avatar__photo"
-                    src={item.author.avatar?.name
+                    src={item.authorFull.avatar?.name
                       ?
-                      `/assets/upload/avatar/${item.author.avatar?.name}`
+                      `/assets/upload/avatar/${item.authorFull.avatar?.name}`
                       :
                       avatarDefault
                     }
                   />
                   <img class="avatar__frame"
-                    src={item.author.frame?.name
+                    src={item.authorFull.frame?.name
                       ?
-                      `/assets/images/lenta/${item.author.frame?.name}`
+                      `/assets/images/lenta/${item.authorFull.frame?.name}`
                       :
                       frameDefault
                     }
                   />
                   {
-                    item.author.status?.team
+                    item.authorFull.status?.team
                       ?
                       <img class="avatar__team"
-                        src={item.author.status?.team
+                        src={item.authorFull.status?.team
                           ?
                           teamLogo
                           :
@@ -82,13 +103,13 @@ export default function () {
                       <div>
                         <div class="avatar__level">
                           <img src={leveGray} />
-                          <span>{item.author.statistic.level}</span>
+                          <span>{item.authorFull.statistic.level}</span>
                         </div>
                       </div>
                   }
                 </div>
                 <div class="avatar__name">
-                  <span>{item.author.nickname}</span>
+                  <span>{item.authorFull.nickname}</span>
                 </div>
               </a>
             </div>
@@ -124,6 +145,7 @@ export default function () {
                       questionId: item._id,
                       table: "Questions",
                       tableID: item._id,
+                      rating: 1,
                     }
                     fetch(`/api/events/Answers?uuid=${this.Variable.myInfo.uuid}`, {
                       method: "POST",
@@ -148,26 +170,26 @@ export default function () {
                             <a class="user-comment__avatar avatar" href="">
                               <div class="avatar__icon">
                                 <img class="avatar__photo"
-                                  src={answer.author.avatar?.name
+                                  src={answer.authorFull.avatar?.name
                                     ?
-                                    `/assets/upload/avatar/${answer.author.avatar?.name}`
+                                    `/assets/upload/avatar/${answer.authorFull.avatar?.name}`
                                     :
                                     { avatarDefault }
                                   }
                                 />
                                 <img class="avatar__frame"
-                                  src={answer.author.frame?.name && answer.author.frame?.name != "default.svg"
+                                  src={answer.authorFull.frame?.name && answer.authorFull.frame?.name != "default.svg"
                                     ?
-                                    `/assets/images/lenta/${answer.author.frame?.name}`
+                                    `/assets/images/lenta/${answer.authorFull.frame?.name}`
                                     :
                                     frameDefault
                                   }
                                 />
                                 {
-                                  answer.author.status?.team
+                                  answer.authorFull.status?.team
                                     ?
                                     <img class="avatar__team"
-                                      src={answer.author.status?.team
+                                      src={answer.authorFull.status?.team
                                         ?
                                         teamLogo
                                         :
@@ -178,13 +200,13 @@ export default function () {
                                     <div>
                                       <div class="avatar__level">
                                         <img src={leveGray} />
-                                        <span>{answer.author.statistic.level}</span>
+                                        <span>{answer.authorFull.statistic.level}</span>
                                       </div>
                                     </div>
                                 }
                               </div>
                               <div class="user-comment__avatar_info">
-                                <div class="user-comment__avatar_name">{answer.author.nickname}</div>
+                                <div class="user-comment__avatar_name">{answer.authorFull.nickname}</div>
                                 <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(answer.showdate, "time")}</span>
                               </div>
                             </a>
@@ -226,6 +248,7 @@ export default function () {
                                     text: this.Static.textCom,
                                     table: "Answers",
                                     tableID: answer._id,
+                                    rating: 1,
                                   }
                                   fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
                                     method: "POST",
@@ -304,11 +327,16 @@ export default function () {
                                         front.clearData()
                                       }, 500);
                                     },
-                                    data: {data: {
-                                      page: "comments",
-                                      id: answer._id,
-                                      collection: "Answers"
-                                    }},
+                                    data: {
+                                      data: {
+                                        page: "comments",
+                                        id: answer._id,
+                                        collection: "Answers",
+                                        table: "Questions",
+                                        tableID: item._id,
+                                        rating: -1,
+                                      }
+                                    },
                                   })
                                   // console.log('=ee090b=', answer._id)
                                   // let data = {
@@ -334,8 +362,8 @@ export default function () {
                             style="display: none"
                           >
                             {
-                              this.Static.recordsComments.map((comm) => {
-                                if (comm.tableID != answer._id) {
+                              this.Static.recordsComments.map((comment) => {
+                                if (comment.tableId != answer._id) {
                                   return
                                 }
                                 return (
@@ -343,26 +371,26 @@ export default function () {
                                     <a class="user-comment__avatar avatar" href="">
                                       <div class="avatar__icon">
                                         <img class="avatar__photo"
-                                          src={comm.author.avatar?.name
+                                          src={comment.authorFull.avatar?.name
                                             ?
-                                            `/assets/upload/avatar/${comm.author.avatar?.name}`
+                                            `/assets/upload/avatar/${comment.authorFull.avatar?.name}`
                                             :
                                             { avatarDefault }
                                           }
                                         />
                                         <img class="avatar__frame"
-                                          src={comm.author.frame?.name && comm.author.frame?.name != "default.svg"
+                                          src={comment.authorFull.frame?.name && comment.authorFull.frame?.name != "default.svg"
                                             ?
-                                            `/assets/images/lenta/${comm.author.frame?.name}`
+                                            `/assets/images/lenta/${comment.authorFull.frame?.name}`
                                             :
                                             frameDefault
                                           }
                                         />
                                         {
-                                          comm.author.status?.team
+                                          comment.authorFull.status?.team
                                             ?
                                             <img class="avatar__team"
-                                              src={comm.author.status?.team
+                                              src={comment.authorFull.status?.team
                                                 ?
                                                 teamLogo
                                                 :
@@ -373,19 +401,19 @@ export default function () {
                                             <div>
                                               <div class="avatar__level">
                                                 <img src={leveGray} />
-                                                <span>{comm.author.statistic.level}</span>
+                                                <span>{comment.authorFull.statistic.level}</span>
                                               </div>
                                             </div>
                                         }
                                       </div>
                                       <div class="user-comment__avatar_info">
-                                        <div class="user-comment__avatar_name">{comm.author.nickname}</div>
-                                        <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comm.showdate, "time")}</span>
+                                        <div class="user-comment__avatar_name">{comment.authorFull.nickname}</div>
+                                        <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comment.showdate, "time")}</span>
                                       </div>
                                     </a>
                                     <div class="user-comment__body">
                                       <span>
-                                        {this.Services.functions.editText(comm.text, { paragraph: true, clear: true, html: true })}
+                                        {this.Services.functions.editText(comment.text, { paragraph: true, clear: true, html: true })}
                                       </span>
                                     </div>
                                     <div class="user-comment__statistic comment-statistic">
@@ -397,7 +425,7 @@ export default function () {
                                               author: "63c7f6063be93e984c962b75",
                                               rating: -1,
                                               type: "minus",
-                                              id: comm._id
+                                              id: comment._id
                                             }
                                             fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
                                               method: "POST",
@@ -406,7 +434,7 @@ export default function () {
                                             })
                                           }}
                                         />
-                                        <span>{comm.rating}</span>
+                                        <span>{comment.statistic.rating}</span>
                                         <img src={like}
                                           onclick={() => {
                                             let data = {
@@ -414,7 +442,7 @@ export default function () {
                                               author: "63c7f6063be93e984c962b75",
                                               rating: 1,
                                               type: "plus",
-                                              id: comm._id
+                                              id: comment._id
                                             }
                                             fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
                                               method: "POST",
@@ -438,11 +466,16 @@ export default function () {
                                                 front.clearData()
                                               }, 500);
                                             },
-                                            data: {data: {
-                                              page: "comments",
-                                              id: comm._id,
-                                              collection: "Comments"
-                                            }},
+                                            data: {
+                                              data: {
+                                                page: "comments",
+                                                id: comment._id,
+                                                collection: "Comments",
+                                                table: "Answers",
+                                                tableID: answer._id,
+                                                rating: -1,
+                                              }
+                                            },
                                           })
                                           // let data = {
                                           //   _action: "remove",
@@ -463,18 +496,198 @@ export default function () {
                                     </div>
                                     <div class="lenta__comment user-comment__form">
                                       <div class="lenta__comment_field">
-                                        <textarea rows="1" data-max-height="200" data-scroll-last="48"></textarea>
+                                        <textarea rows="1" data-max-height="200" data-scroll-last="48"
+                                          oninput={(e) => {
+                                            this.Static.textCom = e.target.value
+                                          }}
+                                        ></textarea>
                                       </div>
-                                      <button class="lenta__comment_button">
+                                      <button class="lenta__comment_button"
+                                        onclick={() => {
+                                          let data = {
+                                            _action: "insert",
+                                            author: "63c7f6063be93e984c962b75",
+                                            text: this.Static.textCom,
+                                            table: "Answers",
+                                            commentId: comment._id,
+                                            rating: 1,
+                                          }
+                                          fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                            method: "POST",
+                                            headers: { "content-type": "application/json" },
+                                            body: JSON.stringify(data),
+                                          })
+                                        }}
+                                      >
                                         <img src={sendMessage} />
                                       </button>
                                     </div>
+                                    {
+                                      this.Static.recordsCommentsInner?.map((comm, index) => {
+                                        if (comm.commentId != comment._id) {
+                                          return
+                                        }
+                                        return (
+                                          <div class="user-comment__item" style="margin: 0 10px">
+                                            <a class="user-comment__avatar avatar" href="">
+                                              <div class="avatar__icon">
+                                                <img class="avatar__photo"
+                                                  src={comm.authorFull.avatar?.name
+                                                    ?
+                                                    `/assets/upload/avatar/${comm.authorFull.avatar?.name}`
+                                                    :
+                                                    { avatarDefault }
+                                                  }
+                                                />
+                                                <img class="avatar__frame"
+                                                  src={comm.authorFull.frame?.name
+                                                    ?
+                                                    `/assets/images/lenta/${comm.authorFull.frame?.name}`
+                                                    :
+                                                    frameDefault
+                                                  }
+                                                />
+                                                {
+                                                  comm.authorFull.status?.team
+                                                    ?
+                                                    <img class="avatar__team"
+                                                      src={comm.authorFull.status?.team
+                                                        ?
+                                                        teamLogo
+                                                        :
+                                                        null
+                                                      }
+                                                    />
+                                                    :
+                                                    <div>
+                                                      <div class="avatar__level">
+                                                        <img src={leveGray} />
+                                                        <span>{comm.authorFull.statistic.level}</span>
+                                                      </div>
+                                                    </div>
+                                                }
+                                              </div>
+                                              <div class="user-comment__avatar_info">
+                                                <div class="user-comment__avatar_name">{comm.authorFull.nickname}</div>
+                                                <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comm.showdate, "time")}</span>
+                                              </div>
+                                            </a>
+                                            <div class="user-comment__body">
+                                              <span>
+                                                {this.Services.functions.editText(comm.text, { paragraph: true, clear: true, html: true })}
+                                              </span>
+                                            </div>
+                                            <div class="user-comment__statistic comment-statistic">
+                                              <div class="comment-statistic__rating">
+                                                <img src={dislike}
+                                                  onclick={() => {
+                                                    let data = {
+                                                      _action: "update",
+                                                      author: "63c7f6063be93e984c962b75",
+                                                      rating: -1,
+                                                      type: "minus",
+                                                      id: comm._id
+                                                    }
+                                                    fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                                      method: "POST",
+                                                      headers: { "content-type": "application/json" },
+                                                      body: JSON.stringify(data),
+                                                    })
+                                                  }}
+                                                />
+                                                <span>{comm.statistic.rating}</span>
+                                                <img src={like}
+                                                  onclick={() => {
+                                                    let data = {
+                                                      _action: "update",
+                                                      author: "63c7f6063be93e984c962b75",
+                                                      rating: 1,
+                                                      type: "plus",
+                                                      id: comm._id
+                                                    }
+                                                    fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                                      method: "POST",
+                                                      headers: { "content-type": "application/json" },
+                                                      body: JSON.stringify(data),
+                                                    })
+                                                  }}
+                                                />
+                                              </div>
+                                              <span class="user-comment__answer"
+                                                onclick={(e) => {
+                                                  let elemr = this.Ref.commentList.childNodes
+                                                  for (let i = 0; i < elemr.length; i++) {
+                                                    for (let y = 0; y < elemr[i].childNodes.length; y++) {
+                                                      elemr[i].childNodes[y].lastChild.style = "display: none"
+                                                    }
+                                                  }
+
+                                                  let el = e.currentTarget
+                                                  el.parentElement.parentElement.lastChild.style = "display: flex;"
+                                                  el.parentElement.parentElement.lastChild.firstChild.firstChild.focus()
+                                                }}
+                                              >Ответить</span>
+                                              <div class="user-comment__settings"
+                                                onclick={() => {
+                                                  this.Fn.initOne({
+                                                    name: "modalTool", ifOpen: (front) => {
+                                                      setTimeout(() => {
+                                                        front.clearData()
+                                                      }, 500);
+                                                    },
+                                                    data: {
+                                                      data: {
+                                                        page: "comments",
+                                                        id: comm._id,
+                                                        collection: "Comments",
+                                                        table: "Answers",
+                                                        tableID: answer._id,
+                                                        rating: -1,
+                                                      }
+                                                    },
+                                                  })
+                                                }}
+                                              >
+                                                <img src={points} />
+                                              </div>
+                                            </div>
+                                            <div class="lenta__comment user-comment__form">
+                                              <div class="lenta__comment_field">
+                                                <textarea rows="1" data-max-height="200" data-scroll-last="48"
+                                                  oninput={(e) => {
+                                                    this.Static.textCom = e.target.value
+                                                  }}
+                                                ></textarea>
+                                              </div>
+                                              <button class="lenta__comment_button"
+                                                onclick={() => {
+                                                  let data = {
+                                                    _action: "insert",
+                                                    author: "63c7f6063be93e984c962b75",
+                                                    text: this.Static.textCom,
+                                                    table: "Answers",
+                                                    commentId: comment._id,
+                                                    rating: 1,
+                                                  }
+                                                  fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                                                    method: "POST",
+                                                    headers: { "content-type": "application/json" },
+                                                    body: JSON.stringify(data),
+                                                  })
+                                                }}
+                                              >
+                                                <img src={sendMessage} />
+                                              </button>
+                                            </div>
+                                          </div>
+                                        )
+                                      })
+                                    }
                                   </div>
                                 )
                               })
                             }
                           </div>
-
                         </div>
                       )
                     })

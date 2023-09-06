@@ -43,26 +43,26 @@ export default function () {
                         <div class="avatar">
                           <div class="avatar__icon">
                             <img class="avatar__photo"
-                              src={item.author.avatar?.name
+                              src={item.authorFull.avatar?.name
                                 ?
-                                `/assets/upload/avatar/${item.author.avatar?.name}`
+                                `/assets/upload/avatar/${item.authorFull.avatar?.name}`
                                 :
                                 avatarDefault
                               }
                             />
                             <img class="avatar__frame"
-                              src={item.author.frame?.name
+                              src={item.authorFull.frame?.name
                                 ?
-                                `/assets/images/lenta/${item.author.frame?.name}`
+                                `/assets/images/lenta/${item.authorFull.frame?.name}`
                                 :
                                 frameDefault
                               }
                             />
                             {
-                              item.author.status?.team
+                              item.authorFull.status?.team
                                 ?
                                 <img class="avatar__team"
-                                  src={item.author.status?.team
+                                  src={item.authorFull.status?.team
                                     ?
                                     teamLogo
                                     :
@@ -73,13 +73,13 @@ export default function () {
                                 <div>
                                   <div class="avatar__level">
                                     <img src={leveGray} />
-                                    <span>{item.author.statistic.level}</span>
+                                    <span>{item.authorFull.statistic.level}</span>
                                   </div>
                                 </div>
                             }
                           </div>
                           <div class="avatar__name">
-                            <span>{item.author.nickname}</span>
+                            <span>{item.authorFull.nickname}</span>
                           </div>
                         </div>
                         <div class="questions__item_languages btn btn_gradient">
