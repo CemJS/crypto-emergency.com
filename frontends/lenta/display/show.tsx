@@ -41,10 +41,10 @@ const lentaMedia = function (item) {
 }
 
 export default function () {
-  console.log('=55ea43=', this.Static.record)
-  let item = this.Static.record
+  console.log('=30c273=',this.eventSource.length)
+  let item = this.Static.recordsShow
   let mediaFiles
-
+  console.log('=a5dbed=', item)
   if (item.media) {
     mediaFiles = item.media.filter((item) => {
       return typeof item == 'object'
@@ -57,40 +57,53 @@ export default function () {
   else {
     text = ""
   }
+
+  if (this._ListsEventSource.length == 1) {
+    let eventSource1 = this.eventSource(`Comments?uuid=${this.Variable.myInfo.uuid}&id=${item._id}`)
+
+    eventSource1.addEventListener('add', ({ data }) => {
+      console.log('=a79b51=',data)
+      if (!this.Static.recordsComments) {
+        this.Static.recordsComments = []
+      }
+      let record = JSON.parse(data)
+      this.Static.recordsComments.push(record)
+      console.log('=9f6ead=', this.Static.recordsComments)
+      this.init()
+    });
+  }
+
   return (
-    <div
-    // onclick={() => {
-    //   delete this.Static.record
-    //   this.init()
-    // }}
-    >
-      <div class="lenta__container">
+    <div>
+      <div class="lenta__container"
+        style={window.location.pathname.indexOf(item._id) ? "padding: 100px 0" : "padding-top: 0"}
+      >
         <div class="lenta__item lenta__item_inner">
           <div class="lenta__item_wrapper">
             <div class="lenta__item_header">
               <a class="avatar" href="">
                 <div class="avatar__icon">
                   <img class="avatar__photo"
-                    src={item.author.avatar?.name
+                    src={item.authorFull.avatar?.name
                       ?
-                      `/assets/upload/avatar/${item.author.avatar?.name}`
+                      `/assets/upload/avatar/${item.authorFull.avatar?.name}`
                       :
                       { avatarDefault }
                     }
                   />
                   <img class="avatar__frame"
-                    src={item.author.frame?.name
+                    src={item.authorFull.frame?.name
                       ?
-                      `/assets/images/lenta/${item.author.frame?.name}`
+                      `/assets/images/lenta/${item.authorFull.frame?.name}`
                       :
                       frameDefault
                     }
                   />
                   {
-                    item.author.status?.team
+                    item.authorFull.status?.team
                       ?
                       <img class="avatar__team"
-                        src={item.author.status?.team
+                        src={item.authorFull.status?.team
                           ?
                           teamLogo
                           :
@@ -101,14 +114,14 @@ export default function () {
                       <div>
                         <div class="avatar__level">
                           <img src={leveGray} />
-                          <span>{item.author.statistic.level}</span>
+                          <span>{item.authorFull.statistic.level}</span>
                         </div>
                       </div>
                   }
 
                 </div>
                 <div class="avatar__name">
-                  <span>{item.author.nickname}</span>
+                  <span>{item.authorFull.nickname}</span>
                 </div>
 
               </a>
@@ -178,45 +191,66 @@ export default function () {
 
         <div class="lenta__comment">
           <div class="lenta__comment_field">
-            <textarea rows="1"></textarea>
+            <textarea rows="1"
+              oninput={(e) => {
+                this.Static.textCom = e.target.value
+              }}
+            ></textarea>
           </div>
-          <button class="lenta__comment_button">
+          <button class="lenta__comment_button"
+            onclick={() => {
+              let data = {
+                _action: "insert",
+                author: "63c7f6063be93e984c962b75",
+                text: this.Static.textCom,
+                table: "Posts",
+                tableID: item._id,
+                rating: 1,
+              }
+              fetch(`/api/events/Comments?uuid=${this.Variable.myInfo.uuid}`, {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(data),
+              })
+            }}
+          >
             <img src={sendMessage} />
           </button>
         </div>
 
         {
-          item.comments.length > 0
+          this.Static.recordsComments?.length > 0
             ?
             <div class="user-comment">
               <div class="user-comment__list" ref="commentList">
                 {
-                  item.comments?.map((comment) => {
+                  this.Static.recordsComments?.map((comment) => {
+                    console.log('=48b433=',comment)
                     return (
                       <div class="user-comment__item">
                         <a class="user-comment__avatar avatar" href="">
                           <div class="avatar__icon">
                             <img class="avatar__photo"
-                              src={comment.author.avatar?.name
+                              src={comment.authorFull.avatar?.name
                                 ?
-                                `/assets/upload/avatar/${comment.author.avatar?.name}`
+                                `/assets/upload/avatar/${comment.authorFull.avatar?.name}`
                                 :
                                 { avatarDefault }
                               }
                             />
                             <img class="avatar__frame"
-                              src={comment.author.frame?.name
+                              src={comment.authorFull.frame?.name
                                 ?
-                                `/assets/images/lenta/${comment.author.frame?.name}`
+                                `/assets/images/lenta/${comment.authorFull.frame?.name}`
                                 :
                                 frameDefault
                               }
                             />
                             {
-                              comment.author.status?.team
+                              comment.authorFull.status?.team
                                 ?
                                 <img class="avatar__team"
-                                  src={comment.author.status?.team
+                                  src={comment.authorFull.status?.team
                                     ?
                                     teamLogo
                                     :
@@ -227,13 +261,13 @@ export default function () {
                                 <div>
                                   <div class="avatar__level">
                                     <img src={leveGray} />
-                                    <span>{comment.author.statistic.level}</span>
+                                    <span>{comment.authorFull.statistic.level}</span>
                                   </div>
                                 </div>
                             }
                           </div>
                           <div class="user-comment__avatar_info">
-                            <div class="user-comment__avatar_name">{comment.author.nickname}</div>
+                            <div class="user-comment__avatar_name">{comment.authorFull.nickname}</div>
                             <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comment.showdate, "time")}</span>
                           </div>
                         </a>
@@ -245,7 +279,7 @@ export default function () {
                         <div class="user-comment__statistic comment-statistic">
                           <div class="comment-statistic__rating">
                             <img src={dislike} />
-                            <span>{comment.rating}</span>
+                            <span>{comment.statistic.rating}</span>
                             <img src={like} />
                           </div>
                           <span class="user-comment__answer"
@@ -271,32 +305,32 @@ export default function () {
                           </button>
                         </div>
                         {
-                          comment.comments.map((comm) => {
+                          comment.comments?.map((comm) => {
                             return (
                               <div class="user-comment__item" style="margin: 0 10px">
                                 <a class="user-comment__avatar avatar" href="">
                                   <div class="avatar__icon">
                                     <img class="avatar__photo"
-                                      src={comm.author.avatar?.name
+                                      src={comm.authorFull.avatar?.name
                                         ?
-                                        `/assets/upload/avatar/${comm.author.avatar?.name}`
+                                        `/assets/upload/avatar/${comm.authorFull.avatar?.name}`
                                         :
                                         { avatarDefault }
                                       }
                                     />
                                     <img class="avatar__frame"
-                                      src={comm.author.frame?.name
+                                      src={comm.authorFull.frame?.name
                                         ?
-                                        `/assets/images/lenta/${comm.author.frame?.name}`
+                                        `/assets/images/lenta/${comm.authorFull.frame?.name}`
                                         :
                                         frameDefault
                                       }
                                     />
                                     {
-                                      comm.author.status?.team
+                                      comm.authorFull.status?.team
                                         ?
                                         <img class="avatar__team"
-                                          src={comm.author.status?.team
+                                          src={comm.authorFull.status?.team
                                             ?
                                             teamLogo
                                             :
@@ -307,13 +341,13 @@ export default function () {
                                         <div>
                                           <div class="avatar__level">
                                             <img src={leveGray} />
-                                            <span>{comm.author.statistic.level}</span>
+                                            <span>{comm.authorFull.statistic.level}</span>
                                           </div>
                                         </div>
                                     }
                                   </div>
                                   <div class="user-comment__avatar_info">
-                                    <div class="user-comment__avatar_name">{comm.author.nickname}</div>
+                                    <div class="user-comment__avatar_name">{comm.authorFull.nickname}</div>
                                     <span class="user-comment__avatar_time">{this.Services.functions.dateFormat(comm.showdate, "time")}</span>
                                   </div>
                                 </a>

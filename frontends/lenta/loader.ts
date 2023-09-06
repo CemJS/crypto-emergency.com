@@ -1,5 +1,7 @@
 export const loader = function () {
 
+    this.Static.textCom = ""
+
     let eventSource = this.eventSource(`Posts?uuid=${this.Variable.myInfo.uuid}&lang=ru`)
 
     eventSource.addEventListener('add', ({ data }) => {
