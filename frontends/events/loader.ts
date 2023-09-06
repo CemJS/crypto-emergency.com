@@ -55,7 +55,6 @@ export const loader = function () {
       "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
       "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
     ];
-    this.Static.liTag = ""
 
     this.Static.arrDayOfMonth = []
 

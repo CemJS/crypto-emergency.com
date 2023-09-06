@@ -20,7 +20,7 @@ export const display = function () {
               <span>Назад</span>
             </a>
           </div>
-        </div>
+        </div >
         <div class='cards-container'>
           <div class='card'>
 
@@ -52,37 +52,39 @@ export const display = function () {
           </div>
         </div>
         <div class='test-container'>
-          <table class='table_bonus table'>
-            <thead class="table_bonus_head table_head">
-              <tr class='table_bonus_row'>
-                <th class="table_bonus_row_start">Type</th>
-                <th>Date</th>
-                <th>Transaction</th>
-                <th>Sum</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody class='table_bonus_body' ref='elementContainer'>
-              {
-                this.Static.limitArray.map((item, index) => {
-                  // console.log('=this.Static.limitArray=', this.Static.limitArray)
-                  return (
-                    <tr class='table_bonus_row'>
-                      <td class="table_bonus_row_start">
-                        <img src={transaction_newmember_bonus} alt="" class='bonus_type' />
-                        {item.type}
-                      </td>
-                      <td>{item.date}</td>
-                      <td>{item.transaction}</td>
-                      <td>{item.sum}</td>
-                      <td><img src={done} alt="" /></td>
-                    </tr>
-                  )
-                  // }
-                })
-              }
-            </tbody>
-          </table>
+
+          <div class='outer_container'>
+            <table class='table_bonus'>
+              <thead class="table_bonus_head">
+                <tr class='table_bonus_row'>
+                  <th class="table_bonus_row_start">Type</th>
+                  <th>Date</th>
+                  <th>Transaction</th>
+                  <th>Sum</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody class='table_bonus_body' ref='elementContainer'>
+                {
+                  this.Static.limitArray.map((item, index) => {
+                    return (
+                      <tr class='table_bonus_row'>
+                        <td class="table_bonus_row_start">
+                          <img src={transaction_newmember_bonus} alt="" class='bonus_type' />
+                          {item.type}
+                        </td>
+                        <td class="table_bonus_row_date">{item.date}</td>
+                        <td>{item.transaction}</td>
+                        <td>{item.sum}</td>
+                        <td><img src={done} alt="" /></td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
+
           <nav class="pagination-container">
             <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page">
               &lt;
@@ -90,44 +92,49 @@ export const display = function () {
 
             <div id="pagination-numbers" ref='paginationNumbers'>
               <span class='hidden' ref='first_two' >
-              {
-                this.Static.Pages.slice(0, 2).map((item, index) => {
-                  return (
-                    <button class="pagination-number" page-index="1" aria-label="Page 2" 
-                    onclick ={(e)=>{
-                      this.Static.currentPage = e.target.innerText
-                      this.fn('setCurrentPage', Number(this.Static.currentPage));
-                      console.log('=TwocurrentPage=',this.Static.currentPage)
-                      if(this.Static.currentPage < 3){
-                        this.Ref.first_two.classList.add('hidden')
-                        this.Static.Begin = 0
-                        this.Static.End = 5
-                      }
-                      this.init()
-                    }}
-                    >
-                    {item}</button>
-                  )
-                })
-                
-              }
-              
-              
-              <span class='first_two_dots' ref='first_two_dots'>...</span>
+                {
+                  this.Static.Pages.slice(0, this.Static.outertDigitsNumber).map((item, index) => {
+                    return (
+                      <button class={item.class}
+                        onclick={(e) => {
+                          this.Static.Pages.forEach(element => {
+                            element.class = 'pagination-number '
+                          });
+                          this.Static.currentPage = item.number
+                          this.fn('setCurrentPage', this.Static.currentPage);
+                          this.fn('pagination', this.Static.currentPage);
+                          item.class += "active"
+                          if (this.Static.currentPage < 3) {
+                            this.Ref.first_two.classList.add('hidden')
+                            this.Static.Begin = 0
+                            this.Static.End = 5
+                          }
+                          this.init()
+                        }}
+                      >
+                        {item.number}</button>
+                    )
+                  })
+
+                }
+
+
+                <span class='dots' ref='first_two_dots'>...</span>
               </span>
               {
                 this.Static.Pages.slice(this.Static.Begin, this.Static.End).map((item, index) => {
                   return (
-                    <button class={item.class} ref = "pagination_number"
+                    <button class={item.class} ref="pagination_number"
                       onclick={(e) => {
-                        this.Static.currentPage = e.target.innerText
-                        this.fn('setCurrentPage', Number(this.Static.currentPage));
-                        console.log('=716b08=',this.Ref.pagination_number)
-                        this.Ref.pagination_number.classList.remove('active')
-                        e.target.classList.add('active')
-                        console.log('=index=',item.class)
+                        this.Static.Pages.forEach(element => {
+                          element.class = 'pagination-number '
+                        });
+                        this.Static.currentPage = item.number
+                        this.fn('setCurrentPage', this.Static.currentPage);
+                        this.fn('pagination', this.Static.currentPage);
+                        item.class += "active"
                         this.init()
-                        
+
 
                       }}
                     >{item.number}</button>
@@ -135,30 +142,55 @@ export const display = function () {
                   )
                 })
               }
-              ...
-              {
-                this.Static.Pages.slice(-2).map((item, index) => {
-                  return (
-                    <button class="pagination-number" ref='two_last'
-                    onclick ={(e)=>{
-                      this.Static.currentPage = e.target.innerText
-                      this.fn('setCurrentPage', Number(this.Static.currentPage));
-                      console.log('=TwoLAstcurrentPage=',this.Static.currentPage)
-                      if(this.Static.currentPage < 3){
-                        this.Ref.first_two.classList.add('hidden')
-                        this.Static.Begin = 0
-                        this.Static.End = 5
-                      }
-                      this.init()
-                    }}
-                    >
-                      {item}</button>
+              <span class='' ref='two_last'>
+                <span class='dots'>...</span>
+                {
+                  this.Static.Pages.slice(-this.Static.outertDigitsNumber).map((item, index) => {
+                    return (
+                      <button class={item.class}
+                        onclick={(e) => {
+                          this.Static.Pages.forEach(element => {
+                            element.class = 'pagination-number '
+                          });
+                          this.Static.currentPage = item.number
+                          this.Static.currentPageClass = item.class
+                          this.fn('setCurrentPage', this.Static.currentPage);
+                          this.fn('pagination', this.Static.currentPage);
+                          item.class += "active"
+                          if (this.Static.currentPage >= this.Static.lastPage - 3) {
+                            this.Ref.two_last.classList.add('hidden')
+                            this.Ref.first_two.classList.remove('hidden')
+                            this.Static.Begin = this.Static.Pages.at(-6).number
+                            this.Static.End = this.Static.lastPage
+                          }
+                          this.init()
+                        }}
+                      >
+                        {item.number}</button>
 
-                  )
-                })
-              }
+                    )
+                  })
+                }
+              </span>
+
             </div>
             <button class={["pagination-button", this.Static.test == 2 ? "test" : "ffhff"]} id="next-button" aria-label="Next page" title="Next page"
+              onclick={() => {
+                if (this.Static.currentPage < this.Static.lastPage) {
+                  this.Static.Pages.forEach(element => {
+                    element.class = 'pagination-number '
+
+                  });
+                  console.log('=01d334=', this.Static.currentPageClass)
+                  this.Static.currentPage += 1
+
+                  this.fn('setCurrentPage', this.Static.currentPage);
+                  this.fn('pagination', this.Static.currentPage);
+
+                  this.init()
+                }
+
+              }}
             >
               &gt;
             </button>
