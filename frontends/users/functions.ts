@@ -17,6 +17,7 @@ const fn = {
     if (expert) {
       url += `&expert=${expert}`
     }
+    console.log('=2dd6b9=',url)
 
     let eventSource
 
@@ -27,12 +28,12 @@ const fn = {
     }
 
     eventSource.addEventListener('add', ({ data }) => {
-      console.log('=d691ec=',data)
       if (!this.Static.records) {
         this.Static.records = []
       }
       let record = JSON.parse(data)
       this.Static.records.push(record)
+      console.log('=a0c1c2=', this.Static.records)
       this.init()
     });
   }

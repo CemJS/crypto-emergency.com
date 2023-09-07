@@ -40,7 +40,6 @@ const lentaMedia = function (item) {
 }
 
 export default function () {
-  console.log('=aba628=', "Переменная")
 
   return (
     <section class="lenta effect_lines"

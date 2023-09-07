@@ -5,6 +5,7 @@ import teamLogo from "@svg/lenta/mini_logo.svg"
 import leveGray from "@svg/lenta/level_gray.svg"
 
 export const display = function () {
+  console.log('=94b5de=',this.Static.records)
   return (
     <div class="page">
       <div class="users">
