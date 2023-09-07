@@ -42,6 +42,7 @@ export const loader = function () {
 
 
     // КАЛЕНДАРЬ
+
     this.Static.date = new Date()
     this.Static.currentMonth = this.Static.date.getMonth()
     this.Static.currentYear = this.Static.date.getFullYear()

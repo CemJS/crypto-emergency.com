@@ -48,7 +48,17 @@ export const display = function () {
             <div class="info_content">
               <p>Обмен CEM доступен<br />от 10 CEMD</p>
             </div>
-            <button class="exchange_button">Обменять</button>
+            <button class="exchange_button"
+              onclick={() => {
+                this.Fn.initOne({
+                  name: "modalWithdrawalCem", ifOpen: (front) => {
+                    setTimeout(() => {
+                      front.clearData()
+                    }, 500);
+                  }
+                })
+              }}
+            >Обменять</button>
           </div>
         </div>
         <div class='test-container'>

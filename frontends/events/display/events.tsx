@@ -158,16 +158,17 @@ export default function () {
                     this.Static.calendarDropdownStatus = 'open'
                     this.Ref.calendarDropdown.classList.add("visible")
                     this.Ref.event_list.classList.add("shadow")
+                    
                     this.Ref.calendarDropdown_arrow.classList.add("rotate")
-                    // this.fn('calendarRender')
                     this.fn('dayOfMonth')
-                    // this.Static.liTag = ''
-                    this.Ref.current_date.innerText = this.Static.currentDate
-                    // console.log('=06479f=',this.Ref.days)
+                    console.log('=a0a149=',this.Static.currentMonth)
+                    this.Ref.current_month.innerText = `${this.Static.months[this.Static.currentMonth]} `
+                    this.Ref.current_year.innerText = this.Static.currentYear
 
                   } else if (this.Static.calendarDropdownStatus == 'open') {
-                    console.log('=this.Static.choosenDate=', this.Static.choosenDate)
-                    // this.Static.liTag = ''
+                    // console.log('=this.Static.choosenDate=', this.Static.choosenDate)
+                    console.log('=a0a149=',this.Static.currentMonth)
+                    this.Ref.months_list_container.classList.add('hidden')
                     this.Static.currentMonth = this.Static.date.getMonth()
                     this.Static.calendarDropdownStatus = 'close'
                     this.Ref.calendarDropdown.classList.remove("visible")
@@ -182,28 +183,32 @@ export default function () {
 
               <div class="calendar" ref='calendarDropdown'>
                 <div class='cal_header' >
+
+                  <p class="current-month" ref='current_month'
+                    onclick={() => {
+                      this.Ref.months_list_container.classList.remove('hidden')
+                    }}
+                  >
+                  </p>
                   <div class='icons'
                     onclick={() => {
-                      // this.Static.liTag = ''
-                      this.Static.currentMonth--
-                      // this.fn('calendarRender')
+                      this.Static.currentYear--
                       this.fn('dayOfMonth')
-
-                      this.Ref.current_date.innerText = this.Static.currentDate
+                      this.Ref.current_month.innerText = `${this.Static.months[this.Static.currentMonth]} `
+                      this.Ref.current_year.innerText = this.Static.currentYear
                       this.init()
                     }}
                   >
                     <img src={back} alt="" id="prev" class="material-symbols-rounded" />
                   </div>
-                  <p class="current-date" ref='current_date'></p>
+                  <p class="current-year" ref='current_year'></p>
                   <div class="icons"
                     onclick={() => {
-
-                      this.Static.currentMonth++
+                      this.Static.currentYear++
                       this.fn('dayOfMonth')
-                      this.Ref.current_date.innerText = this.Static.currentDate
+                      this.Ref.current_month.innerText = `${this.Static.months[this.Static.currentMonth]} `
+                      this.Ref.current_year.innerText = this.Static.currentYear
                       this.init()
-
                     }}
                   >
                     <img src={next} alt="" id="next" class="material-symbols-rounded" />
@@ -224,38 +229,77 @@ export default function () {
                       return (
                         <li class={item.class}
                           onclick={(e) => {
-                            console.log('=f4dcd5=',this.Static.currentMonth)
+
                             if (item.class.includes('current ')) {
-                              const utcDate = new Date(Date.UTC(this.Static.currentYear, this.Static.currentMonth, e.target.innerText),)
+                              const utcDate = new Date(Date.UTC(this.Static.currentYear, this.Static.currentMonth, item.day),)
                               this.Ref.date_text.innerText = (utcDate.toLocaleDateString('ru-RU'))
+
                               if (this.Static.choosenDate) {
                                 this.Static.choosenDate.classList.remove("choosen");
                               }
-                              // this.Static.arrDayOfMonth.forEach(element => {
-                              //   element.class = 'pagination-number '
-                              // });
-                              this.Static.arrDayOfMonth[index].class += "choosen"
+                              this.Static.arrDayOfMonth.forEach(element => {
+                                if (element.class.includes('current ')) {
+                                  element.class = 'current '
+                                }
+                              });
+                              this.Static.arrDayOfMonth[index].class += "choosen "
                               this.Static.choosenDate = e.target;
-                              this.Static.selectedDate = new Date(this.Static.currentYear, this.Static.currentMonth, e.target.innerText)
-                              console.log('=1d362e=', this.Static.selectedDate)
-                            } else if (item.class.includes('previous ')) {
-                              console.log('=3c0cd2=', 'Переменная')
+                              console.log('=item.day=', item.day)
+                              this.Static.selectedDate = new Date(this.Static.currentYear, this.Static.currentMonth, item.day)
+
+                            } else if (item.class.includes('previous')) {
                               this.Static.currentMonth--
                               this.fn('dayOfMonth')
-                              this.Ref.current_date.innerText = this.Static.currentDate
+                              this.Ref.current_month.innerText = `${this.Static.months[this.Static.currentMonth]} `
+                              this.Ref.current_year.innerText = this.Static.currentYear
+                              this.Static.selectedDate = new Date(this.Static.currentYear, this.Static.currentMonth, item.day)
+                              e.stopPropagation()
+                              const utcDate = new Date(Date.UTC(this.Static.currentYear, this.Static.currentMonth, item.day),)
+                              this.Ref.date_text.innerText = (utcDate.toLocaleDateString('ru-RU'))
                               this.init()
-                            }else if (item.class.includes('nextmonth ')) {
-                              console.log('=3c0cd2=', 'Переменная')
+                            } else if (item.class.includes('nextmonth ')) {
                               this.Static.currentMonth++
-                              console.log('=d7ff31=',e.target)
+                              console.log('=item.day=', item.day)
+                              console.log('=currentMonth=', this.Static.currentMonth)
                               this.fn('dayOfMonth')
-                              // this.Ref.current_date.innerText = this.Static.currentDate
+                              console.log('=currentNameMonth=', this.Static.months[this.Static.currentMonth])
+                              this.Ref.current_month.innerText = `${this.Static.months[this.Static.currentMonth]} `
+                              this.Ref.current_year.innerText = this.Static.currentYear
+                              this.Static.selectedDate = new Date(this.Static.currentYear, this.Static.currentMonth, item.day)
+                              const utcDate = new Date(Date.UTC(this.Static.currentYear, this.Static.currentMonth, item.day),)
+                              this.Ref.date_text.innerText = (utcDate.toLocaleDateString('ru-RU'))
+                              e.stopPropagation()
                               this.init()
                             }
+                          }}
+                        >
+                          {item.day}
+                        </li>
+                      )
 
-
-
-                          }}>{item.day}</li>
+                    })
+                  }
+                </ul>
+              </div>
+              <div class="months-list-container hidden" ref='months_list_container'>
+                <ul class='months-list' ref='months_list'>
+                  {
+                    this.Static.months.map((item, index) => {
+                      return (
+                        <li class="month_item"
+                          onclick={() => {
+                            console.log('=09da0c=', item, index)
+                            console.log('=88d172=',)
+                            this.Static.currentMonth = index
+                            this.fn('dayOfMonth')
+                            this.Ref.current_month.innerText = `${this.Static.months[this.Static.currentMonth]} `
+                            this.Ref.current_year.innerText = this.Static.currentYear
+                            this.init()
+                            this.Ref.months_list_container.classList.add('hidden')
+                          }}
+                        >
+                          {item}
+                        </li>
                       )
 
                     })
@@ -285,9 +329,7 @@ export default function () {
               >
                 <input type="search" name="input" placeholder="Страна" ref='country_search_field'
                   oninput={(e) => {
-
                     this.Static.searchCountries = this.Static.uniqueCountries.filter((item) => {
-
                       if (item.toLowerCase().includes(e.target.value.toLowerCase())) {
                         this.Ref.countries_dropdown.classList.add("visible")
 
@@ -355,7 +397,6 @@ export default function () {
                       this.Ref.choosen_category.innerText = 'Категория'
                     } else {
                       this.Ref.choosen_category.innerText = e.target.innerText
-                      // console.log('=3e0d37=',e.target.innerText)
                       this.Static.makeFilter.cat = e.target.innerText
                     }
 

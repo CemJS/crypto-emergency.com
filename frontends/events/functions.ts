@@ -143,12 +143,13 @@ const fn = {
         }
     }
     // Обновляем текст текущей даты при смене месяца и года 
-      this.Static.currentDate = `${this.Static.months[this.Static.currentMonth]} ${this.Static.currentYear}`;
-
+      // this.Static.currentDate = `${this.Static.months[this.Static.currentMonth]} ${this.Static.currentYear}`;
+        
     if (this.Static.currentMonth < 0 || this.Static.currentMonth > 11) {
       this.Static.date = new Date(this.Static.currentYear, this.Static.currentMonth);
       this.Static.currentMonth = this.Static.date.getMonth();
       this.Static.currentDate = `${this.Static.months[this.Static.currentMonth]} ${this.Static.currentYear}`;
+      this.Static.currentNameMonth = this.Static.months[this.Static.currentMonth]
       this.Static.currentYear = this.Static.date.getFullYear();
     } else {
       this.Static.date = new Date();

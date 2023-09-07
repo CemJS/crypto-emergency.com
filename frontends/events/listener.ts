@@ -49,9 +49,10 @@ const listener = {
             this.Ref.calendarDropdown_arrow.classList.remove("rotate")
             this.Static.currentMonth = this.Static.date.getMonth()
             this.Static.liTag = ''
-        } else if (!this.Ref.date_area.contains(e.target) && !this.Ref.calendarDropdown.contains(e.target) &&!this.Ref.days.contains(e.target)  && this.Static.calendarDropdownStatus == 'open') {
+        } else if (!this.Ref.date_area.contains(e.target) && !this.Ref.calendarDropdown.contains(e.target) &&!this.Ref.days.contains(e.target) && !this.Ref.months_list_container.contains(e.target)  && this.Static.calendarDropdownStatus == 'open') {
             // клик вне категории и стран и даты и date dropdown
             console.log('=38e0b6=',"вне всего")
+            this.Ref.months_list_container.classList.add('hidden')
             this.Static.calendarDropdownStatus = 'close'
             this.Ref.calendarDropdown.classList.remove("visible")
             this.Ref.event_list.classList.remove("shadow")

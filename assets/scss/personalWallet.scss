@@ -173,6 +173,13 @@
         overflow-y: visible;
         padding: 0;
     }
+    .outer_container::-webkit-scrollbar {
+        display: none;
+    }
+    .outer_container {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
 
     .table_bonus {
         border-collapse: collapse;
