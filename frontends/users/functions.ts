@@ -2,6 +2,8 @@ const fn = {
   "addEvent": function ({ nickname, basic, creator, expert }) {
     let url = `Users?uuid=${this.Variable.myInfo.uuid}`
 
+    console.log('=05f362=', basic)
+
     if (nickname) {
       url += `&nickname=${nickname}`
     }
@@ -36,6 +38,33 @@ const fn = {
       console.log('=a0c1c2=', this.Static.records)
       this.init()
     });
+  },
+  "resetFilter": function () {
+    this.Static.lang = {
+      value: "",
+      name: "",
+      code: "",
+      orig: "",
+    }
+  
+    this.Static.country = {
+      value: "",
+      name: "",
+      code: "",
+      orig: ""
+    }
+    this.Ref.basic.checked = false
+    this.Ref.creator.checked = false
+    this.Ref.expert.checked = false
+  
+    this.Static.makeFilter = {
+      nickname: "",
+      basic: false,
+      creator: false,
+      expert: false
+    }
+
+    this.init()
   }
 }
 
