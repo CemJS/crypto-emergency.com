@@ -17,7 +17,7 @@ export const display = function () {
 
               <div class="users__search">
                 <input 
-                  type="text" 
+                  type="text"
                   placeholder="Найти друзей"
                   oninput={(e) => {
                     this.Static.makeFilter.nickname = e.target.value

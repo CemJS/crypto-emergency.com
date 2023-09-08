@@ -1,3 +1,4 @@
 export const loader = function () {
-    this.Static.text = "Micro Frontend for Framework CemJS!";
+    this.Static.page = "about";
+    this.initAuto("page")
 }

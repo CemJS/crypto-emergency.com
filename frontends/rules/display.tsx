@@ -6,6 +6,7 @@ import cylinder from '@svg/beauty/cylinder.svg'
 import UserAgreement from './display/UserAgreement'
 import UserCookies from './display/UserCookies'
 import UserDataPolicy from './display/UserDataPolicy'
+import UserPersonal from "./display/UserPersonal"
 
 export const display = function () {
 
@@ -17,6 +18,8 @@ export const display = function () {
         return UserCookies.bind(this)()
     } else if (nameRule == "data-policy") {
         return UserDataPolicy.bind(this)()
+    } else if (nameRule == "personal") {
+        return UserPersonal.bind(this)()
     } else {
         return (
             <div>not found</div>
