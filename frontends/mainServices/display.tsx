@@ -21,7 +21,8 @@ const services = [
   },
   {
     image: "users",
-    title: "Пользователи"
+    title: "Пользователи",
+    url: "/users"
   },
   {
     image: "exchange",
@@ -60,7 +61,8 @@ const services = [
   },
   {
     image: "university",
-    title: "Крипто университет"
+    title: "Крипто университет",
+    url: "/university"
   },
 ]
 

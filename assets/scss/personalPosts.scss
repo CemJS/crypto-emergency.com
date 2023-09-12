@@ -141,5 +141,9 @@
     max-width: 500px;
     margin: 0 auto;
     padding: 20px 0;
+
+    @media (max-width: 400px) {
+      gap: 15px;
+    }
   }
 }
