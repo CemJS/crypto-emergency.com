@@ -136,7 +136,7 @@ export default function () {
             />
             <div class="personal-categories__frame">
               <div class="personal-categories__background">
-                <span>12</span>
+                <span>20</span>
               </div>
             </div>
           </div>
