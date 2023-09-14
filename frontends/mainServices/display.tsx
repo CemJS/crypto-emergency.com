@@ -90,7 +90,7 @@ export const display = function () {
                 services.map((item) => {
                   return (
                     <a href={item.url} class="services__link"
-                    onclick={this.Fn.link}
+                      onclick={this.Fn.link}
                     >
                       <div class="services__image">
                         <img src={`/assets/svg/mainServices/${item.image}.svg`} />

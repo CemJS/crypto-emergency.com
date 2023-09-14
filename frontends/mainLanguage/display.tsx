@@ -75,6 +75,7 @@ export const display = function () {
       <div class="modal__black"
         onclick={() => {
           setTimeout(() => {
+            this.Static.body.style.overflow = '';
             this.clearData()
           }, 5);
         }}
@@ -89,6 +90,7 @@ export const display = function () {
             type="button"
             onclick={() => {
               setTimeout(() => {
+                this.Static.body.style.overflow = '';
                 this.clearData()
               }, 5);
             }}

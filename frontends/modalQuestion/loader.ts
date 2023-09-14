@@ -1,4 +1,5 @@
 export const loader = function () {
+    this.Static.body = document.querySelector('body');
     this.Static.isValid = false
     this.Static.lang = {
         code: "ru",

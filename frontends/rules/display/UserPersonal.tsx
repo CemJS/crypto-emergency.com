@@ -61,7 +61,7 @@ export default function () {
             />
             <div class="personal-categories__frame">
               <div class="personal-categories__background">
-                <span>3</span>
+                <span>0</span>
               </div>
             </div>
           </div>

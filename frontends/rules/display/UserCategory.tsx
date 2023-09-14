@@ -9,6 +9,15 @@ import avatarDefault from "@images/lenta/avatar_default.png"
 import frameDefault from "@svg/lenta/default.svg"
 import leveGray from "@svg/lenta/level_gray.svg"
 import teamLogo from "@svg/lenta/mini_logo.svg"
+import badge1 from "@svg/personalAwards/badge1.svg"
+import badge2 from "@svg/personalAwards/badge2.svg"
+import badge3 from "@svg/personalAwards/badge3.svg"
+import badge4 from "@svg/personalAwards/badge4.svg"
+import badge5 from "@svg/personalAwards/badge5.svg"
+import badge6 from "@svg/personalAwards/badge6.svg"
+import badge7 from "@svg/personalAwards/badge7.svg"
+
+const image = [badge1, badge2, badge3, badge3, badge4, badge5, badge6, badge7]
 
 export default function () {
 
@@ -307,12 +316,101 @@ export default function () {
           <div class="personal-block__header">
             <h2>Мои подписки</h2>
           </div>
+          <div class="personal-block__friends">
+            {
+              this.Static?.records.map((item) => {
+                return (
+                  <div class="personal-block__friends_item">
+                    <a class="avatar avatar__users" href="#">
+                      <div class="avatar__icon">
+                        <img class="avatar__photo"
+                          src={item.avatar?.name
+                            ?
+                            `/assets/upload/avatar/${item.avatar?.name}`
+                            :
+                            avatarDefault
+                          }
+                        />
+                        <img class="avatar__frame"
+                          src={item.frame?.name && item.frame?.name != "default.svg"
+                            ?
+                            `/assets/images/lenta/${item.frame?.name}`
+                            :
+                            frameDefault
+                          }
+                        />
+                        {
+                          item.status?.team
+                            ?
+                            <img class="avatar__team"
+                              src={item.status?.team
+                                ?
+                                teamLogo
+                                :
+                                null
+                              }
+                            />
+                            :
+                            <div>
+                              <div class="avatar__level">
+                                <img src={leveGray} />
+                                <span>{item.statistic.level}</span>
+                              </div>
+                            </div>
+                        }
+                      </div>
+                    </a>
+                    <div class="personal-block__friends_info">
+                      <p>{item.nickname}</p>
+                      <p>{item.fullname}</p>
+                    </div>
+                    <div class="personal-block__friends_settings">
+                      <img src={points} />
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       )
     case "awards":
       return (
         <div class="personal-block__container">
           <h2>Полученные награды</h2>
+          <div class="personal-block__awards">
+            {
+              this.Static.arrAwards.map((item, i) => {
+                return (
+                  <div class="awards__list_item">
+                    <img
+                      class="awards__badge"
+                      src={image[i]}
+                    />
+                    <img
+                      class="awards__badge_small"
+                      src={image[i]} />
+                    <div class="awards__description">
+                      <p class="awards__title">
+                        {item.title}
+                      </p>
+                      <p class="awards__text">
+                        {item.text}
+                      </p>
+                    </div>
+                    <div class="awards__progress">
+                      <p class="awards__progress_result">
+                        Получено
+                      </p>
+                      <p class="awards__progress_result">
+                        {item.date}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       )
     case "social":
