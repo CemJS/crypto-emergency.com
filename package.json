@@ -2,17 +2,18 @@
   "name": "crypto-emergency",
   "version": "1.0.0",
   "type": "module",
+  "types": "./index.d.ts",
   "private": true,
   "scripts": {
     "build": "node esbuild.mjs",
     "start": "node esbuild.mjs --runServe",
-    "front": "node esbuild.mjs --runServe --runFront"
+    "prod": "node esbuild.mjs --runServe --runProd"
   },
   "dependencies": {
-    "cemjs-all": "^1.0.6",
+    "cemjs-all": "^1.0.10",
     "esbuild": "^0.19.1",
-    "html-dom-parser": "^4.0.0",
     "http-proxy": "^1.18.1",
+    "html-dom-parser": "^4.0.0",
     "idb": "^7.1.1",
     "mic-recorder": "^4.9.0",
     "moment": "^2.29.4",
@@ -31,7 +32,7 @@
     "type": "git",
     "url": "git+https://github.com/CemJS/crypto-emergency.com.git"
   },
-  "author": "",
+  "author": "crypto-emergency.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CemJS/crypto-emergency.com/issues"

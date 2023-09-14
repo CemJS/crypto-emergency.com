@@ -31,6 +31,7 @@ const fn = {
         this.Static.records = []
       }
       let record = JSON.parse(data)
+      console.log('=f977c8=', record)
       this.Static.records.push(record)
       this.init()
     });
