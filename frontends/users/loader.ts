@@ -1,11 +1,25 @@
 export const loader = function () {
 
-  let eventSource = this.eventSource(`Users?uuid=${this.Variable.myInfo.uuid}`)
+  this.fn("addEvent", {})
 
-  eventSource.addEventListener('message', ({ data }) => {
-    let records = JSON.parse(data)
-    console.log('=641d61=', records)
-    this.Static.records = records
-    this.init()
-  });
+  this.Static.lang = {
+    value: "",
+    name: "",
+    code: "",
+    orig: "",
+  }
+
+  this.Static.country = {
+    value: "",
+    name: "",
+    code: "",
+    orig: ""
+  }
+
+  this.Static.makeFilter = {
+    nickname: "",
+    basic: false,
+    creator: false,
+    expert: false
+  }
 }

@@ -51,7 +51,7 @@ const sections = [
   {
     category: "Пользователи",
     img: users,
-    url: "#"
+    url: "/users"
   },
   {
     category: "Крипто университет",
@@ -116,7 +116,7 @@ const showCollapseBody = function (e) {
 
 export const display = function () {
   return (
-    <div class="modal modal_open modal_fullscreen" style="z-index: 1200">
+    <div class="modal modal_open modal_fullscreen">
       <div class="modal__black"
         onclick={() => {
           setTimeout(() => {

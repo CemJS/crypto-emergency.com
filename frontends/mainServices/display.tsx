@@ -21,7 +21,8 @@ const services = [
   },
   {
     image: "users",
-    title: "Пользователи"
+    title: "Пользователи",
+    url: "/users"
   },
   {
     image: "exchange",
@@ -60,7 +61,8 @@ const services = [
   },
   {
     image: "university",
-    title: "Крипто университет"
+    title: "Крипто университет",
+    url: "/university"
   },
 ]
 
@@ -88,7 +90,7 @@ export const display = function () {
                 services.map((item) => {
                   return (
                     <a href={item.url} class="services__link"
-                    onclick={this.Fn.link}
+                      onclick={this.Fn.link}
                     >
                       <div class="services__image">
                         <img src={`/assets/svg/mainServices/${item.image}.svg`} />

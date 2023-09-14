@@ -82,9 +82,9 @@ export const display = function () {
                 draggable="false"
                 onclick={() => {
                   this.cross({ event: "press", name: item.name })
-                  this.Static.icoList.classList.add('animated');
+                  this.Static.icoList?.classList.add('animated');
                   setTimeout(() => {
-                    this.Static.icoList.classList.remove('animated');
+                    this.Static.icoList?.classList.remove('animated');
                   }, 500)
                   this.init()
                 }}>
@@ -93,27 +93,6 @@ export const display = function () {
             )
           })
           }
-          <li class={"category-item"}>
-            <span>Все</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example1</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example2</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example4</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example5</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example4</span>
-          </li>
-          <li class={"category-item"}>
-            <span>Example5</span>
-          </li>
         </ul>
       </div>
     )

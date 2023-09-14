@@ -33,11 +33,11 @@
       "front": "communities"
     },
     {
-      "url": "/university",
+      "regex": "/university",
       "front": "university"
     },
     {
-      "url": "/events",
+      "regex": "/events",
       "front": "events"
     },
     {
@@ -85,6 +85,7 @@
       "regex": "/user-",
       "front": "rules"
     },
+   
     {
       "url": "/list-trade",
       "front": "listTrade"
@@ -170,6 +171,10 @@
       "front": "personalWallet"
     },
     {
+      "url": "/testVoice",
+      "front": "testVoice"
+    },
+    {
       "all": true,
       "front": "footer"
     }
@@ -180,6 +185,11 @@
         "url": "/assets/upload",
         "host": "crypto-emergency.com",
         "port": "80"
+      },
+      {
+        "url": "/api/",
+        "host": "127.0.0.1",
+        "port": "33333"
       }
     ]
   },

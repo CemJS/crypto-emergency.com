@@ -68,7 +68,7 @@
         color: #ffffff;
 
         &::placeholder {
-          color: #9CA2B5;
+          color: var(--placeholder);
         }
       }
     }

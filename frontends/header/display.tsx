@@ -2,6 +2,8 @@ import { Cemjsx } from "cemjs-all"
 import logo from '@svg/logo.svg'
 
 export const display = function () {
+	// console.log('=b56cd5=', this.Variable.DataUrl)
+
 	return (
 		<header class="header">
 			<div class="header__container">
@@ -19,7 +21,7 @@ export const display = function () {
 							}}
 						>Контакты</a>
 						<a class="header__menu_link"
-							href="/about"
+							href="/events"
 							onclick={(e) => {
 								let language = "en"
 								if (this.Variable.lang._data.code == "en") {

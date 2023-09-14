@@ -1,4 +1,5 @@
 export const loader = function () {
+  this.Static.body = document.querySelector('body');
   this.Static.buttonActive = "email";
   this.Static.viewPassword = false;
   this.Static.email = {

@@ -9,6 +9,7 @@ export const display = function () {
       <div class="modal__black"
         onclick={() => {
           setTimeout(() => {
+            this.Static.body.style.overflow = '';
             this.clearData()
           }, 5);
         }}
@@ -23,6 +24,7 @@ export const display = function () {
             type="button"
             onclick={() => {
               setTimeout(() => {
+                this.Static.body.style.overflow = '';
                 this.clearData()
               }, 5);
             }}
@@ -37,7 +39,7 @@ export const display = function () {
                 <input
                   type="text"
                   placeholder={this.Static.email.placeholder}
-                  style={this.Static.email?.value.length > 0 && this.Static.email.valid == false ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : null}
+                  style={this.Static.email?.value.length > 0 && this.Static.email.valid == false ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : ""}
                   oninput={(e) => {
                     if (this.Services.functions.validateEmail(e.target.value)) {
                       this.Static.email.valid = true
@@ -56,9 +58,9 @@ export const display = function () {
               <span style={this.Static.pass.error == false ? "display: block" : "display: none"}>Пароль должен содержать минимум 1 специальный символ</span>
               <div class="registration-form__block_input">
                 <img class="lock" src={lock} />
-                <input 
+                <input
                   type={this.Static.pass.view ? "text" : "password"}
-                  style={this.Static.pass.error == false ? "border-color: red" : this.Static.pass.error == true && this.Static.pass.value.length > 0 ? "border-color: green" : null}
+                  style={this.Static.pass.error == false ? "border-color: red" : this.Static.pass.error == true && this.Static.pass.value.length > 0 ? "border-color: green" : ""}
                   oninput={(e) => {
                     this.Static.pass.error = this.Services.functions.validator.isStrongPassword(e.target.value, {
                       minLength: 8,
@@ -89,8 +91,8 @@ export const display = function () {
               <span style={this.Static.repeatPass.error == false ? "display: block" : "display: none"}>Пароли не сопадают</span>
               <div class="registration-form__block_input">
                 <img class="lock" src={lock} />
-                <input 
-                  type={this.Static.repeatPass.view ? "text" : "password"} 
+                <input
+                  type={this.Static.repeatPass.view ? "text" : "password"}
                   style={this.Static.repeatPass.error == false ? "border-color: red" : this.Static.repeatPass.error == true && this.Static.repeatPass.value.length > 0 ? "border-color: green" : null}
                   oninput={(e) => {
                     this.Static.repeatPass.value = e.target.value

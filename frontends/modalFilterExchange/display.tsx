@@ -61,6 +61,7 @@ export const display = function () {
       onclick={(e) => {
         if (e.target === this.Ref.modalBody) {
           setTimeout(() => {
+            this.Static.body.style.overflow = '';
             this.clearData()
           }, 5)
         }
@@ -72,6 +73,7 @@ export const display = function () {
             class="modalWindow_button_close"
             onclick={() => {
               setTimeout(() => {
+                this.Static.body.style.overflow = '';
                 this.clearData()
               }, 5)
             }}

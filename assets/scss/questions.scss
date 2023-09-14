@@ -27,6 +27,15 @@
     opacity: 0.7;
   }
 
+  &-show {
+    padding: 100px 0;
+  } 
+
+
+  &__page {
+    padding-bottom: 100px;
+  }
+
   &__container {
     padding-top: 20px;
 
@@ -42,13 +51,51 @@
     font-size: 16px;
     line-height: 28px;
     max-width: 431px;
+    margin-bottom: 20px;
+  }
+
+  &__ask {
+    position: relative;
+    display: flex;
+    gap: 20px;
+
+    button {
+      position: relative;
+      width: 300px;
+      height: 55px;
+      border-radius: 3px;
+      font-weight: 800;
+      font-size: 16px;
+      line-height: 55px;
+      align-items: center;
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      overflow: hidden;
+      letter-spacing: 2px;
+      z-index: 1;
+      color: var(--white);
+
+      &::after {
+        position: absolute;
+        content: "";
+        display: inline-block;
+        background: #3bade3;
+        background: linear-gradient(45deg, #3bade3 0%, #576fe6 25%, #9844b7 51%, #ff357f 100%);
+        height: 78px;
+        width: 440px;
+        z-index: -1;
+        transform: translateX(-330px);
+        transition: transform 400ms ease-in;
+        top: 0;
+      }
+    }
   }
 
   &__search {
-    width: 96%;
+    width: 100%;
     position: relative;
-    margin: 0 auto;
-    margin-top: 20px;
+    // margin: 0 auto;
 
     &::before {
       content: "";
@@ -82,7 +129,7 @@
       &:focus {
         outline: none;
         border: 1px solid var(--border);
-        transform: scale(1.04);
+        transform: scale(1);
 
         &::placeholder {
           color: transparent;
@@ -121,6 +168,8 @@
     & .avatar {
       position: relative;
       display: flex;
+      height: auto;
+      width: auto;
 
       &__icon {
         position: relative;
@@ -338,7 +387,8 @@
     &_footer {
       text-align: center;
 
-      button {
+      a {
+        display: inline-block;
         padding: 14px 60px;
 
         @media (max-width: 768px) {
@@ -393,10 +443,111 @@
       }
     }
 
+    &__tell {
+      padding-top: 10px;
+      font-size: 16px;
+    }
+
+    & .user-comment__form {
+      display: none;
+      padding: 10px 0;
+      // margin-top: 10px;
+    }
+
+    &__comments {
+      background-color: #242835;
+      border-radius: 0 0 15px 15px;
+    }
+
     &__answers {
       max-width: 850px;
       margin: 0 auto;
       margin-top: 40px;
+
+      & .answer {
+        &__field {
+          width: 100%;
+          padding: 20px;
+          font-size: 16px;
+          background: #313543;
+          color: var(--white);
+          resize: none;
+          border: 0;
+          border-radius: 15px;
+          
+
+          &:focus {
+            outline: 0;
+          }
+        }
+
+        &__button {
+          width: 100%;
+          margin: 40px 0;
+          background: transparent;
+          color: var(--white);
+
+          span {
+            padding: 15px 60px;
+          }
+        }
+
+        &__comments {
+          position: relative;
+          margin-top: 16px;
+          padding-bottom: 10px;
+          margin-left: 5px;
+          transform: translate(0, 0);
+
+          button {
+            text-align: center;
+            border-radius: 3px;
+            display: block;
+            min-height: 32px;
+            width: -moz-max-content;
+            width: max-content;
+            padding-left: 10px;
+            padding-right: 10px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            background: transparent;
+            border: none;
+            padding-top: 0;
+
+            &::after {
+              position: absolute;
+              top: 0;
+              content: "";
+              display: inline-block;
+              background: #3bade3;
+              background: linear-gradient(45deg, #3bade3 0%, #576fe6 10%, #9844b7 70%, #ff357f 90%);
+              height: 55px;
+              width: 440px;
+              z-index: -1;
+              transform: translateX(-330px);
+              transition: transform 400ms ease-in;
+            }
+          }
+        }
+      }
+    }
+
+    &__list {
+      background: transparent;
+      border: 0;
+    }
+
+    &__item {
+      margin-bottom: 15px;
+      background: #313643;
+      border-radius: 15px;
     }
   }
 }

@@ -1,7 +1,7 @@
 const listener = {
 
     "start": function (data, name) {
-        // console.log('=e60c81=', data, name, this, this.Ref.tabs)
+        // console.log('=e60c81=', data, name)
     },
     "finish": function (data, name, t) {
         setTimeout(() => {

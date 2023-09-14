@@ -2,8 +2,8 @@ const listener = {
     "cross": [{
         "front": "categoryLine",
         "fn": function ({ event, name }) {
-            // console.log('=20160d=',event, name)
-            this.fn("addEvent", { cat: name })
+            this.Static.makeFilter.cat = name
+            this.fn("addEvent", this.Static.makeFilter)
         }
     }],
     "start": function (data, name) {
@@ -12,9 +12,8 @@ const listener = {
     "finish": function (data, name, t) {
         this.Static.tabWidth = this.Ref.tabsItem.offsetWidth;
         this.Ref.tabsSlider.style.width = `${this.Static.tabWidth}px`;
-        this.Static.cardHeight = this.Ref.card.clientHeight;
-        this.Static.cardWidth = this.Ref.card.clientWidth;
-        console.log('=8d8c5e=', this.Static.cardWidth)
+        this.Static.cardHeight = this.Ref.card?.clientHeight;
+        this.Static.cardWidth = this.Ref.card?.clientWidth;
     }
 }
 

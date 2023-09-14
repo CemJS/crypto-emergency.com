@@ -4,7 +4,10 @@ const listener = {
     },
     "finish": function (data, name, t) {
         // console.log('=e60c81=', data, name, t, this)
-    }
+    },
+    // "clickAny": function (e) {
+    //     console.log('=e60c81=', e.target, this)
+    // }
 }
 
 export { listener }

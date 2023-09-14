@@ -1,11 +1,8 @@
 
 
 const fn = {
-    "addEvent": function ({ cat }) {
-        let url = `Ico?uuid=${this.Variable.myInfo.uuid}`
-        if (cat) {
-            url += `&cat=${cat}`
-        }
+    "addEvent": function () {
+        let url = `Exchanges?uuid=${this.Variable.myInfo.uuid}`
         let eventSource
 
         if (this.Ref.icoList) {
@@ -20,10 +17,13 @@ const fn = {
         } else {
             eventSource = this.eventSource(url)
         }
-        eventSource.addEventListener('message', ({ data }) => {
-            let records = JSON.parse(data)
-            // console.log('=57054c=', records)
-            this.Static.records = records
+        
+        eventSource.addEventListener('add', ({ data }) => {
+            if (!this.Static.records) {
+                this.Static.records = []
+            }
+            let record = JSON.parse(data)
+            this.Static.records.push(record)
             this.init()
         });
     },

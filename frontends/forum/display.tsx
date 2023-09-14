@@ -668,6 +668,7 @@ export const display = function () {
                 this.Static.currentSlide++;
                 console.log(this.Static.currentSlide)
                 console.log('=b57d25=',this.Ref.partners_content.offsetWidth)
+                
             } 
 
             this.Ref.partners_content.style.transform = `translateX(-${this.Static.currentSlide * itemWidth}px)`;
