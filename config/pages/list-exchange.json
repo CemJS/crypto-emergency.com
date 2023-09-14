@@ -1,0 +1,8 @@
+{
+    "url": "/list-exchange",
+    "front": [
+        "header",
+        "listExchange",
+        "footer"
+    ]
+}

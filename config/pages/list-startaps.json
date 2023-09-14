@@ -1,0 +1,9 @@
+{
+    "url": "/list-startaps",
+    "front": [
+        "header",
+        "categoryLine",
+        "startaps",
+        "footer"
+    ]
+}

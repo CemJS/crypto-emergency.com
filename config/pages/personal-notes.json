@@ -1,0 +1,8 @@
+{
+    "url": "/personal/notes",
+    "front": [
+        "header",
+        "personalNotes",
+        "footer"
+    ]
+}

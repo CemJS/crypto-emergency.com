@@ -1,0 +1,10 @@
+{
+    "url": "/personal",
+    "front": [
+        "header",
+        "personal_header",
+        "personal_menu",
+        "personal",
+        "footer"
+    ]
+}

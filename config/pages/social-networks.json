@@ -1,0 +1,8 @@
+{
+    "url": "/social-networks",
+    "front": [
+        "header",
+        "socialNetworks",
+        "footer"
+    ]
+}

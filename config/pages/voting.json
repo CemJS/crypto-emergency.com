@@ -1,0 +1,8 @@
+{
+    "url": "/voting",
+    "front": [
+        "header",
+        "voting",
+        "footer"
+    ]
+}

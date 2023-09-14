@@ -1,0 +1,8 @@
+{
+    "url": "/exchangeRates",
+    "front": [
+        "header",
+        "exchangeRates",
+        "footer"
+    ]
+}

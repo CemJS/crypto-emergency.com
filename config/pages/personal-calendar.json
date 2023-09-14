@@ -1,0 +1,8 @@
+{
+    "url": "/personal/calendar",
+    "front": [
+        "header",
+        "personalСalendar",
+        "footer"
+    ]
+}

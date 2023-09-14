@@ -1,0 +1,8 @@
+{
+    "url": "/personal/settings",
+    "front": [
+        "header",
+        "personalSettings",
+        "footer"
+    ]
+}

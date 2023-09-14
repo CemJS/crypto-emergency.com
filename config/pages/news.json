@@ -1,0 +1,9 @@
+{
+    "url": "/news",
+    "front": [
+        "header",
+        "categoryLine",
+        "news",
+        "footer"
+    ]
+}
