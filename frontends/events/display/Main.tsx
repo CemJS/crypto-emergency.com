@@ -158,16 +158,16 @@ export default function () {
                     this.Static.calendarDropdownStatus = 'open'
                     this.Ref.calendarDropdown.classList.add("visible")
                     this.Ref.event_list.classList.add("shadow")
-                    
+
                     this.Ref.calendarDropdown_arrow.classList.add("rotate")
                     this.fn('dayOfMonth')
-                    console.log('=a0a149=',this.Static.currentMonth)
+                    console.log('=a0a149=', this.Static.currentMonth)
                     this.Ref.current_month.innerText = `${this.Static.months[this.Static.currentMonth]} `
                     this.Ref.current_year.innerText = this.Static.currentYear
 
                   } else if (this.Static.calendarDropdownStatus == 'open') {
                     // console.log('=this.Static.choosenDate=', this.Static.choosenDate)
-                    console.log('=a0a149=',this.Static.currentMonth)
+                    console.log('=a0a149=', this.Static.currentMonth)
                     this.Ref.months_list_container.classList.add('hidden')
                     this.Static.currentMonth = this.Static.date.getMonth()
                     this.Static.calendarDropdownStatus = 'close'
