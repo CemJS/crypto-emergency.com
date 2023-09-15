@@ -1,3 +1,1 @@
-const listener = {}
-
-export { listener }
+export { }
