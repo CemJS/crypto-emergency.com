@@ -3,8 +3,6 @@ import views from "@svg/news/views.svg"
 import comments from "@svg/news/comments.svg"
 
 export default function () {
-
-  // console.log('=MAIN=', this._ListsEventSource)
   return (
     <section class="news">
       <div class="wrapper">
@@ -15,7 +13,7 @@ export default function () {
                 <a class="news__item"
                   href={`/news/${item._id}`}
                   onclick={(e) => {
-                    this.Static.recordsShow = item
+                    this.Static.record = item
                     this.Fn.link(e)
                     this.init()
                   }}
