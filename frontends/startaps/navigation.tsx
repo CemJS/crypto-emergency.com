@@ -1,10 +1,14 @@
 import { Cemjsx } from "cemjs-all"
-import Main from "./display/Main"
 import Show from "./display/Show"
-
+import Main from "./display/Main"
 
 export default function () {
+
   let param = this.Variable.DataUrl[1] || ""
+  if (this.Static.record) {
+    param = "show"
+  }
+
   switch (param) {
     case 'show':
       return <Show />
@@ -13,3 +17,4 @@ export default function () {
       return <Main />
   }
 }
+
