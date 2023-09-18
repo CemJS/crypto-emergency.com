@@ -75,9 +75,11 @@ export default function () {
                   front.clearData()
                 }, 500);
               },
-              data: { data: {
-                page: "page"
-              }},
+              data: {
+                data: {
+                  page: "page"
+                }
+              },
             })
           }}
         >
