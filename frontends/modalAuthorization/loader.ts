@@ -32,4 +32,5 @@ export const loader = function () {
   this.Static.isValid = false
 
   this.initAuto(["buttonActive", "viewPassword"]);
+  return
 }
