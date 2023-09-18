@@ -1,5 +1,5 @@
 import { Cemjsx } from "cemjs-all"
-import One from './display/one'
+import One from './display/Show'
 
 
 export const display = function () {
