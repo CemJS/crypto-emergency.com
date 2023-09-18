@@ -1,0 +1,8 @@
+{
+    "url": "/games",
+    "front": [
+        "header",
+        "games",
+        "footer"
+    ]
+}

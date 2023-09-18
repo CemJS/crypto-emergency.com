@@ -1,0 +1,8 @@
+{
+    "url": "/chats",
+    "front": [
+        "header",
+        "chats",
+        "footer"
+    ]
+}

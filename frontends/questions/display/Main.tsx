@@ -8,7 +8,7 @@ import comments from "@svg/news/comments.svg"
 // import Show from './display/show'
 
 export default function () {
-  console.log('=a5992d=',this.Static.records)
+  console.log('=a5992d=', this.Static.records)
 
   return (
     <div class="page">
@@ -38,7 +38,12 @@ export default function () {
               {
                 this.Static.records?.map((item) => {
                   return (
-                    <div class="questions__item">
+                    <div class="questions__item"
+                      onclick={() => {
+                        this.Static.record = item
+                        this.init()
+                      }}
+                    >
                       <div class="questions__item_header questions__user">
                         <div class="avatar">
                           <div class="avatar__icon">
@@ -88,12 +93,7 @@ export default function () {
                       </div>
                       <div class={["questions__item_preview",
                         item.title.length < 15 && item.text ? "questions__item_preview_row" : null
-                      ]}
-                      // onclick={() => {
-                      //   this.Static.record = item
-                      //   this.init()
-                      // }}
-                      >
+                      ]}>
                         <span>{this.Services.functions.sliceString(item.title)}</span>
                         {
                           item.title.length < 15 && item.text

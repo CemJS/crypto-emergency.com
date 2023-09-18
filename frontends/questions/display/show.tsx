@@ -13,6 +13,7 @@ import comments from "@svg/news/comments.svg"
 export default function () {
 
   if (this._ListsEventSource.length == 1) {
+    // console.log('=84bcb7=', 1)
     let eventSource1 = this.eventSource(`Answers?uuid=${this.Variable.myInfo.uuid}&id=${this.Static.recordsShow._id}`)
 
     eventSource1.addEventListener('add', ({ data }) => {

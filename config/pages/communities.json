@@ -1,0 +1,8 @@
+{
+    "url": "/communities",
+    "front": [
+        "header",
+        "communities",
+        "footer"
+    ]
+}

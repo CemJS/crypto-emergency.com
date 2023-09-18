@@ -1,11 +1,12 @@
-import { Micro } from "cemjs-all"
+import { Frontend } from "cemjs-all"
 import { loader } from "./loader"
 import { display } from "./display"
-import { listener } from "./listener"
+import * as listener from "./listener"
+import * as func from "./functions"
 
-export const micro: Micro = {
-  name: "courseLine",
+export const frontend: Frontend = {
   loader,
   display,
-  listener
+  listener,
+  func
 }

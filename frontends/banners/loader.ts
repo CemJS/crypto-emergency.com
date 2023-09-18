@@ -1,6 +1,5 @@
 export const loader = function () {
 
-
   let eventSource = this.eventSource(`Banners?uuid=${this.Variable.myInfo.uuid}&lang=ru`)
 
   eventSource.addEventListener('message', ({ data }) => {

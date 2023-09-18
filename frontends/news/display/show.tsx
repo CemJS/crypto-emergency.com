@@ -15,11 +15,11 @@ let item, eventSource1
 
 export default function () {
   // console.log('=SHOW=', this._ListsEventSource)
-  if (this.Static.recordsUpdate) {
-    item = this.Static.recordsUpdate
-  } else {
-    item = this.Static.recordsShow
-  }
+  // if (this.Static.recordsUpdate) {
+  //   item = this.Static.recordsUpdate
+  // } else {
+  //   item = this.Static.recordsShow
+  // }
 
   if (this._ListsEventSource.length == 1) {
     eventSource1 = this.eventSource(`Comments?uuid=${this.Variable.myInfo.uuid}&id=${item._id}`)
@@ -75,9 +75,11 @@ export default function () {
                   front.clearData()
                 }, 500);
               },
-              data: { data: {
-                page: "page"
-              }},
+              data: {
+                data: {
+                  page: "page"
+                }
+              },
             })
           }}
         >

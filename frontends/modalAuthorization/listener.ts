@@ -1,10 +1,6 @@
-const listener = {
-
-  "finish": function (data, name, t) {
-      setTimeout(() => {
-          this.Static.body.style.overflow = 'hidden';
-      }, 100)
-  }
+export const finish = function () {
+  setTimeout(() => {
+    this.Static.body.style.overflow = 'hidden';
+  }, 100)
+  return
 }
-
-export { listener }
