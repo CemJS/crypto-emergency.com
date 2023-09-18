@@ -3,9 +3,10 @@ const preloader = document.getElementById('preloader');
 const percent = document.querySelector('.preloader_percent');
 const prog = document.getElementById('progress');
 
-export const loader = async function (Variable) {
-    if (app) {
-        app.style.display = "none"
+export const loader = async function (Variable: any) {
+    Variable.$el = {
+        app,
+        body: document.querySelector('body')
     }
 }
 
@@ -16,15 +17,18 @@ export const progress = async function ({ load, total }) {
             percent.classList.add("text_blink");
             percent.textContent = 'Connected to Blockchain!';
             setTimeout(() => {
-                if (app && preloader) {
-                    app.style.display = "block"
+                if (preloader) {
                     preloader.style.display = "none"
                 }
-            }, 777);
+            }, 50);
         } else {
             prog.style.width = 200 / 100 * count + 'px';
-            percent.textContent = count + '%';
+            if (count > 80) {
+                percent.textContent = 'Connected to Blockchain!';
+            } else {
+                percent.textContent = count + '%';
+
+            }
         }
     }
-
 }
