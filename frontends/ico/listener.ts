@@ -1,20 +1,17 @@
-const listener = {
-    "cross": [{
-        "front": "categoryLine",
-        "fn": function ({ event, name }) {
-            this.Static.makeFilter.cat = name
-            this.fn("addEvent", this.Static.makeFilter)
-        }
-    }],
-    "start": function (data, name) {
-        // console.log('=e60c81=', data, name, this, this.Ref.tabs)
-    },
-    "finish": function (data, name, t) {
-        this.Static.tabWidth = this.Ref.tabsItem.offsetWidth;
-        this.Ref.tabsSlider.style.width = `${this.Static.tabWidth}px`;
-        this.Static.cardHeight = this.Ref.card?.clientHeight;
-        this.Static.cardWidth = this.Ref.card?.clientWidth;
-    }
+const categoryLine = function ({ event, name }) {
+    this.Static.makeFilter.cat = name
+    this.fn("addEvent", this.Static.makeFilter)
 }
 
-export { listener }
+
+export const cross = [{ "front": "categoryLine", fn: categoryLine }]
+
+
+
+export const finish = function () {
+    this.Static.tabWidth = this.Ref.tabsItem.offsetWidth;
+    this.Ref.tabsSlider.style.width = `${this.Static.tabWidth}px`;
+    this.Static.cardHeight = this.Ref.card?.clientHeight;
+    this.Static.cardWidth = this.Ref.card?.clientWidth;
+    return
+}
