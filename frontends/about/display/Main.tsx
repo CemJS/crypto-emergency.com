@@ -8,6 +8,23 @@ import it from "@images/about/team4.png"
 import designer from "@images/about/team2.png"
 import director from "@images/about/team3.png"
 import lines from "@svg/about/vector_3.svg"
+//partners
+import b4 from '@images/partners/b4.png'
+import bein from '@images/partners/bein.png'
+import crypto from '@images/partners/crypto.png'
+import cryptomania from '@images/partners/cryptomania.png'
+import cryptosummit from '@images/partners/cryptosummit.png'
+import digitit from '@images/partners/digitit.png'
+import life from '@images/partners/life.png'
+import plus from '@images/partners/plus.png'
+import sber from '@images/partners/sber.png'
+import sk from '@images/partners/sk.png'
+import tech from '@images/partners/tech.png'
+import mining from '@images/partners/mining.png'
+
+import Partners from './Partners'
+import SocialNetworks from "./SocialNetworks"
+import Roadmap from "./Roadmap"
 
 const arrBlockCard = [
     {
@@ -122,6 +139,45 @@ const roadmap = [
     },
 ];
 
+const partners = [
+    {
+        logo: b4
+    },
+    {
+        logo: bein
+    },
+    {
+        logo: crypto
+    },
+    {
+        logo: cryptomania
+    },
+    {
+        logo: cryptosummit
+    },
+    {
+        logo: mining
+    },
+    {
+        logo: digitit
+    },
+    {
+        logo: life
+    },
+    {
+        logo: plus
+    },
+    {
+        logo: sber
+    },
+    {
+        logo: sk
+    },
+    {
+        logo: tech
+    }
+]
+
 let x1 = null;
 let y1 = null;
 
@@ -233,7 +289,7 @@ export default function () {
                         </div>
                     </div>
                 </div>
-                <div class="roadmap">
+                {/* <div class="roadmap">
                     <h2 class="about__subtitle roadmap__title">Дорожная карта</h2>
                     <div class="roadmap__wrap">
                         {
@@ -252,7 +308,11 @@ export default function () {
                             })
                         }
                     </div>
-                </div>
+                </div> */}
+
+                <Roadmap></Roadmap>
+                <Partners></Partners>
+                <SocialNetworks></SocialNetworks>
             </div>
         </div>
     )

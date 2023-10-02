@@ -1,3 +1,7 @@
+@import url(./partners.scss);
+@import url(./socialNetworks.scss);
+@import url(./roadmapNew.scss);
+
 $roadmapColors: (
   0: #00A5FB,
   1: #973EFA,
@@ -23,16 +27,16 @@ $roadmapBack: (
   position: relative;
   overflow: hidden;
 
-  &::before {
-    position: absolute;
-    left: 0;
-    top: 10%;
-    content: '';
-    background: url('svg/about/vector_1.svg');
-    background-repeat: no-repeat;
-    height: 90%;
-    width: 100%;
-  }
+  // &::before {
+  //   position: absolute;
+  //   left: 0;
+  //   top: 10%;
+  //   content: '';
+  //   background: url('svg/about/vector_1.svg');
+  //   background-repeat: no-repeat;
+  //   height: 90%;
+  //   width: 100%;
+  // }
 
   &__container {
     max-width: 1240px;

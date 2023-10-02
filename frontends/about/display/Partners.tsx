@@ -1,4 +1,5 @@
 import { Cemjsx } from "cemjs-all"
+//partners
 import b4 from '@images/partners/b4.png'
 import bein from '@images/partners/bein.png'
 import crypto from '@images/partners/crypto.png'
@@ -53,25 +54,19 @@ const partners = [
 
 export default function () {
     return (
-        <main class="partners-page page">
-            <div class="wrapper">
-                <div class="partners-page_main">
-                    <div class="title">
-                        <h1>Информационные партнеры</h1>
-                    </div>
-                    <div class="partner-list">
-                        {
-                            partners.map((item, index) => {
-                                return (
-                                    <div class="partner-list_item">
-                                        <img src={item.logo} alt="" />
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
+        <div class="partners">
+            <h2 class="about__subtitle">Информационные партнёры</h2>
+            <div class="partners_list">
+                {
+                    partners.map((item, index) => {
+                        return (
+                            <div class="partners_list_item">
+                                <img src={item.logo} alt="Партнёр" />
+                            </div>
+                        )
+                    })
+                }
             </div>
-        </main>
+        </div>
     )
 }
