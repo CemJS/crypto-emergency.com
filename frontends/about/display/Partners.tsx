@@ -52,21 +52,42 @@ const partners = [
     }
 ]
 
+let startPartners = partners.slice(0, partners.length / 2);
+let endPartners = partners.slice(partners.length / 2);
+
 export default function () {
     return (
         <div class="partners">
             <h2 class="about__subtitle">Информационные партнёры</h2>
-            <div class="partners_list">
-                {
-                    partners.map((item, index) => {
-                        return (
-                            <div class="partners_list_item">
-                                <img src={item.logo} alt="Партнёр" />
-                            </div>
-                        )
-                    })
-                }
+
+            <div class="marquee" ref="marqueeStart">
+                <ul class="marquee_content" ref="marqueeContentStart">
+                    {
+                        startPartners.map(item => {
+                            return (
+                                <li class="marquee_content_item">
+                                    <img src={item.logo} alt="Партнёр" />
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
             </div>
+
+            <div class="marquee" ref="marqueeEnd">
+                <ul class="marquee_content marquee_content_end pt_10" ref="marqueeContentEnd">
+                    {
+                        endPartners.map(item => {
+                            return (
+                                <li class="marquee_content_item">
+                                    <img src={item.logo} alt="Партнёр" />
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
+
         </div>
     )
 }

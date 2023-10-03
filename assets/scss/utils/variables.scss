@@ -48,8 +48,15 @@
   --borderR: 15px;
   --ellipse: 50%;
 
-
   --base_font: 'Montserrat', sans-serif;
+
+  //marquee
+  // --marquee_width: 80vw;
+  // --marquee_height: 20vh;
+  // --marquee_elements: 9;
+  // --marquee_elements_displayed: 4;
+  // --marquee_element_width: calc(var(--marquee_width) / var(--marquee_elements_displayed));
+  // --marquee_animation_duration: 20s;
 }
 
 :root[theme='test'] {
