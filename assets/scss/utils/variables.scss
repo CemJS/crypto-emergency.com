@@ -50,13 +50,10 @@
 
   --base_font: 'Montserrat', sans-serif;
 
-  //marquee
-  // --marquee_width: 80vw;
-  // --marquee_height: 20vh;
-  // --marquee_elements: 9;
-  // --marquee_elements_displayed: 4;
-  // --marquee_element_width: calc(var(--marquee_width) / var(--marquee_elements_displayed));
-  // --marquee_animation_duration: 20s;
+  // gradient
+  --gradientOrange: linear-gradient(to bottom right, #F8D353, #FF5C5A);
+  --gradientBlue: linear-gradient(to bottom right, #1CDDF9, #AF3DFF);
+  --gradientGreen: linear-gradient(to bottom right, #01A721, #B3F001);
 }
 
 :root[theme='test'] {

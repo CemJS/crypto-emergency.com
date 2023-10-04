@@ -57,7 +57,7 @@ const roadmap = [
 export default function () {
     return (
         <div class="roadmapNew">
-            <h1 class="about__subtitle">Дорожная карта</h1>
+            <h1 class="about_subtitle">Дорожная карта</h1>
             <div class="roadmapNew_wrapper">
                 <div class="roadmapNew_centerLine">
                     <div class="roadmapNew_scrollIcon">

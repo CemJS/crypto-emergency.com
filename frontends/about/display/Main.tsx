@@ -22,9 +22,11 @@ import sk from '@images/partners/sk.png'
 import tech from '@images/partners/tech.png'
 import mining from '@images/partners/mining.png'
 
+import Roadmap from "./Roadmap"
 import Partners from './Partners'
 import SocialNetworks from "./SocialNetworks"
-import Roadmap from "./Roadmap"
+import Developments from "./Developments"
+import Events from "./Events"
 
 const arrBlockCard = [
     {
@@ -186,7 +188,7 @@ export default function () {
         <div class="about_page about">
             <div class="about__whome whome">
                 <div class="whome__inner">
-                    <h2 class="about__subtitle">Crypto Emergency</h2>
+                    <h2 class="about_subtitle">Crypto Emergency</h2>
                     <p>Объединяем криптоэнтузиастов всего мира на единой многофункциональной платформе Crypto Emergency, которая даст им все необходимые инструменты для общения, обучения, заработка и создания собственного контента. </p>
                 </div>
                 <div class="whome__bg" />
@@ -194,7 +196,7 @@ export default function () {
             <div class="about__container">
                 <div class="about__goal goal">
                     <div class="goal__inner">
-                        <h2 class="about__subtitle goal__title">Наши цели</h2>
+                        <h2 class="about_subtitle">Наши цели</h2>
                         <div class="goal__list">
                             {
                                 arrBlockCard.map((item) => {
@@ -244,7 +246,7 @@ export default function () {
                         </div>
                         <img class="whome__img whome__img_right" src={lines} />
                         <div class="team">
-                            <h2 class="about__subtitle team__title">Наша команда</h2>
+                            <h2 class="about_subtitle">Наша команда</h2>
                             <div
                                 class="team__list"
                                 ref="sliderTeam"
@@ -290,7 +292,7 @@ export default function () {
                     </div>
                 </div>
                 {/* <div class="roadmap">
-                    <h2 class="about__subtitle roadmap__title">Дорожная карта</h2>
+                    <h2 class="about_subtitle roadmap__title">Дорожная карта</h2>
                     <div class="roadmap__wrap">
                         {
                             roadmap.map((item, index) => {
@@ -312,7 +314,9 @@ export default function () {
 
                 <Roadmap></Roadmap>
                 <Partners></Partners>
-                <SocialNetworks></SocialNetworks>
+                {/* <SocialNetworks></SocialNetworks> */}
+                <Developments></Developments>
+                <Events></Events>
             </div>
         </div>
     )

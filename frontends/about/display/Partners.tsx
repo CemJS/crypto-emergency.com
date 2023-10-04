@@ -1,5 +1,4 @@
 import { Cemjsx } from "cemjs-all"
-//partners
 import b4 from '@images/partners/b4.png'
 import bein from '@images/partners/bein.png'
 import crypto from '@images/partners/crypto.png'
@@ -58,8 +57,7 @@ let endPartners = partners.slice(partners.length / 2);
 export default function () {
     return (
         <div class="partners">
-            <h2 class="about__subtitle">Информационные партнёры</h2>
-
+            <h2 class="about_subtitle">Информационные партнёры</h2>
             <div class="marquee" ref="marqueeStart">
                 <ul class="marquee_content" ref="marqueeContentStart">
                     {
@@ -73,7 +71,6 @@ export default function () {
                     }
                 </ul>
             </div>
-
             <div class="marquee" ref="marqueeEnd">
                 <ul class="marquee_content marquee_content_end pt_10" ref="marqueeContentEnd">
                     {
@@ -87,7 +84,6 @@ export default function () {
                     }
                 </ul>
             </div>
-
         </div>
     )
 }

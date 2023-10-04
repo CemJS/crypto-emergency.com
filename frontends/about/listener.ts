@@ -4,14 +4,14 @@ export const finish = function () {
   //animation for roadmap
   this.Static.roadmapItems = document.querySelectorAll(".roadmapNew_row");
 
-  const observer = new IntersectionObserver(entries => {
+  const observerRoadmap = new IntersectionObserver(entries => {
     entries.forEach(item => {
       item.target.classList.toggle("in_view", item.isIntersecting)
     })
   })
 
   this.Static.roadmapItems.forEach(item => {
-    observer.observe(item)
+    observerRoadmap.observe(item)
   })
   //animation for roadmap
 
@@ -26,6 +26,27 @@ export const finish = function () {
     this.Ref.marqueeContentStart.appendChild(this.Ref.marqueeContentStart.children[i].cloneNode(true));
     this.Ref.marqueeContentEnd.appendChild(this.Ref.marqueeContentEnd.children[i].cloneNode(true));
   }
-
   //clone for running line parners
+
+
+  //animation for roadmap
+  this.Static.appsItems = document.querySelectorAll(".developments_item");
+
+  const observerApps = new IntersectionObserver(entries => {
+    entries.forEach(item => {
+      item.target.classList.toggle("developments_item_rotate", item.isIntersecting)
+    })
+  })
+
+  this.Static.appsItems.forEach(item => {
+    observerApps.observe(item)
+  })
+  //animation for roadmap
+
+  // gallery cryptoBreakfast
+  if (!this.Static.callGallery) {
+    this.fn("test", this.Ref.galleryCryptoBreakfast, this.Ref.galleryDots, {
+      margin: 10
+    })
+  }
 }
