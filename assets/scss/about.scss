@@ -357,66 +357,66 @@ $roadmapBack: (
     }
   }
 
-  & .team {
-    position: relative;
-    z-index: 5;
+  // & .team {
+  //   position: relative;
+  //   z-index: 5;
 
-    &__list {
-      display: flex;
-      // white-space: nowrap;
-      overflow: hidden;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      scrollbar-width: 0;
-      transition: all 0.4s linear;
-    }
+  //   &__list {
+  //     display: flex;
+  //     // white-space: nowrap;
+  //     overflow: hidden;
+  //     scroll-snap-type: x mandatory;
+  //     scroll-behavior: smooth;
+  //     scrollbar-width: 0;
+  //     transition: all 0.4s linear;
+  //   }
 
-    &__item {
-      display: block;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      width: 290px;
-      height: 100%;
-      margin-bottom: 40px;
-      margin-right: 20px;
-    }
+  //   &__item {
+  //     display: block;
+  //     flex-direction: column;
+  //     align-items: center;
+  //     justify-content: center;
+  //     flex-shrink: 0;
+  //     width: 290px;
+  //     height: 100%;
+  //     margin-bottom: 40px;
+  //     margin-right: 20px;
+  //   }
 
-    &__img {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      background-image: linear-gradient(334.15deg, #171B27 1.13%, #272B39 101.15%);
-      border-radius: 10px;
-      height: auto;
-      max-height: 365px;
-      margin-bottom: 20px;
+  //   &__img {
+  //     display: flex;
+  //     align-items: flex-end;
+  //     justify-content: center;
+  //     background-image: linear-gradient(334.15deg, #171B27 1.13%, #272B39 101.15%);
+  //     border-radius: 10px;
+  //     height: auto;
+  //     max-height: 365px;
+  //     margin-bottom: 20px;
 
-      img {
-        height: 220px;
-      }
-    }
+  //     img {
+  //       height: 220px;
+  //     }
+  //   }
 
-    h5 {
-      margin: 0;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 175%;
-      text-align: center;
-    }
+  //   h5 {
+  //     margin: 0;
+  //     font-weight: 600;
+  //     font-size: 18px;
+  //     line-height: 175%;
+  //     text-align: center;
+  //   }
 
-    span {
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      color: #CAD4F3;
-      font-size: 15px;
-      font-weight: 500;
-      line-height: 150%;
-      padding: 0 10px;
-    }
-  }
+  //   span {
+  //     display: flex;
+  //     justify-content: center;
+  //     text-align: center;
+  //     color: #CAD4F3;
+  //     font-size: 15px;
+  //     font-weight: 500;
+  //     line-height: 150%;
+  //     padding: 0 10px;
+  //   }
+  // }
 
 }
 
@@ -636,6 +636,97 @@ $back in $roadmapBack {
   .card {
     height: 25rem;
   }
+}
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  &_item {
+
+    &_title,
+    &_post {
+      transform: translateZ(2rem);
+      background: rgb(49 53 65 / 50%);
+      padding: 0.5rem;
+      width: 98%;
+
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+
+    &_post {
+      background: #ffffff80;
+
+      p {
+        font-size: 0.9rem;
+        color: #000000;
+        font-weight: 500;
+      }
+    }
+
+    &_content {
+      position: relative;
+      padding: 10rem 5rem;
+      transform-style: preserve-3d;
+      transition: transform 1.5s;
+    }
+
+    &_front,
+    &_back {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      // padding: 2rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-blend-mode: overlay;
+    }
+
+    &_front {
+      background-color: rgba(141, 134, 126, 0.2);
+      align-items: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 1rem;
+        border: 3px solid var(--akebi_purple);
+        transform: translateZ(2rem);
+      }
+    }
+
+    &_back {
+      transform: rotateY(180deg);
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    &:hover &_content {
+      transform: rotateY(180deg);
+    }
+
+    .btn_timing {
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateZ(2.4rem);
+      width: fit-content;
+    }
+  }
+
 }
 
 

@@ -9,11 +9,7 @@ import tiktok from '@svg/social_networks/tiktok.svg'
 import twitter from '@svg/social_networks/twitter.svg'
 import vk from '@svg/social_networks/vk.svg'
 import youtube from '@svg/social_networks/youtube.svg'
-import logo_apple from '@images/social_networks/logo_apple.png'
-import logo_android from '@images/social_networks/logo_android.png'
-import cem_assist from '@images/social_networks/cem_assist.png'
-import wallet_icon from '@images/social_networks/wallet_icon.png'
-import crypto_emergency from '@images/social_networks/crypto_emergency.svg'
+
 
 const socialNetworks = [
     {
@@ -93,26 +89,6 @@ const socialNetworks = [
     },
 ]
 
-const apps = [
-    {
-        app: 'CEM Assistant',
-        logo: cem_assist,
-        appstore: 'https://apps.apple.com/ru/app/cem-assistant/id6448629326',
-        playmarket: 'https://play.google.com/store/apps/details?id=com.cemassistant&hl=ru',
-    },
-    {
-        app: 'CEM Wallet',
-        logo: wallet_icon,
-        appstore: 'https://apps.apple.com/ru/app/cem-wallet/id1637300554',
-        playmarket: 'https://play.google.com/store/apps/details?id=com.cemwallet&hl=en&gl=US',
-    },
-    {
-        app: 'Crypto Emergency',
-        logo: crypto_emergency,
-        appstore: 'https://apps.apple.com/es/app/crypto-emergency/id1635628021',
-        playmarket: 'https://play.google.com/store/apps/details?id=com.cryptoemergency&hl=en&gl=US',
-    },
-]
 
 export default function () {
     return (
@@ -146,43 +122,6 @@ export default function () {
                                 )
                             })
                         }
-                    </div>
-                </div>
-                <div class="apps-main">
-                    <div class="title">
-                        <h1>Наши проекты</h1>
-                    </div>
-                    <div class="apps-main_list">
-                        {
-                            apps.map((item, index) => {
-                                return (
-                                    <div class="apps-main_list_item">
-                                        <div class="img">
-                                            <img src={item.logo} alt="img" />
-                                            <p>{item.app}</p>
-                                        </div>
-                                        <div class="content">
-                                            <a target="_blank" href={item.appstore} class="appstore">
-                                                <img src={logo_apple} alt="" />
-                                                AppStore
-                                            </a>
-
-                                            <a target="_blank" href={item.playmarket} class="playmarket">
-                                                <img src={logo_android} alt="" />
-                                                PlayMarket
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                )
-                            })
-                        }
-                        <a class="apps-main_list_item" target="_blank" href='https://cemscan.com/'>
-                            <div class="img">
-                                <img src={crypto_emergency} alt="img" />
-                                <p>BlockChain CemScan</p>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>

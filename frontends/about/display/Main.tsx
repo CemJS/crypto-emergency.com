@@ -27,6 +27,7 @@ import Partners from './Partners'
 import SocialNetworks from "./SocialNetworks"
 import Developments from "./Developments"
 import Events from "./Events"
+import Team from "./Team"
 
 const arrBlockCard = [
     {
@@ -244,8 +245,8 @@ export default function () {
                                 })
                             }
                         </div>
-                        <img class="whome__img whome__img_right" src={lines} />
-                        <div class="team">
+                        {/* <img class="whome__img whome__img_right" src={lines} /> */}
+                        {/* <div class="team">
                             <h2 class="about_subtitle">Наша команда</h2>
                             <div
                                 class="team__list"
@@ -288,7 +289,9 @@ export default function () {
                                     })
                                 }
                             </div>
-                        </div>
+                        </div> */}
+
+                        <Team></Team>
                     </div>
                 </div>
                 {/* <div class="roadmap">

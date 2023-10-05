@@ -1012,13 +1012,6 @@ $indent in $indents {
     display: block;
   }
 
-  // img {
-  //   width: 100%;
-  //   object-fit: cover;
-  //   height: 100%;
-  //   border-radius: 50%;
-  // }
-
   &_info {
     position: absolute;
     bottom: -10px;
@@ -1035,48 +1028,9 @@ $indent in $indents {
     justify-content: center;
     align-items: center;
   }
-
-  // &_status{
-  //   width: 8px;
-  //   height: 8px;
-  //   background: var(--green);
-  //   border-radius: var(--ellipse);
-  // }
 }
 
-// #heart {
-//   fill: red;
-//   stroke: red;
-//   stroke-width: 0;
-//   animation: heart-animation 0.9s infinite;
-
-// }
-
-
-
-@keyframes heart-animation {
-
-  // 0% {
-  //   fill: red;
-  //   stroke: red;
-  //   stroke-width: 0;
-  // }
-
-  // 45% {
-  //   stroke: red;
-  //   fill: red;
-  //   stroke-width: 10;
-  // }
-
-  // 50% {
-  //   stroke: red;
-  //   fill: red;
-  //   stroke-width: 15;
-  // }
-
-  // 100% {
-  //   stroke: red;
-  //   stroke-width: 0;
-  //   fill: red;
-  // }
+.firstWord {
+  font-size: clamp(16px, 5vw, 26px);
+  font-weight: 600;
 }
