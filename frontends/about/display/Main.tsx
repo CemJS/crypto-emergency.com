@@ -3,26 +3,10 @@ import folder from "@svg/about/goal_1.svg"
 import safe from "@svg/about/goal_2.svg"
 import access from "@svg/about/goal_3.svg"
 import pin from "@svg/about/goal_4.svg"
-import ceo from "@images/about/team1.png"
-import it from "@images/about/team4.png"
-import designer from "@images/about/team2.png"
-import director from "@images/about/team3.png"
-import lines from "@svg/about/vector_3.svg"
-//partners
-import b4 from '@images/partners/b4.png'
-import bein from '@images/partners/bein.png'
-import crypto from '@images/partners/crypto.png'
-import cryptomania from '@images/partners/cryptomania.png'
-import cryptosummit from '@images/partners/cryptosummit.png'
-import digitit from '@images/partners/digitit.png'
-import life from '@images/partners/life.png'
-import plus from '@images/partners/plus.png'
-import sber from '@images/partners/sber.png'
-import sk from '@images/partners/sk.png'
-import tech from '@images/partners/tech.png'
-import mining from '@images/partners/mining.png'
+
 
 import Roadmap from "./Roadmap"
+import Accordeon from "./Accordeon"
 import Partners from './Partners'
 import SocialNetworks from "./SocialNetworks"
 import Developments from "./Developments"
@@ -88,98 +72,7 @@ const arrAccordeon = [
     },
 ];
 
-const arrTeam = [
-    {
-        name: "Ян Кривоносов",
-        foto: ceo,
-        position: "CEO проекта Crypto Emergency",
-    },
-    {
-        name: "Игорь Еньшин",
-        foto: it,
-        position: "Руководитель IT направления",
-    },
-    {
-        name: "Анна Рыжкова",
-        foto: designer,
-        position: "Руководитель отдела по работе с дизайнерами",
-    },
-    {
-        name: "Дмитрий Белов",
-        foto: director,
-        position: "Управляющий директор проекта",
-    },
-];
 
-const roadmap = [
-    {
-        date: "15 Июня 2021г.",
-        description: "Старт проекта",
-    },
-    {
-        date: "19 Мая 2022г.",
-        description: "Собственный Блокчейн CEM",
-    },
-    {
-        date: "Сентябрь 2022г.",
-        description: "Кошелек Cem Wallet",
-    },
-    {
-        date: "Лето 2023г.",
-        description: "Сообщества DAO",
-    },
-    {
-        date: "Осень 2023г.",
-        description: "Крипто Университет",
-    },
-    {
-        date: "Начало 2024г.",
-        description: "Собственная биржа",
-    },
-    {
-        date: "Конец 2024г.",
-        description: "Новостная нейросеть",
-    },
-];
-
-const partners = [
-    {
-        logo: b4
-    },
-    {
-        logo: bein
-    },
-    {
-        logo: crypto
-    },
-    {
-        logo: cryptomania
-    },
-    {
-        logo: cryptosummit
-    },
-    {
-        logo: mining
-    },
-    {
-        logo: digitit
-    },
-    {
-        logo: life
-    },
-    {
-        logo: plus
-    },
-    {
-        logo: sber
-    },
-    {
-        logo: sk
-    },
-    {
-        logo: tech
-    }
-]
 
 let x1 = null;
 let y1 = null;
@@ -215,7 +108,10 @@ export default function () {
                                 })
                             }
                         </div>
-                        <div class="accordeon">
+
+                        <Accordeon></Accordeon>
+
+                        {/* <div class="accordeon">
                             {
                                 arrAccordeon.map((item, index) => {
                                     return (
@@ -244,76 +140,14 @@ export default function () {
                                     )
                                 })
                             }
-                        </div>
-                        {/* <img class="whome__img whome__img_right" src={lines} /> */}
-                        {/* <div class="team">
-                            <h2 class="about_subtitle">Наша команда</h2>
-                            <div
-                                class="team__list"
-                                ref="sliderTeam"
-                                ontouchstart={(e) => {
-                                    const firstTouch = e.touches[0];
-                                    x1 = firstTouch.clientX;
-                                    y1 = firstTouch.clientY;
-                                }}
-                                ontouchmove={(e) => {
-                                    if (!x1 || !y1) return false;
-                                    let x2 = e.touches[0].clientX;
-                                    let y2 = e.touches[0].clientY;
-                                    let xDiff = x2 - x1;
-                                    let yDiff = y2 - y1;
-
-                                    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                                        if (xDiff > 0) {
-                                            this.Ref.sliderTeam.scrollLeft -= this.Ref.teamItem.offsetWidth + 40;
-                                        }
-                                        else {
-                                            this.Ref.sliderTeam.scrollLeft += this.Ref.teamItem.offsetWidth + 40;
-                                        }
-                                    }
-                                    x1 = null;
-                                    y1 = null;
-                                }}
-                            >
-                                {
-                                    arrTeam.map((item) => {
-                                        return (
-                                            <div class="team__item" ref="teamItem">
-                                                <div class="team__img">
-                                                    <img src={item.foto}></img>
-                                                </div>
-                                                <h5>{item.name}</h5>
-                                                <span>{item.position}</span>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
                         </div> */}
+
+                        {/* <img class="whome__img whome__img_right" src={lines} /> */}
 
                         <Team></Team>
                     </div>
                 </div>
-                {/* <div class="roadmap">
-                    <h2 class="about_subtitle roadmap__title">Дорожная карта</h2>
-                    <div class="roadmap__wrap">
-                        {
-                            roadmap.map((item, index) => {
-                                return (
-                                    <div class={["roadmap__item", `roadmap__item_${index}`]}>
-                                        <div class={["item__card", `item__card_${index}`]}>
-                                            <span class={["year", `year_${index}`]}>{item.description}</span>
-                                            <p class="description">{item.date}</p>
-                                        </div>
 
-                                        <div class={["roadmap__item_turn", `roadmap__item_turn_${index}`]}>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                </div> */}
 
                 <Roadmap></Roadmap>
                 <Partners></Partners>

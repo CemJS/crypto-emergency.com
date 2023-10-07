@@ -29,7 +29,7 @@ export const finish = function () {
   //clone for running line parners
 
 
-  //animation for roadmap
+  //animation for appps
   this.Static.appsItems = document.querySelectorAll(".developments_item");
 
   const observerApps = new IntersectionObserver(entries => {
@@ -39,9 +39,11 @@ export const finish = function () {
   })
 
   this.Static.appsItems.forEach(item => {
-    observerApps.observe(item)
+    setTimeout(() => {
+      observerApps.observe(item)
+    }, 1500)
   })
-  //animation for roadmap
+  //animation for appps
 
   // gallery cryptoBreakfast
   if (!this.Static.callGallery) {

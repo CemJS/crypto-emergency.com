@@ -36,14 +36,12 @@ export default function () {
     return (
         <div>
             <h2 class="about_subtitle">Мероприятия</h2>
-            <div class="eventForum">
-                <div>
-                    <a href="https://www.youtube.com/@cryptoemergency">
-                        <video>
-                            <source></source>
-                        </video>
-                    </a>
+            <div class="eventForum mb_20">
+
+                <div class="eventForum_video">
+                    <iframe class="eventForum_video_frame" src="https://www.youtube.com/embed/LZw2czyjlvc?si=1hFva0hulQ2kEV3V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
+
                 <div>
                     <p class="cryptoBreakfast_text"><span class="firstWord">КриптоЮг</span> — ежегодный криптовалютный форум, который проходит каждое лето на берегу Чёрного моря. Организаторами является компания Crypto Emergency при поддержке Российской Ассоциации Криптоиндустрии и Блокчейна (РАКИБ). Форум предлагает различные темы, включая децентрализованные социальные сети, начало пути в криптоиндустрии, WEB 3 индустрию, регуляцию и ее влияние на рынок, трейдинг и заработок на нем, NFT искусство, майнинг в 2023 году и GameFi - получение удовольствия и заработок. Чтобы ознакомиться подробнее переходите по ссылке. </p>
                     <a href="/forum" class="btn btn_timing mt_15" onclick={this.Fn.link}>
