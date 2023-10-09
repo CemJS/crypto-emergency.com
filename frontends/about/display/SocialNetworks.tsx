@@ -1,130 +1,91 @@
 import { Cemjsx } from "cemjs-all"
-import discord from '@svg/social_networks/discord.svg'
+import discord from '@images/social_networks/discord.png'
 import facebook from '@svg/social_networks/facebook.svg'
-import github from '@svg/social_networks/github.svg'
-import instagram from '@svg/social_networks/instagram.svg'
-import linkedin from '@svg/social_networks/linkedin.svg'
+import github from '@images/social_networks/github.png'
+import instagram from '@images/social_networks/instagram.png'
+import linkedin from '@images/social_networks/linkedin.png'
 import telegram from '@svg/social_networks/telegram.svg'
-import tiktok from '@svg/social_networks/tiktok.svg'
-import twitter from '@svg/social_networks/twitter.svg'
-import vk from '@svg/social_networks/vk.svg'
-import youtube from '@svg/social_networks/youtube.svg'
+import tiktok from '@images/social_networks/tiktok.png'
+import twitter from '@images/social_networks/twitter.png'
+import vk from '@images/social_networks/vk.png'
+import youtube from '@images/social_networks/youtube.png'
 
 
 const socialNetworks = [
     {
         logo: instagram,
-        regionRU: 'RU',
-        regionENG: 'EN',
-        loginRU: '@CryptoEmergencyRussia',
-        loginENG: '@CryptoEmergency',
-        urlRU: 'https://www.instagram.com/cryptoemergencyrussia/?hl=ru',
+        name: 'Instagram',
+        url: 'https://www.instagram.com/cryptoemergencyrussia/?hl=ru',
         urlENG: 'https://www.instagram.com/cryptoemergency/?hl=ru'
     },
-
-    // {
-    //   logo: facebook,
-    //   regionRU: 'RU',
-    //   regionENG: 'EN',
-    //   loginRU: '@RUcryproemergency222',
-    //   loginENG: '@ENGcryproemergency222',
-    //   urlRU: '',
-    //   urlENG: '' 
-    // },
     {
         logo: tiktok,
-        regionRU: 'RU',
-        regionENG: 'EN',
-        loginRU: '@cryptoemergencyrussia',
-        loginENG: '@cryptoemergency',
-        urlRU: 'https://www.tiktok.com/@cryptoemergencyrussia',
+        name: 'Tiktok',
+        url: 'https://www.tiktok.com/@cryptoemergencyrussia',
         urlENG: 'https://www.tiktok.com/@cryptoemergency'
     },
     {
         logo: youtube,
-        regionRU: 'RU',
-        regionENG: 'EN',
-        loginRU: '@СryptoEmergency',
-        loginENG: '@CryptoEmergency4865',
-        urlRU: 'https://www.youtube.com/channel/UCb9Fx-fNikzs-OZwnTXepLg/',
+        name: 'Youtube',
+        url: 'https://www.youtube.com/channel/UCb9Fx-fNikzs-OZwnTXepLg/',
         urlENG: 'https://www.youtube.com/channel/UCdDWOveIuvqkyusDK1gv4ig/'
     },
     {
         logo: vk,
-        regionRU: 'RU',
-        regionENG: '',
-        loginRU: 'CryptoEmergency',
-        loginENG: '',
-        urlRU: 'https://vk.com/cryptoemergency',
-        urlENG: ''
+        name: 'Vkontakte',
+        url: 'https://vk.com/cryptoemergency'
     },
     {
         logo: linkedin,
-        regionENG: 'EN',
-        loginENG: 'CryproEmergency',
-        urlENG: 'https://www.linkedin.com/company/86302977'
+        name: 'Linkedin',
+        url: 'https://www.linkedin.com/company/86302977'
     },
     {
         logo: twitter,
-        regionRU: '',
-        regionENG: 'EN',
-        loginRU: '',
-        loginENG: '@cryptoemergency',
-        urlRU: 'https://twitter.com/cryptoemergency',
-        urlENG: ''
+        name: 'Twitter',
+        url: 'https://twitter.com/cryptoemergency',
     },
     {
         logo: discord,
-        regionRU: 'RU',
-        loginRU: 'CryproEmergency',
-        urlRU: 'https://discord.com/invite/Qdm7W8DjYc',
-        urlENG: ''
+        name: 'Discord',
+        url: 'https://discord.com/invite/Qdm7W8DjYc'
     },
-
     {
         logo: github,
-        loginENG: '@CryptoEmergency',
-        regionENG: 'EN',
-        urlENG: 'https://github.com/CryptoEmergency'
+        name: 'Github',
+        url: 'https://github.com/CryptoEmergency'
     },
 ]
 
 
 export default function () {
     return (
-        <main class="socialNetwork page">
-            <div class="wrapper">
-                <div class="socialNetwork_main">
-                    <div class="title">
-                        <h1>Социальные сети</h1>
-                    </div>
-                    <div class="socialNetwork-list">
-                        {
-                            socialNetworks.map((item, index) => {
-                                return (
-                                    <div class="socialNetwork-list_item">
-                                        <div class="img">
-                                            <img src={item.logo} alt="img" />
-                                        </div>
+        <div class="socials">
 
-                                        <div class="content">
-                                            <a target="_blank" href={item.urlRU} class="ruLink">
-                                                <span class="spanRegionRU">{item.regionRU}</span>
-                                                {item.loginRU}
-                                            </a>
-                                            <a target="_blank" href={item.urlENG} class="engLink">
-                                                <span class="spanRegionENG">{item.regionENG}</span>
-                                                {item.loginENG}
-                                            </a>
-                                        </div>
+            <h2 class="about_subtitle">Социальные сети</h2>
 
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
+            <ul class="socials_list">
+                {
+                    socialNetworks.map(item => {
+                        return (
+                            <li>
+                                <a
+                                    href={item.url}
+                                    class={["socials_link", `socials_link_${item.name.toLocaleLowerCase()}`]}
+                                    style={`background-image: url(${item.logo});`}
+                                    aria-label={item.name}
+                                    onclick={this.Fn.link}
+                                >
+                                    <span>{item.name}</span>
+                                </a>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+            <div class="socials_text">
+                <p>Присоединяйтесь к нашей уникальной социальной сети CryptoEmergency и получите доступ к самой актуальной информации о криптовалютах и блокчейне. Скачайте наше приложение и станьте частью нашей экосистемы. У нас вы сможете общаться с единомышленниками, делиться своими идеями и получать ценные советы от опытных трейдеров и инвесторов. Присоединяйтесь к нам прямо сейчас и не упустите возможность быть в курсе последних новостей и трендов в мире криптовалют. Скачайте приложение CryptoEmergency и станьте частью нашей успешной и инновационной экосистемы уже сегодня!</p>
             </div>
-        </main>
+        </div>
     )
 }

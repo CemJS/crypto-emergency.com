@@ -33,7 +33,7 @@ const faq = [
 export default function () {
     return (
         <div class="">
-            <h2 class="about_subtitle">Часто задаваемые вопросы ?</h2>
+            <h2 class="about_subtitle">FQA</h2>
             <ul class="accordeon">
                 {
                     faq.map((item, index) => {

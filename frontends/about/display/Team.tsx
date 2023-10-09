@@ -3,7 +3,7 @@ import yan from '@images/about/team/team1.png'
 import anya from '@images/about/team/team2.png'
 import dima from '@images/about/team/team3.png'
 import igor from '@images/about/team/team4.png'
-import telegram from '@svg/social_networks/telegram.svg'
+import logo from "@svg/about/cryptoEmergency.svg"
 
 const team = [
     {
@@ -61,7 +61,7 @@ export default function () {
                                     >
                                         <a href={item.link} class="btn btn_timing" onclick={this.Fn.link}>
                                             <span>Перейти в профиль</span>
-                                            <img src={telegram} alt="Присоединиться к телеграм каналу" />
+                                            <img src={logo} alt="Присоединиться к телеграм каналу" />
                                         </a>
                                     </div>
                                 </div>

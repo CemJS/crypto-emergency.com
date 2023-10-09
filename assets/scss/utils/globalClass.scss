@@ -314,12 +314,23 @@ $indent in $indents {
 // different buttons
 
 .page {
-  padding: 70px 0;
+  // padding: 70px 0;
+  padding: 65px 0;
 }
 
 .wrapper {
   max-width: 1240px;
   margin: 0 auto;
+}
+
+.glass {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0));
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, .18);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
 
 .modal {

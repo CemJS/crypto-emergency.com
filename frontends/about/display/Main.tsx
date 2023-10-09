@@ -4,6 +4,11 @@ import safe from "@svg/about/goal_2.svg"
 import access from "@svg/about/goal_3.svg"
 import pin from "@svg/about/goal_4.svg"
 
+// fo main slider
+import ecosystem from '@images/about/main/ecosystem.jpg'
+import blockchain from '@images/about/main/blockchain.jpg'
+import trading from '@images/about/main/trading.jpg'
+import coin from '@images/about/main/cem.jpg'
 
 import Roadmap from "./Roadmap"
 import Accordeon from "./Accordeon"
@@ -44,49 +49,77 @@ const arrBlockCard = [
     },
 ];
 
-const arrAccordeon = [
+const aboutSlides = [
     {
-        title: "Цель Crypto Emergency?",
-        description: "Объединить криптоэнтузиастов со всего мира на многофункциональной платформе, где собраны все необходимые инструменты для общения, обучения, заработка и создания собственного контента.",
-        hidden: false,
+        cover: ecosystem,
+        name: 'Ecosystem Crypto Emergency',
+        desc: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Коварных маленькая грустный сих если океана пустился первую текстами раз дал возвращайся предложения обеспечивает снова повстречался сбить своего ipsum реторический семантика предупредила над единственное вскоре деревни, путь несколько себя. Пустился гор языком семантика подзаголовок ручеек?'
     },
     {
-        title: "Как заработать или купить токены CEM?",
-        description: "Купить CEM можно официально на бирже Bitmart. Также можно вести активную деятельность на платформе и получать новый уровень за действия на платформе и с новым уровнем получать в награду CEM. Следите за новостями в телеграме, могут появляться разные конкурсы где в награду можно получить монету CEM.",
-        hidden: true,
+        cover: blockchain,
+        name: 'Blockchain',
+        desc: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Коварных маленькая грустный сих если океана пустился первую текстами раз дал возвращайся предложения обеспечивает снова повстречался сбить своего ipsum реторический семантика предупредила над единственное вскоре деревни, путь несколько себя. Пустился гор языком семантика подзаголовок ручеек?'
     },
     {
-        title: "Как вывести заработанные CEM с платформы?",
-        description: "Вывести заработанные CEM на нашей платформе за проявленную активность вы можете на свой счет в любое время.  Автоматически в личном кабинете во вкладке «Мои активы». Минимальная сумма вывода — 10CEM.",
-        hidden: true,
+        cover: trading,
+        name: 'Trading',
+        desc: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Коварных маленькая грустный сих если океана пустился первую текстами раз дал возвращайся предложения обеспечивает снова повстречался сбить своего ipsum реторический семантика предупредила над единственное вскоре деревни, путь несколько себя. Пустился гор языком семантика подзаголовок ручеек?'
     },
     {
-        title: "Проект доступен лишь в России?",
-        description: "У нас огромная экосистема которая на данный момент полностью переведена на 16 языков по всему миру, а основными разделами платформы уже сейчас можно пользоваться на 60 языках. Платформа доступна на всех рынках включая Китай.",
-        hidden: true,
+        cover: coin,
+        name: 'CEM coin',
+        desc: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Коварных маленькая грустный сих если океана пустился первую текстами раз дал возвращайся предложения обеспечивает снова повстречался сбить своего ipsum реторический семантика предупредила над единственное вскоре деревни, путь несколько себя. Пустился гор языком семантика подзаголовок ручеек?'
     },
     {
-        title: "Можно ли скачать приложение на телефон?",
-        description: "Да! Все проекты нашей экосистемы доступны как на Android так и на iPhone. Найти ссылочки для скачивания можно внизу страницы, либо просто через поиск в маркетах.",
-        hidden: true,
+        cover: ecosystem,
+        name: 'Ecosystem Crypto Emergency',
+        desc: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Коварных маленькая грустный сих если океана пустился первую текстами раз дал возвращайся предложения обеспечивает снова повстречался сбить своего ipsum реторический семантика предупредила над единственное вскоре деревни, путь несколько себя. Пустился гор языком семантика подзаголовок ручеек?'
     },
-];
-
-
-
-let x1 = null;
-let y1 = null;
+    {
+        cover: blockchain,
+        name: 'Blockchain',
+        desc: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Коварных маленькая грустный сих если океана пустился первую текстами раз дал возвращайся предложения обеспечивает снова повстречался сбить своего ipsum реторический семантика предупредила над единственное вскоре деревни, путь несколько себя. Пустился гор языком семантика подзаголовок ручеек?'
+    },
+]
 
 export default function () {
     return (
-        <div class="about_page about">
-            <div class="about__whome whome">
-                <div class="whome__inner">
-                    <h2 class="about_subtitle">Crypto Emergency</h2>
-                    <p>Объединяем криптоэнтузиастов всего мира на единой многофункциональной платформе Crypto Emergency, которая даст им все необходимые инструменты для общения, обучения, заработка и создания собственного контента. </p>
+        <div class="about">
+
+            <div class="about_main">
+                <div class="about_main_arrows">
+                    <button
+                        class="about_main_arrow about_main_arrow_prev glass"
+                        onclick={() => {
+                            let lists = document.querySelectorAll(".about_main_item");
+                            this.Ref.aboutSlide.prepend(lists[lists.length - 1])
+                        }}
+                    ></button>
+                    <button
+                        class="about_main_arrow about_main_arrow_next glass"
+                        onclick={() => {
+                            let lists = document.querySelectorAll(".about_main_item");
+                            this.Ref.aboutSlide.appendChild(lists[0])
+                        }}
+                    ></button>
                 </div>
-                <div class="whome__bg" />
+                <div class="about_main_slide" ref="aboutSlide">
+                    {
+                        aboutSlides.map(item => {
+                            return (
+                                <div class="about_main_item" style={`background-image: url(${item.cover});`}>
+                                    <div class="about_main_item_content">
+                                        <div class="about_main_item_name">{item.name}</div>
+                                        <div class="about_main_item_desc">{item.desc}</div>
+                                        <button class="btn btn_timing">Перейти</button>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
+
             <div class="about__container">
                 <div class="about__goal goal">
                     <div class="goal__inner">
@@ -111,37 +144,6 @@ export default function () {
 
                         <Accordeon></Accordeon>
 
-                        {/* <div class="accordeon">
-                            {
-                                arrAccordeon.map((item, index) => {
-                                    return (
-                                        <div class="accordeon__item">
-                                            <div class="accordeon__header"
-                                                onclick={() => {
-                                                    arrAccordeon.map((el, i) => {
-                                                        if (index === i) {
-                                                            el.hidden = !el.hidden;
-                                                        } else {
-                                                            el.hidden = true;
-                                                        }
-                                                    });
-                                                    this.init()
-                                                }}
-                                            >
-                                                <h5 class="accordeon__header_title">{item.title}</h5>
-                                                <img src={`/assets/svg/about/select_arrow.svg`}
-                                                    class={["arrow", item.hidden ? null : "arrow__toggle"]}
-                                                />
-                                            </div>
-                                            <div class={["accordeon__content", item.hidden ? null : "content__show"]}>
-                                                {item.description}
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div> */}
-
                         {/* <img class="whome__img whome__img_right" src={lines} /> */}
 
                         <Team></Team>
@@ -151,9 +153,10 @@ export default function () {
 
                 <Roadmap></Roadmap>
                 <Partners></Partners>
-                {/* <SocialNetworks></SocialNetworks> */}
                 <Developments></Developments>
                 <Events></Events>
+                <SocialNetworks></SocialNetworks>
+
             </div>
         </div>
     )
