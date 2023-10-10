@@ -30,19 +30,19 @@ export const finish = function () {
 
 
   //animation for appps
-  this.Static.appsItems = document.querySelectorAll(".developments_item");
+  // this.Static.appsItems = document.querySelectorAll(".developments_item");
 
-  const observerApps = new IntersectionObserver(entries => {
-    entries.forEach(item => {
-      item.target.classList.toggle("developments_item_rotate", item.isIntersecting)
-    })
-  })
+  // const observerApps = new IntersectionObserver(entries => {
+  //   entries.forEach(item => {
+  //     item.target.classList.toggle("developments_item_rotate", item.isIntersecting)
+  //   })
+  // })
 
-  this.Static.appsItems.forEach(item => {
-    setTimeout(() => {
-      observerApps.observe(item)
-    }, 1500)
-  })
+  // this.Static.appsItems.forEach(item => {
+  //   setTimeout(() => {
+  //     observerApps.observe(item)
+  //   }, 1500)
+  // })
   //animation for appps
 
   // gallery cryptoBreakfast

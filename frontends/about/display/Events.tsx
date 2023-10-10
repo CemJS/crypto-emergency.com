@@ -38,8 +38,14 @@ export default function () {
             <h2 class="about_subtitle">Мероприятия</h2>
             <div class="eventForum mb_20">
 
-                <div class="eventForum_video">
-                    <iframe class="eventForum_video_frame" src="https://www.youtube.com/embed/LZw2czyjlvc?si=1hFva0hulQ2kEV3V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div
+                    class="eventForum_video"
+                    onclick={() => {
+                        this.Ref.forumVideo.click();
+                        this.init()
+                    }}
+                >
+                    <iframe ref="forumVideo" class="eventForum_video_frame" src="https://www.youtube.com/embed/LZw2czyjlvc?si=1hFva0hulQ2kEV3V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
 
                 <div>
@@ -57,7 +63,7 @@ export default function () {
                         <img src={telegram} alt="Присоединиться к телеграм каналу" />
                     </a>
                 </div>
-                <div>
+                <div style="position: relative;">
                     <div ref="galleryCryptoBreakfast">
                         {
                             galleryCryptoBreakfast.map((item, index) => {
@@ -70,6 +76,10 @@ export default function () {
                             })
                         }
                     </div>
+                    {/* <div class="gallery_btns">
+                        <button class="about_main_arrow about_main_arrow_prev glass"></button>
+                        <button class="about_main_arrow about_main_arrow_next glass"></button>
+                    </div> */}
                     <div ref="galleryDots"></div>
                 </div>
             </div>

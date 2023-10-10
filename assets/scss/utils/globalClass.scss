@@ -926,6 +926,7 @@ $indent in $indents {
   }
 }
 
+// avatar user polygon
 .avatar {
   position: relative;
   height: auto;
@@ -1044,4 +1045,93 @@ $indent in $indents {
 .firstWord {
   font-size: clamp(16px, 5vw, 26px);
   font-weight: 600;
+}
+
+.gallery {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &_line {
+    overflow: hidden;
+  }
+
+  &_draggable {
+    cursor: grabbing;
+  }
+
+  &_slide {
+    min-height: 1px;
+    width: 100%;
+    float: left;
+    transform: translateZ(0);
+  }
+
+  &_nav {
+    padding: 1rem 0 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  &_dots {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #000;
+    margin: 0.4rem;
+    cursor: pointer;
+    transition: background-color 0.5s, width 0.5s, border-radius 0.5s;
+    border: none;
+    outline: none;
+    padding: 0;
+
+    &_active {
+      background-color: #725790;
+      box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.3);
+      width: 20px;
+      border-radius: 20px;
+    }
+
+    &:hover {
+      background-color: #725790;
+      box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  // &_btns {
+  //   position: absolute;
+  //   top: 40%;
+  //   transform: translateY(-40%);
+  // }
+
+  .slide {
+    height: 20rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+      border-radius: var(--borderR);
+    }
+
+  }
+
+  .card {
+    height: 25rem;
+  }
 }
