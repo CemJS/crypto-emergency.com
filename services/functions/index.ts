@@ -8,11 +8,11 @@ import { sliceString } from './sliceString';
 
 let idb: any = {}
 
-const idbPut = async function (table, value) {
+const idbPut = async function (table: string, value: string | number) {
   return await idb[table].put(value)
 }
 
-const idbGet = async function (table, key) {
+const idbGet = async function (table: string, key: string | number) {
   return await idb[table].get(key)
 }
 
@@ -51,7 +51,7 @@ const dateFormat = function (data, type) {
       return moment(data).format("D MMMM");
     case "event":
       return moment(data).format("DD.MM.YYYY");
-      case "eventddmm":
+    case "eventddmm":
       return moment(data).format("DD.MM");
     case "chattime":
       let secondsBefore = Math.round(
@@ -84,18 +84,30 @@ export {
   sliceString
 }
 
-export const loader = async function (Variable) {
-  // console.log('=ca1022=', this)
-  if (this.Variable) {
-    Variable = this.Variable
-  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const loader = async function (Variable: any) {
   await openDB('CryptoEmergency', 1, {
     upgrade: async (db, oldVersion) => {
       if (oldVersion == 0) {
         const Auth = db.createObjectStore('Auth', { autoIncrement: true });
         Auth.add({ uuid: uuidv4() })
-        let tmp = await Auth.get(1)
-        //   MyInfo.createIndex('date', 'date');
       }
     },
   }).then(async (db) => {
