@@ -27,19 +27,12 @@ export default function () {
                                 <input
                                     type="text"
                                     placeholder={this.Static.email.placeholder}
-                                    style={this.Static.form.email.error ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : ""}
+                                    style={this.Static.form.email.error ? "border-color: red" : this.Static.form.email.valid == true ? "border-color: green" : ""}
                                     oninput={(e) => {
-                                        this.Static.email.value = e.target.value
-
-                                        if (this.Services.functions.validateEmail(this.Static.email)) {
-                                            this.Static.email.valid = true
-                                            this.Static.form.email.error = false
-                                        } else {
-                                            this.Static.email.valid = false
-                                            this.Static.form.email.error = "Неверный e-mail"
-                                        }
-
-                                        this.fn("checkForm")
+                                        console.log('=60ad1d=', e)
+                                        this.Static.form.email.value = e.target.value
+                                        this.Services.functions.formEmail(this.Static.form.email)
+                                        // this.func.checkFrom()
                                         this.init()
                                     }}
                                 />

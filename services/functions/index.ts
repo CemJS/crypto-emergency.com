@@ -6,6 +6,10 @@ import { validateForms } from './validateForms';
 import { editText } from './editText';
 import { sliceString } from './sliceString';
 
+export * from './validator'
+export * from './validForms'
+
+
 let idb: any = {}
 
 const idbPut = async function (table: string, value: string | number) {
