@@ -22,23 +22,19 @@ export default function () {
                     <form class="registration-form">
                         <div class="registration-form__block registration-form__block_email">
                             <label>E-mail</label>
-                            <span style={this.Static.form.email.error ? "display: block" : "display: none"}>{this.Static.form.email.error}</span>
+                            <span style={this.Static.email?.value.length > 0 && this.Static.email.valid == false ? "display: block" : "display: none"}>Неверный e-mail</span>
                             <div class="registration-form__block_input email">
                                 <input
                                     type="text"
                                     placeholder={this.Static.email.placeholder}
-                                    style={this.Static.form.email.error ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : ""}
+                                    style={this.Static.email?.value.length > 0 && this.Static.email.valid == false ? "border-color: red" : this.Static.email.valid == true ? "border-color: green" : ""}
                                     oninput={(e) => {
-                                        this.Static.email.value = e.target.value
-
-                                        if (this.Services.functions.validateEmail(this.Static.email)) {
+                                        if (this.Services.functions.validateEmail(e.target.value)) {
                                             this.Static.email.valid = true
-                                            this.Static.form.email.error = false
                                         } else {
                                             this.Static.email.valid = false
-                                            this.Static.form.email.error = "Неверный e-mail"
                                         }
-
+                                        this.Static.email.value = e.target.value
                                         this.fn("checkForm")
                                         this.init()
                                     }}
