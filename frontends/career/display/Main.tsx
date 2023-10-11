@@ -225,7 +225,7 @@ export default function () {
 
 
                         <div class="f-center mt_25">
-                            <button
+                            {/* <button
                                 class="btn btn_gradient"
                                 onclick={() => {
                                     this.Fn.initOne({
@@ -241,6 +241,16 @@ export default function () {
                                 }}
                             >
                                 <span>Откликнуться</span>
+                            </button> */}
+                            <button
+                                class="btn btn_ripple"
+                                onmouseover={(e) => {
+                                    let x = e.clientX - e.target.offsetLeft;
+                                    let y = e.clientX - e.target.offsetTop;
+
+                                }}
+                            >
+                                Откликнуться
                             </button>
                         </div>
 

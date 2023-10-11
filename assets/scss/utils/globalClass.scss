@@ -244,7 +244,7 @@ $indent in $indents {
 // different buttons
 .btn {
   cursor: pointer;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   font-weight: 500;
   color: var(--main_text);
   border: none;
@@ -309,6 +309,12 @@ $indent in $indents {
 
 
   }
+
+  &_ripple {
+    background: linear-gradient(90deg, #0162c8, #55e7fc);
+    overflow: hidden;
+  }
+
 }
 
 // different buttons

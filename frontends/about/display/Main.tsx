@@ -95,7 +95,7 @@ export default function () {
                 <Goals></Goals>
                 <Accordeon></Accordeon>
                 {/* <img class="whome__img whome__img_right" src={lines} /> */}
-                {/* <Team></Team> */}
+                <Team></Team>
                 <Roadmap></Roadmap>
                 <Partners></Partners>
                 <Developments></Developments>
