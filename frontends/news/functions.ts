@@ -1,4 +1,5 @@
 export const addEvent = function ({ cat }) {
+
   this.Static.records = []
   let url = `/api/events/News?uuid=${this.Variable.myInfo.uuid}&lang=ru`
   if (cat && cat != "Все") {
