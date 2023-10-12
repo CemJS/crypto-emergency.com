@@ -1,5 +1,6 @@
 export const loader = function () {
   this.Variable.$el.body.style.overflow = 'hidden';
+  this.Static.body = document.querySelector('body');
 
   this.Static.form = {
     email: {
@@ -78,19 +79,32 @@ export const loader = function () {
     valid: false,
     error: false,
     placeholder: "Введите ваш E-mail",
+    step: true
+  }
+
+  this.Static.userInfo = {
+    nameValue: "",
+    langValue: "",
+    countryValue: "",
+    valid: false,
+    error: false,
+    placeholder: "Введите имя пользователя",
+    step: false
   }
 
   this.Static.pass = {
     value: "",
     valid: false,
     error: true,
-    view: false
+    view: false,
+    step: false
   }
 
   this.Static.repeatPass = {
     value: "",
     valid: false,
     error: true,
-    view: false
+    view: false,
+    step: false
   }
 }

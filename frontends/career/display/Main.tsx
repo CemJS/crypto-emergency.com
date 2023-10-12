@@ -244,10 +244,15 @@ export default function () {
                             </button> */}
                             <button
                                 class="btn btn_ripple"
-                                onmouseover={(e) => {
-                                    let x = e.clientX - e.target.offsetLeft;
-                                    let y = e.clientX - e.target.offsetTop;
-
+                                onclick={() => {
+                                    this.Fn.initOne({
+                                        name: "modalMessage", ifOpen: (front) => {
+                                            setTimeout(() => {
+                                                front.clearData()
+                                            }, 500);
+                                        }
+                                    })
+                                    this.init()
                                 }}
                             >
                                 Откликнуться

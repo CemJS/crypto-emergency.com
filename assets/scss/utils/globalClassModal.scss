@@ -1,4 +1,7 @@
-// @import 'utils/variables.scss';
+:root {
+  --backModal: #202432;
+}
+
 
 p,
 h3 {
@@ -6,11 +9,11 @@ h3 {
   margin: 0;
 }
 
-body.activeModal {
-  .page {
-    animation: scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  }
-}
+// body.activeModal {
+//   .page {
+//     animation: scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+//   }
+// }
 
 .modalWindow {
   position: fixed;
@@ -38,7 +41,6 @@ body.activeModal {
     }
   }
 
-
   &_body {
     min-height: 100%;
     display: flex;
@@ -54,8 +56,8 @@ body.activeModal {
     width: 100%;
     position: relative;
     padding: 35px;
-    background: #202432;
-    box-shadow: 0 0 23px -10px rgba(221, 221, 221, 0.5);
+    background: var(--backModal);
+    box-shadow: 0 0 15px -10px rgba(221, 221, 221, 0.5);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(7px);
     color: #FFFFFF;
@@ -74,8 +76,8 @@ body.activeModal {
     align-items: center;
 
     &_title {
-      font-size: 24px;
-      line-height: 32px;
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.5;
       margin-bottom: 20px;
     }
   }
@@ -101,7 +103,7 @@ body.activeModal {
   }
 
   &_main {
-    display: grid;
+    display: flex;
     flex-direction: column;
     gap: 10px;
   }
@@ -165,7 +167,6 @@ body.activeModal {
 
   }
 
-
   &_footer {
     margin-top: 25px;
 
@@ -176,6 +177,125 @@ body.activeModal {
 
 }
 
+// modal Registration start
+.modalReg {
+  width: 100%;
+  overflow: hidden;
+
+  &_line {
+    display: flex;
+    width: 400%;
+  }
+
+  &_page {
+    width: 25%;
+    transition: margin-left 0.3s ease-in-out;
+
+    &-title {
+      font-size: clamp(16px, 2vw, 18px);
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      width: min(25%, 300px);
+    }
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  &_btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.progressBar {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+
+
+  &-step {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_bullet {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      border: 3px solid #e0e0e0;
+      color: #999;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {}
+
+      span {
+        font-weight: 700;
+        font-size: clamp(16px, 5vw, 20px);
+        line-height: 1.5;
+      }
+    }
+
+    &__check {
+      display: none;
+
+      img {
+        width: 15px;
+      }
+    }
+  }
+}
+
+// .steps {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   position: relative;
+
+//   &_circle {
+//     height: 50px;
+//     width: 50px;
+//     border-radius: 50%;
+//     // border: 3px solid var(--fiolet);
+//     border: 3px solid #e0e0e0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     // color: var(--fiolet);
+//     background: var(--backModal);
+//     color: #999;
+//     font-weight: 700;
+//     font-size: clamp(16px, 5vw, 20px);
+//   }
+
+//   &_progress {
+//     position: absolute;
+//     height: 4px;
+//     width: 100%;
+//     background: #e0e0e0;
+//     z-index: -1;
+//   }
+
+//   &_indicator {
+//     position: absolute;
+//     height: 100%;
+//     width: 100%;
+//     background: var(--fiolet);
+//   }
+// }
+
+// modal Registration end
 
 @keyframes quickScaleDown {
   0% {
