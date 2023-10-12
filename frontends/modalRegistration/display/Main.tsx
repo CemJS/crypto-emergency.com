@@ -39,47 +39,25 @@ export default function () {
                         <h2 class="modalWindow_header_title">Регистрация нового пользователя</h2>
                     </header>
                     <main class="modalWindow_main">
-
-                        <div class="progressBar">
-                            <div class="progressBar-step">
-                                <div class="progressBar-step_bullet">
-                                    <span>1</span>
-                                </div>
-                                <div class="progressBar-step__check">
-                                    <img src={done} alt="Статус" />
-                                </div>
+                        <div class="steps">
+                            {
+                                this.Static.steps.map(item => {
+                                    return (
+                                        <span
+                                            class={["steps_circle", item <= this.Static.currentStep ? "steps_circle__active" : null]}
+                                        >
+                                            {item}
+                                        </span>
+                                    )
+                                })
+                            }
+                            <div class="steps_progress">
+                                <div class="steps_indicator" ref="indicator"></div>
                             </div>
-                            <div class="progressBar-step">
-                                <div class="progressBar-step_bullet">
-                                    <span>2</span>
-                                </div>
-                                <div class="progressBar-step__check">
-                                    <img src={done} alt="Статус" />
-                                </div>
-                            </div>
-                            <div class="progressBar-step">
-                                <div class="progressBar-step_bullet">
-                                    <span>3</span>
-                                </div>
-                                <div class="progressBar-step__check">
-                                    <img src={done} alt="Статус" />
-                                </div>
-                            </div>
-                            <div class="progressBar-step">
-                                <div class="progressBar-step_bullet">
-                                    <span>4</span>
-                                </div>
-                                <div class="progressBar-step__check">
-                                    <img src={done} alt="Статус" />
-                                </div>
-                            </div>
-                            {/* <div class="steps_progress">
-                                <span class="steps_indicator"></span>
-                            </div> */}
                         </div>
                         <div class="modalReg">
                             <div class="modalReg_line">
-                                <div class="modalReg_page">
+                                <div class="modalReg_page" ref="slidePage">
                                     <div class="modalReg_form">
                                         <h3 class="modalReg_page-title">Подтвердите адрес электронной почты</h3>
                                         <div class="modalWindow_field">
@@ -93,7 +71,10 @@ export default function () {
                                             <button
                                                 class="btn btn_timing"
                                                 onclick={() => {
-
+                                                    this.Ref.slidePage.style.marginLeft = `-${this.Static.widthSlide * this.Static.currentStep}%`
+                                                    this.Static.currentStep = ++this.Static.currentStep;
+                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.init()
                                                 }}
                                             >
                                                 Далее
@@ -120,8 +101,28 @@ export default function () {
                                             <input type="text" />
                                         </div>
                                         <div class="f-center mt_25 modalReg_btns">
-                                            <button class="btn btn_timing">Назад</button>
-                                            <button class="btn btn_timing">Далее</button>
+                                            <button
+                                                class="btn btn_timing"
+                                                onclick={() => {
+                                                    this.Ref.slidePage.style.marginLeft = "0"
+                                                    this.Static.currentStep = --this.Static.currentStep;
+                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.init()
+                                                }}
+                                            >
+                                                Назад
+                                            </button>
+                                            <button
+                                                class="btn btn_timing"
+                                                onclick={() => {
+                                                    this.Ref.slidePage.style.marginLeft = "-50%"
+                                                    this.Static.currentStep = ++this.Static.currentStep;
+                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.init()
+                                                }}
+                                            >
+                                                Далее
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -143,8 +144,26 @@ export default function () {
                                             </div>
                                         </div>
                                         <div class="f-center mt_25 modalReg_btns">
-                                            <button class="btn btn_timing">Назад</button>
-                                            <button class="btn btn_timing">Далее</button>
+                                            <button
+                                                class="btn btn_timing"
+                                                onclick={() => {
+                                                    this.Ref.slidePage.style.marginLeft = "-25%"
+                                                    this.Static.currentStep = --this.Static.currentStep;
+                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.init()
+                                                }}
+                                            >
+                                                Назад
+                                            </button>
+                                            <button
+                                                class="btn btn_timing"
+                                                onclick={() => {
+                                                    this.Ref.slidePage.style.marginLeft = "-75%"
+                                                    this.Static.currentStep = ++this.Static.currentStep;
+                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.init()
+                                                }}
+                                            >Далее</button>
                                         </div>
                                     </div>
                                 </div>
@@ -152,8 +171,27 @@ export default function () {
                                 <div class="modalReg_page">
                                     <p>Успешный успех!</p>
                                     <div class="f-center mt_25 modalReg_btns">
-                                        <button class="btn btn_timing">Назад</button>
-                                        <button class="btn btn_timing">Далее</button>
+                                        <button
+                                            class="btn btn_timing"
+                                            onclick={() => {
+                                                this.Ref.slidePage.style.marginLeft = "-50%"
+                                                this.Static.currentStep = --this.Static.currentStep;
+                                                this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                this.init()
+                                            }}
+                                        >
+                                            Назад
+                                        </button>
+                                        <button
+                                            class="btn btn_timing"
+                                            onclick={() => {
+                                                setTimeout(() => {
+                                                    this.clearData()
+                                                }, 5)
+                                            }}
+                                        >
+                                            Зарегистрироваться
+                                        </button>
                                     </div>
                                 </div>
                             </div>

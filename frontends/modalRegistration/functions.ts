@@ -8,3 +8,15 @@ export const checkFrom = function () {
 
   this.init()
 }
+
+export const clickNext = function (slidePage, indicator) {
+  console.log('=088ef9=', this.Static.currentStep)
+  // let widthSlide = 25
+  // console.log('=6b3427=', slidePage)
+  // slidePage.style.marginLeft = `-${widthSlide * this.Static.currentStep}%`
+  // this.Static.currentStep = ++this.Static.currentStep;
+  // indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+  this.init();
+}
+
+export const clickPrev = function () { }
