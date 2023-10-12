@@ -9,8 +9,4 @@ export const loader = function () {
         }
         this.init()
     });
-
-    this.Static.text = ""
-    this.Static.textCom = ""
-    this.Static.recordsCommentsInner = []
 }
