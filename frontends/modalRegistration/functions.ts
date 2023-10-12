@@ -9,6 +9,11 @@ export const checkFrom = function () {
   this.init()
 }
 
+export const showDropdown = function (dropdown, value) {
+  dropdown.value = value;
+  this.init()
+}
+
 export const clickNext = function (slidePage, indicator) {
   console.log('=088ef9=', this.Static.currentStep)
   // let widthSlide = 25

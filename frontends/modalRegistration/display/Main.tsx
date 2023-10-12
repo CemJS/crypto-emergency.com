@@ -59,15 +59,17 @@ export default function () {
                             <div class="modalReg_line">
                                 <div class="modalReg_page" ref="slidePage">
                                     <div class="modalReg_form">
-                                        <h3 class="modalReg_page-title">Подтвердите адрес электронной почты</h3>
-                                        <div class="modalWindow_field">
-                                            <input type="email" ref="userEmail" required></input>
-                                            <div class="modalWindow_field_labelLine">
-                                                <img src={email}></img>
-                                                <span>Email</span>
+                                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                                            <h3 class="modalReg_page-title">Подтвердите адрес электронной почты</h3>
+                                            <div class="modalWindow_field">
+                                                <input type="email" ref="userEmail" required></input>
+                                                <div class="modalWindow_field_labelLine">
+                                                    <img src={email}></img>
+                                                    <span>Email</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="f-center mt_25">
+                                        <div class="f-center">
                                             <button
                                                 class="btn btn_timing"
                                                 onclick={() => {
@@ -85,6 +87,7 @@ export default function () {
 
                                 <div class="modalReg_page">
                                     <div class="modalReg_form">
+                                        <h3 class="modalReg_page-title">Заполните информация о себе</h3>
                                         <div class="modalWindow_field">
                                             <input type="text" ref="userName" required></input>
                                             <div class="modalWindow_field_labelLine">
@@ -92,15 +95,56 @@ export default function () {
                                                 <span>Имя пользователя</span>
                                             </div>
                                         </div>
-                                        <div class="modalReg_field">
-                                            <div class="label">Язык</div>
-                                            <input type="text" />
+                                        <div class="g-colEqual-2">
+                                            <div
+                                                class="dropdown"
+                                                ref="chooseLang"
+                                                onclick={() => {
+                                                    this.Ref.chooseLang.classList.toggle("dropdown__active")
+                                                    this.Ref.optionsLang.classList.toggle("dropdown-options__active")
+                                                }}
+                                            >
+                                                <input ref="generalLang" class="dropdown_input" type="text" readonly placeholder="Язык" />
+                                                <div class="dropdown-options" ref="optionsLang">
+                                                    {
+                                                        this.Static.lang.map(item => {
+                                                            return (
+                                                                <div
+                                                                    class="dropdown-options_item"
+                                                                    onmouseover={() => {
+                                                                        this.func.checkFrom(this.Ref.generalLang, item.name)
+                                                                        this.init()
+                                                                    }}
+                                                                >
+                                                                    {item.name}
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="dropdown"
+                                                ref="chooseCountry"
+                                                onclick={() => {
+                                                    this.Ref.chooseCountry.classList.toggle("dropdown__active")
+                                                    this.Ref.optionsCountries.classList.toggle("dropdown-options__active")
+                                                }}
+                                            >
+                                                <input class="dropdown_input" type="text" readonly placeholder="Страна" />
+                                                <div class="dropdown-options" ref="optionsCountries">
+                                                    {
+                                                        this.Static.countries.map(item => {
+                                                            return (
+                                                                <div class="dropdown-options_item">{item.name}</div>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="modalReg_field">
-                                            <div class="label">Страна</div>
-                                            <input type="text" />
-                                        </div>
-                                        <div class="f-center mt_25 modalReg_btns">
+
+                                        <div class="f-center modalReg_btns">
                                             <button
                                                 class="btn btn_timing"
                                                 onclick={() => {
@@ -129,21 +173,22 @@ export default function () {
 
                                 <div class="modalReg_page">
                                     <div class="modalReg_form">
+                                        <h3 class="modalReg_page-title">Придумайте пароль</h3>
                                         <div class="modalWindow_field">
                                             <input type="password" ref="pass" required></input>
                                             <div class="modalWindow_field_labelLine">
-                                                <img src={user}></img>
+                                                <img src={lock}></img>
                                                 <span>Пароль:</span>
                                             </div>
                                         </div>
                                         <div class="modalWindow_field">
                                             <input type="password" ref="confirmPass" required></input>
                                             <div class="modalWindow_field_labelLine">
-                                                <img src={user}></img>
+                                                <img src={lock}></img>
                                                 <span>Повторить пароль:</span>
                                             </div>
                                         </div>
-                                        <div class="f-center mt_25 modalReg_btns">
+                                        <div class="f-center modalReg_btns">
                                             <button
                                                 class="btn btn_timing"
                                                 onclick={() => {
@@ -169,29 +214,31 @@ export default function () {
                                 </div>
 
                                 <div class="modalReg_page">
-                                    <p>Успешный успех!</p>
-                                    <div class="f-center mt_25 modalReg_btns">
-                                        <button
-                                            class="btn btn_timing"
-                                            onclick={() => {
-                                                this.Ref.slidePage.style.marginLeft = "-50%"
-                                                this.Static.currentStep = --this.Static.currentStep;
-                                                this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
-                                                this.init()
-                                            }}
-                                        >
-                                            Назад
-                                        </button>
-                                        <button
-                                            class="btn btn_timing"
-                                            onclick={() => {
-                                                setTimeout(() => {
-                                                    this.clearData()
-                                                }, 5)
-                                            }}
-                                        >
-                                            Зарегистрироваться
-                                        </button>
+                                    <div class="modalReg_form">
+                                        <h3 class="modalReg_page-title">Поздравляем, Вы успешно зарегистрированы!</h3>
+                                        <div class="f-center modalReg_btns">
+                                            <button
+                                                class="btn btn_timing"
+                                                onclick={() => {
+                                                    this.Ref.slidePage.style.marginLeft = "-50%"
+                                                    this.Static.currentStep = --this.Static.currentStep;
+                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.init()
+                                                }}
+                                            >
+                                                Назад
+                                            </button>
+                                            <button
+                                                class="btn btn_timing"
+                                                onclick={() => {
+                                                    setTimeout(() => {
+                                                        this.clearData()
+                                                    }, 5)
+                                                }}
+                                            >
+                                                Зарегистрироваться
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
