@@ -47,7 +47,7 @@ export default function () {
                             onclick={async () => {
 
                                 let data = {
-                                    action: "test",
+                                    action: "verifyEmail",
                                     email: "test@test.ru"
                                 }
                                 let answer = await fetch(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, {
