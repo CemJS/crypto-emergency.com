@@ -3,6 +3,11 @@ import { Cemjsx } from "cemjs-all"
 let x1, y1 = null;
 
 export default function () {
+    if (this.Variable.DataUrl[1] == "show") {
+        return (
+            <div></div>
+        )
+    }
     if (this.Static.records) {
         return (
             <div class="category-wrap">
