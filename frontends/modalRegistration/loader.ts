@@ -5,6 +5,43 @@ export const loader = function () {
   this.Static.currentStep = 1;
   this.Static.widthSlide = 25;
 
+
+  this.Static.lang = [
+    {
+      name: "Русский",
+    },
+    {
+      name: "Английский",
+    },
+    {
+      name: "Немецкий",
+    },
+    {
+      name: "Китайский",
+    },
+    {
+      name: "Армянский",
+    },
+  ]
+
+  this.Static.countries = [
+    {
+      name: "Россия"
+    },
+    {
+      name: "Китай"
+    },
+    {
+      name: "Германия"
+    },
+    {
+      name: "Армения"
+    },
+    {
+      name: "Америка"
+    }
+  ]
+
   this.Static.form = {
     email: {
       value: "",

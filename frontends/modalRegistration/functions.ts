@@ -9,6 +9,11 @@ export const checkFrom = function () {
   this.init()
 }
 
+export const showDropdown = function (dropdown, value) {
+  dropdown.value = value;
+  this.init()
+}
+
 export const clickNext = function (slidePage, indicator) {
   console.log('=088ef9=', this.Static.currentStep)
   // let widthSlide = 25
@@ -20,3 +25,10 @@ export const clickNext = function (slidePage, indicator) {
 }
 
 export const clickPrev = function () { }
+
+export const close = function (e) {
+  setTimeout(() => { this.clearData() }, 5)
+  this.Ref.modalWindow.classList.remove('activeModal');
+  this.Variable.$el.body.classList.remove('activeModal');
+  this.Variable.$el.body.style.overflow = 'auto';
+}

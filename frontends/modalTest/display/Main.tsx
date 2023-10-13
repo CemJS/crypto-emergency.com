@@ -47,8 +47,8 @@ export default function () {
                             onclick={async () => {
 
                                 let data = {
-                                    action: "test",
-                                    email: "evgeny.ryabov@bk.ru"
+                                    action: "verifyEmail",
+                                    email: "test@test.ru"
                                 }
                                 let answer = await fetch(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, {
                                     method: "POST",
