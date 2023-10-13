@@ -4,7 +4,8 @@ import eye from "@svg/modalRegistration/eye.svg"
 import eyeSlash from "@svg/modalRegistration/eye-slash.svg"
 import user from '@svg/modalMessage/icon_user.svg'
 import email from '@svg/modalMessage/icon_email.svg'
-import done from '@svg/icon/done.svg'
+import done from '@svg/modalRegistration/done.svg'
+import { validEmail } from "../functions"
 
 
 const RenderSteps = function ({ steps, current }) {
@@ -35,26 +36,122 @@ export default function () {
                                     <div class="modalReg_form">
                                         <div style="display: flex; flex-direction: column; gap: 20px;">
                                             <h3 class="modalReg_page-title">Подтвердите адрес электронной почты</h3>
-                                            <div class="modalWindow_field">
-                                                <input type="email" ref="userEmail" required></input>
+                                            <div class="modalWindow_field " ref="emailField">
+                                                <input
+                                                    type="email"
+                                                    ref="userEmail"
+                                                    required
+                                                    autocomplete="off"
+                                                    onchange={() => {
+                                                        if (this.Ref.userEmail.value.length > 0) {
+                                                            this.Ref.emailField.classList.add('modalWindow_field__valid');
+                                                            this.Static.email = this.Ref.emailInput.value;
+                                                        }
+                                                        if (this.Ref.userEmail.value.length === 0) {
+                                                            this.Ref.emailField.classList.remove('modalWindow_field__valid');
+                                                        }
+                                                    }}
+                                                    oninput={() => {
+                                                        this.Static.email = this.Ref.userEmail.value;
+                                                        setTimeout(() => {
+                                                            this.fn("validEmail", this.Ref.userEmail.value)
+                                                        }, 3000)
+                                                    }}
+                                                />
                                                 <div class="modalWindow_field_labelLine">
                                                     <img src={email}></img>
                                                     <span>Email</span>
                                                 </div>
+                                                <p class="modalWindow_field__status" ref="statusEmail"></p>
                                             </div>
                                         </div>
+
+                                        <div class="modalReg-confirmCode" ref="confirmCode">
+                                            <div class="modalReg-code" ref="inputCode">
+                                                {
+                                                    this.Static.code.map((item, index) => {
+                                                        return (
+                                                            <input
+                                                                type="number"
+                                                                class="modalReg-code_input"
+                                                                onkeyup={(e) => { this.fn("handleKeyUp", e, index) }}
+                                                            // oninput={(e) => { this.fn("validOneNum", e, index) }}
+                                                            />
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                            <div class="modalReg_timer">
+                                                {
+                                                    this.Static.time > 0 ?
+                                                        <div>
+                                                            <p class="modalReg_timer__text">Запросить новый код подтверждения можно через</p>
+                                                            <p class="modalReg_timer__text pl_10">{this.Static.time < 10 ? `0 : 0${this.Static.time}` : `0 : ${this.Static.time}`}</p>
+                                                        </div>
+                                                        :
+                                                        <p
+                                                            onclick={() => {
+                                                                this.fn("resetTimer")
+                                                            }}
+                                                        >
+                                                            Запросить код снова
+                                                        </p>
+                                                }
+                                            </div>
+                                        </div>
+
+
                                         <div class="f-center">
                                             <button
-                                                class="btn btn_timing"
-                                                onclick={() => {
-                                                    this.Ref.slidePage.style.marginLeft = `-${this.Static.widthSlide * this.Static.currentStep}%`
-                                                    this.Static.currentStep = ++this.Static.currentStep;
-                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                ref="regBtnEmail"
+                                                class={["btn btn_timing", "btn_passive"]}
+                                                onclick={async () => {
+
+                                                    this.Ref.confirmCode.classList.add("modalReg-confirmCode__active")
+                                                    this.fn("timer")
+
+                                                    let data = {
+                                                        action: "registration",
+                                                        email: this.Static.email,
+                                                        step: 1,
+                                                    }
+                                                    let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+                                                    console.log('=34b53d=', this.fn("isEmailPlatform", answer))
+
+                                                    this.fn("isEmailPlatform", answer)
+
+
+
                                                     this.init()
                                                 }}
                                             >
-                                                Далее
+                                                Получить код подтверждение
                                             </button>
+                                            {/* <button
+                                                ref="regBtn1"
+                                                class={["btn btn_timing btn_passive",]}
+                                                onclick={async () => {
+
+                                                    this.fn("clickNext", this.Ref.slidePage, this.Ref.indicator)
+
+                                                    let data = {
+                                                        action: "registration",
+                                                        email: "anna.shalbuzova@mail.ru",
+                                                        step: 1,
+                                                    }
+
+                                                    let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+
+
+                                                    console.log('=dc0f09=', answer)
+                                                    this.init()
+
+                                                }}
+                                            >
+                                                Далее
+                                            </button> */}
                                         </div>
                                     </div>
                                 </div>
@@ -123,8 +220,7 @@ export default function () {
                                                 class="btn btn_timing"
                                                 onclick={() => {
                                                     this.Ref.slidePage.style.marginLeft = "0"
-                                                    this.Static.currentStep = --this.Static.currentStep;
-                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.fn("clickPrev", this.Ref.indicator)
                                                     this.init()
                                                 }}
                                             >
@@ -133,10 +229,7 @@ export default function () {
                                             <button
                                                 class="btn btn_timing"
                                                 onclick={() => {
-                                                    this.Ref.slidePage.style.marginLeft = "-50%"
-                                                    this.Static.currentStep = ++this.Static.currentStep;
-                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
-                                                    this.init()
+                                                    this.fn("clickNext", this.Ref.slidePage, this.Ref.indicator)
                                                 }}
                                             >
                                                 Далее
@@ -167,8 +260,7 @@ export default function () {
                                                 class="btn btn_timing"
                                                 onclick={() => {
                                                     this.Ref.slidePage.style.marginLeft = "-25%"
-                                                    this.Static.currentStep = --this.Static.currentStep;
-                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.fn("clickPrev", this.Ref.indicator)
                                                     this.init()
                                                 }}
                                             >
@@ -177,10 +269,7 @@ export default function () {
                                             <button
                                                 class="btn btn_timing"
                                                 onclick={() => {
-                                                    this.Ref.slidePage.style.marginLeft = "-75%"
-                                                    this.Static.currentStep = ++this.Static.currentStep;
-                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
-                                                    this.init()
+                                                    this.fn("clickNext", this.Ref.slidePage, this.Ref.indicator)
                                                 }}
                                             >Далее</button>
                                         </div>
@@ -190,13 +279,15 @@ export default function () {
                                 <div class="modalReg_page">
                                     <div class="modalReg_form">
                                         <h3 class="modalReg_page-title">Поздравляем, Вы успешно зарегистрированы!</h3>
+                                        <div class="modalReg_success">
+                                            <img src={done} alt="Пользователь успешно зарегистрирован" />
+                                        </div>
                                         <div class="f-center modalReg_btns">
                                             <button
                                                 class="btn btn_timing"
                                                 onclick={() => {
                                                     this.Ref.slidePage.style.marginLeft = "-50%"
-                                                    this.Static.currentStep = --this.Static.currentStep;
-                                                    this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+                                                    this.fn("clickPrev", this.Ref.indicator)
                                                     this.init()
                                                 }}
                                             >
@@ -220,8 +311,8 @@ export default function () {
                         </div>
                     </main>
                     <footer class="modalWindow_footer">
-                        <p>если у вас уже есть аккаунт <a href="#">авторизуйтесь</a></p>
-                        <p>Нажимая «Продолжить», вы принимаете <a href="#">пользовательское соглашение</a> и <a href="#">политику конфиденциальности</a></p>
+                        {/* <p>если у вас уже есть аккаунт <a href="#">авторизуйтесь</a></p> */}
+                        <p>Регистрируясь на платформе, вы принимаете <a href="/user-agreement" onclick={this.Fn.link} class="link" >пользовательское соглашение</a> и <a href="/user-data-policy" onclick={this.Fn.link} class="link">политику конфиденциальности</a></p>
                     </footer>
                 </div>
             </div>

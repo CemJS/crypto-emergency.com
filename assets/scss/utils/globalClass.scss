@@ -239,6 +239,10 @@ $indent in $indents {
   font-weight: 500;
 }
 
+.link {
+  text-decoration: underline;
+}
+
 // text elements
 
 // different buttons
@@ -306,8 +310,12 @@ $indent in $indents {
   &_timing {
     background: var(--main_gradient);
     transition: all 0.3s ease;
+  }
 
-
+  &_passive {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
   }
 
   &_ripple {

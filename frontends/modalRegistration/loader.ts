@@ -42,6 +42,16 @@ export const loader = function () {
     }
   ]
 
+  this.Static.email;
+  this.Static.regEmail = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$/
+  this.Static.regOneNum = /^\d{1,}$/
+
+  this.Static.time = 60;
+
+  this.Static.code = new Array(6).fill("")
+
+  //-----------------------
+
   this.Static.form = {
     email: {
       value: "",
@@ -110,8 +120,6 @@ export const loader = function () {
     isValid: false,
   }
 
-
-
   this.Static.check = false
   this.Static.isValid = false
   this.Static.email = {
@@ -119,17 +127,6 @@ export const loader = function () {
     valid: false,
     error: false,
     placeholder: "Введите ваш E-mail",
-    step: true
-  }
-
-  this.Static.userInfo = {
-    nameValue: "",
-    langValue: "",
-    countryValue: "",
-    valid: false,
-    error: false,
-    placeholder: "Введите имя пользователя",
-    step: false
   }
 
   this.Static.pass = {
@@ -137,7 +134,6 @@ export const loader = function () {
     valid: false,
     error: true,
     view: false,
-    step: false
   }
 
   this.Static.repeatPass = {
@@ -145,6 +141,5 @@ export const loader = function () {
     valid: false,
     error: true,
     view: false,
-    step: false
   }
 }

@@ -9,36 +9,24 @@ h3 {
   margin: 0;
 }
 
-// body.activeModal {
-//   .page {
-//     animation: scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-//   }
-// }
 
 .modalWindow {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.6);
   top: 0;
   left: 0;
-  transform: scale(0);
-  z-index: 1001;
-  transition: all 0.3s ease;
-  animation: quickScaleDown 0s 0.5s linear forwards;
+  z-index: 10;
+  opacity: 0;
+  // transform: scale(0);
+  transform: scale(1.2);
+  transition: transform 0.2s 0s ease-in-out, opacity 0.2s 0s ease-in-out;
+  // animation: quickScaleDown 0s 0.5s linear forwards;
 
   &.activeModal {
+    opacity: 1;
     transform: scale(1);
-    animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-
-    .modalWindow_body {
-      animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    }
-
-    .modalWindow_content {
-      opacity: 0;
-      animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    }
   }
 
   &_body {
@@ -61,7 +49,7 @@ h3 {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(7px);
     color: #FFFFFF;
-    animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    // animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 
     &_gallery {
       max-width: 90%;
@@ -124,8 +112,9 @@ h3 {
       border-radius: var(--borderR);
       border: 1px solid var(--secondary_text);
       background: transparent;
-      transition: 0.1s ease;
+      transition: border 0.1s ease;
       z-index: 5;
+      color: var(--white);
     }
 
     &_labelLine {
@@ -141,14 +130,7 @@ h3 {
       color: var(--secondary_text);
     }
 
-    input:focus {
-      color: var(--akebi_purple);
-      border: 1px solid var(--akebi_purple);
-    }
-
-
     input:focus+.modalWindow_field_labelLine {
-      color: var(--akebi_purple);
       height: 30px;
       line-height: 30px;
       transform: translate(-15px, -16px) scale(0.88);
@@ -165,6 +147,34 @@ h3 {
       }
     }
 
+    &__valid {
+      .modalWindow_field_labelLine {
+        height: 30px;
+        line-height: 30px;
+        transform: translate(-15px, -16px) scale(0.88);
+        z-index: 5;
+      }
+    }
+
+    &__status {
+      color: var(--white);
+      transition: color 0.3s ease-in-out;
+      position: absolute;
+      top: 45px;
+      left: 30px;
+    }
+
+    &__error {
+      input {
+        border: 1px solid var(--red);
+      }
+
+      .modalWindow_field-status {
+        color: var(--red);
+
+      }
+    }
+
   }
 
   &_footer {
@@ -177,132 +187,7 @@ h3 {
 
 }
 
-// modal Registration start
-.modalReg {
-  width: 100%;
-  overflow: hidden;
 
-  &_line {
-    display: flex;
-    width: 400%;
-  }
-
-  &_page {
-    width: 25%;
-
-    transition: margin-left 0.35s ease-in-out;
-
-    &-title {
-      font-size: clamp(16px, 2vw, 18px);
-      line-height: 1.5;
-      font-weight: 600;
-    }
-  }
-
-  &_form {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
-  &_btns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-}
-
-// .progressBar {
-//   display: flex;
-//   justify-content: space-between;
-//   margin: 20px 0;
-
-
-//   &-step {
-//     width: 100%;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-
-//     &_bullet {
-//       height: 50px;
-//       width: 50px;
-//       border-radius: 50%;
-//       border: 3px solid #e0e0e0;
-//       color: #999;
-
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-
-//       &::before {}
-
-//       span {
-//         font-weight: 700;
-//         font-size: clamp(16px, 5vw, 20px);
-//         line-height: 1.5;
-//       }
-//     }
-
-//     &__check {
-//       display: none;
-
-//       img {
-//         width: 15px;
-//       }
-//     }
-//   }
-// }
-
-.steps {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-
-  &_circle {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    border: 3px solid #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--backModal);
-    color: #999;
-    font-weight: 700;
-    font-size: clamp(16px, 5vw, 20px);
-    transition:
-      border 0.3s ease-in-out,
-      color 0.3s ease-in-out;
-
-    &__active {
-      border: 3px solid var(--fiolet);
-      color: var(--fiolet);
-    }
-  }
-
-  &_progress {
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background: #e0e0e0;
-    z-index: -1;
-  }
-
-  &_indicator {
-    position: absolute;
-    height: 4px;
-    width: 0%;
-    background: var(--fiolet);
-    transition: width 0.3s ease-in-out;
-  }
-}
-
-// modal Registration end
 
 @keyframes quickScaleDown {
   0% {
