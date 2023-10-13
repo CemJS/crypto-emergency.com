@@ -50,14 +50,17 @@ export default function () {
                                     action: "verifyEmail",
                                     email: "test@test.ru"
                                 }
-                                let answer = await fetch(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, {
-                                    method: "POST",
-                                    headers: { "content-type": "application/json" },
-                                    body: JSON.stringify(data),
-                                })
 
-                                let json = await answer.json()
-                                console.log('=3765b5=', 123, json)
+                                let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+                                // let answer = await fetch(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, {
+                                //     method: "POST",
+                                //     headers: { "content-type": "application/json" },
+                                //     body: JSON.stringify(data),
+                                // })
+
+                                // let json = await answer.json()
+                                console.log('=3765b5=', 123, answer)
                             }}
                         >
                             <span>Поиск пользователя</span>

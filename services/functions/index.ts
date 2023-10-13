@@ -8,6 +8,7 @@ import { sliceString } from './sliceString';
 
 export * from './validator'
 export * from './validForms'
+export * from './sendApi'
 
 
 let idb: any = {}
