@@ -19,6 +19,7 @@ import lineB from '@svg/lines/linesB.svg'
 
 
 export default function () {
+    // console.log('=c818c5=',this.Static.records)
     return (
         <section class="listExchange effect_lines pt_80">
             <div class="wrapper">
@@ -49,7 +50,37 @@ export default function () {
                             </tr>
                         </thead>
                         <tbody class="table_body listExchange_table_body">
-                            {/* {
+                            {
+                  this.Static.records.map((item, index) => {
+                    return (
+                      <tr class="table_row listExchange_table_row">
+                        <td class="listExchange_favourites">
+                          <img src={star} alt="Избранные обменники" class="listExchange_icon" />
+                        </td>
+                        <td class="listExchange_table_index">{index + 1}</td>
+                        <td class="listExchange_table_name">{item.name}</td>
+                        <td class="listExchange_table_coins">
+                          {/* <div class="coins_wrap">
+                            {
+                              item.list_coins.map((el, index) => {
+                                return (
+                                  <img src={`/assets/icons/coins/${el.icon}.svg`} class="coins_wrap_item"></img>
+                                )
+                              })
+                            }
+                          </div> */}
+                        </td>
+                        <td class="listExchange_table_btn">
+                          <a class="btn btn_gradient" href={item.url} onclick={this.Fn.link}>
+                            <span>Обменять</span>
+                          </a>
+                        </td>
+                      </tr>
+                    )
+                  })
+                }
+
+                       {/* {
                   this.Static.records.map((item, index) => {
                     return (
                       <tr class="table_row listExchange_table_row">

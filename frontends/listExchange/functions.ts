@@ -30,30 +30,30 @@ export const pagBtn = function (direction, index) {
     return
 }
 
-export const addEvent = function () {
-    let url = `Exchanges?uuid=${this.Variable.myInfo.uuid}`
-    let eventSource
+// export const addEvent = function () {
+    // let url = `/api/events/Exchangers?uuid=${this.Variable.myInfo.uuid}`
+    // let eventSource
 
-    if (this.Ref.icoList) {
-        this.Ref.icoList.classList.add('animated');
-        setTimeout(() => {
-            this.Ref.icoList.classList.remove('animated');
-        }, 500)
-    }
+    // if (this.Ref.icoList) {
+    //     this.Ref.icoList.classList.add('animated');
+    //     setTimeout(() => {
+    //         this.Ref.icoList.classList.remove('animated');
+    //     }, 500)
+    // }
 
-    if (this._ListsEventSource.length) {
-        eventSource = this.eventSourceChange(url)
-    } else {
-        eventSource = this.eventSource(url)
-    }
+    // if (this._ListsEventSource.length) {
+    //     eventSource = this.eventSourceChange(url)
+    // } else {
+    //     eventSource = this.eventSource(url)
+    // }
 
-    eventSource.addEventListener('add', ({ data }) => {
-        if (!this.Static.records) {
-            this.Static.records = []
-        }
-        let record = JSON.parse(data)
-        this.Static.records.push(record)
-        this.init()
-    });
-    return
-}
+    // eventSource.addEventListener('add', ({ data }) => {
+    //     if (!this.Static.records) {
+    //         this.Static.records = []
+    //     }
+    //     let record = JSON.parse(data)
+    //     this.Static.records.push(record)
+    //     this.init()
+    // });
+    // return 
+// }
