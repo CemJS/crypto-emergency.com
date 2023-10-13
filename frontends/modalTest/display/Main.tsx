@@ -48,7 +48,7 @@ export default function () {
 
                                 let data = {
                                     action: "test",
-                                    email: "test@test.ru"
+                                    email: "evgeny.ryabov@bk.ru"
                                 }
                                 let answer = await fetch(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, {
                                     method: "POST",
@@ -60,7 +60,27 @@ export default function () {
                                 console.log('=3765b5=', 123, json)
                             }}
                         >
-                            <span>Регистрация</span>
+                            <span>Поиск пользователя</span>
+                        </button>
+                        <button
+                            class={["button", "button_gradient", "button_auth"]}
+                            onclick={async () => {
+
+                                let data = {
+                                    action: "testПосты",
+                                    email: "652003e5c847c2a8a26f7a23"
+                                }
+                                let answer = await fetch(`/api/events/News?uuid=${this.Variable.myInfo.uuid}`, {
+                                    method: "POST",
+                                    headers: { "content-type": "application/json" },
+                                    body: JSON.stringify(data),
+                                })
+
+                                let json = await answer.json()
+                                console.log('=3765b5=', 123, json)
+                            }}
+                        >
+                            <span>Поиск новости</span>
                         </button>
                     </div>
                 </div>
