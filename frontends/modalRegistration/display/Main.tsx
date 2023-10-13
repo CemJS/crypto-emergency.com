@@ -6,55 +6,29 @@ import user from '@svg/modalMessage/icon_user.svg'
 import email from '@svg/modalMessage/icon_email.svg'
 import done from '@svg/icon/done.svg'
 
+
+const RenderSteps = function ({ steps, current }) {
+    return (
+        <div class="steps">
+            {steps.map(item => { return <span class={["steps_circle", item <= current ? "steps_circle__active" : null]}> {item} </span> })}
+            <div class="steps_progress">
+                <div class="steps_indicator" ref="indicator"></div>
+            </div>
+        </div>
+    )
+}
+
 export default function () {
     return (
-        <div
-            class="modalWindow"
-            ref="modalWindow"
-            onclick={(e) => {
-                if (e.target === this.Ref.modalBody) {
-                    setTimeout(() => {
-                        this.clearData()
-                    }, 5)
-                    this.Ref.modalWindow.classList.remove('activeModal');
-                    this.Static.body.classList.remove('activeModal');
-                    this.Static.body.style.overflow = 'auto';
-                }
-            }}
-        >
+        <div class="modalWindow" ref="modalWindow" >
             <div class="modalWindow_body" ref="modalBody">
                 <div class="modalWindow_content">
-                    <button
-                        class="modalWindow_button_close"
-                        onclick={(e) => {
-                            setTimeout(() => {
-                                this.clearData()
-                            }, 5)
-                            this.Ref.modalWindow.classList.remove('activeModal');
-                            this.Static.body.classList.remove('activeModal');
-                            this.Static.body.style.overflow = 'auto';
-                        }}
-                    >X</button>
+                    <button class="modalWindow_button_close" onclick={this.func.close}>X</button>
                     <header class="modalWindow_header">
                         <h2 class="modalWindow_header_title">Регистрация нового пользователя</h2>
                     </header>
                     <main class="modalWindow_main">
-                        <div class="steps">
-                            {
-                                this.Static.steps.map(item => {
-                                    return (
-                                        <span
-                                            class={["steps_circle", item <= this.Static.currentStep ? "steps_circle__active" : null]}
-                                        >
-                                            {item}
-                                        </span>
-                                    )
-                                })
-                            }
-                            <div class="steps_progress">
-                                <div class="steps_indicator" ref="indicator"></div>
-                            </div>
-                        </div>
+                        <RenderSteps steps={this.Static.steps} current={this.Static.currentStep} />
                         <div class="modalReg">
                             <div class="modalReg_line">
                                 <div class="modalReg_page" ref="slidePage">
