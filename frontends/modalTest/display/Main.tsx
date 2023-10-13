@@ -47,8 +47,9 @@ export default function () {
                             onclick={async () => {
 
                                 let data = {
-                                    action: "verifyEmail",
-                                    email: "test@test.ru"
+                                    action: "registration",
+                                    step: 1,
+                                    email: "info@crypto-emergency.com"
                                 }
 
                                 let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
