@@ -40,8 +40,7 @@ const Step1 = function () {
                                 this.Static.form.email.value = e.target.value;
                                 this.Services.functions.formEmail(this.Static.form.email)
                                 this.fn("checkFrom")
-                            }}
-                        />
+                            }} />
                         <div class="modalWindow_field_labelLine">
                             <img src={email}></img>
                             <span>{this.Static.form.email.placeholder}</span>
@@ -54,7 +53,7 @@ const Step1 = function () {
                     "modalReg-confirmCode",
                     this.Static.waitCode ? "modalReg-confirmCode__active" : null
                 ]}>
-                    <div class="modalReg-code" ref="inputCode">
+                    <div class="modalReg-code">
                         {
                             this.Static.code.map((item: number, index: number) => {
                                 return (
@@ -147,12 +146,39 @@ const Step2 = function () {
         <div class="modalReg_page">
             <div class="modalReg_form">
                 <h3 class="modalReg_page-title">Заполните информация о себе</h3>
-                <div class="modalWindow_field">
-                    <input type="text" ref="userName" required></input>
+                <div class={[
+                    "modalWindow_field",
+                    this.Static.form.nickName.value.length ? "modalWindow_field__valid" : null,
+                    this.Static.form.nickName.error ? "modalWindow_field__error" : null,
+                    this.Static.form.nickName.valid ? "modalWindow_field__success" : null,
+                    this.Static.form.nickName.disable ? "modalWindow_field__disabled" : null
+                ]}>
+                    <input
+                        type="text"
+                        required
+                        autocomplete="off"
+                        oninput={async (e: any) => {
+                            this.Static.form.nickName.value = e.target.value;
+                            this.Services.functions.formNickName(this.Static.form.nickName)
+
+                            // let data = {
+                            //     action: "avalibleNick",
+                            //     nickname: this.Static.form.nickName.value
+                            // }
+
+                            // let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+                            // if (answer.error) {
+                            //     this.Static.form.nickName.error = "Логин занят!"
+                            //     this.Static.form.nickName.valid = false
+                            // }
+                            // this.fn("checkFrom")
+                        }} />
                     <div class="modalWindow_field_labelLine">
                         <img src={user}></img>
-                        <span>Имя пользователя</span>
+                        <span>{this.Static.form.nickName.placeholder}</span>
                     </div>
+                    <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.nickName.error}</p>
                 </div>
                 {/* <div class="g-colEqual-2">
                         <div
@@ -205,21 +231,18 @@ const Step2 = function () {
 
                 <div class="f-center modalReg_btns">
                     <button
-                        class="btn btn_timing"
-                        onclick={() => {
-                            this.Ref.slidePage.style.marginLeft = "0"
-                            this.fn("clickPrev", this.Ref.indicator)
-                            this.init()
-                        }}
-                    >
-                        Назад
-                    </button>
-                    <button
-                        class="btn btn_timing"
-                        onclick={() => {
-                            this.fn("clickNext", this.Ref.slidePage, this.Ref.indicator)
-                        }}
-                    >
+                        class={[
+                            "btn",
+                            this.Static.form.isValid ? null : "btn_passive"
+                        ]}
+                        onclick={async () => {
+                            if (!this.Static.form.isValid) {
+                                return
+                            }
+
+                            console.log('=371c2a=', "Далее")
+                            return
+                        }}>
                         Далее
                     </button>
                 </div>
@@ -305,6 +328,7 @@ const Step4 = function () {
     )
 }
 export default function () {
+    console.log('=2b5f31=', this.Static)
     return (
         <main class="modalWindow_main">
             <RenderSteps steps={this.Static.steps} current={this.Static.currentStep} />

@@ -1,5 +1,5 @@
 
-import { validEmail } from './validator'
+import { validEmail, validNickName } from './validator'
 
 interface Form {
     value: string,
@@ -42,4 +42,24 @@ export const formCode = function (form: Form) {
 
     form.valid = true
     return true
+}
+
+
+export const formNickName = async function (form: Form) {
+
+    if (!form.value.length || form.value.length < 5) {
+        form.error = false
+        form.valid = false
+        return false
+    }
+    let check = validNickName(form.value)
+    if (check) {
+        form.error = false
+        form.valid = true
+        return true
+    } else {
+        form.error = "Логин недоступен"
+        form.valid = false
+        return false
+    }
 }

@@ -22,6 +22,7 @@ export const checkFrom = async function () {
       this.Static.form.isValid = false
     }
     this.init()
+    return
   }
 
   if (this.Static.currentStep == 1 && this.Static.waitCode) {
@@ -36,7 +37,6 @@ export const checkFrom = async function () {
 
       let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
 
-      console.log('=cf5976=', answer)
       if (answer.error) {
         this.Static.form.code.error = "Код указан не верно!"
         this.init()
@@ -45,11 +45,18 @@ export const checkFrom = async function () {
 
       this.Static.waitCode = false
       this.Static.form.isValid = false
+      if (this.Static.setInterval) {
+        clearInterval(this.Static.setInterval)
+      }
       this.fn("clickNext")
       return
     }
+    return
   }
 
+  if (this.Static.currentStep == 2) {
+    console.log('=c97d6c=', this.Static.form)
+  }
 }
 
 
@@ -95,11 +102,11 @@ export const sendCode = async function () {
 
 export const timer = function (sec: number) {
   this.Static.time = sec
-  const timer = setInterval(() => {
+  this.Static.setInterval = setInterval(() => {
     this.Static.time = this.Static.time - 1
     this.init()
     if (this.Static.time <= 0) {
-      clearInterval(timer)
+      clearInterval(this.Static.setInterval)
     }
   }, 1000)
 }

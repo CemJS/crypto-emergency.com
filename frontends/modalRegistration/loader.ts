@@ -26,7 +26,7 @@ export const loader = function () {
       value: "",
       valid: false,
       error: false,
-      placeholder: "Введите ваш E-mail",
+      placeholder: "",
       view: false,
       disable: false
     },
@@ -34,7 +34,7 @@ export const loader = function () {
       value: "",
       valid: false,
       error: false,
-      placeholder: "Введите ваш E-mail",
+      placeholder: "Логин",
       view: false,
       disable: false
     },
