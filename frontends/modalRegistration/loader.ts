@@ -1,5 +1,5 @@
 export const loader = function () {
-  this.Variable.$el.body.style.overflow = 'hidden';
+
   this.Static.body = document.querySelector('body');
   this.Static.steps = [1, 2, 3, 4]
   this.Static.currentStep = 1;

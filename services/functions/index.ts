@@ -119,5 +119,6 @@ export const loader = async function (Variable: any) {
     idb.Auth = db.transaction("Auth").objectStore('Auth')
   });
   Variable.myInfo = await idbGet("Auth", 1)
+
   return
 }

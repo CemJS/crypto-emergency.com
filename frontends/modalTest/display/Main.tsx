@@ -48,8 +48,8 @@ export default function () {
 
                                 let data = {
                                     action: "registration",
+                                    email: "test2@test.com",
                                     step: 1,
-                                    email: "info@crypto-emergency.com"
                                 }
 
                                 let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
@@ -71,17 +71,21 @@ export default function () {
                             onclick={async () => {
 
                                 let data = {
-                                    action: "testПосты",
-                                    email: "652003e5c847c2a8a26f7a23"
+                                    action: "checkEmailCode",
+                                    email: "ratio2@mail.ru",
+                                    code: 111
                                 }
-                                let answer = await fetch(`/api/events/News?uuid=${this.Variable.myInfo.uuid}`, {
-                                    method: "POST",
-                                    headers: { "content-type": "application/json" },
-                                    body: JSON.stringify(data),
-                                })
 
-                                let json = await answer.json()
-                                console.log('=3765b5=', 123, json)
+                                let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+                                // let answer = await fetch(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, {
+                                //     method: "POST",
+                                //     headers: { "content-type": "application/json" },
+                                //     body: JSON.stringify(data),
+                                // })
+
+                                // let json = await answer.json()
+                                console.log('=3765b5=', 123, answer)
                             }}
                         >
                             <span>Поиск новости</span>

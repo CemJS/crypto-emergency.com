@@ -11,4 +11,7 @@ export const loader = async function (Variable: any) {
         let myInfo = JSON.parse(data)
         Variable.myInfo = Object.assign(Variable.myInfo, myInfo)
     });
+
+
 }
+

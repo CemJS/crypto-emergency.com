@@ -21,7 +21,10 @@ const RenderSteps = function ({ steps, current }) {
 
 export default function () {
     return (
-        <div class="modalWindow" ref="modalWindow" >
+        <div
+            class="modalWindow"
+            ref="modalWindow"
+            init={this.func.show} >
             <div class="modalWindow_body" ref="modalBody">
                 <div class="modalWindow_content">
                     <button class="modalWindow_button_close" onclick={this.func.close}>X</button>
