@@ -6,18 +6,6 @@ import back from '@svg/icon/prev.svg'
 
 export default function () {
 
-  if (!this.Events.show) {
-    this.Events.show = this.event(`/api/events/News?uuid=${this.Variable.myInfo.uuid}&_id=${this.Variable.DataUrl[2]}`)
-
-    this.Events.show.addEventListener('update', ({ data }) => {
-      let record = JSON.parse(data)
-      if (Object.keys(record).length) {
-        this.Static.record = record
-      }
-      this.init()
-    });
-  }
-
   if (!this.Static.record?._id) {
     return (
       <div>

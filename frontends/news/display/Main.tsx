@@ -1,4 +1,5 @@
 import { Cemjsx } from "cemjs-all"
+import CategoryLine from "./CategoryLine"
 import comments from "@svg/news/comments.svg"
 
 
@@ -13,33 +14,35 @@ const RenderItems = function ({ items }) {
   }
 
   return (
-    <div class="news__inner">
-      {
-        items.map((item) => {
-          return (
-            <a class="news__item"
-              href={`/news/show/${item._id}`}
-              onclick={(e) => {
-                this.Static.record = item
-                this.Fn.link(e)
-              }}
-            >
-              <div class="news__item_image">
-                <img src={`/assets/upload/news/${item.image}`} />
-              </div>
-              <div class="news__item_title">{item.title}</div>
-              <div class="news__item_description">{item.preview}</div>
-              <div class="news__item_statistic">
-                <span>
-                  <img src={comments} alt="Комментарии." />
-                  {item.statistic.comments}
-                </span>
-                <span>{this.Services.functions.dateFormat(item.showDate)}</span>
-              </div>
-            </a>
-          )
-        })
-      }
+    <div>
+      <div class="news__inner">
+        {
+          items.map((item) => {
+            return (
+              <a class="news__item"
+                href={`/news/show/${item._id}`}
+                onclick={(e) => {
+                  this.Static.record = item
+                  this.Fn.link(e)
+                }}
+              >
+                <div class="news__item_image">
+                  <img src={`/assets/upload/news/${item.image}`} />
+                </div>
+                <div class="news__item_title">{item.title}</div>
+                <div class="news__item_description">{item.preview}</div>
+                <div class="news__item_statistic">
+                  <span>
+                    <img src={comments} alt="Комментарии." />
+                    {item.statistic.comments}
+                  </span>
+                  <span>{this.Services.functions.dateFormat(item.showDate)}</span>
+                </div>
+              </a>
+            )
+          })
+        }
+      </div>
     </div>
   )
 }
@@ -47,6 +50,7 @@ const RenderItems = function ({ items }) {
 export default function () {
   return (
     <section class="news">
+      <CategoryLine items={this.Static.category} active={this.Static.catActive} />
       <div class="wrapper">
         <RenderItems items={this.Static.records} />
       </div>
