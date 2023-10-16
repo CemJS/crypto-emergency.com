@@ -39,7 +39,7 @@ export const addEvent = function () {
 
     export const change = function () {
         this.Static.records = []
-        if (this.Static.makeFilter.cat == "Все") {
+        if (this.Static.makeFilter.cat == 0) {
             this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&lang=ru&active=${this.Static.makeFilter.active}`, [
                 {
                     type: "add",
@@ -53,7 +53,8 @@ export const addEvent = function () {
                 }
             ])
         } else {
-            this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&cat=${this.Static.makeFilter.cat}&active=${this.Static.makeFilter.active}`, [
+            console.log('=dcbe86=',this.Static.makeFilter.cat)
+            this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&cat=${this.Static.categories[this.Static.makeFilter.cat].name}&active=${this.Static.makeFilter.active}`, [
                 {
                     type: "add",
                     fn: ({ data }) => {

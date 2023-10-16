@@ -10,17 +10,11 @@ export default function ({ items, active }) {
                             onclick={() => {
                                 this.Static.catActive = index
                                 console.log('=73bd96=',item.name)
-                                this.Static.makeFilter.cat = item.name
+                                this.Static.makeFilter.cat = index
                                 console.log('=this.Static.makeFilter.cat=',this.Static.makeFilter.cat)
                                 this.fn("change")
                                 this.init()
-                                // console.log('=1d5abb=',this.Static.url)
-                                // if (this.Static.catActive != index) {
-                                    // this.Static.catActive = index
-                                    
-                                    
-                                    // console.log('=catActive=', this.Static.catActive)
-                                // }
+                                
                             }}
                         >
                             <span>{item.name}</span>
