@@ -5,6 +5,7 @@ import eyeSlash from "@svg/modalRegistration/eye-slash.svg"
 import user from '@svg/modalMessage/icon_user.svg'
 import email from '@svg/modalMessage/icon_email.svg'
 import done from '@svg/modalRegistration/done.svg'
+import edit from '@svg/icon/edit.svg'
 
 
 const RenderSteps = function ({ steps, current }) {
@@ -46,6 +47,17 @@ const Step1 = function () {
                             <span>{this.Static.form.email.placeholder}</span>
                         </div>
                         <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.email.error}</p>
+
+                        {
+                            this.Static.form.email.disable ?
+                                <img
+                                    class="modalWindow_field__edit"
+                                    src={edit} alt="Редактирование email"
+                                    onclick={() => {
+                                        this.fn("changeEmail")
+                                    }}
+                                /> : null
+                        }
                     </div>
                 </div>
 
@@ -53,13 +65,16 @@ const Step1 = function () {
                     "modalReg-confirmCode",
                     this.Static.waitCode ? "modalReg-confirmCode__active" : null
                 ]}>
-                    <div class="modalReg-code">
+                    <div class="modalReg-code" >
                         {
                             this.Static.code.map((item: number, index: number) => {
                                 return (
                                     <input
                                         type="number"
-                                        class="modalReg-code_input"
+                                        class={[
+                                            "modalReg-code_input",
+                                            this.Static.form.code.error ? "modalReg-code_input__error" : null
+                                        ]}
                                         oninput={(e) => {
                                             if (e.data == null && e.target.value.length > 1) {
                                                 let arr = e.target.value.trim().split("")
@@ -95,6 +110,11 @@ const Step1 = function () {
                             })
                         }
                     </div>
+
+                    {
+                        this.Static.form.code.error ? <span class="modalReg-code__error">{this.Static.form.code.error}</span> : null
+                    }
+
                     <div class="modalReg_timer">
                         {
                             this.Static.time > 0
@@ -139,7 +159,6 @@ const Step1 = function () {
         </div>
     )
 }
-
 
 const Step2 = function () {
     return (

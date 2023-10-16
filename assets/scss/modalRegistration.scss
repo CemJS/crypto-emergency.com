@@ -17,6 +17,7 @@
       font-size: clamp(16px, 2vw, 18px);
       line-height: 1.5;
       font-weight: 600;
+      margin-bottom: 15px;
     }
   }
 
@@ -53,6 +54,7 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
+    position: relative;
 
 
     &_input {
@@ -77,8 +79,16 @@
         -webkit-appearance: none;
         margin: 0;
       }
+
+      &__error {
+        border: 1px solid var(--red);
+      }
     }
 
+    &__error {
+      color: var(--red);
+      font-weight: 600;
+    }
   }
 
   &_timer {

@@ -37,6 +37,7 @@ export const checkFrom = async function () {
 
       let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
 
+      // console.log('=cf5976=', answer)
       if (answer.error) {
         this.Static.form.code.error = "Код указан не верно!"
         this.init()
@@ -80,6 +81,13 @@ export const sendCode = async function () {
   this.fn("timer", 60)
   this.init()
 
+}
+
+export const changeEmail = function () {
+  this.Static.form.email.disable = false
+  this.Static.waitCode = false
+  this.Static.form.code.value = ""
+  this.init()
 }
 
 // export const handleKeyUp = function (e, index) {
