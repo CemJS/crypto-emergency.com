@@ -13,21 +13,45 @@ export const close = function () {
   }, 500)
 }
 
-export const checkFrom = function () {
+export const checkFrom = async function () {
+
   if (this.Static.currentStep == 1 && !this.Static.waitCode) {
     if (this.Static.form.email.valid) {
       this.Static.form.isValid = true
     } else {
       this.Static.form.isValid = false
     }
+    this.init()
   }
 
   if (this.Static.currentStep == 1 && this.Static.waitCode) {
 
+    if (this.Static.form.code.valid && this.Static.form.email.valid) {
+
+      let data = {
+        action: "checkEmailCode",
+        email: this.Static.form.email.value,
+        code: this.Static.form.code.value
+      }
+
+      let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+      console.log('=cf5976=', answer)
+      if (answer.error) {
+        this.Static.form.code.error = "Код указан не верно!"
+        this.init()
+        return
+      }
+
+      this.Static.waitCode = false
+      this.Static.form.isValid = false
+      this.fn("clickNext")
+      return
+    }
   }
 
-  this.init()
 }
+
 
 export const sendCode = async function () {
   let data = {
@@ -79,15 +103,15 @@ export const timer = function (sec: number) {
   }, 1000)
 }
 
-export const clickNext = function (slidePage, indicator) {
-  slidePage.style.marginLeft = `-${this.Static.widthSlide * this.Static.currentStep}%`
+export const clickNext = function () {
+  this.Ref.slidePage.style.marginLeft = `-${this.Static.widthSlide * this.Static.currentStep}%`
   this.Static.currentStep++;
-  indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+  this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
   this.init();
 }
 
-export const clickPrev = function (indicator) {
+export const clickPrev = function () {
   this.Static.currentStep = --this.Static.currentStep;
-  indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+  this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
 }
 

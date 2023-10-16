@@ -60,16 +60,15 @@ const Step1 = function () {
                                     <input
                                         type="number"
                                         class="modalReg-code_input"
-                                        // onkeyup={(e) => { this.fn("handleKeyUp", e, index) }}
                                         oninput={(e) => {
                                             if (e.data == null && e.target.value.length > 1) {
-                                                console.log('=728c45=', e.data, e.target.value)
                                                 let arr = e.target.value.trim().split("")
                                                 if (arr.length > 6) {
                                                     arr = arr.slice(0, 6)
                                                 }
                                                 let arrElements = e.target.parentElement.children;
                                                 arr.forEach((item, index) => {
+                                                    this.Static.code[index] = item
                                                     arrElements[index].value = item
                                                     arrElements[index].focus();
                                                 });
@@ -85,11 +84,11 @@ const Step1 = function () {
                                                     arrElements[index - 1].focus();
                                                 }
 
-                                                this.Static.form.code.value = Number(this.Static.code.join(""))
 
-                                                this.fn("checkFrom")
                                             }
-                                            // this.fn("validOneNum", e, index)
+                                            this.Static.form.code.value = Number(this.Static.code.join(""))
+                                            this.Services.functions.formCode(this.Static.form.code)
+                                            this.fn("checkFrom")
                                         }}
                                     />
                                 )
