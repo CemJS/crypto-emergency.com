@@ -12,12 +12,11 @@ const RenderItems = function ({ items }) {
       </div>
     )
   }
-
   return (
     <div>
       <div class="news__inner">
         {
-          items.map((item) => {
+          items.map((item, index) => {
             return (
               <a class="news__item"
                 href={`/news/show/${item._id}`}
@@ -25,7 +24,11 @@ const RenderItems = function ({ items }) {
                   this.Static.record = item
                   this.Fn.link(e)
                 }}
-              >
+                isVisible={() => {
+                  if (index == items.length - 3) {
+                    console.log('=e3f47c=', 123, index)
+                  }
+                }}>
                 <div class="news__item_image">
                   <img src={`/assets/upload/news/${item.image}`} />
                 </div>
