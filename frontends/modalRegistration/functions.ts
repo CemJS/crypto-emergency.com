@@ -24,7 +24,6 @@ export const checkFrom = function () {
 
   if (this.Static.currentStep == 1 && this.Static.waitCode) {
 
-
   }
 
   this.init()

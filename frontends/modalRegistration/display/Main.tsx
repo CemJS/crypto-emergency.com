@@ -84,6 +84,9 @@ const Step1 = function () {
                                                 if (index != 0 && this.Static.code[index] == "") {
                                                     arrElements[index - 1].focus();
                                                 }
+
+                                                this.Static.form.code.value = Number(this.Static.code.join(""))
+
                                                 this.fn("checkFrom")
                                             }
                                             // this.fn("validOneNum", e, index)
