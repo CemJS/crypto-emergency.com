@@ -27,7 +27,7 @@ export const loader = function () {
     ]
 
     this.Static.makeFilter = {
-        cat: "Все",
+        cat: 0,
         active: "Active"
     }
 
