@@ -30,6 +30,7 @@ const Step1 = function () {
                         this.Static.form.email.value.length ? "modalWindow_field__valid" : null,
                         this.Static.form.email.error ? "modalWindow_field__error" : null,
                         this.Static.form.email.valid ? "modalWindow_field__success" : null,
+                        this.Static.form.email.disable ? "modalWindow_field__disabled" : null
                     ]}>
                         <input
                             type="email"
@@ -55,13 +56,41 @@ const Step1 = function () {
                 ]}>
                     <div class="modalReg-code" ref="inputCode">
                         {
-                            this.Static.code.map((item, index) => {
+                            this.Static.code.map((item: number, index: number) => {
                                 return (
                                     <input
                                         type="number"
                                         class="modalReg-code_input"
-                                        onkeyup={(e) => { this.fn("handleKeyUp", e, index) }}
-                                    // oninput={(e) => { this.fn("validOneNum", e, index) }}
+                                        oninput={(e) => {
+                                            if (e.data == null && e.target.value.length > 1) {
+                                                let arr = e.target.value.trim().split("")
+                                                if (arr.length > 6) {
+                                                    arr = arr.slice(0, 6)
+                                                }
+                                                let arrElements = e.target.parentElement.children;
+                                                arr.forEach((item, index) => {
+                                                    this.Static.code[index] = item
+                                                    arrElements[index].value = item
+                                                    arrElements[index].focus();
+                                                });
+                                            } else {
+                                                e.target.value = e.data
+                                                this.Static.code[index] = e.target.value
+                                                let arrElements = e.target.parentElement.children;
+                                                if (index < this.Static.code.length - 1 && this.Static.code[index] != "") {
+                                                    arrElements[index + 1].focus();
+                                                }
+
+                                                if (index != 0 && this.Static.code[index] == "") {
+                                                    arrElements[index - 1].focus();
+                                                }
+
+
+                                            }
+                                            this.Static.form.code.value = Number(this.Static.code.join(""))
+                                            this.Services.functions.formCode(this.Static.form.code)
+                                            this.fn("checkFrom")
+                                        }}
                                     />
                                 )
                             })

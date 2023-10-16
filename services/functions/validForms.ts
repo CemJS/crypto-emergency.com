@@ -27,3 +27,19 @@ export const formEmail = function (form: Form) {
         return false
     }
 }
+
+
+export const formCode = function (form: Form) {
+    if (typeof form.value != "number") {
+        form.valid = false
+        return false
+    }
+
+    if (form.value < 100000 || form.value > 999999) {
+        form.valid = false
+        return false
+    }
+
+    form.valid = true
+    return true
+}

@@ -13,16 +13,45 @@ export const close = function () {
   }, 500)
 }
 
-export const checkFrom = function () {
-  if (this.Static.currentStep == 1) {
+export const checkFrom = async function () {
+
+  if (this.Static.currentStep == 1 && !this.Static.waitCode) {
     if (this.Static.form.email.valid) {
       this.Static.form.isValid = true
     } else {
       this.Static.form.isValid = false
     }
+    this.init()
   }
-  this.init()
+
+  if (this.Static.currentStep == 1 && this.Static.waitCode) {
+
+    if (this.Static.form.code.valid && this.Static.form.email.valid) {
+
+      let data = {
+        action: "checkEmailCode",
+        email: this.Static.form.email.value,
+        code: this.Static.form.code.value
+      }
+
+      let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+      console.log('=cf5976=', answer)
+      if (answer.error) {
+        this.Static.form.code.error = "Код указан не верно!"
+        this.init()
+        return
+      }
+
+      this.Static.waitCode = false
+      this.Static.form.isValid = false
+      this.fn("clickNext")
+      return
+    }
+  }
+
 }
+
 
 export const sendCode = async function () {
   let data = {
@@ -40,28 +69,29 @@ export const sendCode = async function () {
   }
 
   this.Static.waitCode = true
+  this.Static.form.email.disable = true
   this.fn("timer", 60)
   this.init()
 
 }
 
-export const handleKeyUp = function (e, index) {
-  let arrElements = e.target.parentElement.children;
-  if (e.key === "Backspace" && this.Static.code[index] !== "") {
-    this.Static.code[index] = "";
-    arrElements[index].focus();
-  } else if (e.key === "Backspace" && this.Static.code[index] == "" && index !== 0) {
-    this.Static.code[index - 1] = "";
-    arrElements[index - 1].value = ""
-    arrElements[index - 1].focus();
-  }
-  if (e.key === "ArrowLeft" && index > 0) {
-    arrElements[index - 1].focus();
-  }
-  if (e.key === "ArrowRight" && index < arrElements.length - 1) {
-    arrElements[index + 1].focus();
-  }
-}
+// export const handleKeyUp = function (e, index) {
+//   let arrElements = e.target.parentElement.children;
+//   if (e.key === "Backspace" && this.Static.code[index] !== "") {
+//     this.Static.code[index] = "";
+//     arrElements[index].focus();
+//   } else if (e.key === "Backspace" && this.Static.code[index] == "" && index !== 0) {
+//     this.Static.code[index - 1] = "";
+//     arrElements[index - 1].value = ""
+//     arrElements[index - 1].focus();
+//   }
+//   if (e.key === "ArrowLeft" && index > 0) {
+//     arrElements[index - 1].focus();
+//   }
+//   if (e.key === "ArrowRight" && index < arrElements.length - 1) {
+//     arrElements[index + 1].focus();
+//   }
+// }
 
 export const timer = function (sec: number) {
   this.Static.time = sec
@@ -74,21 +104,15 @@ export const timer = function (sec: number) {
   }, 1000)
 }
 
-
-
-export const validCode = function (code) {
-
-}
-
-export const clickNext = function (slidePage, indicator) {
-  slidePage.style.marginLeft = `-${this.Static.widthSlide * this.Static.currentStep}%`
+export const clickNext = function () {
+  this.Ref.slidePage.style.marginLeft = `-${this.Static.widthSlide * this.Static.currentStep}%`
   this.Static.currentStep++;
-  indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+  this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
   this.init();
 }
 
-export const clickPrev = function (indicator) {
+export const clickPrev = function () {
   this.Static.currentStep = --this.Static.currentStep;
-  indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
+  this.Ref.indicator.style.width = `${(this.Static.currentStep - 1) / (this.Static.steps.length - 1) * 100}%`
 }
 

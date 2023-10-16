@@ -9,7 +9,7 @@ export const loader = function () {
   this.Static.regOneNum = /^\d{1,}$/
 
 
-  this.Static.code = new Array(6).fill("")
+  this.Static.code = new Array(6).fill(null)
 
   //-----------------------
 
@@ -20,7 +20,7 @@ export const loader = function () {
       error: false,
       placeholder: "Email",
       view: false,
-      disable: undefined
+      disable: false
     },
     code: {
       value: "",

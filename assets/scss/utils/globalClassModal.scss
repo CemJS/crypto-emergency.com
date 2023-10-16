@@ -175,6 +175,12 @@ h3 {
       }
     }
 
+    &__disabled {
+      opacity: 0.5;
+      pointer-events: none;
+
+    }
+
     &__success {
       input {
         border: 1px solid var(--green);
