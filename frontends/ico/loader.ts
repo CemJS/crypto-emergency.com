@@ -1,40 +1,109 @@
 export const loader = function () {
 
 
-  this.Static.records = []
+    this.Static.records = []
 
-  if (this.Variable.DataUrl[1] == "show") {
-      this.Events.show = this.event(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&id=${this.Variable.DataUrl[2]}`)
+    this.Static.catActive = 0
+ 
+    this.Static.categories = [
+        {
+            name: 'Все',
+        },
+        {
+            name: 'ICO',
+        },
+        {
+            name: 'IDO',
+        },
+        {
+            name: 'IEO',
+        },
+        {
+            name: 'IGO',
+        },
+        {
+            name: 'IFO'
+        }
+    ]
 
-      this.Events.show.addEventListener('update', ({ data }) => {
-          let record = JSON.parse(data)
-          if (Object.keys(record).length) {
-              this.Static.record = record
-          }
-          this.init()
-      });
-  }
+    //status tabs
+    this.Static.activeIndex = 0
+    // this.Static.activeTab = 'Active';
+    // this.Static.icoList = document.querySelector('ico_list');
 
-  this.Events.ico = this.event(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&lang=ru`)
+    this.initAuto("catActive", (value: number) => {
+        console.log('=value=', value)
+        console.log('=14d296=', "Кликаю")
+        this.Static.records = []
+        if (value == 0) {
+            this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&lang=ru`, [
+                {
+                    type: "add",
+                    fn: ({ data }) => {
+                        let record = JSON.parse(data)
+                        if (Object.keys(record).length) {
+                            this.Static.records.push(record)
+                        }
+                        this.init()
+                    }
+                }
+            ])
+        } else {
+            this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&lang=ru&cat=${this.Static.categories[value].name}`, [
+                {
+                    type: "add",
+                    fn: ({ data }) => {
+                        let record = JSON.parse(data)
+                        if (Object.keys(record).length) {
+                            this.Static.records.push(record)
+                        }
+                        this.init()
+                    }
+                }
+            ])
 
-  this.Events.ico.addEventListener('add', ({ data }) => {
+        }
+        return true
+    })
 
-    
-      let record = JSON.parse(data)
-      if (Object.keys(record).length) {
-          this.Static.records.push(record)
-      }
-      this.init()
-  });
+    if (this.Variable.DataUrl[1] == "show") {
+        this.Events.ico = this.event(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&id=${this.Variable.DataUrl[2]}`, [
+            {
+                type: "update",
+                fn: ({ data }) => {
+                    let record = JSON.parse(data)
+                    if (Object.keys(record).length) {
+                        this.Static.record = record
+                    }
+                    this.init()
+                }
+            }
+        ])
+    }
 
-  this.Static.makeFilter = {
-    cat: "",
-    active: "Active"
-  }
+    this.Events.ico = this.event(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&lang=ru`, [
+        {
+            type: "add",
+            fn: ({ data }) => {
+                let record = JSON.parse(data)
+                if (Object.keys(record).length) {
+                    this.Static.records.push(record)
+                }
+                this.init()
+            }
+        }
+    ])
 
-  this.fn("addEvent", this.Static.makeFilter)
+    return
 
-  this.Static.activeIndex = 0
-  this.Static.activeTab = 'Active';
-  this.Static.icoList = document.querySelector('ico_list');
+
+
+    this.Static.makeFilter = {
+        cat: "",
+        active: "Active"
+    }
+
+    this.fn("addEvent", this.Static.makeFilter)
+
+
 }

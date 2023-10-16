@@ -13,7 +13,7 @@ export default function () {
                         <th>age</th>
                     </tr>
                     {
-                        this.Static.records.map((item, index) => {
+                        this.Static.records.map((item) => {
                             return (
 
                                 <tr class='table_bonus_row'>
