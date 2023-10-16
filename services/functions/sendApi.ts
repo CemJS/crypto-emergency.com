@@ -3,9 +3,6 @@
 
 
 export const sendApi = async function (url: string, data: any) {
-
-    console.log('=158bfa=', this)
-
     try {
         let answer = await fetch(url, {
             method: "POST",

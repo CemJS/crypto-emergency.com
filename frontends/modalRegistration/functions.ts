@@ -5,21 +5,44 @@ export const show = function ($el: HTMLElement) {
   }, 100);
 }
 
-export const close = function (e) {
+export const close = function () {
   this.Ref.modalWindow.classList.remove('activeModal');
-  setTimeout(() => { this.clearData() }, 500)
-  this.Variable.$el.body.style.overflow = 'auto';
+  setTimeout(() => {
+    this.clearData();
+    this.Variable.$el.body.style.overflow = 'auto';
+  }, 500)
 }
 
 export const checkFrom = function () {
-  console.log('=f99de2=', 123)
-  if (this.Static.email.valid && this.Static.pass.valid && this.Static.repeatPass.valid && this.Static.check) {
-    this.Static.isValid = true
-  } else {
-    this.Static.isValid = false
+  if (this.Static.currentStep == 1) {
+    if (this.Static.form.email.valid) {
+      this.Static.form.isValid = true
+    } else {
+      this.Static.form.isValid = false
+    }
+  }
+  this.init()
+}
+
+export const sendCode = async function () {
+  let data = {
+    action: "registration",
+    email: this.Static.form.email.value,
+    step: this.Static.currentStep,
   }
 
+  let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+  if (answer.error) {
+    this.Static.form.email.error = "Пользователь с таким email уже существует!"
+    this.init()
+    return
+  }
+
+  this.Static.waitCode = true
+  this.fn("timer", 60)
   this.init()
+
 }
 
 export const handleKeyUp = function (e, index) {
@@ -40,7 +63,8 @@ export const handleKeyUp = function (e, index) {
   }
 }
 
-export const timer = function () {
+export const timer = function (sec: number) {
+  this.Static.time = sec
   const timer = setInterval(() => {
     this.Static.time = this.Static.time - 1
     this.init()
@@ -50,30 +74,7 @@ export const timer = function () {
   }, 1000)
 }
 
-export const resetTimer = function () {
-  this.Static.time = 60
-  this.init()
-}
 
-export const validEmail = function (email: string) {
-  if (!this.Static.regEmail.test(email)) {
-    this.Ref.statusEmail.style.color = "#E84142"
-    this.Ref.statusEmail.innerText = "Неправильно введён email!"
-    this.Ref.emailField.classList.add("modalWindow_field__error")
-    return false
-  } else {
-    this.Ref.statusEmail.style.color = "#5FAC09";
-    this.Ref.statusEmail.innerText = "Email введён корректно!"
-    this.Ref.emailField.classList.remove("modalWindow_field__error")
-    // setTimeout(() => {
-    //   this.Ref.statusEmail.innerText = ""
-    // }, 2000)
-    // this.Ref.confirmCode.classList.add("modalReg-confirmCode__active")
-    // this.fn("timer")
-    this.Ref.regBtnEmail.classList.remove("btn_passive")
-    return true
-  }
-}
 
 export const validCode = function (code) {
 
