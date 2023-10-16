@@ -2,14 +2,14 @@ export const loader = function () {
   this.Static.steps = [1, 2, 3, 4]
   this.Static.currentStep = 1;
   this.Static.widthSlide = 25;
-  this.Static.waitCode = false
+  this.Static.waitCode = true
   this.Static.time = 60;
 
 
   this.Static.regOneNum = /^\d{1,}$/
 
 
-  this.Static.code = new Array(6).fill("")
+  this.Static.code = new Array(6).fill(null)
 
   //-----------------------
 

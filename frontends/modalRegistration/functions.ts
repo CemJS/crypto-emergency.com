@@ -74,12 +74,6 @@ export const timer = function (sec: number) {
   }, 1000)
 }
 
-
-
-export const validCode = function (code) {
-
-}
-
 export const clickNext = function (slidePage, indicator) {
   slidePage.style.marginLeft = `-${this.Static.widthSlide * this.Static.currentStep}%`
   this.Static.currentStep++;
