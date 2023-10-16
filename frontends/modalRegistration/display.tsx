@@ -20,7 +20,7 @@ export const display = function () {
           </header>
           <Navigation />
           <footer class="modalWindow_footer">
-            <p>Регистрируясь на платформе, вы принимаете <a href="/user-agreement" onclick={this.Fn.link} class="link" >пользовательское соглашение</a> и <a href="/user-data-policy" onclick={this.Fn.link} class="link">политику конфиденциальности</a></p>
+            <p class="text">Регистрируясь на платформе, вы принимаете <a href="/user-agreement" onclick={this.Fn.link} class="link-beauty" >пользовательское соглашение</a> и <a href="/user-data-policy" onclick={this.Fn.link} class="link-beauty">политику конфиденциальности</a></p>
           </footer>
         </div>
       </div>

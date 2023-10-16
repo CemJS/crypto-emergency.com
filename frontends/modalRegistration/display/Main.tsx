@@ -24,7 +24,7 @@ const Step1 = function () {
     return (
         <div class="modalReg_page" ref="slidePage">
             <div class="modalReg_form">
-                <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="f-col">
                     <h3 class="modalReg_page-title">Подтвердите адрес электронной почты</h3>
                     <div class={[
                         "modalWindow_field",
@@ -202,61 +202,13 @@ const Step2 = function () {
                         <img src={user}></img>
                         <span>{this.Static.form.nickName.placeholder}</span>
                     </div>
-                    <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.nickName.error}</p>
                 </div>
-                {/* <div class="g-colEqual-2">
-                        <div
-                            class="dropdown"
-                            ref="chooseLang"
-                            onclick={() => {
-                                this.Ref.chooseLang.classList.toggle("dropdown__active")
-                                this.Ref.optionsLang.classList.toggle("dropdown-options__active")
-                            }}
-                        >
-                            <input ref="generalLang" class="dropdown_input" type="text" readonly placeholder="Язык" />
-                            <div class="dropdown-options" ref="optionsLang">
-                                {
-                                    this.Static.lang.map(item => {
-                                        return (
-                                            <div
-                                                class="dropdown-options_item"
-                                                onmouseover={() => {
-                                                    this.func.checkFrom(this.Ref.generalLang, item.name)
-                                                    this.init()
-                                                }}
-                                            >
-                                                {item.name}
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div
-                            class="dropdown"
-                            ref="chooseCountry"
-                            onclick={() => {
-                                this.Ref.chooseCountry.classList.toggle("dropdown__active")
-                                this.Ref.optionsCountries.classList.toggle("dropdown-options__active")
-                            }}
-                        >
-                            <input class="dropdown_input" type="text" readonly placeholder="Страна" />
-                            <div class="dropdown-options" ref="optionsCountries">
-                                {
-                                    this.Static.countries.map(item => {
-                                        return (
-                                            <div class="dropdown-options_item">{item.name}</div>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                    </div> */}
 
                 <div class="f-center modalReg_btns">
                     <button
                         class={[
                             "btn",
+                            "btn_timing",
                             this.Static.form.isValid ? null : "btn_passive"
                         ]}
                         onclick={async () => {
