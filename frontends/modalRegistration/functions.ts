@@ -112,6 +112,9 @@ export const changeEmail = function () {
 
 export const timer = function (sec: number) {
   this.Static.time = sec
+  if (this.Static.setInterval) {
+    clearInterval(this.Static.setInterval)
+  }
   this.Static.setInterval = setInterval(() => {
     this.Static.time = this.Static.time - 1
     this.init()
