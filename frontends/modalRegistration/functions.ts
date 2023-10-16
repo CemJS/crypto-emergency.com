@@ -14,13 +14,19 @@ export const close = function () {
 }
 
 export const checkFrom = function () {
-  if (this.Static.currentStep == 1) {
+  if (this.Static.currentStep == 1 && !this.Static.waitCode) {
     if (this.Static.form.email.valid) {
       this.Static.form.isValid = true
     } else {
       this.Static.form.isValid = false
     }
   }
+
+  if (this.Static.currentStep == 1 && this.Static.waitCode) {
+
+
+  }
+
   this.init()
 }
 
@@ -45,23 +51,23 @@ export const sendCode = async function () {
 
 }
 
-export const handleKeyUp = function (e, index) {
-  let arrElements = e.target.parentElement.children;
-  if (e.key === "Backspace" && this.Static.code[index] !== "") {
-    this.Static.code[index] = "";
-    arrElements[index].focus();
-  } else if (e.key === "Backspace" && this.Static.code[index] == "" && index !== 0) {
-    this.Static.code[index - 1] = "";
-    arrElements[index - 1].value = ""
-    arrElements[index - 1].focus();
-  }
-  if (e.key === "ArrowLeft" && index > 0) {
-    arrElements[index - 1].focus();
-  }
-  if (e.key === "ArrowRight" && index < arrElements.length - 1) {
-    arrElements[index + 1].focus();
-  }
-}
+// export const handleKeyUp = function (e, index) {
+//   let arrElements = e.target.parentElement.children;
+//   if (e.key === "Backspace" && this.Static.code[index] !== "") {
+//     this.Static.code[index] = "";
+//     arrElements[index].focus();
+//   } else if (e.key === "Backspace" && this.Static.code[index] == "" && index !== 0) {
+//     this.Static.code[index - 1] = "";
+//     arrElements[index - 1].value = ""
+//     arrElements[index - 1].focus();
+//   }
+//   if (e.key === "ArrowLeft" && index > 0) {
+//     arrElements[index - 1].focus();
+//   }
+//   if (e.key === "ArrowRight" && index < arrElements.length - 1) {
+//     arrElements[index + 1].focus();
+//   }
+// }
 
 export const timer = function (sec: number) {
   this.Static.time = sec

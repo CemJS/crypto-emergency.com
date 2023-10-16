@@ -55,13 +55,39 @@ const Step1 = function () {
                 ]}>
                     <div class="modalReg-code" ref="inputCode">
                         {
-                            this.Static.code.map((item, index) => {
+                            this.Static.code.map((item: number, index: number) => {
                                 return (
                                     <input
                                         type="number"
                                         class="modalReg-code_input"
-                                        onkeyup={(e) => { this.fn("handleKeyUp", e, index) }}
-                                    // oninput={(e) => { this.fn("validOneNum", e, index) }}
+                                        // onkeyup={(e) => { this.fn("handleKeyUp", e, index) }}
+                                        oninput={(e) => {
+                                            if (e.data == null && e.target.value.length > 1) {
+                                                console.log('=728c45=', e.data, e.target.value)
+                                                let arr = e.target.value.trim().split("")
+                                                if (arr.length > 6) {
+                                                    arr = arr.slice(0, 6)
+                                                }
+                                                let arrElements = e.target.parentElement.children;
+                                                arr.forEach((item, index) => {
+                                                    arrElements[index].value = item
+                                                    arrElements[index].focus();
+                                                });
+                                            } else {
+                                                e.target.value = e.data
+                                                this.Static.code[index] = e.target.value
+                                                let arrElements = e.target.parentElement.children;
+                                                if (index < this.Static.code.length - 1 && this.Static.code[index] != "") {
+                                                    arrElements[index + 1].focus();
+                                                }
+
+                                                if (index != 0 && this.Static.code[index] == "") {
+                                                    arrElements[index - 1].focus();
+                                                }
+                                                this.fn("checkFrom")
+                                            }
+                                            // this.fn("validOneNum", e, index)
+                                        }}
                                     />
                                 )
                             })
