@@ -179,19 +179,24 @@ const Step2 = function () {
                         oninput={async (e: any) => {
                             this.Static.form.nickName.value = e.target.value;
                             this.Services.functions.formNickName(this.Static.form.nickName)
+                            if (this.Static.setTimeout) {
+                                clearTimeout(this.Static.setTimeout)
+                            }
+                            this.Static.setTimeout = setTimeout(async () => {
+                                let data = {
+                                    action: "avalibleNick",
+                                    nickname: this.Static.form.nickName.value
+                                }
 
-                            // let data = {
-                            //     action: "avalibleNick",
-                            //     nickname: this.Static.form.nickName.value
-                            // }
+                                let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
 
-                            // let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+                                if (answer.error) {
+                                    this.Static.form.nickName.error = "Логин занят!"
+                                    this.Static.form.nickName.valid = false
+                                }
+                                this.fn("checkFrom")
+                            }, 300);
 
-                            // if (answer.error) {
-                            //     this.Static.form.nickName.error = "Логин занят!"
-                            //     this.Static.form.nickName.valid = false
-                            // }
-                            // this.fn("checkFrom")
                         }} />
                     <div class="modalWindow_field_labelLine">
                         <img src={user}></img>
@@ -347,7 +352,6 @@ const Step4 = function () {
     )
 }
 export default function () {
-    console.log('=2b5f31=', this.Static)
     return (
         <main class="modalWindow_main">
             <RenderSteps steps={this.Static.steps} current={this.Static.currentStep} />

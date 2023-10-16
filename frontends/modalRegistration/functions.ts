@@ -56,7 +56,9 @@ export const checkFrom = async function () {
   }
 
   if (this.Static.currentStep == 2) {
-    console.log('=c97d6c=', this.Static.form)
+
+    this.init()
+    return
   }
 }
 
