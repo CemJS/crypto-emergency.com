@@ -318,6 +318,12 @@ $indent in $indents {
     cursor: not-allowed;
   }
 
+  &_hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   &_ripple {
     background: linear-gradient(90deg, #0162c8, #55e7fc);
     overflow: hidden;
