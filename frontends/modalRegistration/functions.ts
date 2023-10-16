@@ -69,6 +69,7 @@ export const sendCode = async function () {
   }
 
   this.Static.waitCode = true
+  this.Static.form.email.disable = true
   this.fn("timer", 60)
   this.init()
 

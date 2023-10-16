@@ -20,7 +20,7 @@ export const loader = function () {
       error: false,
       placeholder: "Email",
       view: false,
-      disable: undefined
+      disable: false
     },
     code: {
       value: "",

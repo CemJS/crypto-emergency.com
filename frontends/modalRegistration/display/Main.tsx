@@ -30,6 +30,7 @@ const Step1 = function () {
                         this.Static.form.email.value.length ? "modalWindow_field__valid" : null,
                         this.Static.form.email.error ? "modalWindow_field__error" : null,
                         this.Static.form.email.valid ? "modalWindow_field__success" : null,
+                        this.Static.form.email.disable ? "modalWindow_field__disabled" : null
                     ]}>
                         <input
                             type="email"
