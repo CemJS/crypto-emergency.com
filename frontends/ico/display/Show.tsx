@@ -3,7 +3,16 @@ import back from '@svg/icon/prev.svg'
 import next from '@svg/icon/next.svg'
 
 export default function () {
-  console.log('=55ea43=', this.Static.record)
+
+  if (!this.Static.record?._id) {
+    return (
+      <div>
+        не найдено
+      </div>
+    )
+  }
+
+  
   return (
     <div class="ico_show effect_lines effect_figure">
       <div class="wrapper">

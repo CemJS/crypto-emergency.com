@@ -55,9 +55,8 @@ const RenderItems = function ({ items }) {
             <div class="ico_list" ref="icoList">
                 {
                     items.map((item, index) => {
-                        // console.log('=68bfd4=',items)
                         return (
-                            <div class="ico_list_item" onclick={() => {
+                            <div class="ico_list_item" onclick={(e) => {
                                 this.Static.record = item;
                                 this.init()
                             }}>
