@@ -1,18 +1,23 @@
-export const addEvent = function ({ cat, active }) {
-    // let url = `/api/events/Ico?uuid=${this.Variable.myInfo.uuid}`
+export const addFilter = function ({ cat, active }) {
+    let url = `/api/events/Ico?uuid=${this.Variable.myInfo.uuid}`
 
-    // if (cat && active) {
-    //     url += `&cat=${cat}`
-    //     url += `&active=${active}`
-    // }
+    if (cat && active) {
+        url += `&cat=${cat}`
+        url += `&active=${active}`
+    }
 
-    // if (cat && cat != "Все") {
-    //     url += `&cat=${cat}`
-    // }
+    if (cat && cat != "Все") {
+        url += `&cat=${cat}`
+    }
 
-    // if (active) {
-    //     url += `&active=${active}`
-    // }
+    if (active) {
+        url += `&active=${active}`
+    }
+    return url
+
+
+
+
 
     // let eventSource
 

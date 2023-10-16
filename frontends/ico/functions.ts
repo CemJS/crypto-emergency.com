@@ -1,20 +1,18 @@
-export const addEvent = function ({ cat, active }) {
-    // let url = `/api/events/Ico?uuid=${this.Variable.myInfo.uuid}`
+export const addEvent = function () {
+    this.Static.url = `/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&cat=${this.Static.makeFilter.cat}&active=${this.Static.makeFilter.active}`
 
     // if (cat && active) {
-    //     url += `&cat=${cat}`
-    //     url += `&active=${active}`
+    //     this.Static.url += `&cat=${cat}`
+    //     this.Static.url += `&active=${active}`
     // }
 
-    // if (cat && cat != "Все") {
-    //     url += `&cat=${cat}`
+    // if (cat) {
+    //     this.Static.url += `&cat=${cat}`
     // }
 
     // if (active) {
-    //     url += `&active=${active}`
+    //     this.Static.url += `&active=${active}`
     // }
-
-    // let eventSource
 
     // // if (this.Ref.icoList) {
     // //     this.Ref.icoList.classList.add('animated');
@@ -38,3 +36,38 @@ export const addEvent = function ({ cat, active }) {
     // });
     // return
 }
+
+    export const change = function () {
+        this.Static.records = []
+        if (this.Static.makeFilter.cat == "Все") {
+            this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&lang=ru&active=${this.Static.makeFilter.active}`, [
+                {
+                    type: "add",
+                    fn: ({ data }) => {
+                        let record = JSON.parse(data)
+                        if (Object.keys(record).length) {
+                            this.Static.records.push(record)
+                        }
+                        this.init()
+                    }
+                }
+            ])
+        } else {
+            this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&cat=${this.Static.makeFilter.cat}&active=${this.Static.makeFilter.active}`, [
+                {
+                    type: "add",
+                    fn: ({ data }) => {
+                        let record = JSON.parse(data)
+                        if (Object.keys(record).length) {
+                            this.Static.records.push(record)
+                        }
+                        this.init()
+                    }
+                }
+            ])
+
+
+
+        }
+    }
+

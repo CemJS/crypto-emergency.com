@@ -26,7 +26,15 @@ const RenderItems = function ({ items }) {
                                 ref="tabsItem"
                                 class={["ico_tabs_item", this.Static.activeIndex == index ? "ico_tabs_item_active" : null]}
                                 onclick={() => {
-                                    this.Static.icoStatus = item.name
+                                    this.Static.makeFilter.active = item.name
+                                    // console.log('=f2f6aa=',item.name)
+                                    this.fn("change")
+                                    this.init()
+                                    // console.log('=до=',this.Static.url)
+                                    // this.fn("addEvent", this.Static.makeFilter)
+                                    // console.log('=после=',this.Static.url)
+                                    
+                                    // console.log('=ae510e=', this.fn("addEvent", this.Static.makeFilter))
                                     this.Static.activeIndex = index;
                                     this.Ref.tabsSlider.style.left = `${this.Ref.tabsItem.offsetWidth * this.Static.activeIndex}px`;
                                     this.Ref.icoList.classList.add('animated');
