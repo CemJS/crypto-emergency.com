@@ -65,9 +65,9 @@ export const validEmail = function (email: string) {
     this.Ref.statusEmail.style.color = "#5FAC09";
     this.Ref.statusEmail.innerText = "Email введён корректно!"
     this.Ref.emailField.classList.remove("modalWindow_field__error")
-    setTimeout(() => {
-      this.Ref.statusEmail.innerText = ""
-    }, 2000)
+    // setTimeout(() => {
+    //   this.Ref.statusEmail.innerText = ""
+    // }, 2000)
     // this.Ref.confirmCode.classList.add("modalReg-confirmCode__active")
     // this.fn("timer")
     this.Ref.regBtnEmail.classList.remove("btn_passive")
@@ -75,17 +75,8 @@ export const validEmail = function (email: string) {
   }
 }
 
-export const isEmailPlatform = function (answer) {
-  console.log('=37a859=', answer.error)
-  console.log('=37a855=', answer.result)
+export const validCode = function (code) {
 
-  if (answer.result) {
-
-    return true
-  }
-  if (answer.error) {
-    return false
-  }
 }
 
 export const clickNext = function (slidePage, indicator) {

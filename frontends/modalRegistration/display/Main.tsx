@@ -48,7 +48,7 @@ export default function () {
                                                     onchange={() => {
                                                         if (this.Ref.userEmail.value.length > 0) {
                                                             this.Ref.emailField.classList.add('modalWindow_field__valid');
-                                                            this.Static.email = this.Ref.emailInput.value;
+                                                            this.Static.email = this.Ref.userEmail.value;
                                                         }
                                                         if (this.Ref.userEmail.value.length === 0) {
                                                             this.Ref.emailField.classList.remove('modalWindow_field__valid');
@@ -92,13 +92,15 @@ export default function () {
                                                             <p class="modalReg_timer__text pl_10">{this.Static.time < 10 ? `0 : 0${this.Static.time}` : `0 : ${this.Static.time}`}</p>
                                                         </div>
                                                         :
-                                                        <p
+
+                                                        <button
+                                                            class="btn btn_timing"
                                                             onclick={() => {
                                                                 this.fn("resetTimer")
                                                             }}
                                                         >
                                                             Запросить код снова
-                                                        </p>
+                                                        </button>
                                                 }
                                             </div>
                                         </div>
@@ -109,10 +111,6 @@ export default function () {
                                                 ref="regBtnEmail"
                                                 class={["btn btn_timing", "btn_passive"]}
                                                 onclick={async () => {
-
-                                                    this.Ref.confirmCode.classList.add("modalReg-confirmCode__active")
-                                                    this.fn("timer")
-
                                                     let data = {
                                                         action: "registration",
                                                         email: this.Static.email,
@@ -120,9 +118,16 @@ export default function () {
                                                     }
                                                     let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
 
-                                                    console.log('=34b53d=', this.fn("isEmailPlatform", answer))
+                                                    if (answer.result) {
+                                                        this.Ref.confirmCode.classList.add("modalReg-confirmCode__active")
+                                                        this.fn("timer")
+                                                        this.Ref.regBtnEmail.classList.add("btn_hidden")
+                                                    } else {
+                                                        this.Ref.statusEmail.style.color = "#E84142"
+                                                        this.Ref.statusEmail.innerText = "Пользователь с таким email уже существует!"
+                                                        this.Ref.emailField.classList.add("modalWindow_field__error")
+                                                    }
 
-                                                    this.fn("isEmailPlatform", answer)
 
 
 
