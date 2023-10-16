@@ -30,11 +30,6 @@ const RenderItems = function ({ items }) {
                                     // console.log('=f2f6aa=',item.name)
                                     this.fn("change")
                                     this.init()
-                                    // console.log('=до=',this.Static.url)
-                                    // this.fn("addEvent", this.Static.makeFilter)
-                                    // console.log('=после=',this.Static.url)
-                                    
-                                    // console.log('=ae510e=', this.fn("addEvent", this.Static.makeFilter))
                                     this.Static.activeIndex = index;
                                     this.Ref.tabsSlider.style.left = `${this.Ref.tabsItem.offsetWidth * this.Static.activeIndex}px`;
                                     this.Ref.icoList.classList.add('animated');
@@ -56,9 +51,11 @@ const RenderItems = function ({ items }) {
                 {
                     items.map((item, index) => {
                         return (
-                            <div class="ico_list_item" onclick={(e) => {
+                            <a class="ico_list_item" 
+                            href={`/list-ico/show/${item._id}`}
+                            onclick={(e) => {
                                 this.Static.record = item;
-                                this.init()
+                                this.Fn.link(e)
                             }}>
                                 <span class="category">{item.category}</span>
                                 <div class="ico_list_item_image">
@@ -91,7 +88,7 @@ const RenderItems = function ({ items }) {
                                             <span>{this.Services.functions.dateFormat(item.endDate)}</span>
                                         </div>
                                 }
-                            </div>
+                            </a>
                         )
                     })
                 }

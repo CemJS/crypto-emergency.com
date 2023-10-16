@@ -1,11 +1,5 @@
 export { }
-// const categoryLine = function ({ event, name }) {
-//     this.Static.makeFilter.cat = name
-//     this.fn("addEvent", this.Static.makeFilter)
-// }
 
-
-// export const cross = [{ "front": "categoryLine", fn: categoryLine }]
 
 
 

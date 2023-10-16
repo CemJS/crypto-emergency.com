@@ -1,5 +1,5 @@
 {
-    "url": "/list-ico",
+    "regex": "/list-ico",
     "front": [
         "header",
         "ico",

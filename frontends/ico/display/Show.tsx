@@ -12,20 +12,24 @@ export default function () {
     )
   }
 
-  
+
   return (
     <div class="ico_show effect_lines effect_figure">
       <div class="wrapper">
         <div class="back">
+
           <div class="back_arrow">
-            <img
+            <a href="/list-ico" class="back_arrow" onclick={this.Fn.link}>
+              <img src={back}></img>
+            </a>
+            {/* <img
               src={back}
               onclick={() => {
                 delete this.Static.record
                 this.init()
               }}
             >
-            </img>
+            </img> */}
           </div>
           <div class="tool">
             <span class="tool_item"></span>
