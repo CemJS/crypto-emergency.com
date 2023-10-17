@@ -12,15 +12,16 @@ export default function () {
                     </nav>
                     <div class="header__auth">
                         <div class="header__language"
-                            onclick={() => {
-                                this.Fn.initOne({
-                                    name: "mainLanguage", ifOpen: (front) => {
-                                        setTimeout(() => {
-                                            front.clearData()
-                                        }, 500);
-                                    }
-                                })
-                            }}
+                            // onclick={() => {
+                            //     this.Fn.initOne({
+                            //         name: "mainLanguage", ifOpen: (front) => {
+                            //             setTimeout(() => {
+                            //                 front.clearData()
+                            //             }, 500);
+                            //         }
+                            //     })
+                            // }}
+                            onclick={() => this.Fn.initOne({ name: "modalSelectLanguage" })}
                         >
                             <span>Русский</span>
                         </div>
