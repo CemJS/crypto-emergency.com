@@ -8,11 +8,8 @@ export default function ({ items, active }) {
                     return (
                         <li class={["category-item", active == index ? "category-item_active" : null]}
                             onclick={() => {
-                                if (this.Static.catActive == index) {
-                                    return
-                                }
+                                if (this.Static.catActive == index) { return }
                                 this.Static.catActive = index
-                                this.Static.records = []
                                 this.fn("addEvent")
                             }}>
                             <span>{item.name}</span>

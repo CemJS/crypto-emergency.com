@@ -9,6 +9,8 @@ export const makeFilters = function () {
     if (this.Static.moreid) {
         url += `&moreid=${this.Static.moreid}`
         this.Static.moreid = null
+    } else {
+        this.Static.records = []
     }
     return url
 }
