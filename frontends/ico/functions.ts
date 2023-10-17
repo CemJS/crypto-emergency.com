@@ -1,9 +1,14 @@
 export const makeFilters = function () {
     let url = `/api/events/Ico?uuid=${this.Variable.myInfo.uuid}`
+    if (this.Variable.DataUrl[1] == "show") {
+        url += `&id=${this.Variable.DataUrl[2]}`
+        return url
+    }
+
+
     url += `&lang=ru`
     if (this.Static.makeFilter.cat != 0) {
         url += `&cat=${this.Static.categories[this.Static.makeFilter.cat].name}`
-        
     }
     if (this.Static.makeFilter.active) {
         url += `&active=${this.Static.makeFilter.active}`
