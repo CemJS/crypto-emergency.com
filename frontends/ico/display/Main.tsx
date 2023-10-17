@@ -32,14 +32,12 @@ const RenderItems = function ({ items }) {
                                         this.Static.makeFilter.active = item.name
 
                                         this.fn("addEvent")
-                                        this.init()
                                         this.Static.activeIndex = index;
                                         this.Ref.tabsSlider.style.left = `${this.Ref.tabsItem.offsetWidth * this.Static.activeIndex}px`;
                                         this.Ref.icoList.classList.add('animated');
                                         setTimeout(() => {
                                             this.Ref.icoList.classList.remove('animated');
                                         }, 500)
-                                        this.init()
                                     }}
                                 >
                                     <span>{item.name}</span>
@@ -53,10 +51,12 @@ const RenderItems = function ({ items }) {
                     {
                         !items.length ? <p>not found</p> :
                             items.map((item, index) => {
+                                console.log('=4ff069=',item)
                                 return (
                                     <a class="ico_list_item"
                                         href={`/ico/show/${item._id}`}
                                         onclick={(e) => {
+                                            console.log('=06645f=',item._id)
                                             this.Static.record = item;
                                             this.Fn.link(e)
                                         }}

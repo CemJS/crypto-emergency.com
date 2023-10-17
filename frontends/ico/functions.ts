@@ -1,12 +1,13 @@
-export const makeFilters = function () {
+export const makeFilters = function (show = false) {
     let url = `/api/events/Ico?uuid=${this.Variable.myInfo.uuid}`
-    if (this.Variable.DataUrl[1] == "show") {
+    if (show) {
         url += `&id=${this.Variable.DataUrl[2]}`
+        console.log('=d798f1=',url)
         return url
     }
 
 
-    url += `&lang=ru`
+    // url += `&lang=ru`
     if (this.Static.makeFilter.cat != 0) {
         url += `&cat=${this.Static.categories[this.Static.makeFilter.cat].name}`
     }
@@ -58,6 +59,7 @@ export const addEvent = function () {
 
 
     if (this.Variable.DataUrl[1] == "show") {
+        filters = this.fn("makeFilters", true)
         if (!this.Events.show) {
             this.Events.show = this.event(filters, showListeners)
         } else {
