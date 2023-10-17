@@ -47,7 +47,6 @@ export const addEvent = function () {
     ]
     // this.Static.records = []
     if (!this.Events.ico) {
-        console.log('=fd8b51=',"Кликаю")
         this.Events.ico = this.event(filters, icoListeners)
     } else {
         this.Events.ico.change(filters, icoListeners)

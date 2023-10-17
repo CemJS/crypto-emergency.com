@@ -15,6 +15,8 @@ const states = [
 ]
 
 const RenderItems = function ({ items }) {
+
+
     return (
         <div class="wrapper">
             <div class="ico_inner">
@@ -47,10 +49,12 @@ const RenderItems = function ({ items }) {
                     }
                     <div class="ico_tabs_slider" ref="tabsSlider"></div>
                 </div>
-
                 <div class="ico_list" ref="icoList">
                     {
+                        !items.length ?
+                        <p>not found</p> :
                         items.map((item, index) => {
+
                             return (
                                 <a class="ico_list_item"
                                     href={`/list-ico/show/${item._id}`}
@@ -102,10 +106,10 @@ const RenderItems = function ({ items }) {
                     }
                 </div>
             </div>
-        </div>
+        </div >
     )
-}
 
+}
 
 export default function () {
     return (

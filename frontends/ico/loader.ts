@@ -30,38 +30,7 @@ export const loader = function () {
         cat: 0,
         active: "Active"
     }
-
+    this.fn("addEvent")
     //status tabs
     this.Static.activeIndex = 0
-
-
-
-    if (this.Variable.DataUrl[1] == "show") {
-        this.Events.ico = this.event(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&id=${this.Variable.DataUrl[2]}`, [
-            {
-                type: "update",
-                fn: ({ data }) => {
-                    let record = JSON.parse(data)
-                    if (Object.keys(record).length) {
-                        this.Static.record = record
-                    }
-                    this.init()
-                }
-            }
-        ])
-    }
-
-    this.Events.ico = this.event(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&lang=ru`, [
-        {
-            type: "add",
-            fn: ({ data }) => {
-                let record = JSON.parse(data)
-                if (Object.keys(record).length) {
-                    this.Static.records.push(record)
-                }
-                this.init()
-            }
-        }
-    ])
-    return
 }
