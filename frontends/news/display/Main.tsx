@@ -26,7 +26,23 @@ const RenderItems = function ({ items }) {
                 }}
                 isVisible={() => {
                   if (index == items.length - 3) {
+
+
                     console.log('=e3f47c=', 123, index)
+
+                    this.Events.news.change(`/api/events/News?uuid=${this.Variable.myInfo.uuid}&lang=ru&cat=${this.Static.category[this.Static.catActive].name}&moreid=${items[items.length - 1]._id}`, [
+                      {
+                        type: "add",
+                        fn: ({ data }) => {
+                          let record = JSON.parse(data)
+                          if (Object.keys(record).length) {
+                            this.Static.records.push(record)
+                          }
+                          this.init()
+                        }
+                      }
+                    ])
+
                   }
                 }}>
                 <div class="news__item_image">

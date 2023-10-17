@@ -1,7 +1,7 @@
 export const loader = function () {
     this.Static.records = []
     this.Static.record = null
-    this.Static.catActive = 0
+    this.Static.catActive = 1
     this.Static.category = [
         {
             name: 'Все',
@@ -82,6 +82,7 @@ export const loader = function () {
                 {
                     type: "add",
                     fn: ({ data }) => {
+
                         let record = JSON.parse(data)
                         if (Object.keys(record).length) {
                             this.Static.records.push(record)
