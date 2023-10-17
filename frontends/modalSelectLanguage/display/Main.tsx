@@ -1,4 +1,5 @@
 import { Cemjsx } from "cemjs-all"
+import search from '@svg/icon/search.svg'
 
 const language = [
     {
@@ -72,6 +73,13 @@ const language = [
 export default function () {
     return (
         <main class="modalWindow_main">
+            <div class="modalWindow_field">
+                <input type="text" />
+                <div class="modalWindow_field_labelLine">
+                    <img src={search} alt="Поиск" />
+                    <span>Поиск</span>
+                </div>
+            </div>
             <div>
                 {
                     language.map((item, index) => {
