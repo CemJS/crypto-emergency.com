@@ -27,7 +27,13 @@ export default function () {
                 {
                     this.Static.listLanguage.map(item => {
                         return (
-                            <div class="modalScroll_item">
+                            <div
+                                class="modalScroll_item"
+                                onclick={() => {
+                                    this.cross({ name: item.eng_name, nameOrig: item.orig_name, code: item.code })
+                                    this.fn("close")
+                                }}
+                            >
                                 {item.orig_name}
                             </div>
                         )

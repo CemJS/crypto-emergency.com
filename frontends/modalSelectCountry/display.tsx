@@ -5,7 +5,7 @@ export const display = function () {
   return (
     <div
       class="modalWindow"
-      ref="modalWindow"
+      ref="modalWindowCountry"
       init={this.func.show} >
       <div class="modalWindow_body">
         <div class="modalWindow_content modalWindow_content__select-lang">

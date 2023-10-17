@@ -27,7 +27,13 @@ export default function () {
                 {
                     this.Static.listCountries.map(item => {
                         return (
-                            <div class="modalScroll_item">
+                            <div
+                                class="modalScroll_item"
+                                onclick={() => {
+                                    this.cross({ co: item.co, ph: item.ph, na: item.na })
+                                    this.func.close
+                                }}
+                            >
                                 <img src={`/contents/icons/flagsnew/${item.co}.svg`} alt="Флаг" />
                                 {item.na}
                             </div>

@@ -6,7 +6,7 @@ export const show = function ($el: HTMLElement) {
 }
 
 export const close = function () {
-  this.Ref.modalWindow.classList.remove('activeModal');
+  this.Ref.modalWindowCountry.classList.remove('activeModal');
   setTimeout(() => {
     this.clearData();
     // this.Variable.$el.body.style.overflow = 'auto';

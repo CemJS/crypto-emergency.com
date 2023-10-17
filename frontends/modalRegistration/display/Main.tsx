@@ -209,6 +209,7 @@ const Step2 = function () {
                             <img src={user}></img>
                             <span>{this.Static.form.nickName.placeholder}</span>
                         </div>
+                        <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.nickName.error}</p>
                     </div>
                 </div>
 
@@ -244,7 +245,6 @@ const Step2 = function () {
                                 return
                             }
 
-                            console.log('=371c2a=', "Далее")
                             return
                         }}>
                         Далее
