@@ -1,3 +1,6 @@
+import language from '@json/languages'
+
 export const loader = function () {
-    this.Static.body = document.querySelector('body');
+    this.Static.listLanguage = language
+    this.Static.search = ""
 }
