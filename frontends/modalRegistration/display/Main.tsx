@@ -23,139 +23,145 @@ const RenderSteps = function ({ steps, current }) {
 const Step1 = function () {
     return (
         <div class="modalReg_page" ref="slidePage">
-            <div class="modalReg_form">
-                <div class="f-col">
-                    <h3 class="modalReg_page-title">Подтвердите адрес электронной почты</h3>
-                    <div class={[
-                        "modalWindow_field",
-                        this.Static.form.email.value.length ? "modalWindow_field__valid" : null,
-                        this.Static.form.email.error ? "modalWindow_field__error" : null,
-                        this.Static.form.email.valid ? "modalWindow_field__success" : null,
-                        this.Static.form.email.disable ? "modalWindow_field__disabled" : null
-                    ]}>
-                        <input
-                            type="email"
-                            required
-                            autocomplete="off"
-                            oninput={(e: any) => {
-                                this.Static.form.email.value = e.target.value;
-                                this.Services.functions.formEmail(this.Static.form.email)
-                                this.fn("checkFrom")
-                            }} />
-                        <div class="modalWindow_field_labelLine">
-                            <img src={email}></img>
-                            <span>{this.Static.form.email.placeholder}</span>
-                        </div>
-                        <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.email.error}</p>
 
-                        {
-                            this.Static.form.email.disable ?
-                                <img
-                                    class="modalWindow_field__edit"
-                                    src={edit} alt="Редактирование email"
-                                    onclick={() => {
-                                        this.fn("changeEmail")
-                                    }}
-                                /> : null
-                        }
-                    </div>
-                </div>
-
+            <div class="f-col">
+                <h3 class="modalReg_page-title">Подтвердите адрес электронной почты</h3>
                 <div class={[
-                    "modalReg-confirmCode",
-                    this.Static.waitCode ? "modalReg-confirmCode__active" : null
+                    "modalWindow_field",
+                    this.Static.form.email.value.length ? "modalWindow_field__valid" : null,
+                    this.Static.form.email.error ? "modalWindow_field__error" : null,
+                    this.Static.form.email.valid ? "modalWindow_field__success" : null,
+                    this.Static.form.email.disable ? "modalWindow_field__disabled" : null
                 ]}>
-                    <div class="modalReg-code" >
-                        {
-                            this.Static.code.map((item: number, index: number) => {
-                                return (
-                                    <input
-                                        type="number"
-                                        class={[
-                                            "modalReg-code_input",
-                                            this.Static.form.code.error ? "modalReg-code_input__error" : null
-                                        ]}
-                                        oninput={(e) => {
-                                            if (e.data == null && e.target.value.length > 1) {
-                                                let arr = e.target.value.trim().split("")
-                                                if (arr.length > 6) {
-                                                    arr = arr.slice(0, 6)
-                                                }
-                                                let arrElements = e.target.parentElement.children;
-                                                arr.forEach((item, index) => {
-                                                    this.Static.code[index] = item
-                                                    arrElements[index].value = item
-                                                    arrElements[index].focus();
-                                                });
-                                            } else {
-                                                e.target.value = e.data
-                                                this.Static.code[index] = e.target.value
-                                                let arrElements = e.target.parentElement.children;
-                                                if (index < this.Static.code.length - 1 && this.Static.code[index] != "") {
-                                                    arrElements[index + 1].focus();
-                                                }
-
-                                                if (index != 0 && this.Static.code[index] == "") {
-                                                    arrElements[index - 1].focus();
-                                                }
-
-
-                                            }
-                                            this.Static.form.code.value = Number(this.Static.code.join(""))
-                                            this.Services.functions.formCode(this.Static.form.code)
-                                            this.fn("checkFrom")
-                                        }}
-                                    />
-                                )
-                            })
-                        }
+                    <input
+                        type="email"
+                        required
+                        autocomplete="off"
+                        oninput={(e: any) => {
+                            this.Static.form.email.value = e.target.value;
+                            this.Services.functions.formEmail(this.Static.form.email)
+                            this.fn("checkFrom")
+                        }} />
+                    <div class="modalWindow_field_labelLine">
+                        <img src={email}></img>
+                        <span>{this.Static.form.email.placeholder}</span>
                     </div>
+                    <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.email.error}</p>
 
                     {
-                        this.Static.form.code.error ? <span class="modalReg-code__error">{this.Static.form.code.error}</span> : null
+                        this.Static.form.email.disable ?
+                            <img
+                                class="modalWindow_field__edit"
+                                src={edit} alt="Редактирование email"
+                                onclick={() => {
+                                    this.fn("changeEmail")
+                                }}
+                            /> : null
                     }
-
-                    <div class="modalReg_timer">
-                        {
-                            this.Static.time > 0
-                                ?
-                                <div>
-                                    <p class="modalReg_timer__text">Запросить новый код подтверждения можно через</p>
-                                    <p class="modalReg_timer__text pl_10">{this.Static.time < 10 ? `0 : 0${this.Static.time}` : `0 : ${this.Static.time}`}</p>
-                                </div>
-                                :
-                                <button
-                                    class="btn btn_timing"
-                                    onclick={() => {
-                                        this.fn("sendCode")
-                                        return
-                                    }}>
-                                    Запросить код снова
-                                </button>
-                        }
-                    </div>
-                </div>
-
-                <div class="f-center">
-                    <button
-                        class={[
-                            "btn",
-                            "btn_timing",
-                            this.Static.form.isValid ? null : "btn_passive",
-                            this.Static.waitCode ? "btn_hidden" : null
-                        ]}
-                        onclick={async () => {
-                            if (!this.Static.form.isValid) {
-                                return
-                            }
-
-                            this.fn("sendCode")
-                            return
-                        }}>
-                        Получить код подтверждение
-                    </button>
                 </div>
             </div>
+
+            {
+                this.Static.waitCode ?
+                    <div class={[
+                        "modalReg-confirmCode",
+                        this.Static.waitCode ? "modalReg-confirmCode__active" : null
+                    ]}>
+                        <div class="modalReg-code" >
+                            {
+                                this.Static.code.map((item: number, index: number) => {
+                                    return (
+                                        <input
+                                            type="number"
+                                            class={[
+                                                "modalReg-code_input",
+                                                this.Static.form.code.error ? "modalReg-code_input__error" : null
+                                            ]}
+                                            oninput={(e) => {
+                                                if (e.data == null && e.target.value.length > 1) {
+                                                    let arr = e.target.value.trim().split("")
+                                                    if (arr.length > 6) {
+                                                        arr = arr.slice(0, 6)
+                                                    }
+                                                    let arrElements = e.target.parentElement.children;
+                                                    arr.forEach((item, index) => {
+                                                        this.Static.code[index] = item
+                                                        arrElements[index].value = item
+                                                        arrElements[index].focus();
+                                                    });
+                                                } else {
+                                                    e.target.value = e.data
+                                                    this.Static.code[index] = e.target.value
+                                                    let arrElements = e.target.parentElement.children;
+                                                    if (index < this.Static.code.length - 1 && this.Static.code[index] != "") {
+                                                        arrElements[index + 1].focus();
+                                                    }
+
+                                                    if (index != 0 && this.Static.code[index] == "") {
+                                                        arrElements[index - 1].focus();
+                                                    }
+
+
+                                                }
+                                                this.Static.form.code.value = Number(this.Static.code.join(""))
+                                                this.Services.functions.formCode(this.Static.form.code)
+                                                this.fn("checkFrom")
+                                            }}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
+
+                        {
+                            this.Static.form.code.error ? <span class="modalReg-code__error">{this.Static.form.code.error}</span> : null
+                        }
+
+                        <div class="modalReg_timer">
+                            {
+                                this.Static.time > 0
+                                    ?
+                                    <div>
+                                        <p class="modalReg_timer__text">Запросить новый код подтверждения можно через</p>
+                                        <p class="modalReg_timer__text pl_10">{this.Static.time < 10 ? `0 : 0${this.Static.time}` : `0 : ${this.Static.time}`}</p>
+                                    </div>
+                                    :
+                                    <button
+                                        class="btn btn_timing"
+                                        onclick={() => {
+                                            this.fn("sendCode")
+                                            return
+                                        }}>
+                                        Запросить код снова
+                                    </button>
+                            }
+                        </div>
+                    </div> :
+                    <div class="f-center pt_35">
+                        <button
+                            class={[
+                                "btn",
+                                "btn_timing",
+                                this.Static.form.isValid ? null : "btn_passive",
+                                this.Static.waitCode ? "btn_hidden" : null
+                            ]}
+                            onclick={async () => {
+                                if (!this.Static.form.isValid) {
+                                    return
+                                }
+
+                                this.fn("sendCode")
+                                return
+                            }}>
+                            Получить код подтверждение
+                        </button>
+                    </div>
+            }
+
+
+
+
+
         </div>
     )
 }
@@ -206,11 +212,23 @@ const Step2 = function () {
                     </div>
                 </div>
 
-                <div class="g-colEqual-2">
+                <div class="g-colEqual-2 modalReg-choose">
                     <div
+                        class="modalReg-choose_item"
                         onclick={() => this.Fn.initOne({ name: "modalSelectLanguage" })}
                     >
-                        Русский
+                        <span>
+                            {this.Static.form.mainLang.value ? this.Static.form.mainLang.value : this.Static.form.mainLang.placeholder}
+                        </span>
+                        <span class="modalReg-choose_arrow"></span>
+                    </div>
+
+                    <div
+                        class="modalReg-choose_item"
+                        onclick={() => this.Fn.initOne({ name: "modalSelectCountry" })}
+                    >
+                        <span>{this.Static.form.country.value ? this.Static.form.country.value : this.Static.form.country.placeholder}</span>
+                        <span class="modalReg-choose_arrow"></span>
                     </div>
                 </div>
 

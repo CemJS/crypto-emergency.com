@@ -232,16 +232,57 @@ h3 {
   }
 
   &_footer {
-    margin-top: 25px;
+    margin-top: 15px;
 
     .btn {
       max-width: 250px;
+    }
+
+    &__text {
+      font-size: clamp(14px, 5vw, 16px);
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.5;
     }
   }
 
 }
 
+.modalScroll {
+  max-height: 500px;
+  height: 500px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 
+  &_item {
+    padding: 10px 15px;
+    border-radius: var(--borderR);
+    border: 1px solid #474c5a;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 1px 6px 0px -4px rgba(0, 0, 0, 0.15), 3px 4px 4px -1px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.09);
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease-in-out,
+      border 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid rgba(150, 150, 150, 0.5);
+      transform: scale(0.98);
+    }
+
+    img {
+      width: 20px;
+    }
+  }
+}
 
 @keyframes quickScaleDown {
   0% {

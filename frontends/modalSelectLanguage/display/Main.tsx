@@ -6,19 +6,28 @@ import language from '@json/languages'
 export default function () {
     return (
         <main class="modalWindow_main">
-            <div class="modalWindow_field">
-                <input type="text" />
+            <div
+                class={[
+                    "modalWindow_field",
+                    this.Static.search ? "modalWindow_field__valid" : null
+                ]}>
+                <input
+                    type="text"
+                    oninput={(e) => {
+                        this.Static.search = e.target.value;
+                        this.fn("changeInput", e, language)
+                    }}
+                />
                 <div class="modalWindow_field_labelLine">
                     <img src={search} alt="Поиск" />
                     <span>Поиск</span>
                 </div>
             </div>
-            <div class="modalLang scroll">
+            <div class="modalScroll scroll">
                 {
-                    language.map(item => {
+                    this.Static.listLanguage.map(item => {
                         return (
-                            <div class="modalLang_item">
-                                <img src={`/assets/svg/icon/flags/${item.code}.svg`} alt="Флаг" />
+                            <div class="modalScroll_item">
                                 {item.orig_name}
                             </div>
                         )

@@ -42,7 +42,7 @@ export const loader = function () {
       value: "",
       valid: false,
       error: false,
-      placeholder: "Введите ваш E-mail",
+      placeholder: "Выбрать язык",
       view: false,
       disable: false
     },
@@ -50,7 +50,7 @@ export const loader = function () {
       value: "",
       valid: false,
       error: false,
-      placeholder: "Введите ваш E-mail",
+      placeholder: "Выбрать страну",
       view: false,
       disable: false
     },
