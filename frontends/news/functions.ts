@@ -5,8 +5,7 @@ export const makeFilters = function (show = false) {
         url += `&id=${this.Variable.DataUrl[2]}`
         return url
     }
-
-    url += `&lang=en`
+    url += `&lang=ru`
     if (this.Static.catActive != 0) {
         url += `&cat=${this.Static.category[this.Static.catActive].name}`
     }
