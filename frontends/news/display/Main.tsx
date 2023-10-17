@@ -20,7 +20,7 @@ const RenderItems = function ({ items }) {
             return (
               <a class="news__item"
                 href={`/news/show/${item._id}`}
-                onclick={(e) => {
+                onclick={(e: any) => {
                   this.Static.record = item
                   this.Fn.link(e)
                 }}
@@ -54,7 +54,7 @@ const RenderItems = function ({ items }) {
 export default function () {
   return (
     <section class="news">
-      <CategoryLine items={this.Static.category} active={this.Static.catActive} />
+      <CategoryLine items={this.Static.category} />
       <div class="wrapper">
         <RenderItems items={this.Static.records} />
       </div>
