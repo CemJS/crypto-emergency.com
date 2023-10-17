@@ -11,6 +11,7 @@ export default function ({ items }) {
                                 console.log('=e7acc8=',item.name)
                                 if (this.Static.catActive == index) { return }
                                 this.Static.catActive = index
+                                
                                 this.fn("addEvent")
                                 this.init()
                             }}>

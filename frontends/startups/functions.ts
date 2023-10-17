@@ -1,5 +1,10 @@
 export const makeFilters = function () {
     let url = `/api/events/Startups?uuid=${this.Variable.myInfo.uuid}`
+    if (this.Variable.DataUrl[1] == "show") {
+        url += `&id=${this.Variable.DataUrl[2]}`
+        return url
+    }
+
     url += `&lang=ru`
     if (this.Static.catActive != 0) {
         url += `&cat=${this.Static.categories[this.Static.catActive].name}`
@@ -15,6 +20,7 @@ export const makeFilters = function () {
 }
 
 export const addEvent = function () {
+    // console.log('=catActive=', this.Static.catActive)
     let filters = this.fn("makeFilters")
     let startupsListeners = [
         {
