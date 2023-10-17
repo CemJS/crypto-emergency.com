@@ -29,7 +29,8 @@ const RenderItems = function ({ items }) {
                     this.Static.moreid = items[items.length - 1]._id
                     this.fn("addEvent")
                   }
-                }}>
+                }}
+                >
                 <div class="news__item_image">
                   <img src={`/assets/upload/news/${item.image}`} />
                 </div>

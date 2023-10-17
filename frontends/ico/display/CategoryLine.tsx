@@ -9,10 +9,13 @@ export default function ({ items, active }) {
                         <li class={["category-item", active == index ? "category-item_active" : null]}
                             onclick={() => {
                                 this.Static.catActive = index
-                                console.log('=73bd96=',item.name)
+                                if (this.Static.makeFilter.cat == index) { return } //Если 
+                                // console.log('=73bd96=',item.name)
+
                                 this.Static.makeFilter.cat = index
                                 console.log('=this.Static.makeFilter.cat=',this.Static.makeFilter.cat)
-                                this.fn("change")
+                                this.fn("addEvent")
+                                // this.fn("change")
                                 this.init()
                                 
                             }}

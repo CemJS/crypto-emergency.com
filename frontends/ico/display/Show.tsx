@@ -24,14 +24,6 @@ export default function () {
               }>
               <img src={back}></img>
             </a>
-            {/* <img
-              src={back}
-              onclick={() => {
-                delete this.Static.record
-                this.init()
-              }}
-            >
-            </img> */}
           </div>
           <div class="tool">
             <span class="tool_item"></span>
