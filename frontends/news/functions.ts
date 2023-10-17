@@ -1,12 +1,12 @@
 
-export const makeFilters = function () {
+export const makeFilters = function (show = false) {
     let url = `/api/events/News?uuid=${this.Variable.myInfo.uuid}`
-    if (this.Variable.DataUrl[1] == "show"){
+    if (show) {
         url += `&id=${this.Variable.DataUrl[2]}`
         return url
     }
 
-    url += `&lang=ru`
+    url += `&lang=en`
     if (this.Static.catActive != 0) {
         url += `&cat=${this.Static.category[this.Static.catActive].name}`
     }
@@ -55,6 +55,7 @@ export const addEvent = function () {
 
 
     if (this.Variable.DataUrl[1] == "show") {
+        filters = this.fn("makeFilters", true)
         if (!this.Events.show) {
             this.Events.show = this.event(filters, showListeners)
         } else {
