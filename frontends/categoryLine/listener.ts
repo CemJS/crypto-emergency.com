@@ -39,7 +39,7 @@ export const start = function () {
             },
         ];
     }
-    if (window.location.pathname.includes("list-ico")) {
+    if (window.location.pathname.includes("ico")) {
         this.Static.records = [
             {
                 name: 'Все',

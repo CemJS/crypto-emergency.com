@@ -42,12 +42,12 @@ const services = [
   {
     image: "ico",
     title: "ICO рейтинг",
-    url: "/list-ico"
+    url: "/ico"
   },
   {
-    image: "startaps",
+    image: "startups",
     title: "Стартапы",
-    url: "/list-startaps",
+    url: "/startups",
   },
   {
     image: "news",

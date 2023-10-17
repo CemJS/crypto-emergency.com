@@ -19,7 +19,7 @@ export default function () {
         <div class="back">
 
           <div class="back_arrow">
-            <a href="/list-ico" class="back_arrow" onclick={
+            <a href="/ico" class="back_arrow" onclick={
               this.Fn.link
               }>
               <img src={back}></img>

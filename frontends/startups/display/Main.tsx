@@ -1,16 +1,18 @@
 import { Cemjsx } from "cemjs-all"
+import CategoryLine from "./CategoryLine"
 
-export default function () {
+const RenderItems = function ({ items }){
     return (
         <section class="startaps">
             <div class="wrapper">
                 <div class="startaps_inner" ref="startapsList">
                     {
-                        this.Static.records.map((item, index) => {
+                        items.map((item, index) => {
                             return (
                                 <div
                                     class="startaps_item"
                                     onclick={() => {
+                                        
                                         this.Static.record = item;
                                         this.init();
                                     }}
@@ -32,3 +34,14 @@ export default function () {
         </section>
     )
 }
+
+export default function () {
+    return (
+      <section class="news">
+        <CategoryLine items={this.Static.categories} />
+        <div class="wrapper">
+          <RenderItems items={this.Static.records} />
+        </div>
+      </section>
+    )
+  }

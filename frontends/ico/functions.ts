@@ -15,7 +15,6 @@ export const makeFilters = function () {
     } else {
         this.Static.records = []
     }
-    console.log('=url=',url)
     return url
 }
 

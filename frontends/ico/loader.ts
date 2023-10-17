@@ -1,6 +1,4 @@
 export const loader = function () {
-
-
     this.Static.records = []
     this.Static.record = null
     this.Static.catActive = 0
@@ -25,12 +23,10 @@ export const loader = function () {
             name: 'IFO'
         }
     ]
-
     this.Static.makeFilter = {
         cat: 0,
         active: "Active"
     }
     this.fn("addEvent")
-    //status tabs
     this.Static.activeIndex = 0
 }

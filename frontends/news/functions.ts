@@ -1,6 +1,11 @@
 
 export const makeFilters = function () {
     let url = `/api/events/News?uuid=${this.Variable.myInfo.uuid}`
+    if (this.Variable.DataUrl[1] == "show"){
+        url += `&id=${this.Variable.DataUrl[2]}`
+        return url
+    }
+
     url += `&lang=ru`
     if (this.Static.catActive != 0) {
         url += `&cat=${this.Static.category[this.Static.catActive].name}`

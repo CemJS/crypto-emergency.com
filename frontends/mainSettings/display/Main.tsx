@@ -31,12 +31,12 @@ const sections = [
     {
         category: "ICO Рейтинг",
         img: ico,
-        url: "/list-ico"
+        url: "/ico"
     },
     {
         category: "Стартапы",
         img: startups,
-        url: "/list-startaps"
+        url: "/startups"
     },
     {
         category: "Новости",

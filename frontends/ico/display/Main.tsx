@@ -18,7 +18,7 @@ const RenderItems = function ({ items }) {
 
 
     return (
-        <div class="wrapper">
+
             <div class="ico_inner">
                 <div class="ico_tabs" ref="tabs">
                     {
@@ -51,62 +51,59 @@ const RenderItems = function ({ items }) {
                 </div>
                 <div class="ico_list" ref="icoList">
                     {
-                        !items.length ?
-                        <p>not found</p> :
-                        items.map((item, index) => {
+                        !items.length ? <p>not found</p> :
+                            items.map((item, index) => {
+                                return (
+                                    <a class="ico_list_item"
+                                        href={`/ico/show/${item._id}`}
+                                        onclick={(e) => {
+                                            this.Static.record = item;
+                                            this.Fn.link(e)
+                                        }}
+                                        isVisible={() => {
+                                            if (index == items.length - 3) {
+                                                this.Static.moreid = items[items.length - 1]._id
+                                                this.fn("addEvent")
+                                            }
+                                        }}
+                                    >
+                                        <span class="category">{item.category}</span>
+                                        <div class="ico_list_item_image">
+                                            <img src={`/assets/upload/worldPress/${item.icon}`} alt="ICO Rating"></img>
+                                        </div>
 
-                            return (
-                                <a class="ico_list_item"
-                                    href={`/list-ico/show/${item._id}`}
-                                    onclick={(e) => {
-                                        this.Static.record = item;
-                                        this.Fn.link(e)
-                                    }}
-                                    isVisible={() => {
-                                        if (index == items.length - 3) {
-                                            this.Static.moreid = items[items.length - 1]._id
-                                            this.fn("addEvent")
+                                        <div class="ico_list_item_info">
+                                            <h5>{item.title}</h5>
+                                            <p>{item.description}</p>
+                                            <p class="ico_list_item_finance pt_15">
+                                                <span class="text_important">${item.nowMoney}</span> / ${item.targetMoney}
+                                                <span class="pl_15 ico_percent">
+                                                    {
+                                                        item.targetMoney <= 0 ? '0' :
+                                                            Math.round(
+                                                                ((item.nowMoney && item.nowMoney > 0 ? item.nowMoney : 0) * 100) / item.targetMoney
+                                                            )
+                                                    }%
+                                                </span>
+                                            </p>
+                                        </div>
+
+                                        {
+                                            item.dateIsKnow ?
+                                                <span class="ico_tba">
+                                                    <img src={calendar} alt="Date"></img>TBA
+                                                </span> :
+                                                <div class="ico_list_item_date">
+                                                    <span>{this.Services.functions.dateFormat(item.startDate)}</span>
+                                                    <span>{this.Services.functions.dateFormat(item.endDate)}</span>
+                                                </div>
                                         }
-                                    }}
-                                >
-                                    <span class="category">{item.category}</span>
-                                    <div class="ico_list_item_image">
-                                        <img src={`/assets/upload/worldPress/${item.icon}`} alt="ICO Rating"></img>
-                                    </div>
-
-                                    <div class="ico_list_item_info">
-                                        <h5>{item.title}</h5>
-                                        <p>{item.description}</p>
-                                        <p class="ico_list_item_finance pt_15">
-                                            <span class="text_important">${item.nowMoney}</span> / ${item.targetMoney}
-                                            <span class="pl_15 ico_percent">
-                                                {
-                                                    item.targetMoney <= 0 ? '0' :
-                                                        Math.round(
-                                                            ((item.nowMoney && item.nowMoney > 0 ? item.nowMoney : 0) * 100) / item.targetMoney
-                                                        )
-                                                }%
-                                            </span>
-                                        </p>
-                                    </div>
-
-                                    {
-                                        item.dateIsKnow ?
-                                            <span class="ico_tba">
-                                                <img src={calendar} alt="Date"></img>TBA
-                                            </span> :
-                                            <div class="ico_list_item_date">
-                                                <span>{this.Services.functions.dateFormat(item.startDate)}</span>
-                                                <span>{this.Services.functions.dateFormat(item.endDate)}</span>
-                                            </div>
-                                    }
-                                </a>
-                            )
-                        })
+                                    </a>
+                                )
+                            })
                     }
                 </div>
             </div>
-        </div >
     )
 
 }
