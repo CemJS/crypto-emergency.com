@@ -2,12 +2,9 @@ export const makeFilters = function (show = false) {
     let url = `/api/events/Ico?uuid=${this.Variable.myInfo.uuid}`
     if (show) {
         url += `&id=${this.Variable.DataUrl[2]}`
-        console.log('=d798f1=',url)
         return url
     }
 
-
-    // url += `&lang=ru`
     if (this.Static.makeFilter.cat != 0) {
         url += `&cat=${this.Static.categories[this.Static.makeFilter.cat].name}`
     }
@@ -50,7 +47,6 @@ export const addEvent = function () {
             }
         }
     ]
-    // this.Static.records = []
     if (!this.Events.ico) {
         this.Events.ico = this.event(filters, icoListeners)
     } else {
@@ -68,40 +64,4 @@ export const addEvent = function () {
     }
 }
 
-
-
-// export const change = function () {
-//     this.Static.records = []
-//     if (this.Static.makeFilter.cat == 0) {
-//         this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&lang=ru&active=${this.Static.makeFilter.active}`, [
-//             {
-//                 type: "add",
-//                 fn: ({ data }) => {
-//                     let record = JSON.parse(data)
-//                     if (Object.keys(record).length) {
-//                         this.Static.records.push(record)
-//                     }
-//                     this.init()
-//                 }
-//             }
-//         ])
-//     } else {
-//         console.log('=dcbe86=', this.Static.makeFilter.cat)
-//         this.Events.ico.change(`/api/events/Ico?uuid=${this.Variable.myInfo.uuid}&cat=${this.Static.categories[this.Static.makeFilter.cat].name}&active=${this.Static.makeFilter.active}`, [
-//             {
-//                 type: "add",
-//                 fn: ({ data }) => {
-//                     let record = JSON.parse(data)
-//                     if (Object.keys(record).length) {
-//                         this.Static.records.push(record)
-//                     }
-//                     this.init()
-//                 }
-//             }
-//         ])
-
-
-
-//     }
-// }
 

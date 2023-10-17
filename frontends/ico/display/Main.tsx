@@ -51,12 +51,10 @@ const RenderItems = function ({ items }) {
                     {
                         !items.length ? <p>not found</p> :
                             items.map((item, index) => {
-                                console.log('=4ff069=',item)
                                 return (
                                     <a class="ico_list_item"
                                         href={`/ico/show/${item._id}`}
                                         onclick={(e) => {
-                                            console.log('=06645f=',item._id)
                                             this.Static.record = item;
                                             this.Fn.link(e)
                                         }}
