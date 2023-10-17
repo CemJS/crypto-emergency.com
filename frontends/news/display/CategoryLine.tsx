@@ -13,7 +13,7 @@ export default function ({ items, active }) {
                                 }
                                 this.Static.catActive = index
                                 this.Static.records = []
-                                this.fn("changeEvent")
+                                this.fn("addEvent")
                             }}>
                             <span>{item.name}</span>
                         </li>
