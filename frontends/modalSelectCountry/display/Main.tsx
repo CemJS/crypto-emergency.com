@@ -31,7 +31,7 @@ export default function () {
                                 class="modalScroll_item"
                                 onclick={() => {
                                     this.cross({ co: item.co, ph: item.ph, na: item.na })
-                                    this.func.close
+                                    this.fn("close")
                                 }}
                             >
                                 <img src={`/contents/icons/flagsnew/${item.co}.svg`} alt="Флаг" />
