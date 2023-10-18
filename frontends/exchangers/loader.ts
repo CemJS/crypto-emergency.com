@@ -2,28 +2,7 @@ export const loader = function () {
   // this.fn("addEvent", {})
 
   this.Static.records = []
-
-  // if (this.Variable.DataUrl[1] == "show") {
-  //     this.Events.show = this.event(`/api/events/Exchangers?uuid=${this.Variable.myInfo.uuid}&id=${this.Variable.DataUrl[2]}`)
-
-  //     this.Events.show.addEventListener('update', ({ data }) => {
-  //         let record = JSON.parse(data)
-  //         if (Object.keys(record).length) {
-  //             this.Static.record = record
-  //         }
-  //         this.init()
-  //     });
-  // }
-
-  this.Events.exchangers = this.event(`/api/events/Exchangers?uuid=${this.Variable.myInfo.uuid}&lang=ru`)
-
-  this.Events.exchangers.addEventListener('add', ({ data }) => {
-      let record = JSON.parse(data)
-      if (Object.keys(record).length) {
-          this.Static.records.push(record)
-      }
-      this.init()
-  });
+  this.fn("addEvent")
 
   // this.Static.arr = [
   //   {

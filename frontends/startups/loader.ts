@@ -1,7 +1,6 @@
 export const loader = function () {
 
   this.Static.records = []
-  // this.Static.record = null
   this.Static.catActive = 0
   this.Static.categories = [
     {

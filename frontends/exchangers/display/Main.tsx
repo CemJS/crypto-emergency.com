@@ -53,22 +53,32 @@ export default function () {
                             {
                   this.Static.records.map((item, index) => {
                     return (
-                      <tr class="table_row listExchange_table_row">
+                      <tr class="table_row listExchange_table_row"
+                      isVisible={() => {
+                        // console.log('=c364a2=',this.Static.records.length)
+                        if (index == this.Static.records.length - 3) {
+                            this.Static.moreid = this.Static.records[this.Static.records.length - 1]._id
+                            console.log('=bea641=',this.Static.moreid)
+                            this.fn("addEvent")
+                        }
+                    }}
+                      >
                         <td class="listExchange_favourites">
                           <img src={star} alt="Избранные обменники" class="listExchange_icon" />
                         </td>
                         <td class="listExchange_table_index">{index + 1}</td>
                         <td class="listExchange_table_name">{item.name}</td>
                         <td class="listExchange_table_coins">
-                          {/* <div class="coins_wrap">
+                          <div class="coins_wrap">
                             {
-                              item.list_coins.map((el, index) => {
+                              item.List_coins.map((el, index) => {
+                                // console.log('=d689f6=',item)
                                 return (
-                                  <img src={`/assets/icons/coins/${el.icon}.svg`} class="coins_wrap_item"></img>
+                                  <img src={`/contents/icons/coins/${el.icon}.svg`} class="coins_wrap_item"></img>
                                 )
                               })
                             }
-                          </div> */}
+                          </div>
                         </td>
                         <td class="listExchange_table_btn">
                           <a class="btn btn_gradient" href={item.url} onclick={this.Fn.link}>
