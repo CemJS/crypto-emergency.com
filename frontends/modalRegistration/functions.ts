@@ -56,7 +56,11 @@ export const checkFrom = async function () {
   }
 
   if (this.Static.currentStep == 2) {
-
+    if (this.Static.form.nickName.valid && this.Static.form.mainLang.valid && this.Static.form.country.valid) {
+      this.Static.form.isValid = true
+    } else {
+      this.Static.form.isValid = false
+    }
     this.init()
     return
   }
