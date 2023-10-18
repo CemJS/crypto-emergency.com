@@ -32,7 +32,7 @@ const services = [
   {
     image: "exchanges",
     title: "Обменники",
-    url: "/list-exchange"
+    url: "/exchangers"
   },
   {
     image: "rates",

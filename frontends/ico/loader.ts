@@ -29,4 +29,14 @@ export const loader = function () {
     }
     this.fn("addEvent")
     this.Static.activeIndex = 0
+
+
+     //Categories
+     this.Static.isDrag = false;
+     this.Static.startX;
+     this.Static.startScrollLeft;
+     this.Static.body = document.querySelector('body');
+     this.Static.x1 = null;
+     this.Static.y1 = null;
+     return
 }

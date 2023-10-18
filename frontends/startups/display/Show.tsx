@@ -79,7 +79,7 @@ export default function () {
                       this.Static.record.social.map((item, index) => {
                         return (
                           <a href={item.url} onclick={this.Fn.link} class="startap_socials_item">
-                            <img src={`/assets/icons/social_networks/${item.channel}.svg`} alt={item.channel} />
+                            <img src={`/contents/icons/social_networks/${item.channel}.svg`} alt={item.channel} />
                           </a>
                         )
                       })

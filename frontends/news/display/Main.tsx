@@ -54,7 +54,7 @@ const RenderItems = function ({ items }) {
 
 export default function () {
   return (
-    <section class="news">
+    <section class="page">
       <CategoryLine items={this.Static.category} />
       <div class="wrapper">
         <RenderItems items={this.Static.records} />

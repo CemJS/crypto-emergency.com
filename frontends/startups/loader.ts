@@ -48,5 +48,5 @@ export const loader = function () {
   this.Static.body = document.querySelector('body');
   this.Static.x1 = null;
   this.Static.y1 = null;
-  
+  return
 }
