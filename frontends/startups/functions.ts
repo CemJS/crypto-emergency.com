@@ -31,7 +31,6 @@ export const addEvent = function () {
                 if (Object.keys(record).length) {
                     this.Static.records.push(record)
                 }
-                console.log('=046747=',this.Static.records)
                 this.init()
             }
         }

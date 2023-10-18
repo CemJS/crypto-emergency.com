@@ -38,6 +38,7 @@ export default function () {
                         // this.init();
                     }}
                     onwheel={(e) => {
+                        console.log('=c7412d=',e.deltaY)
                         if (e.deltaY < 0) {
                             this.Ref.categoryCarousel.scrollLeft += this.Ref.categoryEl.offsetWidth + 15;
                         } else if (e.deltaY > 0) {
