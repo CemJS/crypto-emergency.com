@@ -229,7 +229,10 @@ const Step2 = function () {
 
                 <div class="g-colEqual-2 modalReg-choose">
                     <div
-                        class="modalReg-choose_item"
+                        class={[
+                            "modalReg-choose_item",
+                            this.Static.form.mainLang.valid ? "modalReg-choose_item__success" : null
+                        ]}
                         onclick={() => {
                             this.Fn.initOne({ name: "modalSelectLanguage" })
                         }}

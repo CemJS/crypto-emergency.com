@@ -129,6 +129,10 @@
         font-size: clamp(14px, 5vw, 16px);
         font-weight: 500;
       }
+
+      &__success {
+        border: 1px solid var(--green);
+      }
     }
 
     &_arrow {
