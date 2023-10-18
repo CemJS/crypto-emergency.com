@@ -229,6 +229,14 @@ h3 {
       }
     }
 
+    &__tooltip {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      z-index: 5;
+      transform: translateY(-50%);
+    }
+
   }
 
   &_footer {

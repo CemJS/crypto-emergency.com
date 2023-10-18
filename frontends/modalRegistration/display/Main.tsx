@@ -210,6 +210,23 @@ const Step2 = function () {
                             <span>{this.Static.form.nickName.placeholder}</span>
                         </div>
                         <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.nickName.error}</p>
+                        <div class="modalWindow_field__tooltip">
+                            <div
+                                class="tooltip"
+                                onmouseover={() => {
+                                    this.Ref.tooltipContent.classList.add("tooltip-content__active")
+                                }}
+                                onmouseleave={() => {
+                                    this.Ref.tooltipContent.classList.remove("tooltip-content__active")
+                                }}
+                            >
+                                <div class="tooltip-content" ref="tooltipContent">
+                                    <p class="tooltip-content_text">
+                                        Логин не должен начинаться с цифр и спецсимволов
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -241,6 +258,7 @@ const Step2 = function () {
                             this.Static.form.isValid ? null : "btn_passive"
                         ]}
                         onclick={async () => {
+                            this.fn("clickNext")
                             if (!this.Static.form.isValid) {
                                 return
                             }
@@ -260,11 +278,39 @@ const Step3 = function () {
         <div class="modalReg_page">
             <div class="modalReg_form">
                 <h3 class="modalReg_page-title">Придумайте пароль</h3>
-                <div class="modalWindow_field">
-                    <input type="password" ref="pass" required></input>
+                <div
+                    class={[
+                        "modalWindow_field",
+                        this.Static.form.pass.value.length ? "modalWindow_field__valid" : null
+                    ]}>
+                    <input
+                        type="password"
+                        ref="pass"
+                        required
+                        oninput={(e) => {
+                            this.Static.form.pass.value = e.target.value;
+                        }}
+                    />
                     <div class="modalWindow_field_labelLine">
                         <img src={lock}></img>
                         <span>Пароль:</span>
+                    </div>
+                    <div class="modalWindow_field__tooltip">
+                        <div
+                            class="tooltip"
+                            onmouseover={() => {
+                                this.Ref.tooltipContent.classList.add("tooltip-content__active")
+                            }}
+                            onmouseleave={() => {
+                                this.Ref.tooltipContent.classList.remove("tooltip-content__active")
+                            }}
+                        >
+                            <div class="tooltip-content" ref="tooltipContent">
+                                <p class="tooltip-content_text">
+                                    Пароль должен содержать спецсимволы !?&$
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modalWindow_field">

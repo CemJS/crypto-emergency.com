@@ -29,3 +29,21 @@ export const validNickName = function (nickname: string) {
     return true
 }
 
+export const validMainLang = function (lang: string) {
+    if (lang) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+export const validCountry = function (country: string) {
+    if (country) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
