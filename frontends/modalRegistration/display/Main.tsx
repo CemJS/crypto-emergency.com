@@ -241,18 +241,19 @@ const Step2 = function () {
                             {this.Static.form.mainLang.nameOrig ? this.Static.form.mainLang.nameOrig : this.Static.form.mainLang.placeholder}
                         </span>
                         <span class="modalReg-choose_arrow"></span>
-                        {/* <span  style="color:#E84142">{this.Static.form.mainLang.error}</span> */}
                     </div>
 
                     <div
-                        class="modalReg-choose_item"
+                        class={[
+                            "modalReg-choose_item",
+                            this.Static.form.country.valid ? "modalReg-choose_item__success" : null
+                        ]}
                         onclick={() => {
                             this.Fn.initOne({ name: "modalSelectCountry" })
                         }}
                     >
                         <span>{this.Static.form.country.nameOrig ? this.Static.form.country.nameOrig : this.Static.form.country.placeholder}</span>
                         <span class="modalReg-choose_arrow"></span>
-                        {/* <span  style="color:#E84142">{this.Static.form.country.error}</span> */}
                     </div>
                 </div>
 
@@ -279,7 +280,7 @@ const Step2 = function () {
 }
 
 const Step3 = function () {
-    console.log('=5e0ef3=', this.Static)
+    // console.log('=5e0ef3=', this.Static)
     return (
         <div class="modalReg_page">
             <div class="modalReg_form">
@@ -287,7 +288,9 @@ const Step3 = function () {
                 <div
                     class={[
                         "modalWindow_field",
-                        this.Static.form.pass.value.length ? "modalWindow_field__valid" : null
+                        this.Static.form.pass.value.length ? "modalWindow_field__valid" : null,
+                        this.Static.form.pass.error ? "modalWindow_field__error" : null,
+                        this.Static.form.pass.valid ? "modalWindow_field__success" : null
                     ]}>
                     <input
                         type="password"
@@ -302,7 +305,7 @@ const Step3 = function () {
                         <img src={lock}></img>
                         <span>{this.Static.form.pass.placeholder}</span>
                     </div>
-
+                    <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.pass.error}</p>
                     <div class="modalWindow_field__tooltip">
                         <div
                             class="tooltip"
@@ -324,7 +327,9 @@ const Step3 = function () {
                 <div
                     class={[
                         "modalWindow_field",
-                        this.Static.form.rePass.value.length ? "modalWindow_field__valid" : null
+                        this.Static.form.rePass.value.length ? "modalWindow_field__valid" : null,
+                        this.Static.form.rePass.error ? "modalWindow_field__error" : null,
+                        this.Static.form.rePass.valid ? "modalWindow_field__success" : null
                     ]}>
                     <input
                         type={this.Static.passType}
@@ -339,6 +344,7 @@ const Step3 = function () {
                         <img src={lock}></img>
                         <span>{this.Static.form.rePass.placeholder}</span>
                     </div>
+                    <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.rePass.error}</p>
                     <div class="modalWindow_field__tooltip">
                         <img
                             alt="Показать пароль"

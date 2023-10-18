@@ -63,7 +63,7 @@ export const loader = function () {
       value: "",
       valid: false,
       error: false,
-      placeholder: "Введите пароль:",
+      placeholder: "Пароль:",
       view: false,
       disable: false
     },
