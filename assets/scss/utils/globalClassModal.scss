@@ -56,7 +56,7 @@ h3 {
       height: 70%;
     }
 
-    &__select-lang {
+    &__narrow {
       max-width: 500px;
     }
   }
@@ -235,6 +235,13 @@ h3 {
       top: 50%;
       z-index: 5;
       transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__eye {
+      transition: 0.3s ease-in-out;
     }
 
   }

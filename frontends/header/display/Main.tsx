@@ -27,8 +27,8 @@ export default function () {
                         </div>
                         <button class="header__auth_log" type="button"
                             onclick={() => {
-                                // this.Fn.initOne({ name: "modalAuthorization" })
-                                this.Fn.initOne({ name: "modalTest" })
+                                this.Fn.initOne({ name: "modalAuthorization" })
+                                // this.Fn.initOne({ name: "modalTest" })
                             }}
                         >Вход</button>
                         <button class="header__auth_sign" type="button"

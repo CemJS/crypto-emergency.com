@@ -4,6 +4,7 @@ export const loader = function () {
   this.Static.widthSlide = 25;
   this.Static.waitCode = false
   this.Static.time = 60;
+  this.Static.passType = "password"
 
 
   this.Static.regOneNum = /^\d{1,}$/
@@ -58,7 +59,7 @@ export const loader = function () {
       value: "",
       valid: false,
       error: false,
-      placeholder: "Введите ваш E-mail",
+      placeholder: "Введите пароль:",
       view: false,
       disable: false
     },
@@ -66,7 +67,7 @@ export const loader = function () {
       value: "",
       valid: false,
       error: false,
-      placeholder: "Введите ваш E-mail",
+      placeholder: "Подтвердите пароль:",
       view: false,
       disable: false
     },

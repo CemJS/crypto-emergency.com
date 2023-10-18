@@ -64,6 +64,16 @@ export const checkFrom = async function () {
     this.init()
     return
   }
+
+  if (this.Static.currentStep == 3) {
+    if (this.Static.form.pass.valid && this.Static.form.rePass.valid) {
+      this.Static.form.isValid = true
+    } else {
+      this.Static.form.isValid = false
+    }
+    this.init()
+    return
+  }
 }
 
 

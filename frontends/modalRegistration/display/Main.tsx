@@ -235,26 +235,24 @@ const Step2 = function () {
                         class="modalReg-choose_item"
                         onclick={() => {
                             this.Fn.initOne({ name: "modalSelectLanguage" })
-                            this.Services.functions.formMainLang(this.Static.form.mainLang)
-                            this.fn("checkFrom")
                         }}
                     >
                         <span>
                             {this.Static.form.mainLang.value ? this.Static.form.mainLang.value : this.Static.form.mainLang.placeholder}
                         </span>
                         <span class="modalReg-choose_arrow"></span>
+                        {/* <span  style="color:#E84142">{this.Static.form.mainLang.error}</span> */}
                     </div>
 
                     <div
                         class="modalReg-choose_item"
                         onclick={() => {
                             this.Fn.initOne({ name: "modalSelectCountry" })
-                            this.Services.functions.formCountry(this.Static.form.country)
-                            this.fn("checkFrom")
                         }}
                     >
                         <span>{this.Static.form.country.value ? this.Static.form.country.value : this.Static.form.country.placeholder}</span>
                         <span class="modalReg-choose_arrow"></span>
+                        {/* <span  style="color:#E84142">{this.Static.form.country.error}</span> */}
                     </div>
                 </div>
 
@@ -266,11 +264,10 @@ const Step2 = function () {
                             this.Static.form.isValid ? null : "btn_passive"
                         ]}
                         onclick={async () => {
-                            this.fn("clickNext")
                             if (!this.Static.form.isValid) {
                                 return
                             }
-
+                            this.fn("clickNext")
                             return
                         }}>
                         Далее
@@ -293,27 +290,28 @@ const Step3 = function () {
                     ]}>
                     <input
                         type="password"
-                        ref="pass"
                         required
-                        oninput={(e) => {
+                        oninput={(e: any) => {
                             this.Static.form.pass.value = e.target.value;
+                            this.init()
                         }}
                     />
                     <div class="modalWindow_field_labelLine">
                         <img src={lock}></img>
-                        <span>Пароль:</span>
+                        <span>{this.Static.form.pass.placeholder}</span>
                     </div>
+
                     <div class="modalWindow_field__tooltip">
                         <div
                             class="tooltip"
                             onmouseover={() => {
-                                this.Ref.tooltipContent.classList.add("tooltip-content__active")
+                                this.Ref.tooltipContentPass.classList.add("tooltip-content__active")
                             }}
                             onmouseleave={() => {
-                                this.Ref.tooltipContent.classList.remove("tooltip-content__active")
+                                this.Ref.tooltipContentPass.classList.remove("tooltip-content__active")
                             }}
                         >
-                            <div class="tooltip-content" ref="tooltipContent">
+                            <div class="tooltip-content" ref="tooltipContentPass">
                                 <p class="tooltip-content_text">
                                     Пароль должен содержать спецсимволы !?&$
                                 </p>
@@ -321,30 +319,55 @@ const Step3 = function () {
                         </div>
                     </div>
                 </div>
-                <div class="modalWindow_field">
-                    <input type="password" ref="confirmPass" required></input>
+                <div
+                    class={[
+                        "modalWindow_field",
+                        this.Static.form.rePass.value.length ? "modalWindow_field__valid" : null
+                    ]}>
+                    <input
+                        type={this.Static.passType}
+                        required
+                        oninput={(e: any) => {
+                            this.Static.form.rePass.value = e.target.value;
+                            this.init()
+                        }}
+                    />
                     <div class="modalWindow_field_labelLine">
                         <img src={lock}></img>
-                        <span>Повторить пароль:</span>
+                        <span>{this.Static.form.rePass.placeholder}</span>
+                    </div>
+                    <div class="modalWindow_field__tooltip">
+                        <img
+                            alt="Показать пароль"
+                            class="modalWindow_field__eye"
+                            src={this.Static.passType == "password" ? eye : eyeSlash}
+                            onclick={() => {
+                                if (this.Static.passType == "password") {
+                                    this.Static.passType = "text"
+                                } else {
+                                    this.Static.passType = "password"
+                                }
+                                this.init()
+                            }}
+                        />
                     </div>
                 </div>
                 <div class="f-center modalReg_btns">
                     <button
-                        class="btn btn_timing"
-                        onclick={() => {
-                            this.Ref.slidePage.style.marginLeft = "-25%"
-                            this.fn("clickPrev", this.Ref.indicator)
-                            this.init()
-                        }}
-                    >
-                        Назад
+                        class={[
+                            "btn",
+                            "btn_timing",
+                            this.Static.form.isValid ? null : "btn_passive"
+                        ]}
+                        onclick={async () => {
+                            if (!this.Static.form.isValid) {
+                                return
+                            }
+                            this.fn("clickNext")
+                            return
+                        }}>
+                        Далее
                     </button>
-                    <button
-                        class="btn btn_timing"
-                        onclick={() => {
-                            this.fn("clickNext", this.Ref.slidePage, this.Ref.indicator)
-                        }}
-                    >Далее</button>
                 </div>
             </div>
         </div>

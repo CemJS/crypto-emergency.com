@@ -1,7 +1,27 @@
 export const loader = function () {
-  this.Static.body = document.querySelector('body');
-  this.Static.buttonActive = "email";
-  this.Static.viewPassword = false;
+  this.Static.passType = "password"
+
+  this.Static.form = {
+    email: {
+      value: "",
+      valid: false,
+      error: false,
+      placeholder: "Email",
+      view: false,
+      disable: false
+    },
+    pass: {
+      value: "",
+      valid: false,
+      error: false,
+      placeholder: "Введите пароль:",
+      view: false,
+      disable: false
+    },
+  }
+
+  // ============================================
+
   this.Static.email = {
     value: "",
     valid: false,

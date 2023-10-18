@@ -47,3 +47,20 @@ export const validCountry = function (country: string) {
     }
 }
 
+export const validPassword = function (password: string) {
+    if (password.length < 8 || password.length > 15) {
+        return false
+    }
+
+    let beginWithoutDigit = /^\D.*$/.test(password)
+    let latinChars = /^[a-zA-Z0-9._]/.test(password)
+    let specialChars = /^(?!.*[!@#$%^&(),+=/\/\]\[{}?><":;!№*|])/.test(password)
+
+
+    if (!beginWithoutDigit || !latinChars || !specialChars) {
+        return false
+    }
+
+    return true
+}
+
