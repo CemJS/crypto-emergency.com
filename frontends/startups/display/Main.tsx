@@ -9,12 +9,18 @@ const RenderItems = function ({ items }){
                     {
                         items.map((item, index) => {
                             return (
-                                <div
+                                <a
                                     class="startaps_item"
-                                    onclick={() => {
-                                        
+                                    href={`/startups/show/${item._id}`}
+                                    onclick={(e) => {
                                         this.Static.record = item;
-                                        this.init();
+                                        this.Fn.link(e)
+                                    }}
+                                    isVisible={() => {
+                                        if (index == items.length - 3) {
+                                            this.Static.moreid = items[items.length - 1]._id
+                                            this.fn("addEvent")
+                                        }
                                     }}
                                 >
                                     <span class="category">{item.category}</span>
@@ -25,7 +31,7 @@ const RenderItems = function ({ items }){
                                         <h5 class="startaps_item_info_title">{item.title}</h5>
                                         <p class="startaps_item_info_text">{item.descriptionShort}</p>
                                     </div>
-                                </div>
+                                </a>
                             )
                         })
                     }
@@ -37,7 +43,7 @@ const RenderItems = function ({ items }){
 
 export default function () {
     return (
-      <section class="news">
+      <section class="page">
         <CategoryLine items={this.Static.categories} />
         <div class="wrapper">
           <RenderItems items={this.Static.records} />

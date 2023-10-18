@@ -9,18 +9,19 @@ export const makeFilters = function (show = false) {
     if (this.Static.catActive != 0) {
         url += `&cat=${this.Static.categories[this.Static.catActive].name}`
     }
-
-    // if (this.Static.moreid) {
-    //     url += `&moreid=${this.Static.moreid}`
-    //     this.Static.moreid = null
-    // } else {
-    //     this.Static.records = []
-    // }
+    
+    if (this.Static.moreid) {
+        url += `&moreid=${this.Static.moreid}`
+        this.Static.moreid = null
+    } else {
+        this.Static.records = []
+    }
+    console.log('=3e87a7=',url)
     return url
 }
 
 export const addEvent = function () {
-    // console.log('=catActive=', this.Static.catActive)
+    console.log('=catActive=', this.Static.catActive)
     let filters = this.fn("makeFilters")
     let startupsListeners = [
         {
@@ -30,6 +31,7 @@ export const addEvent = function () {
                 if (Object.keys(record).length) {
                     this.Static.records.push(record)
                 }
+                console.log('=046747=',this.Static.records)
                 this.init()
             }
         }
@@ -41,13 +43,13 @@ export const addEvent = function () {
                 let record = JSON.parse(data)
                 if (Object.keys(record).length) {
                     this.Static.record = record
-                    console.log('=update=',this.Static.record)
+                    // console.log('=update=',this.Static.record)
                 }
                 this.init()
             }
         }
     ]
-    console.log('=this.Static.records=',this.Static.records)
+    // this.Static.records = []
     if (!this.Events.startups) {
         this.Events.startups = this.event(filters, startupsListeners)
     } else {

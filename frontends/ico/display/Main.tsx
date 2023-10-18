@@ -18,7 +18,7 @@ const RenderItems = function ({ items }) {
 
 
     return (
-
+        <div class="ico">
             <div class="ico_inner">
                 <div class="ico_tabs" ref="tabs">
                     {
@@ -30,7 +30,6 @@ const RenderItems = function ({ items }) {
                                     onclick={() => {
                                         if (this.Static.makeFilter.active == item.name) { return }
                                         this.Static.makeFilter.active = item.name
-
                                         this.fn("addEvent")
                                         this.Static.activeIndex = index;
                                         this.Ref.tabsSlider.style.left = `${this.Ref.tabsItem.offsetWidth * this.Static.activeIndex}px`;
@@ -38,7 +37,9 @@ const RenderItems = function ({ items }) {
                                         setTimeout(() => {
                                             this.Ref.icoList.classList.remove('animated');
                                         }, 500)
+                                        this.init()
                                     }}
+
                                 >
                                     <span>{item.name}</span>
                                 </div>
@@ -102,13 +103,14 @@ const RenderItems = function ({ items }) {
                     }
                 </div>
             </div>
+        </div>
     )
 
 }
 
 export default function () {
     return (
-        <section class="news">
+        <section >
             <CategoryLine items={this.Static.categories} active={this.Static.catActive} />
             <div class="wrapper">
                 <RenderItems items={this.Static.records} />

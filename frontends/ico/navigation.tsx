@@ -6,9 +6,9 @@ export default function () {
   let param: string = this.Variable.DataUrl[1]
   switch (param) {
     case 'show':
-      return <Show />
+      return<Show />    
     default:
-      return <Main />
+      return<Main />
   }
 }
 

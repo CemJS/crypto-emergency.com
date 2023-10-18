@@ -53,7 +53,6 @@ export const addEvent = function () {
         this.Events.ico.change(filters, icoListeners)
     }
 
-
     if (this.Variable.DataUrl[1] == "show") {
         filters = this.fn("makeFilters", true)
         if (!this.Events.show) {

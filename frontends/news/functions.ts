@@ -52,7 +52,6 @@ export const addEvent = function () {
         this.Events.news.change(filters, newsListeners)
     }
 
-
     if (this.Variable.DataUrl[1] == "show") {
         filters = this.fn("makeFilters", true)
         if (!this.Events.show) {

@@ -3,18 +3,12 @@ import Show from "./display/Show"
 import Main from "./display/Main"
 
 export default function () {
-
-  let param = this.Variable.DataUrl[1] || ""
-  if (this.Static.record) {
-    param = "show"
-  }
-
+  let param: string = this.Variable.DataUrl[1]
   switch (param) {
     case 'show':
-      return <Show />
-      break;
+      return<Show />    
     default:
-      return <Main />
+      return<Main />
   }
 }
 

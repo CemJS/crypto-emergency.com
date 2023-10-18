@@ -1,8 +1,7 @@
 {
-    "url": "/startups",
+    "regex": "/startups",
     "front": [
         "header",
-        "categoryLine",
         "startups",
         "footer"
     ]

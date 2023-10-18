@@ -14,10 +14,6 @@ export default function () {
                 <ul
                     class="category-carousel"
                     ref="categoryCarousel"
-                    // onclick={() => {
-                    //   console.log('=4a322c=', this.Static.icoList)
-                    //   this.init()
-                    // }}
                     onmousedown={(e) => {
                         this.Static.isDrag = true;
                         this.Ref.categoryCarousel.classList.add("dragging");
