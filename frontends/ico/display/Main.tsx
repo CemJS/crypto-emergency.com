@@ -111,8 +111,9 @@ const RenderItems = function ({ items }) {
 export default function () {
     return (
         <section >
-            <CategoryLine items={this.Static.categories} active={this.Static.catActive} />
             <div class="wrapper">
+            <CategoryLine items={this.Static.categories} active={this.Static.catActive} />
+
                 <RenderItems items={this.Static.records} />
             </div>
         </section>

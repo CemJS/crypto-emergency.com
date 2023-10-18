@@ -43,13 +43,12 @@ export const addEvent = function () {
                 let record = JSON.parse(data)
                 if (Object.keys(record).length) {
                     this.Static.record = record
-                    // console.log('=update=',this.Static.record)
                 }
                 this.init()
             }
         }
     ]
-    // this.Static.records = []
+
     if (!this.Events.startups) {
         this.Events.startups = this.event(filters, startupsListeners)
     } else {
