@@ -3,7 +3,7 @@ import back from '@svg/icon/prev.svg'
 import next from '@svg/icon/next.svg'
 
 export default function () {
-  console.log('=55ea43=', this.Static.record)
+  console.log('=55ea43=', 'Првивет')
   return (
       <div class="startaps_show effect_lines">
         <div class="wrapper">
