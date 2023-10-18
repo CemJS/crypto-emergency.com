@@ -1,7 +1,8 @@
 export const loader = function () {
-    this.Static.body = document.querySelector('body');
     this.Static.email = {
         value: "",
-        valid: false
+        valid: false,
+        error: false,
+        placeholder: "Введите ваш email"
     }
 }

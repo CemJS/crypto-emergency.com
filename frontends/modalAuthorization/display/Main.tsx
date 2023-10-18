@@ -10,7 +10,9 @@ export default function () {
             <div class="modalAuth">
                 <div class={[
                     "modalWindow_field",
-                    this.Static.form.email.value.length ? "modalWindow_field__valid" : null
+                    this.Static.form.email.value.length ? "modalWindow_field__valid" : null,
+                    this.Static.form.email.error ? "modalWindow_field__error" : null,
+                    this.Static.form.email.valid ? "modalWindow_field__success" : null
                 ]}>
                     <input
                         type="email"
@@ -18,8 +20,9 @@ export default function () {
                         autocomplete="off"
                         oninput={(e: any) => {
                             this.Static.form.email.value = e.target.value;
-                            // this.Services.functions.formEmail(this.Static.form.email)
-                            // this.fn("checkFrom")
+                            this.Services.functions.formEmail(this.Static.form.email)
+                            this.fn("checkFrom")
+                            this.init()
                         }} />
                     <div class="modalWindow_field_labelLine">
                         <img src={email}></img>
@@ -61,51 +64,17 @@ export default function () {
                         />
                     </div>
                 </div>
+                <div class="f-col">
+                    <p>При использовании платформы вы соглашаетесь с <a href="/policy" class="link-beauty">политикой сайта.</a></p>
+                    <span
+                        class="link-beauty"
+                        onclick={() => this.Fn.initOne({ name: "modalRecoverPass" })}
+                    >Забыли пароль?</span>
+                </div>
+
             </div>
         </main>
-        // <div class="modal modal_open">
-        //     <div class="modal__black"
-        //         onclick={() => {
-        //             setTimeout(() => {
-        //                 this.Static.body.style.overflow = '';
-        //                 this.clearData()
-        //             }, 5);
-        //         }}
-        //     />
-        //     <div class="modal__container authorization">
-        //         <header class="modal__header">
-        //             <h2>
-        //                 Авторизация
-        //             </h2>
-        //             <button
-        //                 class="modal__close"
-        //                 type="button"
-        //                 onclick={() => {
-        //                     setTimeout(() => {
-        //                         this.Static.body.style.overflow = '';
-        //                         this.clearData()
-        //                     }, 5);
-        //                 }}
-        //             />
-        //         </header>
-        //         <div class="modal__body">
-        //             <div class="authorization__mobileoreemail">
-        //                 <button class={["button", "button_toggler", this.Static.buttonActive == "email" ? "button_active" : null]}
-        //                     onclick={() => {
-        //                         this.fn("resetField", "email")
-        //                     }}
-        //                 >
-        //                     E-mail
-        //                 </button>
-        //                 <button class={["button", "button_toggler", this.Static.buttonActive == "phone" ? "button_active" : null]}
-        //                     style="margin-right: 0"
-        //                     onclick={() => {
-        //                         this.fn("resetField", "phone")
-        //                     }}
-        //                 >
-        //                     Телефон
-        //                 </button>
-        //             </div>
+
         //             <form>
         //                 <div class="authorization-form">
         //                     <div class="authorization-form__email">

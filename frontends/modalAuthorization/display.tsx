@@ -20,7 +20,15 @@ export const display = function () {
           </header>
           <Navigation />
           <footer class="modalWindow_footer f-center modalReg_btns">
-            <button class={["btn", "btn_timing", "btn_passive"]}>Вход</button>
+            <button
+              class={[
+                "btn",
+                "btn_timing",
+                "btn_passive",
+                this.Static.form.isValid ? null : "btn_passive",
+              ]}>
+              Вход
+            </button>
             <button class={["btn", "btn_timing"]}>Регистрация</button>
           </footer>
         </div>
