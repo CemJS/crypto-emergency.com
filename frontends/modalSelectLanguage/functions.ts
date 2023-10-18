@@ -6,7 +6,6 @@ export const show = function ($el: HTMLElement) {
 }
 
 export const close = function () {
-    console.log('=104167=', this)
     this.Ref.modalWindow.classList.remove('activeModal');
     setTimeout(() => {
         this.clearData();

@@ -149,7 +149,6 @@ const Step1 = function () {
                                 if (!this.Static.form.isValid) {
                                     return
                                 }
-
                                 this.fn("sendCode")
                                 return
                             }}>
@@ -157,11 +156,6 @@ const Step1 = function () {
                         </button>
                     </div>
             }
-
-
-
-
-
         </div>
     )
 }
@@ -186,24 +180,27 @@ const Step2 = function () {
                             oninput={async (e: any) => {
                                 this.Static.form.nickName.value = e.target.value;
                                 this.Services.functions.formNickName(this.Static.form.nickName)
-                                if (this.Static.setTimeout) {
-                                    clearTimeout(this.Static.setTimeout)
+                                if (this.Static.form.nickName.valid) {
+                                    if (this.Static.setTimeout) {
+                                        clearTimeout(this.Static.setTimeout)
+                                    }
+                                    this.Static.setTimeout = setTimeout(async () => {
+                                        let data = {
+                                            action: "avalibleNick",
+                                            nickname: this.Static.form.nickName.value
+                                        }
+
+                                        let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+                                        if (answer.error) {
+                                            this.Static.form.nickName.error = "Логин занят!"
+                                            this.Static.form.nickName.valid = false
+                                        }
+                                        this.fn("checkFrom")
+                                    }, 300);
+                                } else {
+                                    this.init()
                                 }
-                                this.Static.setTimeout = setTimeout(async () => {
-                                    let data = {
-                                        action: "avalibleNick",
-                                        nickname: this.Static.form.nickName.value
-                                    }
-
-                                    let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
-
-                                    if (answer.error) {
-                                        this.Static.form.nickName.error = "Логин занят!"
-                                        this.Static.form.nickName.valid = false
-                                    }
-                                    this.fn("checkFrom")
-                                }, 300);
-
                             }} />
                         <div class="modalWindow_field_labelLine">
                             <img src={user}></img>
@@ -238,7 +235,7 @@ const Step2 = function () {
                         }}
                     >
                         <span>
-                            {this.Static.form.mainLang.value ? this.Static.form.mainLang.value : this.Static.form.mainLang.placeholder}
+                            {this.Static.form.mainLang.nameOrig ? this.Static.form.mainLang.nameOrig : this.Static.form.mainLang.placeholder}
                         </span>
                         <span class="modalReg-choose_arrow"></span>
                         {/* <span  style="color:#E84142">{this.Static.form.mainLang.error}</span> */}
@@ -250,7 +247,7 @@ const Step2 = function () {
                             this.Fn.initOne({ name: "modalSelectCountry" })
                         }}
                     >
-                        <span>{this.Static.form.country.value ? this.Static.form.country.value : this.Static.form.country.placeholder}</span>
+                        <span>{this.Static.form.country.nameOrig ? this.Static.form.country.nameOrig : this.Static.form.country.placeholder}</span>
                         <span class="modalReg-choose_arrow"></span>
                         {/* <span  style="color:#E84142">{this.Static.form.country.error}</span> */}
                     </div>
@@ -279,6 +276,7 @@ const Step2 = function () {
 }
 
 const Step3 = function () {
+    console.log('=5e0ef3=', this.Static)
     return (
         <div class="modalReg_page">
             <div class="modalReg_form">
@@ -293,7 +291,8 @@ const Step3 = function () {
                         required
                         oninput={(e: any) => {
                             this.Static.form.pass.value = e.target.value;
-                            this.init()
+                            this.Services.functions.formPassword(this.Static.form.pass)
+                            this.fn("checkFrom")
                         }}
                     />
                     <div class="modalWindow_field_labelLine">
@@ -329,7 +328,8 @@ const Step3 = function () {
                         required
                         oninput={(e: any) => {
                             this.Static.form.rePass.value = e.target.value;
-                            this.init()
+                            this.Services.functions.formPassword(this.Static.form.rePass)
+                            this.fn("checkFrom")
                         }}
                     />
                     <div class="modalWindow_field_labelLine">
@@ -421,16 +421,5 @@ export default function () {
                 </div>
             </div>
         </main>
-
-        //                                 this.Static.pass.error = this.Services.functions.validator.isStrongPassword(e.target.value, {
-        //                                     minLength: 8,
-        //                                     minLowercase: 0,
-        //                                     minUppercase: 0,
-        //                                     minNumbers: 0,
-        //                                     minSymbols: 1,
-        //                                 });
-
-
-
     )
 }

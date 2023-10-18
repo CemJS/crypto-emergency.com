@@ -4,13 +4,15 @@ export const loader = function () {
   this.Static.widthSlide = 25;
   this.Static.waitCode = false
   this.Static.time = 60;
+  this.Static.code = new Array(6).fill(null)
+
+
+
   this.Static.passType = "password"
 
 
-  this.Static.regOneNum = /^\d{1,}$/
 
 
-  this.Static.code = new Array(6).fill(null)
 
   //-----------------------
 
@@ -41,6 +43,7 @@ export const loader = function () {
     },
     mainLang: {
       value: "",
+      nameOrig: null,
       valid: false,
       error: false,
       placeholder: "Выбрать язык",
@@ -49,6 +52,7 @@ export const loader = function () {
     },
     country: {
       value: "",
+      nameOrig: null,
       valid: false,
       error: false,
       placeholder: "Выбрать страну",
@@ -68,14 +72,6 @@ export const loader = function () {
       valid: false,
       error: false,
       placeholder: "Подтвердите пароль:",
-      view: false,
-      disable: false
-    },
-    agree: {
-      value: "",
-      valid: false,
-      error: false,
-      placeholder: "Введите ваш E-mail",
       view: false,
       disable: false
     },

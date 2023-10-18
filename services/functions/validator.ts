@@ -1,4 +1,5 @@
 
+import validator from 'validator'
 
 export const validEmail = function (email: string) {
     return String(email)
@@ -29,8 +30,8 @@ export const validNickName = function (nickname: string) {
     return true
 }
 
-export const validMainLang = function (lang: string) {
-    if (lang) {
+export const validLang = function (lang: string) {
+    if (lang.length == 2) {
         return true
     }
     else {
@@ -39,7 +40,7 @@ export const validMainLang = function (lang: string) {
 }
 
 export const validCountry = function (country: string) {
-    if (country) {
+    if (country.length == 2) {
         return true
     }
     else {
@@ -48,19 +49,28 @@ export const validCountry = function (country: string) {
 }
 
 export const validPassword = function (password: string) {
-    if (password.length < 8 || password.length > 15) {
-        return false
-    }
 
-    let beginWithoutDigit = /^\D.*$/.test(password)
-    let latinChars = /^[a-zA-Z0-9._]/.test(password)
-    let specialChars = /^(?!.*[!@#$%^&(),+=/\/\]\[{}?><":;!№*|])/.test(password)
+    return validator.isStrongPassword(password, {
+        minLength: 8,
+        minLowercase: 0,
+        minUppercase: 0,
+        minNumbers: 0,
+        minSymbols: 1,
+    });
 
 
-    if (!beginWithoutDigit || !latinChars || !specialChars) {
-        return false
-    }
+    // if (password.length < 8 || password.length > 15) {
+    //     return false
+    // }
 
-    return true
+    // let beginWithoutDigit = /^\D.*$/.test(password)
+    // let latinChars = /^[a-zA-Z0-9._]/.test(password)
+    // let specialChars = /^(?!.*[!@#$%^&(),+=/\/\]\[{}?><":;!№*|])/.test(password)
+
+
+    // if (!beginWithoutDigit || !latinChars || !specialChars) {
+    //     return false
+    // }
+
+    // return true
 }
-

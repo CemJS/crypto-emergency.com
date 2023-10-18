@@ -1,5 +1,4 @@
-
-import { validEmail, validNickName, validMainLang, validCountry } from './validator'
+import { validEmail, validNickName, validLang, validCountry, validPassword } from './validator'
 
 interface Form {
     value: string,
@@ -62,8 +61,14 @@ export const formNickName = async function (form: Form) {
     }
 }
 
-export const formMainLang = async function (form: Form) {
-    let check = validMainLang(form.value)
+export const formLang = async function (form: Form) {
+    if (!form.value.length) {
+        form.error = false
+        form.valid = false
+        return false
+    }
+
+    let check = validLang(form.value)
     if (check) {
         form.error = false
         form.valid = true
@@ -76,6 +81,13 @@ export const formMainLang = async function (form: Form) {
 }
 
 export const formCountry = async function (form: Form) {
+
+    if (!form.value.length) {
+        form.error = false
+        form.valid = false
+        return false
+    }
+
     let check = validCountry(form.value)
     if (check) {
         form.error = false
@@ -86,4 +98,26 @@ export const formCountry = async function (form: Form) {
         form.valid = false
         return false
     }
+}
+
+
+
+export const formPassword = async function (form: Form) {
+    if (!form.value.length) {
+        form.error = false
+        form.valid = false
+        return false
+    }
+
+    let check = validPassword(form.value)
+    if (check) {
+        form.error = false
+        form.valid = true
+        return true
+    } else {
+        form.error = "Слишком легкий пароль"
+        form.valid = false
+        return false
+    }
+
 }
