@@ -3,7 +3,6 @@ import back from '@svg/icon/prev.svg'
 import next from '@svg/icon/next.svg'
 
 export default function () {
-  console.log('=55ea43=', 'Првивет')
   return (
       <div class="startaps_show effect_lines">
         <div class="wrapper">
@@ -80,7 +79,7 @@ export default function () {
                       this.Static.record.social.map((item, index) => {
                         return (
                           <a href={item.url} onclick={this.Fn.link} class="startap_socials_item">
-                            <img src={`/assets/icons/socials/${item.channel}.svg`} alt={item.channel} />
+                            <img src={`/assets/icons/social_networks/${item.channel}.svg`} alt={item.channel} />
                           </a>
                         )
                       })

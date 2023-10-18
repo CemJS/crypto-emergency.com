@@ -2,6 +2,14 @@ import { Cemjsx } from "cemjs-all"
 import CategoryLine from "./CategoryLine"
 
 const RenderItems = function ({ items }) {
+    
+    if (!items.length) {
+        return (
+          <div class="news__inner">
+            нет записей
+          </div>
+        )
+      }
     return (
         <section class="startaps">
             <div class="wrapper">

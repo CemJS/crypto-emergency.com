@@ -16,7 +16,6 @@ export const makeFilters = function (show = false) {
     } else {
         this.Static.records = []
     }
-    console.log('=3e87a7=',url)
     return url
 }
 
