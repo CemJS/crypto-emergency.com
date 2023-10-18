@@ -233,7 +233,11 @@ const Step2 = function () {
                 <div class="g-colEqual-2 modalReg-choose">
                     <div
                         class="modalReg-choose_item"
-                        onclick={() => this.Fn.initOne({ name: "modalSelectLanguage" })}
+                        onclick={() => {
+                            this.Fn.initOne({ name: "modalSelectLanguage" })
+                            this.Services.functions.formMainLang(this.Static.form.mainLang)
+                            this.fn("checkFrom")
+                        }}
                     >
                         <span>
                             {this.Static.form.mainLang.value ? this.Static.form.mainLang.value : this.Static.form.mainLang.placeholder}
@@ -243,7 +247,11 @@ const Step2 = function () {
 
                     <div
                         class="modalReg-choose_item"
-                        onclick={() => this.Fn.initOne({ name: "modalSelectCountry" })}
+                        onclick={() => {
+                            this.Fn.initOne({ name: "modalSelectCountry" })
+                            this.Services.functions.formCountry(this.Static.form.country)
+                            this.fn("checkFrom")
+                        }}
                     >
                         <span>{this.Static.form.country.value ? this.Static.form.country.value : this.Static.form.country.placeholder}</span>
                         <span class="modalReg-choose_arrow"></span>
