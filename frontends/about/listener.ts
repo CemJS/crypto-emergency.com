@@ -51,4 +51,23 @@ export const finish = function () {
       margin: 10
     })
   }
+
+
+
+
+  this.Static.employments = document.querySelectorAll(".employment_item");
+
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(item => {
+      item.target.classList.toggle("show", item.isIntersecting)
+    })
+    // console.log('=b1055d=', entries)
+  })
+
+  this.Static.employments.forEach(item => {
+
+    observer.observe(item)
+  })
+
 }

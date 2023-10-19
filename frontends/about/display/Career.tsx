@@ -1,4 +1,5 @@
 import { Cemjsx } from "cemjs-all"
+
 import icon from '@svg/career/profession_icon-2.svg'
 
 const advantages = [
@@ -68,7 +69,6 @@ const professions = [
         text: 'Монтаж и создание видео'
     },
 ]
-
 
 export default function () {
     return (

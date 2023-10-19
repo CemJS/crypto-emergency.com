@@ -1,8 +1,0 @@
-{
-    "url": "/contacts",
-    "front": [
-        "header",
-        "contacts",
-        "footer"
-    ]
-}
