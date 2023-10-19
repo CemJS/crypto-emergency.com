@@ -70,12 +70,22 @@ export const checkFrom = async function () {
 
       let data = {
         action: "registrated",
+        email: this.Static.form.email.value,
+        code: this.Static.form.code.value,
+        nikName: this.Static.form.nickName,
+        lang: this.Static.form.mainLang.value,
+        country: this.Static.form.country,
         password: this.Static.form.pass.value
       }
 
       let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
 
-      if (answer.error) { }
+      if (answer.error) {
+        this.Static.form.email.error = "Пароль не совпадают"
+        this.Static.form.rePass.valid = false
+        this.init()
+        return
+      }
 
       this.fn("clickNext")
       return
