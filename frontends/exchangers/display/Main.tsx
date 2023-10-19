@@ -19,7 +19,6 @@ import lineB from '@svg/lines/linesB.svg'
 
 
 export default function () {
-  console.log('=4e3949=', this.Static.records.length, this.Static.records)
   return (
     <section class="listExchange effect_lines pt_80">
       <div class="wrapper">
@@ -38,12 +37,9 @@ export default function () {
                     src={filter}
                     onclick={() => {
                       this.Fn.initOne({
-                        name: "modalFilterExchange", ifOpen: (front) => {
-                          setTimeout(() => {
-                            front.clearData()
-                          }, 500);
-                        }
+                          name: "modalFilterExchange", data: { coinss: this.Static.network }
                       })
+                      console.log('=page=',this.Static.network)
                     }}
                   />
                 </th>
@@ -89,36 +85,6 @@ export default function () {
                   )
                 })
               }
-
-              {/* {
-                  this.Static.records.map((item, index) => {
-                    return (
-                      <tr class="table_row listExchange_table_row">
-                        <td class="listExchange_favourites">
-                          <img src={star} alt="Избранные обменники" class="listExchange_icon" />
-                        </td>
-                        <td class="listExchange_table_index">{index + 1}</td>
-                        <td class="listExchange_table_name">{item.name}</td>
-                        <td class="listExchange_table_coins">
-                          <div class="coins_wrap">
-                            {
-                              item.list_coins.map((el, index) => {
-                                return (
-                                  <img src={`/assets/icons/coins/${el.icon}.svg`} class="coins_wrap_item"></img>
-                                )
-                              })
-                            }
-                          </div>
-                        </td>
-                        <td class="listExchange_table_btn">
-                          <a class="btn btn_gradient" href={item.url} onclick={this.Fn.link}>
-                            <span>Обменять</span>
-                          </a>
-                        </td>
-                      </tr>
-                    )
-                  })
-                } */}
             </tbody>
           </table>
           {/* <div class="listExchange_pagination mt_25">
