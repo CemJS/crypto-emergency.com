@@ -19,78 +19,78 @@ import lineB from '@svg/lines/linesB.svg'
 
 
 export default function () {
-    // console.log('=c818c5=',this.Static.records)
-    return (
-        <section class="listExchange effect_lines pt_80">
-            <div class="wrapper">
-                <h1 class="general_title">Список обменных пунктов</h1>
 
-                <div class="listExchange_table_wrapper">
-                    <table class="listExchange_table table">
-                        <thead class="listExchange_table_head">
-                            <tr class="listExchange_table_row">
-                                <th></th>
-                                <th class="listExchange_table_index">#</th>
-                                <th class="listExchange_table_name">Название</th>
-                                <th class="listExchange_table_coins">Коины</th>
-                                <th class="listExchange_table_filter">
-                                    <img
-                                        src={filter}
-                                        onclick={() => {
-                                            this.Fn.initOne({
-                                                name: "modalFilterExchange", ifOpen: (front) => {
-                                                    setTimeout(() => {
-                                                        front.clearData()
-                                                    }, 500);
-                                                }
-                                            })
-                                        }}
-                                    />
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="table_body listExchange_table_body">
-                            {
-                  this.Static.records.map((item, index) => {
-                    return (
-                      <tr class="table_row listExchange_table_row"
-                      isVisible={() => {
-                        // console.log('=c364a2=',this.Static.records.length)
-                        if (index == this.Static.records.length - 3) {
-                            this.Static.moreid = this.Static.records[this.Static.records.length - 1]._id
-                            console.log('=bea641=',this.Static.moreid)
-                            this.fn("addEvent")
+  return (
+    <section class="listExchange effect_lines pt_80">
+      <div class="wrapper">
+        <h1 class="general_title">Список обменных пунктов</h1>
+
+        <div class="listExchange_table_wrapper">
+          <table class="listExchange_table table">
+            <thead class="listExchange_table_head">
+              <tr class="listExchange_table_row">
+                <th></th>
+                <th class="listExchange_table_index">#</th>
+                <th class="listExchange_table_name">Название</th>
+                <th class="listExchange_table_coins">Коины</th>
+                <th class="listExchange_table_filter">
+                  <img
+                    src={filter}
+                    onclick={() => {
+                      this.Fn.initOne({
+                        name: "modalFilterExchange", ifOpen: (front) => {
+                          setTimeout(() => {
+                            front.clearData()
+                          }, 500);
                         }
+                      })
                     }}
-                      >
-                        <td class="listExchange_favourites">
-                          <img src={star} alt="Избранные обменники" class="listExchange_icon" />
-                        </td>
-                        <td class="listExchange_table_index">{index + 1}</td>
-                        <td class="listExchange_table_name">{item.name}</td>
-                        <td class="listExchange_table_coins">
-                          <div class="coins_wrap">
-                            {
-                              item.List_coins.map((el, index) => {
-                                // console.log('=d689f6=',item)
-                                return (
-                                  <img src={`/contents/icons/coins/${el.icon}.svg`} class="coins_wrap_item"></img>
-                                )
-                              })
-                            }
-                          </div>
-                        </td>
-                        <td class="listExchange_table_btn">
-                          <a class="btn btn_gradient" href={item.url} onclick={this.Fn.link}>
-                            <span>Обменять</span>
-                          </a>
-                        </td>
-                      </tr>
-                    )
-                  })
-                }
+                  />
+                </th>
+              </tr>
+            </thead>
+            <tbody class="table_body listExchange_table_body">
+              {
+                this.Static.records.map((item, index) => {
+                  return (
+                    <tr
+                      class="table_row listExchange_table_row"
+                      isVisible={() => {
+                        if (index == this.Static.records.length - 3) {
+                          console.log('=индкекс равен =',index , 'this.Static.records.length - 3', this.Static.records.length - 3)
+                          this.Static.moreid = this.Static.records[this.Static.records.length - 1]._id
+                          this.fn("addEvent")
+                        }
+                      }}
+                    >
+                      <td class="listExchange_favourites">
+                        <img src={star} alt="Избранные обменники" class="listExchange_icon" />
+                      </td>
+                      <td class="listExchange_table_index">{index + 1}</td>
+                      <td class="listExchange_table_name">{item.name}</td>
+                      <td class="listExchange_table_coins">
+                        <div class="coins_wrap">
+                          {
+                            item.List_coins.map((el, index) => {
 
-                       {/* {
+                              return (
+                                <img src={`/contents/icons/coins/${el.icon}.svg`} class="coins_wrap_item"></img>
+                              )
+                            })
+                          }
+                        </div>
+                      </td>
+                      <td class="listExchange_table_btn">
+                        <a class="btn btn_gradient" href={item.url} onclick={this.Fn.link}>
+                          <span>Обменять</span>
+                        </a>
+                      </td>
+                    </tr>
+                  )
+                })
+              }
+
+              {/* {
                   this.Static.records.map((item, index) => {
                     return (
                       <tr class="table_row listExchange_table_row">
@@ -119,9 +119,9 @@ export default function () {
                     )
                   })
                 } */}
-                        </tbody>
-                    </table>
-                    <div class="listExchange_pagination mt_25">
+            </tbody>
+          </table>
+          {/* <div class="listExchange_pagination mt_25">
                         <div class="pag_list">
                             <button class="pag_list_item" onclick={() => { this.fn("pagBtn", 'startPrev') }}>
                                 <img src={startPrev} />
@@ -153,12 +153,12 @@ export default function () {
                                 <img src={endNext} />
                             </button>
                         </div>
-                    </div>
-                </div>
+                    </div> */}
+        </div>
 
 
-            </div>
-            <img src={lineB} class="listExchange_lineB"></img>
-        </section>
-    )
+      </div>
+      <img src={lineB} class="listExchange_lineB"></img>
+    </section>
+  )
 }

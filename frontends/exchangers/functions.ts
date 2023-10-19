@@ -14,6 +14,7 @@ export const makeFilters = function (show = false) {
 
     if (this.Static.moreid) {
         url += `&moreid=${this.Static.moreid}`
+        console.log('=url request=',url)
         this.Static.moreid = null
     } else {
         this.Static.records = []
@@ -23,7 +24,7 @@ export const makeFilters = function (show = false) {
 
 export const addEvent = function () {
     let filters = this.fn("makeFilters")
-    let icoListeners = [
+    let exchangersListeners = [
         {
             type: "add",
             fn: ({ data }) => {
@@ -35,10 +36,10 @@ export const addEvent = function () {
             }
         }
     ]
-    if (!this.Events.ico) {
-        this.Events.ico = this.event(filters, icoListeners)
+    if (!this.Events.exchangers) {
+        this.Events.exchangers = this.event(filters, exchangersListeners)
     } else {
-        this.Events.ico.change(filters, icoListeners)
+        this.Events.exchangers.change(filters, exchangersListeners)
     }
 
 }
