@@ -6,6 +6,7 @@ export const makeFilters = function (show = false) {
         return url
     }
     url += `&lang=ru`
+    url += `&coins=BTC&coins=ETH`
     if (this.Static.catActive != 0) {
         url += `&cat=${this.Static.category[this.Static.catActive].name}`
     }
