@@ -1,8 +1,0 @@
-{
-    "regex": "/user-",
-    "front": [
-        "header",
-        "rules",
-        "footer"
-    ]
-}

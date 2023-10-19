@@ -1,8 +1,0 @@
-{
-    "url": "/crem-test",
-    "front": [
-        "header",
-        "testName",
-        "footer"
-    ]
-}
