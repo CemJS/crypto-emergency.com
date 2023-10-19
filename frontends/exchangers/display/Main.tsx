@@ -19,7 +19,7 @@ import lineB from '@svg/lines/linesB.svg'
 
 
 export default function () {
-
+  console.log('=4e3949=', this.Static.records.length, this.Static.records)
   return (
     <section class="listExchange effect_lines pt_80">
       <div class="wrapper">
@@ -57,7 +57,7 @@ export default function () {
                       class="table_row listExchange_table_row"
                       isVisible={() => {
                         if (index == this.Static.records.length - 3) {
-                          console.log('=индкекс равен =',index , 'this.Static.records.length - 3', this.Static.records.length - 3)
+                          // console.log('=индкекс равен =', index, 'this.Static.records.length - 3', this.Static.records.length - 3)
                           this.Static.moreid = this.Static.records[this.Static.records.length - 1]._id
                           this.fn("addEvent")
                         }

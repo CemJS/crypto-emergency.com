@@ -13,7 +13,10 @@ export const makeFilters = function (show = false) {
     // }
 
     if (this.Static.moreid) {
-        url += `&moreid=${this.Static.moreid}`
+
+
+        // url += `&moreid=${this.Static.moreid}`
+        url += `&offset=${this.Static.records.length}`
         console.log('=url request=',url)
         this.Static.moreid = null
     } else {
@@ -23,6 +26,7 @@ export const makeFilters = function (show = false) {
 }
 
 export const addEvent = function () {
+    console.log('=0351c1=',this.Static.moreid)
     let filters = this.fn("makeFilters")
     let exchangersListeners = [
         {
