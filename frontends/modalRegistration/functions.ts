@@ -67,6 +67,18 @@ export const checkFrom = async function () {
   if (this.Static.currentStep == 3) {
     if (this.Static.form.pass.valid && this.Static.form.rePass.valid) {
       this.Static.form.isValid = true
+
+      let data = {
+        action: "registrated",
+        password: this.Static.form.pass.value
+      }
+
+      let answer = await this.Services.functions.sendApi(`/api/events/Users?uuid=${this.Variable.myInfo.uuid}`, data)
+
+      if (answer.error) { }
+
+      this.fn("clickNext")
+      return
     } else {
       this.Static.form.isValid = false
     }
