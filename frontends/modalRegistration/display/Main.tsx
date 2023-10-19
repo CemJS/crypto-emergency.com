@@ -336,7 +336,7 @@ const Step3 = function () {
                         required
                         oninput={(e: any) => {
                             this.Static.form.rePass.value = e.target.value;
-                            this.Services.functions.formPassword(this.Static.form.rePass)
+                            this.Services.functions.formConfirmPassword(this.Static.form.pass, this.Static.form.rePass)
                             this.fn("checkFrom")
                         }}
                     />
@@ -395,22 +395,14 @@ const Step4 = function () {
                     <button
                         class="btn btn_timing"
                         onclick={() => {
-                            this.Ref.slidePage.style.marginLeft = "-50%"
-                            this.fn("clickPrev", this.Ref.indicator)
-                            this.init()
+                            // setTimeout(() => {
+                            //     this.clearData()
+                            // }, 5)
+                            this.fn("close")
+                            this.Fn.initOne({ name: "modalAuthorization" })
                         }}
                     >
-                        Назад
-                    </button>
-                    <button
-                        class="btn btn_timing"
-                        onclick={() => {
-                            setTimeout(() => {
-                                this.clearData()
-                            }, 5)
-                        }}
-                    >
-                        Зарегистрироваться
+                        Авторизоваться
                     </button>
                 </div>
             </div>

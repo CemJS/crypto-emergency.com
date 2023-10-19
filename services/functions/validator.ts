@@ -74,3 +74,16 @@ export const validPassword = function (password: string) {
 
     // return true
 }
+
+export const validConfirmPassword = function (password: string, rePass: string) {
+
+    if (!password.length && !rePass.length) {
+        return false
+    }
+
+    if (password === rePass) {
+        return true
+    } else {
+        return false
+    }
+}

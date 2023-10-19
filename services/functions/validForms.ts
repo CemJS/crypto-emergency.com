@@ -1,4 +1,11 @@
-import { validEmail, validNickName, validLang, validCountry, validPassword } from './validator'
+import {
+    validEmail,
+    validNickName,
+    validLang,
+    validCountry,
+    validPassword,
+    validConfirmPassword
+} from './validator'
 
 interface Form {
     value: string,
@@ -43,7 +50,6 @@ export const formCode = function (form: Form) {
 }
 
 export const formNickName = async function (form: Form) {
-
     if (!form.value.length || form.value.length < 5) {
         form.error = false
         form.valid = false
@@ -67,7 +73,6 @@ export const formLang = async function (form: Form) {
         form.valid = false
         return false
     }
-
     let check = validLang(form.value)
     if (check) {
         form.error = false
@@ -81,13 +86,11 @@ export const formLang = async function (form: Form) {
 }
 
 export const formCountry = async function (form: Form) {
-
     if (!form.value.length) {
         form.error = false
         form.valid = false
         return false
     }
-
     let check = validCountry(form.value)
     if (check) {
         form.error = false
@@ -100,15 +103,12 @@ export const formCountry = async function (form: Form) {
     }
 }
 
-
-
 export const formPassword = async function (form: Form) {
     if (!form.value.length) {
         form.error = false
         form.valid = false
         return false
     }
-
     let check = validPassword(form.value)
     if (check) {
         form.error = false
@@ -119,5 +119,22 @@ export const formPassword = async function (form: Form) {
         form.valid = false
         return false
     }
+}
 
+export const formConfirmPassword = async function (formPass: Form, formConfirmPass: Form) {
+    if (!formPass.value.length && !formConfirmPass.value.length) {
+        formPass.error, formConfirmPass.error = false
+        formPass.valid, formConfirmPass.valid = false
+        return false
+    }
+    let check = validConfirmPassword(formPass.value, formConfirmPass.value)
+    if (check) {
+        formConfirmPass.error = false
+        formConfirmPass.valid = true
+        return true
+    } else {
+        formConfirmPass.error = "Пароли не совпадают"
+        formConfirmPass.valid = false
+        return false
+    }
 }
