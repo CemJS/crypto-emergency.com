@@ -2,12 +2,12 @@ export const start = function () { }
 
 export const finish = function () {
 
-  // return 1
   //animation for roadmap
   this.Static.roadmapItems = document.querySelectorAll(".roadmapNew_row");
 
   const observerRoadmap = new IntersectionObserver(entries => {
     entries.forEach(item => {
+      console.log('=938fb8=', item.isIntersecting)
       item.target.classList.toggle("in_view", item.isIntersecting)
     })
   })
@@ -16,6 +16,7 @@ export const finish = function () {
     observerRoadmap.observe(item)
   })
   //animation for roadmap
+  return 1
 
   //clone for running line parners
   this.Static.root = document.documentElement;
