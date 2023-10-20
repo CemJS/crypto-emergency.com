@@ -2,7 +2,7 @@ export const start = function () { }
 
 export const finish = function () {
 
-  return 1
+  // return 1
   //animation for roadmap
   this.Static.roadmapItems = document.querySelectorAll(".roadmapNew_row");
 
