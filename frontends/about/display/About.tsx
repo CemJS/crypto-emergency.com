@@ -7,7 +7,15 @@ import blockchain from '@images/about/main/blockchain.jpg'
 import trading from '@images/about/main/trading.jpg'
 import coin from '@images/about/main/cem.jpg'
 
-import Goals from "./Goals"
+import folder from "@svg/about/goal_1.svg"
+import safe from "@svg/about/goal_2.svg"
+import access from "@svg/about/goal_3.svg"
+import pin from "@svg/about/goal_4.svg"
+
+import coverAssistant from '@images/about/developments/cemAssistant.jpg'
+import coverWallet from '@images/about/developments/cemWallet.png'
+import coverEmergency from '@images/about/developments/cryptoEmergency.jpg'
+
 import Accordeon from "./Accordeon"
 import Team from "./Team"
 import Roadmap from "./Roadmap"
@@ -52,65 +60,81 @@ const aboutSlides = [
     },
 ]
 
-
-
 const titleOptions = {
+    name: "TitlePreview",
     mainClass: "about_main"
 }
 
+const goals = [
+    {
+        img: folder,
+        title: "Поднять крипто грамотность населения",
+        description: "Мы создали платформу, где любой желающий может найти ответ на свой вопрос, и обрести навыки инвестирования в криптовалюту.",
+        classItem: "crypto",
+    },
+    {
+        img: safe,
+        title: "Объединить людей",
+        description: "Создать мульти интернациональное комьюнити по всему миру.",
+        classItem: "unite",
+    },
+    {
+        img: access,
+        title: "Бесплатный доступ",
+        description: "Весь функционал на сайте не потребует от вас никаких вложений!",
+        classItem: "access",
+    },
+    {
+        img: pin,
+        title: "Создание метавселенной",
+        description: "Объединение всех продуктов компании в одной метавселенной.",
+        classItem: "meta",
+    },
+];
+
+
+
+
+const RenderGoals = function ({ items }) {
+    return (
+        <div>
+            <h2 class="about_subtitle">Наши цели</h2>
+            <div class="goal_list">
+                {
+                    items.map((item) => {
+                        return (
+                            <div class={["goal_item", item.classItem]}>
+                                <div class="goal_img">
+                                    <img src={item.img} ></img>
+                                </div>
+                                <div class="goal_content">
+                                    <h4>{item.title}</h4>
+                                    <div class="goal_content__desc">{item.description}</div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div>
+    )
+}
 
 export default function () {
     return (
         <div class="about">
             <TitlePreview items={aboutSlides} options={titleOptions} />
-            {/* <div class="about_main">
-                <div class="about_main_slide" ref="aboutSlide">
-                    {
-                        aboutSlides.map(item => {
-                            return (
-                                <div class="about_main_item" style={`background-image: url(${item.cover});`}>
-                                    <div class="about_main_item_content">
-                                        <div class="about_main_item_name">{item.name}</div>
-                                        <div class="about_main_item_desc">{item.desc}</div>
-                                        {
-                                            item?.link ?
-                                                <a href={item.link} class="btn btn_timing" onclick={this.Fn.link}>Перейти</a> : null
-                                        }
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-                <div class="about_main_arrows">
-                    <button
-                        class="about_main_arrow about_main_arrow_prev glass"
-                        onclick={() => {
-                            let lists = document.querySelectorAll(".about_main_item");
-                            this.Ref.aboutSlide.prepend(lists[lists.length - 1])
-                        }}
-                    ></button>
-                    <button
-                        class="about_main_arrow about_main_arrow_next glass"
-                        onclick={() => {
-                            let lists = document.querySelectorAll(".about_main_item");
-                            this.Ref.aboutSlide.appendChild(lists[0])
-                        }}
-                    ></button>
-                </div>
-            </div> */}
-
-            {/* <div class="wrapper">
-                <Goals></Goals>
-                <Accordeon></Accordeon>
-                <img class="whome__img whome__img_right" src={lines} />
-                <Team></Team>
+            <div class="wrapper">
+                <RenderGoals items={goals}></RenderGoals>
+                {/* <Accordeon></Accordeon> */}
+                {/* <img class="whome__img whome__img_right" src={lines} /> */}
+                {/* <Team></Team>
                 <Roadmap></Roadmap>
                 <Partners></Partners>
                 <Developments></Developments>
                 <Events></Events>
-                <SocialNetworks></SocialNetworks>
-            </div> */}
+                <SocialNetworks></SocialNetworks> */}
+            </div>
         </div>
     )
 }
