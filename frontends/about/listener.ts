@@ -1,22 +1,9 @@
 export const start = function () { }
 
 export const finish = function () {
-
-  //animation for roadmap
-  this.Static.roadmapItems = document.querySelectorAll(".roadmapNew_row");
-
-  const observerRoadmap = new IntersectionObserver(entries => {
-    entries.forEach(item => {
-      console.log('=938fb8=', item.isIntersecting)
-      item.target.classList.toggle("in_view", item.isIntersecting)
-    })
-  })
-
-  this.Static.roadmapItems.forEach(item => {
-    observerRoadmap.observe(item)
-  })
-  //animation for roadmap
   return 1
+
+
 
   //clone for running line parners
   this.Static.root = document.documentElement;
@@ -31,22 +18,6 @@ export const finish = function () {
   }
   //clone for running line parners
 
-
-  //animation for appps
-  // this.Static.appsItems = document.querySelectorAll(".developments_item");
-
-  // const observerApps = new IntersectionObserver(entries => {
-  //   entries.forEach(item => {
-  //     item.target.classList.toggle("developments_item_rotate", item.isIntersecting)
-  //   })
-  // })
-
-  // this.Static.appsItems.forEach(item => {
-  //   setTimeout(() => {
-  //     observerApps.observe(item)
-  //   }, 1500)
-  // })
-  //animation for appps
 
   // gallery cryptoBreakfast
   if (!this.Static.callGallery) {

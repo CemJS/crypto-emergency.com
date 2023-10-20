@@ -450,7 +450,10 @@ const RenderRoadMap = function ({ items }) {
                 {
                     items.map((item, index) => {
                         return (
-                            <div class={["roadmapNew_row", `roadmapNew_row_${index + 1}`]}>
+                            <div
+                                class={["roadmapNew_row", `roadmapNew_row_${index + 1}`]}
+                                init={$el => observerRoadmap.observe($el)}
+                            >
                                 <section>
                                     <div class="roadmapNew_icon">
                                         <img src={item.icon} alt="Иконка" />
@@ -540,6 +543,12 @@ const RenderSocials = function ({ items }) {
         </div>
     )
 }
+
+const observerRoadmap = new IntersectionObserver(entries => {
+    entries.forEach(item => {
+        item.target.classList.toggle("in_view", item.isIntersecting)
+    })
+})
 
 export default function () {
     return (
