@@ -1,5 +1,19 @@
 import { Cemjsx } from "cemjs-all"
 
+// fo main slider
+import ecosystem from '@images/about/main/ecosystem.jpg'
+import blockchain from '@images/about/main/blockchain.jpg'
+import trading from '@images/about/main/trading.jpg'
+import coin from '@images/about/main/cem.jpg'
+
+import Goals from "./Goals"
+import Accordeon from "./Accordeon"
+import Team from "./Team"
+import Roadmap from "./Roadmap"
+import Partners from './Partners'
+import Developments from "./Developments"
+import Events from "./Events"
+import SocialNetworks from "./SocialNetworks"
 import { Display as Slider } from '@elements/Gallery'
 
 import cryptoBreakfast1 from '@images/about/cryptoBreakfast/cryptoBreakfast1.jpg'
@@ -35,5 +49,11 @@ const galleryCryptoBreakfast = [
 ]
 
 export default function () {
-    return <Slider items={galleryCryptoBreakfast} />
+    return (
+        <div>
+
+            <Slider items={galleryCryptoBreakfast} />
+
+        </div>
+    )
 }

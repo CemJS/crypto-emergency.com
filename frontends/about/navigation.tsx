@@ -1,5 +1,6 @@
 import { Cemjsx } from "cemjs-all"
-import Main from "./display/Main"
+import About from "./display/About"
+import Test from "./display/Test"
 import UserAgreement from "./display/UserAgreement"
 import UserDataPolicy from "./display/UserDataPolicy"
 import UserCookies from "./display/UserCookies"
@@ -23,9 +24,11 @@ export default function () {
     case 'contacts':
       return <Contacts />
     case 'about':
-      return <Main />
+      return <About />
+    case 'test':
+      return <Test />
     default:
-      return <Main />
+      return <About />
   }
 }
 

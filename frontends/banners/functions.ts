@@ -1,3 +1,5 @@
+import { Gallery, Display, init } from '@elements/Gallery'
+
 
 export const makeFilters = function () {
     let url = `/api/events/Banners?uuid=${this.Variable.myInfo.uuid}`
@@ -27,3 +29,8 @@ export const addEvent = function () {
         this.Events.banners.change(filters, Listeners)
     }
 }
+
+// export const slider = function () {
+//     console.log('=a9ec2c=', 123)
+//     // Slider()
+// }
