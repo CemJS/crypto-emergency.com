@@ -1,4 +1,5 @@
 import { Cemjsx } from "cemjs-all"
+import logoBig from '@svg/logo/CryptoEmergency/logoBig.svg'
 
 export default function () {
     return (
@@ -7,7 +8,7 @@ export default function () {
                 <div class="header__inner">
                     <nav class="header__menu">
                         <a class="header__logo" href="/" onclick={this.Fn.link}>
-                            <img src="/assets/svg/header/logo.svg" alt="Crypto Emergency" />
+                            <img src={logoBig} alt="Crypto Emergency" />
                         </a>
                     </nav>
                     <div class="header__auth">

@@ -31,7 +31,7 @@ export default function () {
                                             <div class="line__item">
                                                 <div class="line__item_img">
                                                     {/* <img src={`/assets/icons/coins/${course.nameCoin}.svg`}></img> */}
-                                                    <img src={`/assets/svg/exchangeRates/${course.nameCoin}.svg`} alt="" />
+                                                    <img src={`/assets/svg/coins/${course.nameCoin}.svg`} alt={course.nameCoin} />
                                                 </div>
                                                 <span class="line__item_text">{course.nameCoin + "/USDT"}</span>
                                                 <span class="line__item_text text_important">

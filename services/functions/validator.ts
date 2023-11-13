@@ -1,6 +1,8 @@
 
 import validator from 'validator'
 
+
+
 export const validEmail = function (email: string) {
     return String(email)
         .toLowerCase()
@@ -29,6 +31,19 @@ export const validNickName = function (nickname: string) {
 
     return true
 }
+
+export const validLogin = function (login: string) {
+    let checkEmail = validEmail(login)
+    let checkNickName = validNickName(login)
+    let regPhone = /[0-9\+]/
+
+    if (checkEmail || checkNickName || !regPhone.test(login)) {
+        return true
+    } else {
+        return false
+    }
+}
+
 
 export const validLang = function (lang: string) {
     if (lang.length == 2) {

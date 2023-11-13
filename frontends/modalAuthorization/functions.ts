@@ -14,11 +14,30 @@ export const close = function () {
 }
 
 
-export const checkForm = function () {
-  if (this.Static.form.email.valid && this.Static.form.pass.valid) {
-    this.Static.isValid = true
+export const checkForm = async function () {
+  if (this.Static.form.login.valid && this.Static.form.pass.valid) {
+    this.Static.form.isValid = true
+
+    let data = {
+      action: "authorization",
+      login: this.Static.form.login.value,
+      password: this.Static.form.pass.value
+    }
+
+    let answer = await this.Services.functions.sendApi(`/api/events/Authorization?uuid=${this.Variable.myInfo.uuid}`, data)
+
+    // if (answer.error) {
+    //   this.Static.form.error = "Неправильно введён логин или пароль"
+    //   this.Static.form.isValid = false
+    //   this.init()
+    //   return
+    // }
+    console.log('=b4490c=', answer)
+
+    this.fn("close")
+    return
   } else {
-    this.Static.isValid = false
+    this.Static.form.isValid = false
   }
 
   this.init()

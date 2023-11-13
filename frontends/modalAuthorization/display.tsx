@@ -24,12 +24,26 @@ export const display = function () {
               class={[
                 "btn",
                 "btn_timing",
-                "btn_passive",
                 this.Static.form.isValid ? null : "btn_passive",
-              ]}>
+              ]}
+
+              onclick={() => {
+                if (!this.Static.form.isValid) {
+                  return
+                }
+              }}
+            >
               Вход
             </button>
-            <button class={["btn", "btn_timing"]}>Регистрация</button>
+            <button
+              class={["btn", "btn_timing"]}
+              onclick={() => {
+                this.Fn.initOne({ name: "modalRegistration" })
+                this.fn("close")
+              }}
+            >
+              Регистрация
+            </button>
           </footer>
         </div>
       </div>

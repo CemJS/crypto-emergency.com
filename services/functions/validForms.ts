@@ -1,4 +1,5 @@
 import {
+    validLogin,
     validEmail,
     validNickName,
     validLang,
@@ -14,6 +15,24 @@ interface Form {
     placeholder: string,
     view: boolean,
     disable: boolean
+}
+
+export const formLogin = function (form: Form) {
+    if (!form.value.length) {
+        form.error = false
+        form.valid = false
+        return false
+    }
+    let check = validLogin(form.value)
+    if (check) {
+        form.error = false
+        form.valid = true
+        return true
+    } else {
+        form.error = "Неверный login"
+        form.valid = false
+        return false
+    }
 }
 
 export const formEmail = function (form: Form) {

@@ -45,7 +45,7 @@ h3 {
     position: relative;
     padding: 35px;
     background: var(--backModal);
-    box-shadow: 0 0 15px -10px rgba(221, 221, 221, 0.5);
+    // box-shadow: 0 0 15px -10px rgba(221, 221, 221, 0.5);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(7px);
     color: #FFFFFF;
@@ -117,7 +117,7 @@ h3 {
       border: 1px solid var(--secondary_text);
       background: transparent;
       transition: border 0.1s ease;
-      z-index: 5;
+      z-index: 3;
       color: var(--white);
     }
 

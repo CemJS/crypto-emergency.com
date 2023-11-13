@@ -1,5 +1,5 @@
 import { Cemjsx } from "cemjs-all"
-import email from '@svg/modalMessage/icon_email.svg'
+import user from '@svg/modalMessage/icon_user.svg'
 import lock from "@svg/modalRegistration/lock.svg"
 import eye from "@svg/modalRegistration/eye.svg"
 import eyeSlash from "@svg/modalRegistration/eye-slash.svg"
@@ -7,40 +7,59 @@ import eyeSlash from "@svg/modalRegistration/eye-slash.svg"
 export default function () {
     return (
         <main class="modalWindow_main">
-            <div class="modalAuth">
+            <form class="modalAuth">
                 <div class={[
                     "modalWindow_field",
-                    this.Static.form.email.value.length ? "modalWindow_field__valid" : null,
-                    this.Static.form.email.error ? "modalWindow_field__error" : null,
-                    this.Static.form.email.valid ? "modalWindow_field__success" : null
+                    this.Static.form.login.value.length ? "modalWindow_field__valid" : null,
+                    this.Static.form.login.error ? "modalWindow_field__error" : null,
+                    this.Static.form.login.valid ? "modalWindow_field__success" : null
                 ]}>
                     <input
-                        type="email"
+                        type="text"
                         required
                         autocomplete="off"
                         oninput={(e: any) => {
-                            this.Static.form.email.value = e.target.value;
-                            this.Services.functions.formEmail(this.Static.form.email)
-                            this.fn("checkFrom")
-                            this.init()
+                            this.Static.form.login.value = e.target.value;
+                            this.Services.functions.formLogin(this.Static.form.login)
+                            this.fn("checkForm")
                         }} />
                     <div class="modalWindow_field_labelLine">
-                        <img src={email}></img>
-                        <span>{this.Static.form.email.placeholder}</span>
+                        <img src={user}></img>
+                        <span>{this.Static.form.login.placeholder}</span>
                     </div>
-                    <p class="modalWindow_field__status" style="color:#E84142">{this.Static.form.email.error}</p>
+                    <div class="modalWindow_field__tooltip">
+                        <div
+                            class="tooltip"
+                            onmouseover={() => {
+                                this.Ref.tooltipContentPass.classList.add("tooltip-content__active")
+                            }}
+                            onmouseleave={() => {
+                                this.Ref.tooltipContentPass.classList.remove("tooltip-content__active")
+                            }}
+                        >
+                            <div class="tooltip-content" ref="tooltipContentPass">
+                                <p class="tooltip-content_text">
+                                    Под логином подразумевается email, телефон либо никнейм на платформе
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div
                     class={[
                         "modalWindow_field",
-                        this.Static.form.pass.value.length ? "modalWindow_field__valid" : null
+                        this.Static.form.pass.value.length ? "modalWindow_field__valid" : null,
+                        this.Static.form.pass.error ? "modalWindow_field__error" : null,
+                        this.Static.form.pass.valid ? "modalWindow_field__success" : null
                     ]}>
                     <input
-                        type="password"
+                        type={this.Static.passType ? 'text' : 'password'}
+                        autocomplete="off"
                         required
                         oninput={(e: any) => {
                             this.Static.form.pass.value = e.target.value;
-                            this.init()
+                            this.Services.functions.formPassword(this.Static.form.pass)
+                            this.fn("checkForm")
                         }}
                     />
                     <div class="modalWindow_field_labelLine">
@@ -52,18 +71,21 @@ export default function () {
                         <img
                             alt="Показать пароль"
                             class="modalWindow_field__eye"
-                            src={this.Static.passType == "password" ? eye : eyeSlash}
+                            src={this.Static.passType ? eyeSlash : eye}
                             onclick={() => {
-                                if (this.Static.passType == "password") {
-                                    this.Static.passType = "text"
-                                } else {
-                                    this.Static.passType = "password"
-                                }
+                                this.Static.passType = !this.Static.passType
                                 this.init()
                             }}
                         />
                     </div>
                 </div>
+
+                {
+                    (!this.Static.form.login.error || !this.Static.form.pass.error) ?
+                        <p></p> : <p class="modalAuth__error">Логин или пароль введены неверно</p>
+                }
+
+                <p>{this.Static.form.login.error || this.Static.form.pass.error}</p>
                 <div class="f-col">
                     <p>При использовании платформы вы соглашаетесь с <a href="/policy" class="link-beauty">политикой сайта.</a></p>
                     <span
@@ -72,7 +94,7 @@ export default function () {
                     >Забыли пароль?</span>
                 </div>
 
-            </div>
+            </form>
         </main>
 
         //             <form>

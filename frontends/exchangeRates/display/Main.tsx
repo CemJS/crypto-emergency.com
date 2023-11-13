@@ -29,7 +29,7 @@ export default function () {
                     <td class="exchangerates_table_index">{index + 1}</td>
                     <td class="exchangerates_table_name">
                       <div class="coins_wrap mr_10">
-                        <img src={`/assets/svg/exchangeRates/${item.nameCoin}.svg`}></img>
+                        <img src={`/assets/svg/coins/${item.nameCoin}.svg`}></img>
                       </div>
                       <span>{item.nameCoin}</span>
                       {/* <div class="exchangerates_cellwrap">
