@@ -1,45 +1,64 @@
-export const addEvent = function ({ cat }) {
-  this.Static.records = []
-  let url = `News?uuid=${this.Variable.myInfo.uuid}&lang=ru`
-  if (cat && cat != "Все") {
-    url += `&cat=${cat}`
-  }
-  let eventSource
 
-  if (this._ListsEventSource.length) {
-    eventSource = this.eventSourceChange(url)
-  } else {
-    eventSource = this.eventSource(url)
-  }
-  // eventSource.addEventListener('message', ({ data }) => {
-  //   let records = JSON.parse(data)
-  //   this.Static.records = records
-  //   console.log('=57054c=', this.Static.records)
-  //   this.init()
-  // });
-
-  // eventSource.addEventListener('update', ({ data }) => {
-  //   let records = JSON.parse(data)
-  //   this.Static.recordsUpdate = records
-  //   console.log('=57054c=', this.Static.recordsUpdate)
-  //   this.init()
-  // });
-
-  eventSource.addEventListener('add', ({ data }) => {
-    if (!this.Static.records) {
-      this.Static.records = []
+export const makeFilters = function (show = false) {
+    let url = `/api/events/News?uuid=${this.Variable.myInfo.uuid}`
+    if (show) {
+        url += `&id=${this.Variable.DataUrl[2]}`
+        return url
     }
-    let record = JSON.parse(data)
-    console.log('=f977c8=', record)
-    this.Static.records.push(record)
-    this.init()
-  });
+    url += `&lang=ru`
+    url += `&coins=BTC&coins=ETH`
+    if (this.Static.catActive != 0) {
+        url += `&cat=${this.Static.category[this.Static.catActive].name}`
+    }
 
-  eventSource.addEventListener('insert', ({ data }) => {
-    // let records = JSON.parse(data)
-    // this.Static.recordsUpdate = records
-    console.log('=57054c=', data)
-    this.init()
-  });
-  return
+    if (this.Static.moreid) {
+        url += `&moreid=${this.Static.moreid}`
+        this.Static.moreid = null
+    } else {
+        this.Static.records = []
+    }
+    return url
+}
+
+export const addEvent = function () {
+    let filters = this.fn("makeFilters")
+    let newsListeners = [
+        {
+            type: "add",
+            fn: ({ data }) => {
+                let record = JSON.parse(data)
+                if (Object.keys(record).length) {
+                    this.Static.records.push(record)
+                }
+                this.init()
+            }
+        }
+    ]
+    let showListeners = [
+        {
+            type: "update",
+            fn: ({ data }) => {
+                let record = JSON.parse(data)
+                if (Object.keys(record).length) {
+                    this.Static.record = record
+                }
+                this.init()
+            }
+        }
+    ]
+
+    if (!this.Events.news) {
+        this.Events.news = this.event(filters, newsListeners)
+    } else {
+        this.Events.news.change(filters, newsListeners)
+    }
+
+    if (this.Variable.DataUrl[1] == "show") {
+        filters = this.fn("makeFilters", true)
+        if (!this.Events.show) {
+            this.Events.show = this.event(filters, showListeners)
+        } else {
+            this.Events.show.change(filters, showListeners)
+        }
+    }
 }

@@ -1,35 +1,42 @@
 export const loader = function () {
-  this.Static.body = document.querySelector('body');
-  this.Static.buttonActive = "email";
-  this.Static.viewPassword = false;
-  this.Static.email = {
-    value: "",
-    valid: false,
-    error: false,
-    label: "E-mail",
-    placeholder: "Введите ваш E-mail",
+  this.Static.passType = false
+
+  // ============================================
+
+  this.Static.form = {
+    login: {
+      value: "",
+      valid: false,
+      error: false,
+      placeholder: "Логин",
+      view: false,
+      disable: false
+    },
+
+    pass: {
+      value: "",
+      valid: false,
+      error: false,
+      placeholder: "Пароль:",
+      view: false,
+      disable: false,
+    },
+
+    isValid: false,
+    error: false
   }
 
-  this.Static.phone = {
-    value: "",
-    code: 7,
-    abbr: "ru",
-    placeholder: "9990000000",
-    valid: false,
-    error: false,
-    label: "Телефон",
-  }
 
-  this.Static.pass = {
-    value: "",
-    valid: false,
-    error: false,
-    label: "Пароль",
-    placeholder: "Введите ваш пароль",
-    type: `${this.Static.viewPassword ? 'text' : 'password'}`,
-  }
+  // this.Static.pass = {
+  //   value: "",
+  //   valid: false,
+  //   error: false,
+  //   label: "Пароль",
+  //   placeholder: "Введите ваш пароль",
+  //   type: `${this.Static.viewPassword ? 'text' : 'password'}`,
+  // }
 
-  this.Static.isValid = false
+  // this.Static.isValid = false
 
   this.initAuto(["buttonActive", "viewPassword"]);
   return

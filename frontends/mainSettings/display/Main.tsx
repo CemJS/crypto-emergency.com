@@ -31,12 +31,12 @@ const sections = [
     {
         category: "ICO Рейтинг",
         img: ico,
-        url: "/list-ico"
+        url: "/ico"
     },
     {
         category: "Стартапы",
         img: startups,
-        url: "/list-startaps"
+        url: "/startups"
     },
     {
         category: "Новости",
@@ -46,7 +46,7 @@ const sections = [
     {
         category: "Обменники",
         img: exchanges,
-        url: "/list-exchange"
+        url: "/exchangers"
     },
     {
         category: "Пользователи",

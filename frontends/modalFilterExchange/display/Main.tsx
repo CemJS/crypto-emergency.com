@@ -55,79 +55,47 @@ const coins = [
 ]
 
 export default function () {
+    console.log('=response=',this.Static.coins)
     return (
-        <div
-            class="modalWindow"
-            onclick={(e) => {
-                if (e.target === this.Ref.modalBody) {
-                    setTimeout(() => {
-                        this.Static.body.style.overflow = '';
-                        this.clearData()
-                    }, 5)
-                }
-            }}
-        >
-            <div class="modalWindow_body" ref="modalBody">
-                <div class="modalWindow_content">
-                    <button
-                        class="modalWindow_button_close"
-                        onclick={() => {
-                            setTimeout(() => {
-                                this.Static.body.style.overflow = '';
-                                this.clearData()
-                            }, 5)
-                        }}
-                    >
-                        X
-                    </button>
-                    <header class="modalWindow_header">
-                        <h3 class="modalWindow_header_title">Выбрать монеты</h3>
-                    </header>
-                    <main class="modalWindow_main">
-                        <div class="modalWindow_field">
-                            <input type="search" />
-                            <div class="modalWindow_field_labelLine">
-                                <img src={search} />
-                                <span>Поиск монет</span>
-                            </div>
-                        </div>
-                        <div class="modalWindow_coinWrap">
-                            {
-                                coins.map((item, index) => {
-                                    return (
-                                        <div
-                                            class={["modalWindow_coinWrap_item",
-                                                this.Static.filterCoins.includes(item.name) ? "coin_active" : null
-                                            ]}
-                                            onclick={() => {
-                                                if (this.Static.filterCoins.includes(item.name)) {
-                                                    this.Static.filterCoins.splice(this.Static.filterCoins.indexOf(item.name), 1);
-                                                } else {
-                                                    this.Static.filterCoins.push(item.name)
-                                                }
-                                                // this.Ref.coin.classList.toggle('coin_active');
-                                                this.init();
-                                            }}
-                                        >
-                                            <div class="modalWindow_coinWrap_item_img">
-                                                <img src={item.img} />
-                                            </div>
-                                            <span class="modalWindow_coinWrap_item_text">{item.name}</span>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </main>
-                    <footer class="modalWindow_footer">
-                        <div class="f-center">
-                            <button class="btn btn_gradient">
-                                <span>Применить</span>
-                            </button>
-                        </div>
-                    </footer>
+        <main class="modalWindow_main">
+            <div class="modalWindow_field">
+                <input type="search" />
+                <div class="modalWindow_field_labelLine">
+                    <img src={search} />
+                    <span>Поиск монет</span>
                 </div>
             </div>
-        </div>
+            <div class="modalWindow_coinWrap">
+                {
+                    coins.map((item, index) => {
+                        return (
+                            <div
+                                class={["modalWindow_coinWrap_item",
+                                    this.Static.coinss.includes(item.name) ? "coin_active" : null
+                                ]}
+                                onclick={() => {
+                                    if (this.Static.coinss.includes(item.name)) {
+                                        this.Static.coinss.splice(this.Static.coinss.indexOf(item.name), 1);
+                                        console.log(item.name,'откл')
+                                    } else {
+                                        this.Static.coinss.push(item.name)
+                                        console.log(item.name,'вкл')
+                                    }
+                                    this.cross({ choosenCoin: this.Static.coinss})
+
+                                    // this.Ref.coin.classList.toggle('coin_active');
+                                    this.init();
+                                }}
+                            >
+                                <div class="modalWindow_coinWrap_item_img">
+                                    <img src={item.img} />
+                                </div>
+                                <span class="modalWindow_coinWrap_item_text">{item.name}</span>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </main>
     )
 }

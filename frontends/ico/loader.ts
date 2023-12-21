@@ -1,13 +1,42 @@
 export const loader = function () {
+    this.Static.records = []
+    this.Static.record = null
+    this.Static.catActive = 0
 
-  this.Static.makeFilter = {
-    cat: "",
-    active: "Active"
-  }
+    this.Static.categories = [
+        {
+            name: 'Все',
+        },
+        {
+            name: 'ICO',
+        },
+        {
+            name: 'IDO',
+        },
+        {
+            name: 'IEO',
+        },
+        {
+            name: 'IGO',
+        },
+        {
+            name: 'IFO'
+        }
+    ]
+    this.Static.makeFilter = {
+        cat: 0,
+        active: "Active"
+    }
+    this.fn("addEvent")
+    this.Static.activeIndex = 0
 
-  this.fn("addEvent", this.Static.makeFilter)
 
-  this.Static.activeIndex = 0
-  this.Static.activeTab = 'Active';
-  this.Static.icoList = document.querySelector('ico_list');
+     //Categories
+     this.Static.isDrag = false;
+     this.Static.startX;
+     this.Static.startScrollLeft;
+     this.Static.body = document.querySelector('body');
+     this.Static.x1 = null;
+     this.Static.y1 = null;
+     return
 }

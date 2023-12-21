@@ -1,8 +1,8 @@
 {
-    "url": "/list-exchange",
+    "url": "/exchangers",
     "front": [
         "header",
-        "listExchange",
+        "exchangers",
         "footer"
     ]
 }

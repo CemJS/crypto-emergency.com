@@ -41,6 +41,8 @@
   --dark_blue: #2f2d3d;
   --primaryBack: #181B24;
 
+  --textShadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
   // scrollbar
   --thumb: #2F3645;
 
@@ -48,8 +50,12 @@
   --borderR: 15px;
   --ellipse: 50%;
 
-
   --base_font: 'Montserrat', sans-serif;
+
+  // gradient
+  --gradientOrange: linear-gradient(to bottom right, #F8D353, #FF5C5A);
+  --gradientBlue: linear-gradient(to bottom right, #1CDDF9, #AF3DFF);
+  --gradientGreen: linear-gradient(to bottom right, #01A721, #B3F001);
 }
 
 :root[theme='test'] {

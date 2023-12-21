@@ -1,14 +1,17 @@
 
 
-export const loader = async function (Variable) {
+export const loader = async function (Variable: any) {
 
-    let eventSource = new EventSource(`${Variable._Api}MyInfo?uuid=${Variable.myInfo.uuid}`)
+    let eventSource = new EventSource(`/api/events/MyInfo?uuid=${Variable.myInfo.uuid}`)
 
-    eventSource.addEventListener('message', ({ data }) => {
+    eventSource.addEventListener('update', ({ data }) => {
         if (!data || data == "null") {
             return
         }
-        let records = JSON.parse(data)
-        Variable.myInfo = Object.assign(Variable.myInfo, records)
+        let myInfo = JSON.parse(data)
+        Variable.myInfo = Object.assign(Variable.myInfo, myInfo)
     });
+
+
 }
+

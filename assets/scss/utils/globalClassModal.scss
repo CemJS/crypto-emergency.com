@@ -1,4 +1,7 @@
-// @import 'utils/variables.scss';
+:root {
+  --backModal: #202432;
+}
+
 
 p,
 h3 {
@@ -6,38 +9,25 @@ h3 {
   margin: 0;
 }
 
-body.activeModal {
-  .page {
-    animation: scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  }
-}
 
 .modalWindow {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.6);
   top: 0;
   left: 0;
-  transform: scale(0);
-  z-index: 1001;
-  transition: all 0.3s ease;
-  animation: quickScaleDown 0s 0.5s linear forwards;
+  z-index: 10;
+  opacity: 0;
+  // transform: scale(0);
+  transform: scale(1.2);
+  transition: transform 0.2s 0s ease-in-out, opacity 0.2s 0s ease-in-out;
+  // animation: quickScaleDown 0s 0.5s linear forwards;
 
   &.activeModal {
+    opacity: 1;
     transform: scale(1);
-    animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-
-    .modalWindow_body {
-      animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    }
-
-    .modalWindow_content {
-      opacity: 0;
-      animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    }
   }
-
 
   &_body {
     min-height: 100%;
@@ -54,16 +44,20 @@ body.activeModal {
     width: 100%;
     position: relative;
     padding: 35px;
-    background: #202432;
-    box-shadow: 0 0 23px -10px rgba(221, 221, 221, 0.5);
+    background: var(--backModal);
+    // box-shadow: 0 0 15px -10px rgba(221, 221, 221, 0.5);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(7px);
     color: #FFFFFF;
-    animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    // animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 
     &_gallery {
       max-width: 90%;
       height: 70%;
+    }
+
+    &__narrow {
+      max-width: 500px;
     }
   }
 
@@ -74,8 +68,8 @@ body.activeModal {
     align-items: center;
 
     &_title {
-      font-size: 24px;
-      line-height: 32px;
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.5;
       margin-bottom: 20px;
     }
   }
@@ -101,7 +95,7 @@ body.activeModal {
   }
 
   &_main {
-    display: grid;
+    display: flex;
     flex-direction: column;
     gap: 10px;
   }
@@ -122,8 +116,9 @@ body.activeModal {
       border-radius: var(--borderR);
       border: 1px solid var(--secondary_text);
       background: transparent;
-      transition: 0.1s ease;
-      z-index: 5;
+      transition: border 0.1s ease;
+      z-index: 3;
+      color: var(--white);
     }
 
     &_labelLine {
@@ -139,14 +134,7 @@ body.activeModal {
       color: var(--secondary_text);
     }
 
-    input:focus {
-      color: var(--akebi_purple);
-      border: 1px solid var(--akebi_purple);
-    }
-
-
     input:focus+.modalWindow_field_labelLine {
-      color: var(--akebi_purple);
       height: 30px;
       line-height: 30px;
       transform: translate(-15px, -16px) scale(0.88);
@@ -163,19 +151,153 @@ body.activeModal {
       }
     }
 
+    &__valid {
+      .modalWindow_field_labelLine {
+        height: 30px;
+        line-height: 30px;
+        transform: translate(-15px, -16px) scale(0.88);
+        z-index: 5;
+        top: 0;
+      }
+    }
+
+    &__status {
+      color: var(--white);
+      transition: color 0.3s ease-in-out;
+      position: absolute;
+      top: -38px;
+      right: 15px;
+    }
+
+    &__error {
+      input {
+        border: 1px solid var(--red);
+      }
+
+      .modalWindow_field-status {
+        color: var(--red);
+
+      }
+    }
+
+    &__disabled {
+      input {
+        opacity: 0.5;
+        pointer-events: none;
+        position: relative;
+      }
+
+
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   right: 20px;
+      //   top: 50%;
+      //   width: 20px;
+      //   height: 20px;
+      //   cursor: pointer;
+      //   transform: translateY(-50%);
+      //   background-image: url('svg/icon/edit.svg');
+      //   transition: all 0.3s ease-in-out;
+
+
+      //   &:hover {
+      //     fill: #FFFFFF;
+      //   }
+      // }
+    }
+
+    &__edit {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &__success {
+      input {
+        border: 1px solid var(--green);
+      }
+
+      .modalWindow_field-status {
+        color: var(--green);
+
+      }
+    }
+
+    &__tooltip {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      z-index: 5;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__eye {
+      transition: 0.3s ease-in-out;
+    }
+
   }
 
-
   &_footer {
-    margin-top: 25px;
+    margin-top: 15px;
 
     .btn {
       max-width: 250px;
+    }
+
+    &__text {
+      font-size: clamp(14px, 5vw, 16px);
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.5;
     }
   }
 
 }
 
+.modalScroll {
+  max-height: 500px;
+  height: 500px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &_item {
+    padding: 10px 15px;
+    border-radius: var(--borderR);
+    border: 1px solid #474c5a;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 1px 6px 0px -4px rgba(0, 0, 0, 0.15), 3px 4px 4px -1px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.09);
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease-in-out,
+      border 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid rgba(150, 150, 150, 0.5);
+      transform: scale(0.98);
+    }
+
+    img {
+      width: 20px;
+    }
+  }
+}
 
 @keyframes quickScaleDown {
   0% {

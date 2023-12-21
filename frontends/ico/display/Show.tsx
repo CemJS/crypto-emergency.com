@@ -3,20 +3,27 @@ import back from '@svg/icon/prev.svg'
 import next from '@svg/icon/next.svg'
 
 export default function () {
-  console.log('=55ea43=', this.Static.record)
+
+  if (!this.Static.record?._id) {
+    return (
+      <div>
+        не найдено
+      </div>
+    )
+  }
+
+
   return (
     <div class="ico_show effect_lines effect_figure">
       <div class="wrapper">
         <div class="back">
+
           <div class="back_arrow">
-            <img
-              src={back}
-              onclick={() => {
-                delete this.Static.record
-                this.init()
-              }}
-            >
-            </img>
+            <a href="/ico" class="back_arrow" onclick={
+              this.Fn.link
+              }>
+              <img src={back}></img>
+            </a>
           </div>
           <div class="tool">
             <span class="tool_item"></span>

@@ -73,7 +73,7 @@ export default function () {
                       this.init()
                     }}
                   >
-                    <a class="avatar" href="#">
+                    {/* <a class="avatar" href="#">
                       <div class="avatar__icon">
                         <img class="avatar__photo"
                           src={item.authorFull.avatar?.name
@@ -115,7 +115,7 @@ export default function () {
                         <span>{item.authorFull.nickname}</span>
                       </div>
 
-                    </a>
+                    </a> */}
                     <div class="avatar__settings"
                       onclick={() => {
                         this.Fn.initOne({
