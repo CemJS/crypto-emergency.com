@@ -2,7 +2,6 @@
   "name": "crypto-emergency",
   "version": "1.0.0",
   "type": "module",
-  "types": "./index.d.ts",
   "private": true,
   "scripts": {
     "build": "node esbuild.mjs",
@@ -12,7 +11,7 @@
   "dependencies": {
     "cemjs-all": "^1.1.2",
     "esbuild": "^0.19.1",
-    "http-proxy": "^1.18.1"
+    "http-proxy": "^1.18.1",
     "html-dom-parser": "^4.0.0",
     "idb": "^7.1.1",
     "mic-recorder": "^4.9.0",
@@ -22,7 +21,7 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
-   "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.14",
     "esbuild-sass-plugin": "^2.12.0",
     "path": "^0.12.7",
     "postcss": "^8.4.24"
@@ -38,32 +37,5 @@
     "url": "https://github.com/CemJS/crypto-emergency.com/issues"
   },
   "homepage": "https://github.com/CemJS/crypto-emergency.com#readme",
-  "description": ""
-}
-
-{
-  "name": "cemjs-root",
-  "version": "1.0.0",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "build": "node node_modules/cemjs-all/esbuild.mjs --runProd",
-    "start": "node node_modules/cemjs-all/esbuild.mjs --runServe",
-    "prod": "node node_modules/cemjs-all/esbuild.mjs --runServe --runProd"
-  },
-  "dependencies": {
-    "cemjs-all": "^1.1.2",
-    "esbuild": "^0.19.1",
-    "http-proxy": "^1.18.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "esbuild-sass-plugin": "^2.12.0",
-    "path": "^0.12.7",
-    "postcss": "^8.4.24"
-  },
-  "main": "index.js",
-  "author": "crypto-emergency.com",
-  "license": "ISC",
   "description": ""
 }
