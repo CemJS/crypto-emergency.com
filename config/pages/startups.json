@@ -1,8 +1,0 @@
-{
-    "regex": "/startups",
-    "front": [
-        "header",
-        "startups",
-        "footer"
-    ]
-}

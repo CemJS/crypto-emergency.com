@@ -1,8 +1,0 @@
-{
-    "url": "/personal/notify",
-    "front": [
-        "header",
-        "personalNotify",
-        "footer"
-    ]
-}

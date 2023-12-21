@@ -1,8 +1,0 @@
-{
-    "url": "/lenta-users",
-    "front": [
-        "header",
-        "lenta",
-        "footer"
-    ]
-}

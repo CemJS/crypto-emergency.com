@@ -1,8 +1,0 @@
-{
-    "regex": "/ico",
-    "front": [
-        "header",
-        "ico",
-        "footer"
-    ]
-}

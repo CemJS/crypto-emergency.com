@@ -1,8 +1,0 @@
-{
-    "url": "/personal/posts",
-    "front": [
-        "header",
-        "personalPosts",
-        "footer"
-    ]
-}

@@ -1,102 +1,62 @@
+@import 'utils/variables.scss';
+
 .footer {
-  
-  &__container {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    top: auto;
+    margin-top: 100px;
+    flex: 0 0 auto;
+    position: absolute;
     bottom: 0;
-    height: 65px;
+    left: 0;
     width: 100%;
-    transition: 0.7s;
-    z-index: 1300;
-    border-bottom: 1px solid #363c50;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #2b3040;
-  }
+    z-index: 500;
+    height: 80px;
+    border-top: 1px solid rgba(43, 43, 43, 0.568);
+    background: inherit;
+    overflow: hidden;
 
-  &__nav {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-gap: 40px;
-    align-items: center;
-    margin-left: 0;
-    margin-top: 0;
-    max-width: 700px;
-
-    @media (max-width: 1199px) {
-      padding: 0 30px;
+    &::before {
+        position: absolute;
+        content: '';
+        background: inherit;
+        left: -25px;
+        right: 0;
+        top: -25px;
+        bottom: -5px;
+        box-shadow: inset 0 0 0 3000px rgba(150, 150, 150, 0.192);
+        filter: blur(2px);
+        z-index: 0;
     }
 
-    @media (max-width: 700px) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 100%;
-      grid-gap: 0;
-    }
+    &_inner {
+        position: relative;
+        z-index: 100;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 100px;
 
-    @media (max-width: 522px) {
-      padding: 5px 20px;
-    }
-
-    @media (max-width: 420px) {
-      padding: 5px 10px;
-    }
-
-    &_icon {
-      width: 20px;
-      height: 20px;
-      padding: 14px;
-      border-radius: 15px;
-      text-align: center;
-      box-sizing: content-box;
-      cursor: pointer;
-
-      &:hover {
-
-        &:not(.footer__nav_logo) {
-          filter: invert(39%) sepia(18%) saturate(4538%) hue-rotate(228deg) brightness(93%) contrast(90%);
+        span {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 18px;
         }
-          
-        
-      }
+
+        a {
+            color: $white;
+        }
     }
 
-    &_logo {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 0;
-      padding: 0;
-      background: url("./svg/footer/crypto_emergency.svg") no-repeat center/70%;
+    &_socials {
+        display: flex;
+        gap: 20px;
+
+        &_item {
+            cursor: pointer;
+        }
     }
 
-    &_lenta {
-      background: url("./svg/footer/lenta.svg") no-repeat center/78%;
+    @media(max-width: 1010px) {
+        padding: 0 25px;
     }
 
-    &_users {
-      background: url("./svg/footer/users.svg") no-repeat center/70%;
-    }
-
-    &_posts {
-      width: 40px;
-      height: 40px;
-      background: url("./svg/footer/plus_white.svg") no-repeat center/71%;
-    }
-
-    &_questions {
-      background: url("./svg/footer/question.svg") no-repeat center/75%;
-    }
-
-    &_news {
-      background: url("./svg/footer/news.svg") no-repeat center/70%;
-    }
-
-    &_burger {
-      background: url("./svg/footer/burger.svg") no-repeat center/68%;
-    }
-  }
 }

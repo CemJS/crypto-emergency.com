@@ -1,45 +1,39 @@
-import { Cemjsx } from "cemjs-all"
-import logoBig from '@svg/logo/CryptoEmergency/logoBig.svg'
+import { Cemjsx, Func, Static, Fn } from "cemjs-all"
+import logo from '@images/logo/logo.jpg'
+
 
 export default function () {
-    return (
-        <header class="header">
-            <div class="header__container">
-                <div class="header__inner">
-                    <nav class="header__menu">
-                        <a class="header__logo" href="/" onclick={this.Fn.link}>
-                            <img src={logoBig} alt="Crypto Emergency" />
-                        </a>
-                    </nav>
-                    <div class="header__auth">
-                        <div class="header__language"
-                            // onclick={() => {
-                            //     this.Fn.initOne({
-                            //         name: "mainLanguage", ifOpen: (front) => {
-                            //             setTimeout(() => {
-                            //                 front.clearData()
-                            //             }, 500);
-                            //         }
-                            //     })
-                            // }}
-                            onclick={() => this.Fn.initOne({ name: "modalSelectLanguage" })}
-                        >
-                            <span>Русский</span>
-                        </div>
-                        <button class="header__auth_log" type="button"
-                            onclick={() => {
-                                this.Fn.initOne({ name: "modalAuthorization" })
-                                // this.Fn.initOne({ name: "modalTest" })
-                            }}
-                        >Вход</button>
-                        <button class="header__auth_sign" type="button"
-                            onclick={() => this.Fn.initOne({ name: "modalRegistration" })}
-                        >
-                            <span>Регистрация</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
-    )
+  return (
+    <header class="header header_container">
+      <div class="header_inner">
+        <div class="header_logo">
+          <a href="/" onclick={Fn.link}>
+            <img
+              class="header_logo-img"
+              src={logo}
+            ></img>
+          </a>
+        </div>
+        <nav>
+          <ul class="header_menu">
+            <li
+              class={["header_menu_item", Static.page == "cemjs" ? "header_menu_item-active" : null]}
+
+            ><a href="/about/" onclick={Fn.link}>Cem JS</a>
+            </li>
+            <li
+              class={["header_menu_item", Static.page == "examples" ? "header_menu_item-active" : null]}
+            ><a href="https://ya.ru" onclick={Fn.link}>Examples</a></li>
+            <li
+              class={["header_menu_item", Static.page == "contacts" ? "header_menu_item-active" : null]}
+              onclick={() => {
+                Static.page = "contacts"
+                Fn.init()
+              }}
+            >Contacts</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  )
 }

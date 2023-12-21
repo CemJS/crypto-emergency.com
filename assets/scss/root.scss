@@ -1,11 +1,10 @@
 @import 'utils/variables.scss';
 @import 'utils/fonts.scss';
-@import 'utils/globalClass.scss';
 
 *,
 ::after,
 ::before {
-    box-sizing: border-box;
+    box-sizing: border-box
 }
 
 * {
@@ -22,9 +21,8 @@ body {
 }
 
 html {
-    scrollbar-color: var(--akebi_purple) transparent;
+    scrollbar-color: $akebi_purple transparent;
     scrollbar-width: thin;
-    scroll-behavior: smooth;
 }
 
 body {
@@ -32,11 +30,12 @@ body {
     margin: 0px;
     padding: 0 !important;
     overflow: overlay;
-    color: var(--white);
-    background-color: var(--noble_black);
+    color: $white;
+    background-image: url('images/background/back.jpg');
+    background-position: center center;
+    background-size: cover;
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-family: 'Montserrat';
 
     &::-webkit-scrollbar {
         width: 6px;
@@ -50,7 +49,7 @@ body {
 
     &::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        background: linear-gradient(45deg, var(--summer_sky) 0, var(--blue_oyster_cult) 45%, var(--akebi_purple) 57%, var(--lilac_lotion) 70%);
+        background: linear-gradient(45deg, $summer_sky 0, $blue_oyster_cult 45%, $akebi_purple 57%, $lilac_lotion 70%);
     }
 
     &::-webkit-scrollbar-track {
@@ -63,46 +62,5 @@ p {
 }
 
 a {
-    text-decoration: none;
-    color: var(--white);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    padding: 0;
-    margin: 0;
-}
-
-h1 {
-    font-size: calc(1.375rem + 1.5vw);
-}
-
-h3 {
-    font-size: calc(1.3rem + .6vw);
-
-    @media (min-width: 1200px) {
-        font-size: 1.75rem;
-    }
-}
-
-ul {
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    list-style-type: none;
-}
-
-button {
-    padding: 0;
-    border: 0;
-}
-
-input {
-    font-family: 'Montserrat';
+    color: $white;
 }

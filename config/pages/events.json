@@ -1,8 +1,0 @@
-{
-    "regex": "/events",
-    "front": [
-        "header",
-        "events",
-        "footer"
-    ]
-}
